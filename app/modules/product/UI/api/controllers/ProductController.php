@@ -15,6 +15,16 @@ class ProductController extends ApiController
         $this->productPresentator = $productPresentator;
     }
 
+    /**
+     * @OA\Get(
+     *     path="/api/products/{alias}",
+     *     tags={"Pages"},
+     *     @OA\Response(
+     *      response="200",
+     *      description="An example resource",
+     *     )
+     * )
+     */
     public function actionProducts($alias)
     {
         return $this->productPresentator->getProducts($alias);

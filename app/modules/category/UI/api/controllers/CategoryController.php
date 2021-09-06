@@ -15,30 +15,19 @@ class CategoryController extends ApiController
         $this->categoryPresentator = $categoryPresentator;
     }
 
+    /**
+     * @OA\Get(
+     *     path="/api/categories",
+     *     tags={"Pages"},
+     *     @OA\Response(
+     *      response="200",
+     *      description="An example resource",
+     *     )
+     * )
+     */
     public function actionCategories()
     {
         return $this->categoryPresentator->getAllCategories();
-    }
-
-    /**
-     * @OA\Get(
-     *     path="/api/categories/{alias}",
-     *     @OA\Parameter(name="alias",
-     *        in="path",
-     *        required=true,
-     *        @OA\Schema(
-     *          type="string",
-     *          default="stomatologicheskie-uslugi"
-     *      )
-     *     ),
-     *     tags={"Categories"},
-     *     @OA\Response(response="200", description="An example resource"),
-     *     @OA\Response(response="404", description="An example resource")
-     * )
-     */
-    public function actionCategory($alias)
-    {
-        return $this->categoryPresentator->getCategory($alias);
     }
 
 }

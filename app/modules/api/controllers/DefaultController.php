@@ -30,6 +30,7 @@ class DefaultController extends ApiController
      */
     public function actionIndex()
     {
+        return 'not ready yet';
         return $this->presentator->getIndex();
     }
 
@@ -42,6 +43,7 @@ class DefaultController extends ApiController
      */
     public function actionLayout()
     {
+        return 'not ready yet';
         return $this->presentator->getLayout();
     }
 
