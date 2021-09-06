@@ -1,0 +1,224 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "My First API",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api/actions": {
+            "get": {
+                "tags": [
+                    "Actions"
+                ],
+                "operationId": "app\\modules\\action\\UI\\api\\controllers\\ActionController::actionActions",
+                "responses": {
+                    "200": {
+                        "description": "An example resource"
+                    }
+                }
+            }
+        },
+        "/api/actions/{alias}": {
+            "get": {
+                "tags": [
+                    "Actions"
+                ],
+                "operationId": "app\\modules\\action\\UI\\api\\controllers\\ActionController::actionAction",
+                "parameters": [
+                    {
+                        "name": "alias",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "ya-uzhe"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An example resource"
+                    },
+                    "404": {
+                        "description": "An example resource"
+                    }
+                }
+            }
+        },
+        "/api/index": {
+            "get": {
+                "tags": [
+                    "Pages"
+                ],
+                "operationId": "app\\modules\\api\\controllers\\DefaultController::actionIndex",
+                "responses": {
+                    "200": {
+                        "description": "An example resource"
+                    }
+                }
+            }
+        },
+        "/api/about": {
+            "get": {
+                "tags": [
+                    "Pages"
+                ],
+                "operationId": "app\\modules\\api\\controllers\\DefaultController::actionAbout",
+                "responses": {
+                    "200": {
+                        "description": "An example resource"
+                    }
+                }
+            }
+        },
+        "/api/contacts": {
+            "get": {
+                "tags": [
+                    "Pages"
+                ],
+                "operationId": "app\\modules\\api\\controllers\\DefaultController::actionContacts",
+                "responses": {
+                    "200": {
+                        "description": "An example resource"
+                    }
+                }
+            }
+        },
+        "/api/layout": {
+            "get": {
+                "tags": [
+                    "Layouts"
+                ],
+                "operationId": "app\\modules\\api\\controllers\\DefaultController::actionLayout",
+                "responses": {
+                    "200": {
+                        "description": "An example resource"
+                    }
+                }
+            }
+        },
+        "/api/categories/{alias}": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "operationId": "app\\modules\\category\\UI\\api\\controllers\\CategoryController::actionCategory",
+                "parameters": [
+                    {
+                        "name": "alias",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "stomatologicheskie-uslugi"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An example resource"
+                    },
+                    "404": {
+                        "description": "An example resource"
+                    }
+                }
+            }
+        },
+        "/api/documents": {
+            "get": {
+                "tags": [
+                    "Pages"
+                ],
+                "operationId": "app\\modules\\document\\UI\\api\\controllers\\DocumentController::actionDocuments",
+                "responses": {
+                    "200": {
+                        "description": "An example resource"
+                    }
+                }
+            }
+        },
+        "/api/reviews": {
+            "get": {
+                "tags": [
+                    "Reviews"
+                ],
+                "operationId": "app\\modules\\review\\UI\\api\\controllers\\ReviewController::actionReviews",
+                "responses": {
+                    "200": {
+                        "description": "An example resource"
+                    }
+                }
+            }
+        },
+        "/api/reviews/send": {
+            "post": {
+                "tags": [
+                    "Reviews"
+                ],
+                "operationId": "app\\modules\\review\\UI\\api\\controllers\\ReviewController::actionReviewSend",
+                "responses": {
+                    "201": {
+                        "description": "Создано"
+                    },
+                    "422": {
+                        "description": "Ошибка валидации"
+                    },
+                    "409": {
+                        "description": "Конфликт"
+                    }
+                }
+            }
+        },
+        "/api/service/{alias}": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "operationId": "app\\modules\\service\\UI\\api\\controllers\\ServiceController::actionService",
+                "parameters": [
+                    {
+                        "name": "alias",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "otbelivanie"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An example resource"
+                    },
+                    "404": {
+                        "description": "An example resource"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "slide": {
+                "properties": {
+                    "mainImage": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "button": {
+                        "type": "string"
+                    },
+                    "action": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}
