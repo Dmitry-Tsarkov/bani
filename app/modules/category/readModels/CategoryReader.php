@@ -16,34 +16,6 @@ class CategoryReader
             ->all();
     }
 
-    public function getSubcategories(Category $parent): array
-    {
-        return $parent->children(1)
-            ->andWhere(['>', 'depth', 1])
-            ->orderBy(['lft' => SORT_ASC])
-            ->all();
-    }
-
-//    public function getInCategory(Category $category)
-//    {
-//        return $category->getServices()
-//            ->andWhere(['status' => 1])
-//            ->all();
-//    }
-
-    public function getByAlias($alias): Category
-    {
-        $category = Category::find()
-            ->andWhere(['alias' => $alias])
-            ->one();
-
-        if (!$category) {
-            throw new NotFoundHttpException('Услуга не найдена');
-        }
-
-        return $category;
-    }
-
     public function getProjects($category)
     {
         $query = Category::find()
@@ -53,6 +25,13 @@ class CategoryReader
             'query' => $query,
             'pagination' => ['defaultPageSize' => 10],
         ]);
+    }
+
+    public function getCategory($alias)
+    {
+        return Category::find()
+            ->andWhere(['alias' => $alias])
+            ->one();
     }
 
     public function getAllSubcategories()
@@ -68,6 +47,27 @@ class CategoryReader
             ->andWhere(['alias' => $alias])
             ->andWhere(['>', 'depth', 1])
             ->one();
+    }
+
+    public function getSubcategories(Category $parent): array
+    {
+        return $parent->children(1)
+            ->andWhere(['>', 'depth', 1])
+            ->orderBy(['lft' => SORT_ASC])
+            ->all();
+    }
+
+    public function getByAlias($alias): Category
+    {
+        $category = Category::find()
+            ->andWhere(['alias' => $alias])
+            ->one();
+
+        if (!$category) {
+            throw new NotFoundHttpException('Услуга не найдена');
+        }
+
+        return $category;
     }
 
 //    public function getBreadcrumbsForService(Service $service)
@@ -96,26 +96,31 @@ class CategoryReader
 //
 //        return $result;
 //    }
-//
-//    public function getBreadcrumbsForCategory(Category $category)
-//    {
-//        $result = [];
-//        $rows = $category->getParent()
-//            ->andWhere(['>', 'depth', 0])
-//            ->select(['title', 'alias', 'id'])
-//            ->orderBy('lft')
-//            ->asArray()
-//            ->all();
-//
-//        foreach ($rows as $row) {
-//            $result[] = [
-//                'id' => (int)$row['id'],
-//                'title' => $row['title'],
-//                'alias' => $row['alias'],
-//            ];
-//        }
-//
-//        return $result;
-//    }
 
+    public function getBreadcrumbsForCategory(Category $category)
+    {
+        $result = [];
+        $rows = $category->getParent()
+            ->andWhere(['>', 'depth', 0])
+            ->select(['title', 'alias', 'id'])
+            ->orderBy('lft')
+            ->asArray()
+            ->all();
+
+        foreach ($rows as $row) {
+            $result[] = [
+                'id' => (int)$row['id'],
+                'title' => $row['title'],
+                'alias' => $row['alias'],
+            ];
+        }
+
+        return $result;
+    }
+//    public function getInCategory(Category $category)
+//    {
+//        return $category->getServices()
+//            ->andWhere(['status' => 1])
+//            ->all();
+//    }
 }

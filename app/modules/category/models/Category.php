@@ -12,9 +12,7 @@ use creocoder\nestedsets\NestedSetsBehavior;
 use PHPThumb\GD;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
-use yii\helpers\Url;
 use yii\web\UploadedFile;
-
 
 /**
  * @mixin NestedSetsBehavior
@@ -133,13 +131,13 @@ class Category extends ActiveRecord
         return $this->hasOne(Category::class, ['id' => 'parent_id']);
     }
 
-    public function getImageSrc()
-    {
-        return $this->hasImage() ? $this->getUploadedFileUrl('image') : '';
-    }
-
     public function getProducts()
     {
         return  $this->hasMany(Product::class, ['category_id' => 'id']);
+    }
+
+    public function getImageSrc()
+    {
+        return $this->hasImage() ? $this->getUploadedFileUrl('image') : '';
     }
 }

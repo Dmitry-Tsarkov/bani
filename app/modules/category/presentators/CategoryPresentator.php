@@ -33,7 +33,7 @@ class CategoryPresentator
 
     public function getProjects($alias)
     {
-        $category = Category::find()->andWhere(['alias' => $alias])->one();
+        $category = $this->categoryReader->getCategory($alias);
         $dataProvider = $this->categoryReader->getProjects($category);
 
         return [
@@ -48,70 +48,4 @@ class CategoryPresentator
             'pagination' => $dataProvider->pagination
         ];
     }
-
-//    public function getAllSubcategories()
-//    {
-//        $allSubcategories = $this->categoryReader->getAllSubcategories();
-//
-//        return array_map(function (Category $category) {
-//            return [
-//                'icon' => Url::to($category->getImageSrc(), true),
-//                'title' => $category->title,
-//                'alias' => $category->alias,
-//                'design' => $category->design,
-//            ];
-//        }, $allSubcategories);
-//    }
-//
-//    private function getSubcategories(?Category $category)
-//    {
-//        $subCategories = $this->categoryReader->getSubcategories($category);
-//
-//        return array_map(function (Category $category) {
-//            $services = $this->serviceReader->inCategory($category);
-//            return [
-//                'title' => $category->title,
-//                'alias' => $category->alias,
-//                'icon' => Url::to($category->getImageSrc(), true),
-//                'services' => array_map(function (Service $subcategory) {
-//                    return [
-//                        "title" => $subcategory->title,
-//                        "alias" => $subcategory->alias,
-//                    ];
-//                }, $services),
-//            ];
-//        }, $subCategories);
-//    }
-//
-//    private function getServices(Category $category)
-//    {
-//        $services = $this->serviceReader->inCategory($category);
-//
-//        return array_map(function (Service $service) {
-//            return [
-//                'icon' => $service->getIconSrc(),
-//                'image' => $service->getThumbSrc(),
-//                'title' => $service->title,
-//                'alias' => $service->alias,
-//            ];
-//        }, $services);
-//    }
-//
-//    public function getCategory($alias)
-//    {
-//        $category = Category::findOneOrException(['alias' => $alias]);
-//
-//        $data = [
-//            'meta' => $category->getMetaTags(),
-//            'breadcrumbs' => $this->categoryReader->getBreadcrumbsForCategory($category),
-//        ];
-//
-//        if (!$category->isLeaf()) {
-//            $data['subcategories'] = $this->getSubcategories($category);
-//        } else {
-//            $data['services'] = $this->getServices($category);
-//        }
-//
-//        return $data;
-//    }
 }

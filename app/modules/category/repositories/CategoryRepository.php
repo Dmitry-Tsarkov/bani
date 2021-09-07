@@ -3,7 +3,6 @@
 namespace app\modules\category\repositories;
 
 use app\modules\category\models\Category;
-use app\modules\service\models\Service;
 use DomainException;
 use RuntimeException;
 
@@ -43,21 +42,10 @@ class CategoryRepository
         return $category;
     }
 
-
-//    public function hasProducts(Category $category): bool
-//    {
-//        $categoryIds = $category->children()->select('id')->column();
-//        $categoryIds[] = $category->id;
-//
-//        return (bool)Service::find()
-//            ->andWhere(['category_id' => $categoryIds])
-//            ->count('id');
-//    }
     public function getByAlias($alias)
     {
         return Category::find()
             ->andWhere(['alias' => $alias])
             ->one();
     }
-
 }
