@@ -30,7 +30,6 @@ class DefaultController extends ApiController
      */
     public function actionIndex()
     {
-        return 'not ready yet';
         return $this->presentator->getIndex();
     }
 

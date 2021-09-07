@@ -3,6 +3,7 @@
 namespace app\modules\product\seeders;
 
 use app\modules\category\models\Category;
+use app\modules\characteristic\models\Characteristic;
 use app\modules\product\models\Product;
 use app\modules\product\models\ProductImage;
 use app\modules\seeder\components\BaseSeeder;
@@ -28,8 +29,20 @@ class ProductSeeder extends BaseSeeder
 
                 $this->addImages($product, $amountOfImages);
 
+                $characteristics = Characteristic::find()->all();
+
+                foreach ($characteristics as $characteristic) {
+                    if ($this->faker->boolean(80)) {
+                        $product->setValue($characteristic->createValue(
+                            $this->faker->randomElement(range(0, 100, 10)),
+                            $this->faker->boolean(50)
+                        ));
+                    }
+                }
+
                 $product->save();
                 $this->addTime($product);
+
                 Console::stdout('.');
             }
         }
@@ -53,4 +66,5 @@ class ProductSeeder extends BaseSeeder
             );
         }
     }
+
 }
