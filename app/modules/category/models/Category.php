@@ -5,7 +5,6 @@ namespace app\modules\category\models;
 use app\modules\admin\behaviors\ImageBehavior;
 use app\modules\admin\behaviors\SlugBehavior;
 use app\modules\admin\traits\QueryExceptions;
-use app\modules\category\behaviors\CategoryIconBehavior;
 use app\modules\product\models\Product;
 use app\modules\seo\behaviors\SeoBehavior;
 use app\modules\seo\valueObjects\Seo;
@@ -50,9 +49,6 @@ class Category extends ActiveRecord
      * @var Seo
      */
     public $seo;
-
-    const DESIGN_DEFAULT = 0;
-    const DESIGN_MASSAGE = 1;
 
     public static function tableName()
     {

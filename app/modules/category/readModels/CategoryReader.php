@@ -3,6 +3,7 @@
 namespace app\modules\category\readModels;
 
 use app\modules\category\models\Category;
+use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
 
 class CategoryReader
@@ -33,7 +34,7 @@ class CategoryReader
     public function getByAlias($alias): Category
     {
         $category = Category::find()
-            ->andWhere(['alias'=> $alias])
+            ->andWhere(['alias' => $alias])
             ->one();
 
         if (!$category) {
@@ -41,6 +42,17 @@ class CategoryReader
         }
 
         return $category;
+    }
+
+    public function getProjects($category)
+    {
+        $query = Category::find()
+            ->andWhere(['parent_id' => $category->id]);
+
+        return new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => ['defaultPageSize' => 10],
+        ]);
     }
 
     public function getAllSubcategories()

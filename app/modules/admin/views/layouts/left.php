@@ -19,7 +19,7 @@ use dmstr\widgets\Menu;
                     [
                         'label' => 'Страницы',
                         'icon' => 'files-o',
-                        'url' => ['/page/category/default/index'],
+                        'url' => ['/page/backend/default/index'],
                     ],
                     [
                         'label' => 'Каталог',
@@ -33,7 +33,12 @@ use dmstr\widgets\Menu;
                                 'label' => 'Товары',
                                 'url' => ['/admin/product/product/index'],
                                 'active' => (Yii::$app->controller->module->id == 'product'),
-                            ]
+                            ],
+                            [
+                                'label' => 'Характеристики',
+                                'url' => ['/admin/characteristic/characteristic/index'],
+                                'active' => Yii::$app->controller->module->id == 'characteristic',
+                            ],
                         ],
                     ],
                     [
@@ -45,6 +50,11 @@ use dmstr\widgets\Menu;
                                 'icon' => 'arrows-h',
                                 'url' => ['/admin/menu/category/index'],
                                 'active' => Yii::$app->controller->module->id == 'menu',
+                            ],
+                            [
+                                'label' => 'Слайдер',
+                                'url' => ['/admin/slider/slider/index'],
+                                'active' => Yii::$app->controller->module->id == 'slider',
                             ],
                         ],
                     ],

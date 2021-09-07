@@ -3,8 +3,10 @@
 namespace app\modules\product\services;
 
 use app\modules\category\repositories\CategoryRepository;
+use app\modules\characteristic\repositories\CharacteristicRepository;
 use app\modules\product\forms\ImagesForm;
 use app\modules\product\forms\ProductForm;
+use app\modules\product\forms\ValueForm;
 use app\modules\product\models\Product;
 use app\modules\product\models\ProductImage;
 use app\modules\product\repositories\ProductRepository;
@@ -15,11 +17,16 @@ class ProductService
 {
     private $products;
     private $categories;
+    private $characteristics;
 
-    public function __construct(ProductRepository $products, CategoryRepository $categories)
+    public function __construct(
+        ProductRepository $products,
+        CategoryRepository $categories,
+        CharacteristicRepository $characteristics)
     {
         $this->products = $products;
         $this->categories = $categories;
+        $this->characteristics = $characteristics;
     }
 
     public function create(ProductForm $form): Product
@@ -123,4 +130,23 @@ class ProductService
         $this->products->save($product);
     }
 
+    public function deleteValue($id, $valueId)
+    {
+        $product = $this->products->getById($id);
+        $product->removeValue($valueId);
+        $this->products->save($product);
+    }
+
+    public function setValue($id, $characteristicId, ValueForm $form)
+    {
+        $product = $this->products->getById($id);
+        $characteristic = $this->characteristics->getById($characteristicId);
+
+        $value = $characteristic->isDropDown()
+            ? $characteristic->createValueVariant($form->value, $form->isMain)
+            :  $characteristic->createValue($form->value, $form->isMain);
+
+        $product->setValue($value);
+        $this->products->save($product);
+    }
 }

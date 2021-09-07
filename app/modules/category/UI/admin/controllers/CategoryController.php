@@ -90,12 +90,12 @@ class CategoryController extends BalletController
         return $this->redirect(\Yii::$app->request->referrer);
     }
 
-    public function actionDeleteIcon($id)
+    public function actionDeleteImage($id)
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
 
         try {
-            $this->service->deleteIcon($id);
+            $this->service->deleteImage($id);
             return [];
         } catch (DomainException $e) {
             return ['error' => $e->getMessage()];
@@ -104,7 +104,6 @@ class CategoryController extends BalletController
             return ['error' => 'Техническая ошибка'];
         }
     }
-
 
     public function actionMoveUp($id)
     {

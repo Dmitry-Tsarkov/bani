@@ -73,10 +73,10 @@ class CategoryService
         $this->categories->delete($category);
     }
 
-    public function deleteIcon($id)
+    public function deleteImage($id)
     {
         $category = $this->categories->getById($id);
-        $category->deleteIcon();
+        $category->deleteImage();
         $this->categories->save($category);
     }
 
