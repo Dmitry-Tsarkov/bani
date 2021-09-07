@@ -22,9 +22,10 @@ class Module extends \yii\base\Module implements BootstrapInterface
     public function bootstrap($app)
     {
         $app->urlManager->addRules([
-            'api/categories' => '/api/category/category/categories',
             'api/index' => 'api/default/index',
-            'api/categories/<alias>' => '/api/category/category/category',
+            'api/categories' => '/api/category/category/categories',
+//            'api/categories/<alias>' => '/api/category/category/category',
+            'api/projects/<alias>' => '/api/category/category/projects',
             'api/products/<alias>' => '/api/product/product/products',
 
             'api/swagger' => '/api/default/swagger',

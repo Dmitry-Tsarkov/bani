@@ -3,6 +3,7 @@
 namespace app\modules\category\readModels;
 
 use app\modules\category\models\Category;
+use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
 
 class CategoryReader
@@ -15,32 +16,22 @@ class CategoryReader
             ->all();
     }
 
-    public function getSubcategories(Category $parent): array
+    public function getProjects($category)
     {
-        return $parent->children(1)
-            ->andWhere(['>', 'depth', 1])
-            ->orderBy(['lft' => SORT_ASC])
-            ->all();
+        $query = Category::find()
+            ->andWhere(['parent_id' => $category->id]);
+
+        return new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => ['defaultPageSize' => 10],
+        ]);
     }
 
-//    public function getInCategory(Category $category)
-//    {
-//        return $category->getServices()
-//            ->andWhere(['status' => 1])
-//            ->all();
-//    }
-
-    public function getByAlias($alias): Category
+    public function getCategory($alias)
     {
-        $category = Category::find()
-            ->andWhere(['alias'=> $alias])
+        return Category::find()
+            ->andWhere(['alias' => $alias])
             ->one();
-
-        if (!$category) {
-            throw new NotFoundHttpException('Услуга не найдена');
-        }
-
-        return $category;
     }
 
     public function getAllSubcategories()
@@ -56,6 +47,27 @@ class CategoryReader
             ->andWhere(['alias' => $alias])
             ->andWhere(['>', 'depth', 1])
             ->one();
+    }
+
+    public function getSubcategories(Category $parent): array
+    {
+        return $parent->children(1)
+            ->andWhere(['>', 'depth', 1])
+            ->orderBy(['lft' => SORT_ASC])
+            ->all();
+    }
+
+    public function getByAlias($alias): Category
+    {
+        $category = Category::find()
+            ->andWhere(['alias' => $alias])
+            ->one();
+
+        if (!$category) {
+            throw new NotFoundHttpException('Услуга не найдена');
+        }
+
+        return $category;
     }
 
 //    public function getBreadcrumbsForService(Service $service)
@@ -84,26 +96,31 @@ class CategoryReader
 //
 //        return $result;
 //    }
-//
-//    public function getBreadcrumbsForCategory(Category $category)
-//    {
-//        $result = [];
-//        $rows = $category->getParent()
-//            ->andWhere(['>', 'depth', 0])
-//            ->select(['title', 'alias', 'id'])
-//            ->orderBy('lft')
-//            ->asArray()
-//            ->all();
-//
-//        foreach ($rows as $row) {
-//            $result[] = [
-//                'id' => (int)$row['id'],
-//                'title' => $row['title'],
-//                'alias' => $row['alias'],
-//            ];
-//        }
-//
-//        return $result;
-//    }
 
+    public function getBreadcrumbsForCategory(Category $category)
+    {
+        $result = [];
+        $rows = $category->getParent()
+            ->andWhere(['>', 'depth', 0])
+            ->select(['title', 'alias', 'id'])
+            ->orderBy('lft')
+            ->asArray()
+            ->all();
+
+        foreach ($rows as $row) {
+            $result[] = [
+                'id' => (int)$row['id'],
+                'title' => $row['title'],
+                'alias' => $row['alias'],
+            ];
+        }
+
+        return $result;
+    }
+//    public function getInCategory(Category $category)
+//    {
+//        return $category->getServices()
+//            ->andWhere(['status' => 1])
+//            ->all();
+//    }
 }

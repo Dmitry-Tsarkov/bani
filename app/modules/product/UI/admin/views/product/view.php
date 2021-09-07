@@ -1,10 +1,14 @@
 <?php
 
+use app\modules\characteristic\models\Value;
 use app\modules\product\forms\ImagesForm;
 use app\modules\product\models\Product;
 use app\modules\product\models\ProductImage;
 use kartik\file\FileInput;
-use yii\helpers\ArrayHelper;
+use kartik\grid\ActionColumn;
+use kartik\grid\DataColumn;
+use kartik\grid\GridView;
+use yii\data\ArrayDataProvider;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
@@ -86,6 +90,98 @@ $this->title = $product->title;
         </div>
     </div>
 </div>
+
+
+<div class="box box-default box-solid" id="test-values">
+    <div class="box-header with-border">
+        <h3 class="box-title">Значения</h3>
+    </div>
+    <div class="box-body">
+        <p>
+            <?= Html::a('Добавить значение', ['value/request', 'id' => $product->id], ['class' => 'btn btn-success', 'data-pjax' => '0']) ?>
+        </p>
+        <?= GridView::widget([
+            'dataProvider' => new ArrayDataProvider(['models' => $product->values]),
+            'summaryOptions' => ['class' => 'text-right'],
+            'bordered' => false,
+            'pjax' => true,
+            'pjaxSettings' => [
+                'options' => [
+                    'id' => 'pjax-values'
+                ],
+            ],
+            'striped' => false,
+            'hover' => true,
+            'panel' => false,
+            'export' => false,
+            'toggleDataOptions' => [
+                'all' => [
+                    'icon' => 'resize-full',
+                    'label' => 'Показать все',
+                    'class' => 'btn btn-default',
+                    'title' => 'Показать все'
+                ],
+                'page' => [
+                    'icon' => 'resize-small',
+                    'label' => 'Страницы',
+                    'class' => 'btn btn-default',
+                    'title' => 'Постаничная разбивка'
+                ],
+            ],
+            'columns' => [
+                [
+                    'class' => DataColumn::class,
+                    'vAlign' => GridView::ALIGN_MIDDLE,
+                    'hAlign' => GridView::ALIGN_CENTER,
+                    'attribute' => 'id',
+                    'format' => 'raw',
+                    'width' => '70px',
+                ],
+                [
+                    'label' => 'Характеристика',
+                    'value' => function(Value $value) {
+                        return $value->characteristic->title;
+                    }
+                ],
+                [
+                    'label' => 'Значение',
+                    'value' => function(Value $value) {
+                        return $value->getText();
+                    }
+                ],
+                [
+                    'class' => ActionColumn::className(),
+                    'template' => '{update} {delete}',
+                    'noWrap' => true,
+                    'buttons' => [
+                        'update' => function ($url, Value $model, $key) {
+                            return Html::a(
+                                '<i class="fa fa-pencil-square-o" aria-hidden="true"></i> Редактировать',
+                                ['value/set', 'id' => $model->product_id, 'characteristicId' => $model->characteristic_id],
+                                ['class' => 'btn btn-primary btn-xs', 'data-pjax' => '0']);
+                        },
+                        'delete' => function ($url, $model, $key) {
+                            return Html::a('<i class="fa fa-trash" aria-hidden="true"></i>', [
+                                'value/delete',
+                                'productId' => $model->product_id,
+                                'valueId' => $model->id,
+
+                            ], [
+                                'class' => 'btn btn-danger btn-xs pjax-action',
+                                'data-pjax' => '0',
+                                'data-confirm' => 'Вы уверены?',
+                                'data-method' => 'post',
+                                'data-pjax-container' => 'pjax-values'
+                            ]);
+                        },
+                    ],
+                ],
+            ]
+        ]);
+        ?>
+    </div>
+</div>
+
 <div class="box box-default box-solid">
     <div class="box-header with-border">
         <h3 class="box-title">Описание</h3>

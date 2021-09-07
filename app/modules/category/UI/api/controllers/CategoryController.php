@@ -30,4 +30,10 @@ class CategoryController extends ApiController
         return $this->categoryPresentator->getAllCategories();
     }
 
+    public function actionProjects($alias)
+    {
+        return $this->categoryPresentator->getProjects($alias);
+    }
+
+
 }

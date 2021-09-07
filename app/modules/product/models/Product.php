@@ -5,12 +5,14 @@ namespace app\modules\product\models;
 use app\modules\admin\behaviors\SlugBehavior;
 use app\modules\admin\traits\QueryExceptions;
 use app\modules\category\models\Category;
+use app\modules\characteristic\models\Value;
 use app\modules\seo\behaviors\SeoBehavior;
 use app\modules\seo\valueObjects\Seo;
 use DomainException;
 use lhs\Yii2SaveRelationsBehavior\SaveRelationsBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\helpers\VarDumper;
 use yii2tech\ar\position\PositionBehavior;
 
 /**
@@ -21,6 +23,7 @@ use yii2tech\ar\position\PositionBehavior;
  * @property ProductImage $mainImage
  * @property ProductImage[] $images
  * @property Category $category
+ * @property Value[] $values
  *
  * @property int $id [int(11)]
  * @property int $category_id [int(11)]
@@ -72,9 +75,8 @@ class Product extends ActiveRecord
             ],
             [
                 'class' => SaveRelationsBehavior::class,
-//                'relations' => ['images', 'values'],
-                'relations' => ['images'],
-            ]
+                'relations' => ['images', 'values'],
+            ],
         ];
     }
 
@@ -150,6 +152,11 @@ class Product extends ActiveRecord
         return $this->hasMany(ProductImage::class, ['product_id' => 'id'])->orderBy('position');
     }
 
+    public function getValues()
+    {
+        return $this->hasMany(Value::class, ['product_id' => 'id']);
+    }
+
     public function activate(): void
     {
         if ($this->isActive()) {
@@ -201,6 +208,44 @@ class Product extends ActiveRecord
                 return;
             }
         }
-        throw new \DomainException('Картинка не найдена');
+        throw new DomainException('Картинка не найдена');
+    }
+
+    public function findValueByCharacteristic($characteristicId): ?Value
+    {
+        $values = $this->values;
+        foreach ($values as $value) {
+            if ($value->characteristic_id == $characteristicId) {
+                return $value;
+            }
+        }
+        return null;
+    }
+
+    public function removeValue($valueId)
+    {
+        $values = $this->values;
+        foreach ($values as $i => $value) {
+            if ($value->id == $valueId) {
+                unset($values[$i]);
+                $this->values = $values;
+                return;
+            }
+        }
+        throw new DomainException('Значение не найдено');
+    }
+
+    public function setValue(Value $value)
+    {
+        $values = $this->values;
+        foreach ($values as $i => $current) {
+            if ($current->characteristic_id == $value->characteristic_id) {
+                $values[$i] = $value;
+                $this->values = $values;
+                return;
+            }
+        }
+        $values[] = $value;
+        $this->values = $values;
     }
 }

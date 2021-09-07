@@ -10,7 +10,6 @@ use yii\web\UploadedFile;
 /**
  * @property SeoForm $seo
  */
-
 class CategoryForm extends CompositeForm
 {
     public $title;
@@ -56,7 +55,7 @@ class CategoryForm extends CompositeForm
             [['title', 'alias', 'parentId'], 'required'],
             [['title', 'alias', 'description'], 'string', 'max' => 255],
             [['parentId'], 'integer'],
-            [['alias'], 'match', 'pattern' => '/^[0-9a-z-]+$/','message'=>'Только латинские буквы и знак "-"'],
+            [['alias'], 'match', 'pattern' => '/^[0-9a-z-]+$/', 'message' => 'Только латинские буквы и знак "-"'],
         ];
     }
 

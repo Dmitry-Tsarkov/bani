@@ -2,38 +2,37 @@
 
 namespace app\modules\api\presentators;
 
-
 use app\helpers\DateHelper;
 use app\modules\menu\readModels\MenuItemReader;
 use app\modules\page\models\Page;
 use app\modules\setting\components\Settings;
+use app\modules\slider\presentator\SliderPresentator;
 
 class MainPresentator
 {
     private $menuItems;
-
+    /**
+     * @var SliderPresentator
+     */
+    private $sliderPresentator;
 
     public function __construct(
-        MenuItemReader $menuItems
+        MenuItemReader $menuItems,
+        SliderPresentator $sliderPresentator
     )
     {
         $this->menuItems = $menuItems;
+        $this->sliderPresentator = $sliderPresentator;
     }
 
 
     public function getIndex()
     {
         $page = Page::getOrCreate('index');
+
         return [
             'meta' => $page->getMetaTags(),
-            'main_slider' => $this->mainSliderPresentator->getMainSlides(),
-            'subcategories' => $this->categoryPresentator->getAllSubcategories(),
             'slider' => $this->sliderPresentator->getSlides(),
-            'counters' => [
-                'years' => DateHelper::getAmountOfYearsSince(Settings::getRealValue('years')),
-            ],
-            'doctors' => $this->doctorPresentator->getPreviewDoctors(),
-            'reviews' => $this->reviewPresentator->getPreviewReviews(),
         ];
     }
 

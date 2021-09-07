@@ -3,6 +3,7 @@
 namespace app\modules\product\presentator;
 
 use app\modules\category\repositories\CategoryRepository;
+use app\modules\characteristic\models\Value;
 use app\modules\product\models\Product;
 use app\modules\product\repositories\ProductRepository;
 
@@ -30,6 +31,14 @@ class ProductPresentator
                     'alias' => $product->alias,
                     'title' => $product->title,
                     'description' => $product->description,
+                    'characteristics' => array_map(function(Value $value){
+                        return [
+                            'id' => $value->characteristic->id,
+                            'characteristic' => $value->getLabel(),
+                            'value' => $value->getText(),
+                            'unit' => $value->getUnit(),
+                        ];
+                    }, $product->values)
                 ];
             }, $products)
         ];

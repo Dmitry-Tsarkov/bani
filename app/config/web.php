@@ -52,6 +52,8 @@ $config = [
                 'category' => \app\modules\category\UI\admin\Module::class,
                 'menu' => \app\modules\menu\UI\admin\Module::class,
                 'product' => \app\modules\product\UI\admin\Module::class,
+                'slider' => \app\modules\slider\UI\admin\Module::class,
+                'characteristic' => \app\modules\characteristic\UI\admin\Module::class,
             ],
         ],
         'api' => [
