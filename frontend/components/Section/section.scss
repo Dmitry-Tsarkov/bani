@@ -1,0 +1,13 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+
+  &__title {
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 46px;
+    color: $brown;
+    margin-bottom: 60px;
+  }
+}
