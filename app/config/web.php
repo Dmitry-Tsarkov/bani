@@ -54,6 +54,7 @@ $config = [
                 'product' => \app\modules\product\UI\admin\Module::class,
                 'slider' => \app\modules\slider\UI\admin\Module::class,
                 'characteristic' => \app\modules\characteristic\UI\admin\Module::class,
+                'feedback' => \app\modules\feedback\UI\admin\Module::class,
             ],
         ],
         'api' => [
@@ -63,6 +64,7 @@ $config = [
                 'page' => \app\modules\page\UI\api\Module::class,
                 'category' => \app\modules\category\UI\api\Module::class,
                 'product' => \app\modules\product\UI\api\Module::class,
+                'feedback' => \app\modules\feedback\UI\api\Module::class,
             ],
         ],
         'user' => \app\modules\user\Module::class,

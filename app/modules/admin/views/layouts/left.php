@@ -1,5 +1,6 @@
 <?php
 
+use app\modules\feedback\helpers\FeedbackHelper;
 use dmstr\widgets\Menu;
 
 ?>
@@ -15,6 +16,11 @@ use dmstr\widgets\Menu;
                         'label' => 'Главная',
                         'icon' => 'home',
                         'url' => Yii::$app->getHomeUrl(),
+                    ],
+                    [
+                        'label' => 'Заявки ' . FeedbackHelper::badge(FeedbackHelper::newCount()),
+                        'icon' => 'bell-o',
+                        'url' => ['/admin/feedback/calculation/index'],
                     ],
                     [
                         'label' => 'Страницы',
