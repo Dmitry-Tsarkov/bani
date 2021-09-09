@@ -1,0 +1,21 @@
+.header {
+  background-color: $brown;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  } 
+
+  &__phone {
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 31px;
+    color: $gold;
+    transition: color 0.3s ease;
+    &:hover {
+      color: white;
+    }
+  }
+  
+}

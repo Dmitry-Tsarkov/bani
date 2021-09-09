@@ -1,0 +1,22 @@
+.nav {
+  display: flex;
+  &__item {
+    margin-right: 30px;
+
+    &:nth-last-child(1) {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 26px;
+    color: $gold;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: white;
+    }
+  }
+}

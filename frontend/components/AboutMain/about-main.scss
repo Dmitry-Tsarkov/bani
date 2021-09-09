@@ -1,0 +1,19 @@
+.about-main {
+  display: flex;
+  justify-content: space-between;
+
+  &__image {
+    width: 738px;
+    height: 680px;
+  }
+
+  &__content {
+    max-width: 495px;
+  }
+
+  &__text {
+    font-size: 20px;
+    line-height: 26px;
+    color: $brown;
+  }
+}

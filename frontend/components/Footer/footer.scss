@@ -1,0 +1,60 @@
+.footer {
+  background-color: $brown;
+  
+
+  &__content {
+    padding: 80px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 46px;
+    color: $gold;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  &__text {
+    font-size: 26px;
+    line-height: 33px;
+    color: $gold;
+    transition: color 0.3s ease;
+
+    &+& {
+      margin-top: 18px;
+    }
+
+    &.unlinked {
+      &:hover {
+        color: $gold;
+      }
+    }
+
+    
+
+    
+
+    &:hover {
+      color: white;
+    }
+  }
+
+  &__socials {
+    display: flex;
+    margin-top: 18px;
+  }
+
+  &__social {
+    &+& {
+      margin-left: 24px;
+    }
+  }
+}

@@ -1,0 +1,81 @@
+.portfolio-slider {
+  // position: relative;
+  background: rgba(75, 38, 29, 0.85);
+  padding-top: 80px;
+  padding-bottom: 100px;
+
+  &__container {
+    overflow: hidden;
+    position: relative;
+  }
+  &__wrapper {
+    display: flex;
+    padding: 0 40px;
+  }
+
+  &__slide {
+    flex-shrink: 0;
+  }
+
+  &__controls {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    top: calc(50% - 75px);
+  }
+
+  &__next,
+  &__prev {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 40px;
+    padding: 0;
+    outline: none;
+  }
+
+  &__icon {
+    width: 20px;
+    height: 40px;
+
+    &.prev {
+      transform: rotateY(180deg);
+    }
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 46px;
+    color: $gold;
+    margin-bottom: 64px;
+  }
+
+  &__button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+  }
+
+  &__link {
+    padding: 15px 0;
+    font-size: 20px;
+    line-height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: $gold;
+    width: 212px;
+    border-radius: 15px;
+
+    &:hover {
+      color: rgba(75, 38, 29, 0.9);
+    }
+
+    color: rgba(75, 38, 29, 0.9);
+  }
+}
