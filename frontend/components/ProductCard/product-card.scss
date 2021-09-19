@@ -1,0 +1,84 @@
+.product-card {
+  $this: &;
+  display: flex;
+  background-color: $gold-light;
+  border-radius: 15px;
+  transition: background-color 0.5s ease;
+  cursor: pointer;
+  width: 100%;
+
+  & + & {
+    margin-top: 8px;
+  }
+
+  &:hover {
+    background-color: $brown;
+
+    #{$this}__image {
+      transform: scale(1.1);
+    }
+
+    #{$this}__title {
+      color: $gold-light;
+    }
+
+    #{$this}__text {
+      color: $gold-light;
+    }
+
+    #{$this}__button {
+      color: $brown;
+      background-color: $gold-light;
+    }
+  }
+
+  &__cover {
+    flex-shrink: 0;
+    width: 526px;
+    height: 352px;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease;
+  }
+
+  &__container {
+    padding: 32px 24px;
+  }
+
+  &__title {
+    font-size: 26px;
+    line-height: 33px;
+    color: $brown;    
+    transition: color 0.5s ease;
+  }
+
+  &__text {
+    font-size: 22px;
+    line-height: 28px;
+    color: $brown;
+    transition: color 0.5s ease;
+    margin: 24px 0;
+  }
+
+  &__list {
+    margin-top: 48px;
+    // TODO
+    margin-bottom: 56px;
+  }
+
+  &__button {
+    padding: 20px 40px;
+    font-size: 20px;
+    line-height: 26px;
+    color: $gold-light;
+    background-color: $brown;
+    border-radius: 15px;
+    margin-top: 40px;
+    transition: color 0.5s ease, background-color 0.5s ease;
+  }
+}

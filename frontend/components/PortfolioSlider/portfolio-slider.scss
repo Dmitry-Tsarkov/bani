@@ -11,6 +11,7 @@
   &__wrapper {
     display: flex;
     padding: 0 40px;
+    
   }
 
   &__slide {
@@ -23,6 +24,8 @@
     justify-content: space-between;
     width: 100%;
     top: calc(50% - 75px);
+    opacity: 0;
+    // TODO
   }
 
   &__next,

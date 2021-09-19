@@ -1,0 +1,40 @@
+.breadcrumbs {
+  $this: &;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    margin: 40px 0;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    flex-shrink: 0;
+
+    & + & {
+      margin-left: 27px;
+      position: relative;
+
+      &::before {
+        content: '';
+        width: 11px;
+        height: 1px;
+        background-color: $brown-light;
+        position: absolute;
+        top: 54%;
+        right: calc(100% + 8px);
+      }
+    }
+  }
+
+  &__link {
+    font-size: 14px;
+    line-height: 13px;
+    font-weight: 400;
+    color: $brown-light;
+
+    &.unactive {
+      opacity: 0.5;
+    }
+  }
+}

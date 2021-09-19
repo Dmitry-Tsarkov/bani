@@ -1,0 +1,128 @@
+.reviews-slider {
+  width: 100%;
+  // height: calc(100vh - 90px);
+  position: relative;
+  top: 0;
+  z-index: 1;
+  margin-bottom: 100px;
+
+  overflow: hidden;
+
+  // &__content {
+  //   position: relative;
+  //   overflow: hidden;
+  // }
+
+  &__container {
+    overflow: hidden;
+  }
+
+  &__wrapper {
+    display: flex;
+  }
+
+  &__slide {
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    background-color: $color-white;
+    // height: 100vh;
+    // opacity: 0 !important;
+    transition: ease opacity 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    pointer-events: none;
+    &.swiper-slide-active {
+      pointer-events: all;
+      z-index: 2;
+      // opacity: 1 !important;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    padding-left: 128px;
+  }
+
+  &__text {
+    font-size: 18px;
+    line-height: 23px;
+    color: $color-text;
+    max-width: 522px;
+  }
+
+  &__name {
+    font-size: 24px;
+    line-height: 31px;
+    color: $color-text;
+    margin-top: 32px;
+  }
+
+  &__cover {
+    flex-shrink: 0;
+    width: 630px;
+    height: 596px;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-top: 298px solid $color-white;
+      border-right: 315px solid transparent;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-bottom: 298px solid $color-white;
+      border-right: 315px solid transparent;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__paginations {
+    position: absolute;
+    text-align: center;
+    z-index: 10;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    height: 40px;
+  }
+}
+
+.swiper-pagination-bullet {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  border-radius: 50%;
+  background: wheat;
+  margin-right: 20px;
+  border: 2px solid $brown;
+  position: relative;
+}
+
+.swiper-pagination-bullet-active {
+  &::before {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    left: 1px;
+    top: 1px;
+    background-color: $brown;
+    border-radius: 50%;
+  }
+}

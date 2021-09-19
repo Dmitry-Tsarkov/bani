@@ -1,0 +1,15 @@
+.warning {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $brown;
+  padding: 20px 0;
+
+  &__text {
+    font-size: 26px;
+    line-height: 33px;
+    text-align: center;
+    color: $gold-light;
+    max-width: 1060px;
+  }
+}

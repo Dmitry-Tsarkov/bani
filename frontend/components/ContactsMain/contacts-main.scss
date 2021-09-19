@@ -1,0 +1,29 @@
+.contacts-main {
+  display: flex;
+  flex-direction: column;
+
+  &__text {
+    font-size: 26px;
+    line-height: 33px;
+    color: $brown;
+    font-weight: 400;
+    max-width: 955px;
+
+    &.black {
+      font-size: 24px;
+      line-height: 31px;
+      color: black;
+      & + & {
+        margin-top: 24px;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 48px;
+  }
+
+
+}
