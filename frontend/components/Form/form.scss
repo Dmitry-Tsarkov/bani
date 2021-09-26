@@ -24,9 +24,15 @@
     color: $brown;
     font-size: 20px;
     line-height: 26px;
+    border: 1px solid $gold-light;
 
     &::placeholder {
-      color: #978479;
+      color: #6e5d52;
+    }
+
+    &:focus {
+      border: 1px solid #6e5d52;
+      outline: none;
     }
 
     &.textarea {

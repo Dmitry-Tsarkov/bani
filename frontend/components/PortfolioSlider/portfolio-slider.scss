@@ -3,6 +3,7 @@
   background: rgba(75, 38, 29, 0.85);
   padding-top: 80px;
   padding-bottom: 100px;
+  position: relative;
 
   &__container {
     overflow: hidden;
@@ -22,9 +23,9 @@
     position: absolute;
     display: flex;
     justify-content: space-between;
-    width: 100%;
-    top: calc(50% - 75px);
-    opacity: 0;
+    width: calc(100% - 120px);
+    top: calc(50% - 25px);
+    opacity: 1;
     // TODO
   }
 

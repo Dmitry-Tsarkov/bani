@@ -31,7 +31,7 @@ export default {
   css: ['@/assets/scss/app.scss'],
 
   styleResources: {
-    scss: ['./assets/scss/*.scss'],
+    scss: ['@/assets/scss/variables.scss'],
   },
 
   plugins: [{ src: '~/plugins/plugins.js', mode: 'client' }, '~plugins/api.js'],
