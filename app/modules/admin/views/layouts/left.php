@@ -62,6 +62,12 @@ use dmstr\widgets\Menu;
                                 'url' => ['/admin/slider/slider/index'],
                                 'active' => Yii::$app->controller->module->id == 'slider',
                             ],
+                            [
+                                'label' => 'Акции',
+                                'icon' => 'star',
+                                'url' => ['/admin/action/backend/index'],
+                                'active' => Yii::$app->controller->module->id == 'action',
+                            ],
                         ],
                     ],
                     [

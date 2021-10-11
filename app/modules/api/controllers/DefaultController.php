@@ -1,11 +1,8 @@
 <?php
 
-
 namespace app\modules\api\controllers;
 
-
 use app\modules\api\presentators\MainPresentator;
-use yii\web\Response;
 use function OpenApi\scan;
 
 class DefaultController extends ApiController

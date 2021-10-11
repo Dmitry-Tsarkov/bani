@@ -2,6 +2,7 @@
 
 namespace app\modules\seeder\commands;
 
+use app\modules\action\seeders\ActionSeeder;
 use app\modules\category\seeders\CategorySeeder;
 use app\modules\characteristic\seeders\CharacteristicSeeder;
 use app\modules\page\seeders\PageSeeder;
@@ -17,6 +18,7 @@ class SeederController extends Controller
     public function actionSeed()
     {
         Yii::createObject(PageSeeder::class)->seed(); gc_collect_cycles();
+        Yii::createObject(ActionSeeder::class)->seed(14); gc_collect_cycles();
         Yii::createObject(SliderSeeder::class)->seed(5); gc_collect_cycles();
         Yii::createObject(CharacteristicSeeder::class)->seed(10, 3); gc_collect_cycles();
         Yii::createObject(CategorySeeder::class)->seed(); gc_collect_cycles();
