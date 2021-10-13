@@ -1,5 +1,6 @@
 <template lang="pug">
   .page__content
+    p {{data}}
     MainSlider
     .container
       Section(title='О компании')
@@ -21,5 +22,10 @@
 </template>
 
 <script>
-export default {}
+export default {
+  asyncData(context) {
+    // return context.$api.load('actions')
+    return context.$api.load('actions')
+  },
+}
 </script>
