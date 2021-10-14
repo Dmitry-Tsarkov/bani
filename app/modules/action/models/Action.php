@@ -6,6 +6,7 @@ use app\modules\admin\behaviors\ImageBehavior;
 use app\modules\admin\behaviors\SlugBehavior;
 use app\modules\admin\traits\QueryExceptions;
 use app\modules\seo\behaviors\SeoBehavior;
+use app\modules\seo\valueObjects\Seo;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\helpers\Url;
@@ -82,6 +83,20 @@ class Action extends ActiveRecord
 
         return $self;
     }
+    public function edit($preview_description, $preview_title, $title, $description, $active_from, $active_to, $activity_period, UploadedFile $image, $status, ?Seo $seo = null): void
+    {
+        $this->preview_title = $preview_title;
+        $this->preview_description = $preview_description;
+        $this->title = $title;
+        $this->description = $description;
+        $this->image = $image;
+        $this->active_from = $active_from;
+        $this->active_to = $active_to;
+        $this->activity_period = $activity_period;
+        $this->status = $status;
+        $this->seo = $seo ?? Seo::blank();
+    }
+
 
     public function getThumbSrc()
     {
@@ -145,4 +160,26 @@ class Action extends ActiveRecord
     {
         return $this->active_to > time() || $this->active_to == null;
     }
+
+//    public function beforeSave($insert)
+//    {
+//        $this->setAttribute('meta_t', $this->seo->getTitle());
+//        $this->setAttribute('meta_d', $this->seo->getDescription());
+//        $this->setAttribute('meta_k', $this->seo->getKeywords());
+//        $this->setAttribute('h1', $this->seo->getH1());
+//
+//        return parent::beforeSave($insert);
+//    }
+//
+//    public function afterFind()
+//    {
+//        $this->seo = new Seo(
+//            $this->getAttribute('meta_t'),
+//            $this->getAttribute('meta_d'),
+//            $this->getAttribute('meta_k'),
+//            $this->getAttribute('h1')
+//        );
+//        parent::afterFind();
+//    }
+
 }

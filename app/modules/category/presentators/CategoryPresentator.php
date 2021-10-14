@@ -5,6 +5,7 @@ namespace app\modules\category\presentators;
 use app\modules\category\models\Category;
 use app\modules\category\readModels\CategoryReader;
 use yii\helpers\Url;
+use yii\helpers\VarDumper;
 
 class CategoryPresentator
 {

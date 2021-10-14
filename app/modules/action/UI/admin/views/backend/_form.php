@@ -1,6 +1,7 @@
 <?php
 
 use app\modules\action\models\Action;
+
 use kartik\datetime\DateTimePicker;
 use kartik\file\FileInput;
 use kartik\form\ActiveForm;
@@ -15,6 +16,7 @@ use yii\web\View;
  */
 
 ?>
+
 
 <div class="box box-default box-solid">
     <div class="box-body">
@@ -115,10 +117,12 @@ use yii\web\View;
                                 'weekStart' => 1,
                             ]
                         ]); ?>
-                        <?= $form->field($action, 'status')->dropDownList([
-                            Action::STATUS_DRAFT => 'Неактивный',
-                            Action::STATUS_ACTIVE => 'Активный'
-                        ])
+                        <?= $form->field($action, 'status')
+                            ->dropDownList(
+                                [
+                                    Action::STATUS_DRAFT => 'Неактивный',
+                                    Action::STATUS_ACTIVE => 'Активный'
+                                ])
                         ?>
                     </div>
                 </div>

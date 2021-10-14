@@ -1,17 +1,26 @@
 <?php
 
-
 namespace app\modules\action\UI\admin\controllers;
 
-
+use app\modules\action\forms\ActionForm;
 use app\modules\action\models\Action;
 use app\modules\action\searchModels\ActionSearch;
+use app\modules\action\services\ActionService;
 use app\modules\admin\components\BalletController;
+use DomainException;
+use Exception;
 use Yii;
-use yii\helpers\VarDumper;
 
 class BackendController extends BalletController
 {
+    private $service;
+
+    public function __construct($id, $module, ActionService $service, $config = [])
+    {
+        parent::__construct($id, $module, $config);
+        $this->service = $service;
+    }
+
     public function actionIndex()
     {
         $searchModel = new ActionSearch();
@@ -32,6 +41,24 @@ class BackendController extends BalletController
 
     public function actionUpdate($id)
     {
+//        $action = Action::getOrFail($id);
+//        $editForm = new ActionForm($action);
+//
+//        if ($editForm->load(Yii::$app->request->post()) && $editForm->validate()) {
+//            try {
+//                $this->service->edit($action->id, $editForm);
+//                Yii::$app->session->setFlash('success', 'Товар изменен');
+//                return $this->redirect(['view', 'id' => $action->id]);
+//            } catch (DomainException $e) {
+//                Yii::$app->session->setFlash('error', $e->getMessage());
+//            } catch (Exception $e) {
+//                Yii::$app->errorHandler->logException($e);
+//                Yii::$app->session->setFlash('error', $e->getMessage());
+//            }
+//        }
+//
+//        return $this->render('update', compact('action', 'editForm'));
+
         $action = Action::getOrFail($id);
         if ($action->load(Yii::$app->request->post()) && $action->save()) {
             Yii::$app->session->setFlash('success', 'Обновлено');

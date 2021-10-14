@@ -30,10 +30,25 @@ class CategoryController extends ApiController
         return $this->categoryPresentator->getAllCategories();
     }
 
+
+    /**
+     * @OA\Get(
+     *     path="/api/projects/{alias}",
+     *     @OA\Parameter(name="alias",
+     *        in="path",
+     *        required=true,
+     *        @OA\Schema(
+     *          type="string",
+     *          default="proekty-ban"
+     *      )
+     *     ),
+     *     tags={"Pages"},
+     *     @OA\Response(response="200", description="An example resource"),
+     *     @OA\Response(response="404", description="An example resource")
+     * )
+     */
     public function actionProjects($alias)
     {
         return $this->categoryPresentator->getProjects($alias);
     }
-
-
 }
