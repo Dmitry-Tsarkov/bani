@@ -1,0 +1,58 @@
+.promo-card {
+  position: relative;
+  border-radius: 15px;
+  background-color: white;
+
+  &__image {
+    border-radius: 15px 15px 0 0;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 31px;
+    color: $brown;
+
+    &.absolute {
+      position: absolute;
+      top: 48px;
+      left: 16px;
+    }
+  }
+
+  &__content {
+    padding: 16px 32px;
+  }
+
+  &__date {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    color: $brown;
+    margin-bottom: 8px;
+  }
+
+  &__container {
+    padding-bottom: 32px;
+  }
+
+  &__button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $brown;
+    background-color: $gold-light;
+    border-radius: 15px;
+    margin-top: 24px;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 23px;
+    padding: 18px 36px;
+
+    &:hover {
+      color: $gold-light;
+      background-color: $brown;
+    }
+  }
+}

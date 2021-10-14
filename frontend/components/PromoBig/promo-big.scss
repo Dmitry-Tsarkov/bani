@@ -1,0 +1,51 @@
+.promo-big {
+  width: 100%;
+  position: relative;
+
+  &__image {
+    width: 100%;
+    border-radius: 15px;
+    object-fit: cover;
+    aspect-ratio: 32 / 9;
+  }
+
+  &__content {
+    position: absolute;
+    top: 108px;
+    left: 108px;
+  }
+
+  &__text {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 31px;
+    color: $brown;
+    max-width: 434px;
+  }
+  &__date {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    color: $brown;
+    margin-top: 16px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $brown;
+    background-color: $gold-light;
+    border-radius: 15px;
+    margin-top: 24px;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 23px;
+    padding: 18px 36px;
+
+    &:hover {
+      color: $gold-light;
+      background-color: $brown;
+    }
+  }
+}

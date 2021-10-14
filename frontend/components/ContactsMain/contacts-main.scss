@@ -25,5 +25,10 @@
     margin-top: 48px;
   }
 
-
+  &__map {
+    margin-top: 48px;
+    border-radius: 15px;
+    display: flex;    
+    aspect-ratio: 1 / 1;
+  }
 }

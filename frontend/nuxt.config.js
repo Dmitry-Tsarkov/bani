@@ -1,12 +1,18 @@
 export default {
+  // server: {
+  //   port: 8004,
+  //   host: '0.0.0.0',
+  // },
+
+  // target: 'server',
+
+  // ssr: true,
+
   server: {
-    port: 8004,
-    // host: '0.0.0.0',
+    port: process.env.PORT,
   },
-
   target: 'server',
-
-  ssr: true,
+  ssr: process.env.SSR !== 'false',
 
   head: {
     title: 'default-nuxt',
@@ -34,10 +40,19 @@ export default {
     scss: ['@/assets/scss/variables.scss'],
   },
 
-  plugins: [{ src: '~/plugins/plugins.js', mode: 'client' }, '~plugins/api.js'],
+  plugins: [{ src: '~/plugins/plugins.js', mode: 'client' }, { src: '~/plugins/ymapPlugin.js',  mode: 'client' }, '~plugins/api.js'],
 
   components: true,
 
   modules: ['@nuxtjs/axios', '@nuxtjs/style-resources', '@nuxtjs/svg-sprite'],
+
+  axios: {
+    proxy: true,
+  },
+
+  proxy: {
+    
+    '/api/': process.env.API_URL,
+  },
     
 }
