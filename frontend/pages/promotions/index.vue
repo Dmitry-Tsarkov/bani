@@ -3,7 +3,7 @@
   .container
     Breadcrumbs(:data='breadcrumbs')
     Headline(title='Акции')
-    Promotions     
+    Promotions(:data='data.actions')     
 </template>
 
 <script>
@@ -23,6 +23,9 @@ export default {
 
       return breadcrumbs
     },
+  },
+  asyncData(context) {
+    return context.$api.load('actions')
   },
 }
 </script>

@@ -5,15 +5,15 @@ ul.nav
   li.nav__item
     nuxt-link.nav__link(to='/catalog') Каталог
   li.nav__item
-    nuxt-link.nav__link(to='/') Портфолио
+    nuxt-link.nav__link(to='/portfolio') Портфолио
   li.nav__item
-    nuxt-link.nav__link(to='/') Цены
+    nuxt-link.nav__link(to='/prices') Цены
   li.nav__item
-    nuxt-link.nav__link(to='/') Акции
+    nuxt-link.nav__link(to='/promotions') Акции
   li.nav__item
-    nuxt-link.nav__link(to='/') Отзывы
+    nuxt-link.nav__link(to='/reviews') Отзывы
   li.nav__item
-    nuxt-link.nav__link(to='/') Контакты
+    nuxt-link.nav__link(to='/contacts') Контакты
 </template>
 
 <script>

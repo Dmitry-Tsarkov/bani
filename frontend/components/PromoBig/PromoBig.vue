@@ -1,6 +1,6 @@
 <template lang="pug">
   .promo-big
-    img.promo-big__image(src='/img/promo-big.jpg')
+    img.promo-big__image(:src='data.image')
     .promo-big__content
       p.promo-big__text Оформи заказ до 31.10.2021 и получи скидку  10%
       button.promo-big__button Подробнее

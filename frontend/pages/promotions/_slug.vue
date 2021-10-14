@@ -3,7 +3,7 @@
   .container
     Breadcrumbs(:data='breadcrumbs')
     Headline(title='Компенсаторы усадки В ПОДАРОК!')
-    Product     
+    PromoBig(:data='data.action.card')    
 </template>
 
 <script>
@@ -27,6 +27,12 @@ export default {
 
       return breadcrumbs
     },
+  },
+  asyncData(context) {
+    
+    return context.$api.load(
+      `actions/${context.route.params.slug}`
+    )
   },
 }
 </script>

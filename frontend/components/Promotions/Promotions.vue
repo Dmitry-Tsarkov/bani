@@ -1,13 +1,9 @@
 <template lang="pug">
   .promotions
-    PromoBig
+    //- PromoBig
     .promotions__grid
-      .promotions__item
-        PromoCard
-      .promotions__item
-        PromoCard
-      .promotions__item
-        PromoCard
+      .promotions__item(v-for="item in data" :key="item.id")
+        PromoCard(:promo='item')
 </template>
 
 <script>

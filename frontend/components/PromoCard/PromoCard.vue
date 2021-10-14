@@ -1,18 +1,17 @@
 <template lang="pug">
   .promo-card
-    img.promo-card__image(src='/img/promo-card.jpg')
-    p.promo-card__title.absolute Скидки для пенсионеров!
+    img.promo-card__image(:src='promo.image')
+    p.promo-card__title.absolute {{promo.title}}
     .promo-card__container
       .promo-card__content
-        p.promo-card__date 01.10.2021 г. 
-        p.promo-card__title Скидки для пенсионеров!
-      button.promo-card__button Подробнее
-    
+        p.promo-card__date {{promo.date}}
+        p.promo-card__title {{promo.description}}
+      nuxt-link.promo-card__button(:to='"promotions/" + promo.alias') Подробнее    
 </template>
 
 <script>
 export default {
-  props: ['data']
+  props: ['promo']
 }
 </script>
 

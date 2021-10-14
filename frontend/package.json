@@ -19,7 +19,8 @@
     "swiper": "^6.7.5",
     "v-show-slide": "^1.8.3",
     "vue": "^2.6.14",
-    "vue-yandex-maps": "^0.10.12"
+    "vue-yandex-maps": "^0.10.12",
+    "vuejs-paginate": "^2.1.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.7",

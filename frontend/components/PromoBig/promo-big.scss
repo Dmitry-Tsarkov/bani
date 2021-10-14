@@ -2,9 +2,11 @@
   width: 100%;
   position: relative;
 
-  &__img {
+  &__image {
     width: 100%;
     border-radius: 15px;
+    object-fit: cover;
+    aspect-ratio: 32 / 9;
   }
 
   &__content {

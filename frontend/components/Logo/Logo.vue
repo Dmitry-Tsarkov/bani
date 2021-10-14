@@ -1,7 +1,7 @@
 <template lang='pug'>
-img.logo(src='/icons/logo.svg' v-if="path === '/'")
+img.logo(src='/icons/logo.svg' v-if="path == '/'")
 nuxt-link.logo(v-else to='/')
-  img.logo(src='/logo.svg')
+  img.logo(src='/icons/logo.svg')
 </template>
 
 <script>
