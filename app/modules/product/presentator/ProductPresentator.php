@@ -5,7 +5,9 @@ namespace app\modules\product\presentator;
 use app\modules\category\repositories\CategoryRepository;
 use app\modules\characteristic\models\Value;
 use app\modules\product\models\Product;
+use app\modules\product\models\ProductImage;
 use app\modules\product\repositories\ProductRepository;
+use yii\helpers\Url;
 
 class ProductPresentator
 {
@@ -31,6 +33,11 @@ class ProductPresentator
                     'alias' => $product->alias,
                     'title' => $product->title,
                     'description' => $product->description,
+                    'images' => array_map(function(ProductImage $image) {
+                        return [
+                            'image' => Url::to($image->getImageFileUrl('image'), true),
+                        ];
+                    }, $product->images),
                     'characteristics' => array_map(function(Value $value){
                         return [
                             'id' => $value->characteristic->id,
