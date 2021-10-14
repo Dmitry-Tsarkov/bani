@@ -70,8 +70,22 @@ $this->title = $product->title;
                             ? '<span class="label label-success" data-test="123">Активен</span>'
                             : '<span class="label label-danger">Неактивный</span>',
                     ],
-                    'title',
-                    'alias',
+                    [
+                        'label' => 'Название',
+                        'attribute' => 'title',
+                    ],
+                    [
+                        'label' => 'Алиас',
+                        'attribute' => 'alias',
+                    ],
+                    [
+                        'label' => 'Тип цены',
+                        'value' => $product->getPriceType()
+                    ],
+                    [
+                        'label' => 'Цена',
+                        'attribute' => 'price',
+                    ],
                     [
                         'label' => 'Категория',
                         'value' => $product->category->title ?? '-',
@@ -87,6 +101,16 @@ $this->title = $product->title;
                 ],
             ]);
             ?>
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <div class="box box-default box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">Описание</h3>
+            </div>
+            <div class="box-body">
+                <?= $product->description ?>
+            </div>
         </div>
     </div>
 </div>
@@ -139,13 +163,13 @@ $this->title = $product->title;
                 ],
                 [
                     'label' => 'Характеристика',
-                    'value' => function(Value $value) {
+                    'value' => function (Value $value) {
                         return $value->characteristic->title;
                     }
                 ],
                 [
                     'label' => 'Значение',
-                    'value' => function(Value $value) {
+                    'value' => function (Value $value) {
                         return $value->getText();
                     }
                 ],
@@ -182,14 +206,6 @@ $this->title = $product->title;
     </div>
 </div>
 
-<div class="box box-default box-solid">
-    <div class="box-header with-border">
-        <h3 class="box-title">Описание</h3>
-    </div>
-    <div class="box-body">
-        <?= $product->description ?>
-    </div>
-</div>
 <div class="box box-default box-solid">
     <div class="box-header with-border">
         <h3 class="box-title">Фото</h3>

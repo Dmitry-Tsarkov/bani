@@ -248,4 +248,10 @@ class Product extends ActiveRecord
         $values[] = $value;
         $this->values = $values;
     }
+
+    public function getPriceType()
+    {
+        return $this->price_type == 1 ? 'от' : '';
+    }
+
 }

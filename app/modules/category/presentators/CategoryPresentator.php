@@ -2,6 +2,7 @@
 
 namespace app\modules\category\presentators;
 
+use app\modules\category\helpers\CategoryHelper;
 use app\modules\category\models\Category;
 use app\modules\category\readModels\CategoryReader;
 use yii\helpers\Url;
@@ -43,7 +44,8 @@ class CategoryPresentator
                     'id' => $project->id,
                     'alias' => $project->alias,
                     'title' => $project->title,
-                    'description' => $project->description
+                    'description' => $project->description,
+                    'minPrice' => 'от ' . CategoryHelper::getProductMinPrice($project)
                 ];
             }, $dataProvider->getModels()),
             'pagination' => $dataProvider->pagination

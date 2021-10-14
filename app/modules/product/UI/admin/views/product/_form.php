@@ -38,12 +38,19 @@ use yii\web\View;
             </div>
         </div>
         <div class="col-md-6">
-            <div class="box box-default box-solid">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Харакетристики</h3>
-                </div>
+        <div class="box box-default box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">SEO</h3>
+            </div>
+            <div class="box-body">
+                <?= $form->field($productForm->seo, 'h1') ?>
+                <?= $form->field($productForm->seo, 'title') ?>
+                <?= $form->field($productForm->seo, 'description')->textarea(['rows' => 5]) ?>
+                <?= $form->field($productForm->seo, 'keywords')->hint('Фразы через запятую') ?>
             </div>
         </div>
+        </div>
+
     </div>
 
     <div class="box box-default box-solid">
@@ -59,17 +66,6 @@ use yii\web\View;
         </div>
     </div>
 
-    <div class="box box-default box-solid">
-        <div class="box-header with-border">
-            <h3 class="box-title">SEO</h3>
-        </div>
-        <div class="box-body">
-            <?= $form->field($productForm->seo, 'h1') ?>
-            <?= $form->field($productForm->seo, 'title') ?>
-            <?= $form->field($productForm->seo, 'description')->textarea(['rows' => 5]) ?>
-            <?= $form->field($productForm->seo, 'keywords')->hint('Фразы через запятую') ?>
-        </div>
-    </div>
     <?= Html::submitButton('Сохранить', ['class' => 'btn btn-primary']) ?>
     <?php ActiveForm::end() ?>
 </div>

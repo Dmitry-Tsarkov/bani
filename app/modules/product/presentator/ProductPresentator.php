@@ -26,6 +26,13 @@ class ProductPresentator
         $products = $category->products;
 
         return [
+            'prices' => array_map(function (Product $product) {
+                return [
+                    'title' => $product->title,
+                    'price_type' => $product->getPriceType(),
+                    'price' => $product->price
+                ];
+            }, $products),
             'products' => array_map(function (Product $product) {
                 return [
                     'meta' => $product->getMetaTags(),
@@ -33,12 +40,12 @@ class ProductPresentator
                     'alias' => $product->alias,
                     'title' => $product->title,
                     'description' => $product->description,
-                    'images' => array_map(function(ProductImage $image) {
+                    'images' => array_map(function (ProductImage $image) {
                         return [
                             'image' => Url::to($image->getImageFileUrl('image'), true),
                         ];
                     }, $product->images),
-                    'characteristics' => array_map(function(Value $value){
+                    'characteristics' => array_map(function (Value $value) {
                         return [
                             'id' => $value->characteristic->id,
                             'characteristic' => $value->getLabel(),
