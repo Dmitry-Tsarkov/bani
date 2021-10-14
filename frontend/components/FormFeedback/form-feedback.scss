@@ -1,0 +1,61 @@
+.form-feedback {
+  background-color: #d0d0cf;
+  padding: 32px 0;
+
+  &__grid {
+    display: grid;
+    padding-bottom: 16px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 56px;
+  }
+
+  &__title {
+    font-size: 16px;
+    line-height: 20px;
+    color: $brown;
+    margin-bottom: 8px;
+  }
+
+  &__checkbox {
+    padding-top: 48px;
+  }
+
+  &__input {
+    width: 100%;
+    background: $gold-light;
+    border-radius: 15px;
+    padding: 10px 24px;
+    color: $brown;
+    font-size: 12px;
+    line-height: 15px;
+    border: 1px solid $gold-light;
+
+    &::placeholder {
+      color: #6e5d52;
+    }
+
+    &:focus {
+      border: 1px solid #6e5d52;
+      outline: none;
+    }
+
+    &.textarea {
+      min-height: 116px;
+    }
+  }
+
+  &__button {
+    width: 100%;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 23px;
+    color: $gold-light;
+    background-color: $brown;
+    border-radius: 15px;
+    margin-top: 32px;
+  }
+}

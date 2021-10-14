@@ -1,0 +1,33 @@
+.review {
+  padding: 24px 108px;
+  background-color: $gold-light;
+  border-radius: 15px;
+
+  &__text {
+    font-size: 16px;
+    line-height: 20px;
+    color: $brown;
+  }
+
+  &__name {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 23px;
+    color: $brown;
+    padding-top: 32px;
+  }
+
+  &__location {
+    font-size: 12px;
+    line-height: 15px;
+    color: $brown;
+    padding-top: 8px;
+  }
+
+  &__date {
+    font-size: 8px;
+    line-height: 10px;
+    color: $brown;
+    padding-top: 24px;
+  }
+}

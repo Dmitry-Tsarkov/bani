@@ -40,7 +40,7 @@ export default {
     scss: ['@/assets/scss/variables.scss'],
   },
 
-  plugins: [{ src: '~/plugins/plugins.js', mode: 'client' }, '~plugins/api.js'],
+  plugins: [{ src: '~/plugins/plugins.js', mode: 'client' }, { src: '~/plugins/ymapPlugin.js',  mode: 'client' }, '~plugins/api.js'],
 
   components: true,
 

@@ -9,7 +9,8 @@
           p.contacts-main__text.black Skype:	srubimbanu
           p.contacts-main__text.black Viber:	+7 (903) 173-173-5
           p.contacts-main__text.black WhatsApp:	+7 (903) 173-173-5
-        Map
+        .contacts-main__map
+          Map
       .contacts-main__form
         Form
 </template>

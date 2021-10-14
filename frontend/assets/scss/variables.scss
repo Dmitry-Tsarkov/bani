@@ -1,45 +1,6 @@
 @charset "UTF-8";
 
-// Responsive (for example: xs, sm, md, lg, xl)
-$mq-breakpoints: (
-  "xs": 679px,
-  "sm": 680px,
-  "md": 984px,
-  "lg": 1224px,
-  "xl": 1440px
-);
 
-$mq-indents: (
-  "xs": 1.6rem,
-  "sm": 2.4rem,
-  "md": 4rem,
-  "lg": 4rem,
-  "xl": 4rem
-);
-
-$mq-container-widths: (
-  "xs": 100%,
-  "sm": 100%,
-  "md": 100%,
-  "lg": 100%,
-  "xl": 1920px
-);
-
-$mq-container-indents: (
-  "xs": map-get($mq-indents, "xs"),
-  "sm": map-get($mq-indents, "sm"),
-  "md": map-get($mq-indents, "md"),
-  "lg": map-get($mq-indents, "lg"),
-  "xl": map-get($mq-indents, "xl")
-);
-
-$mq-grid-gutters: (
-  "xs": map-get($mq-indents, "xs"),
-  "sm": map-get($mq-indents, "sm"),
-  "md": map-get($mq-indents, "md"),
-  "lg": map-get($mq-indents, "lg"),
-  "xl": map-get($mq-indents, "xl")
-);
 
 // Not responsive
 $width: 1220px;
@@ -56,6 +17,15 @@ $border-radius-base: .5rem;
 // mobile top offset
 
 $mobile-top-offset: 4.8rem;
+
+
+
+
+
+$gold-light: #FEFFE2;
+$gold: #EBECB0;
+$brown: #4B261D;
+$brown-light: #996457;
 
 // Site colors
 $color-black: #000;
@@ -121,9 +91,3 @@ $transition-duration-base: .3s ease;
 
 
 
-
-
-$gold-light: #FEFFE2;
-$gold: #EBECB0;
-$brown: #4B261D;
-$brown-light: #996457;
