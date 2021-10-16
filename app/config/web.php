@@ -57,6 +57,7 @@ $config = [
                 'feedback' => \app\modules\feedback\UI\admin\Module::class,
                 'portfolio' => \app\modules\portfolio\UI\admin\Module::class,
                 'action' => \app\modules\action\UI\admin\Module::class,
+                'review' => \app\modules\review\UI\admin\Module::class,
             ],
         ],
         'api' => [
@@ -69,6 +70,7 @@ $config = [
                 'feedback' => \app\modules\feedback\UI\api\Module::class,
                 'portfolio' => \app\modules\portfolio\UI\api\Module::class,
                 'action' => \app\modules\action\UI\api\Module::class,
+                'review' => \app\modules\review\UI\api\Module::class,
             ],
         ],
         'user' => \app\modules\user\Module::class,

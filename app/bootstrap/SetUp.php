@@ -22,11 +22,5 @@ class SetUp implements BootstrapInterface
             return $mailer;
         });
 
-        $container->setSingleton(SocialService::class, [], [
-            $app->params['social']['ok']['public'],
-            $app->params['social']['ok']['secret'],
-            $app->params['social']['vk']['access_token'],
-        ]);
-
     }
 }

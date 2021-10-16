@@ -1,25 +1,27 @@
 <?php
 
-use app\modules\characteristic\models\Characteristic;
-use app\modules\characteristic\searchModels\CharacteristicSearch;
+use app\helpers\DateHelper;
+use app\helpers\LabelHelpers;
+use app\modules\review\helpers\ReviewHelper;
+use app\modules\review\models\Review;
+use app\modules\review\searchModels\ReviewSearch;
+use kartik\grid\ActionColumn;
 use kartik\grid\DataColumn;
 use kartik\grid\GridView;
 use kartik\icons\Icon;
 use yii\data\DataProviderInterface;
-use yii\grid\ActionColumn;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\web\View;
 
 /**
  * @var View $this
  * @var DataProviderInterface $dataProvider
- * @var CharacteristicSearch $searchModel
+ * @var ReviewSearch $searchModel
  */
 
-$this->title = 'Характеристики';
-$this->params['breadcrumbs'] = [
-    'Характеристики',
-];
+$this->title = 'Отзывы';
+$this->params['breadcrumbs'] = ['Отзывы']
 
 ?>
 
@@ -42,7 +44,7 @@ $this->params['breadcrumbs'] = [
     'toolbar' => [
         [
             'content' =>
-                Html::a('Добавить характеристику', ['characteristic/create'], ['class' => 'btn btn-success', 'data-pjax' => '0']) .
+                Html::a('Добавить отзыв', ['create'], ['class' => 'btn btn-success', 'data-pjax' => '0']) .
                 Html::a(
                     Icon::show('arrow-sync-outline'),
                     ['index'],
@@ -72,49 +74,59 @@ $this->params['breadcrumbs'] = [
     ],
     'columns' => [
         [
-            'class' => DataColumn::class,
-            'vAlign' => GridView::ALIGN_MIDDLE,
-            'hAlign' => GridView::ALIGN_CENTER,
-            'attribute' => 'id',
-            'format' => 'raw',
-            'width' => '70px',
-
-        ],
-        'title',
-        'unit',
-        [
-            'class' => DataColumn::class,
-            'attribute' => 'type',
-            'filter' => [
-                Characteristic::TYPE_TEXT => 'Поле ввода',
-                Characteristic::TYPE_DROP_DOWN => 'Выпадающий список'
-            ],
-            'format' => 'html',
-            'value' => function(Characteristic $characteristic) {
-                switch ($characteristic->type){
-                    case Characteristic::TYPE_TEXT:
-                        return 'Поле ввода';
-                    case Characteristic::TYPE_DROP_DOWN:
-                        return 'Выпадающий список';
-                }
+            'attribute' => 'created_at',
+            'label' => 'Дата отзыва',
+            'width' => '100px',
+            'value' => function (Review $review) {
+                return DateHelper::forHuman($review->created_at, 'd n Y H:i');
             },
         ],
         [
-            'class' => ActionColumn::className(),
+            'class' => DataColumn::class,
+            'vAlign' => GridView::ALIGN_MIDDLE,
+            'label' => 'Фио',
+            'format' => 'raw',
+            'width' => '200px',
+            'attribute' => 'name'
+        ],
+
+        [
+            'class' => DataColumn::class,
+            'attribute' => 'status',
+            'label' => 'Статус',
+            'filter' => [0 => 'Неактивный', 1 => 'Активный'],
+            'format' => 'raw',
+            'width' => '50px',
+            'value' => function (Review $review) {
+                return LabelHelpers::label(
+                    ArrayHelper::getValue(ReviewHelper::statusDropDown(), $review->isActive(), '-'),
+                    $review->isActive()
+                );
+            },
+        ],
+        [
+            'class' => ActionColumn::class,
             'template' => '{update} {delete}',
+            'width' => '180px',
             'buttons' => [
                 'update' => function ($url, $model, $key) {
                     return Html::a('Редактировать', $url, ['class' => 'btn btn-primary btn-xs', 'data-pjax' => '0']);
                 },
                 'delete' => function ($url, $model, $key) {
                     return Html::a('<i class="fa fa-trash" aria-hidden="true"></i>', [
-                        '/characteristic/review/characteristic/delete',
+                        'delete',
                         'id' => $model->id,
                     ],
-                        ['class' => 'btn btn-danger btn-xs', 'data-pjax' => '0', 'data-confirm' => 'Вы уверены?', 'data-method' => 'post']);
+                        [
+                            'class' => 'btn btn-danger btn-xs',
+                            'data-pjax' => '0',
+                            'data-confirm' => 'Вы уверены?',
+                            'data-method' => 'post'
+                        ]);
                 },
             ],
         ],
     ]
 ])
 ?>
+

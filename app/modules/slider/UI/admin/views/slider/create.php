@@ -10,7 +10,7 @@ use yii\web\View;
 
 $this->title = 'Добавление нового слайда';
 $this->params['breadcrumbs'] = [
-    ['label' => 'Слайды', 'url' => ['/slider/backend/slider/index']],
+    ['label' => 'Слайды', 'url' => ['/slider/review/slider/index']],
     $this->title,
 ];
 
