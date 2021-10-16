@@ -7,6 +7,7 @@ use app\modules\category\seeders\CategorySeeder;
 use app\modules\characteristic\seeders\CharacteristicSeeder;
 use app\modules\page\seeders\PageSeeder;
 use app\modules\product\seeders\ProductSeeder;
+use app\modules\review\seeders\ReviewSeeder;
 use app\modules\slider\seeds\SliderSeeder;
 use Yii;
 use yii\console\Controller;
@@ -18,6 +19,7 @@ class SeederController extends Controller
     public function actionSeed()
     {
         Yii::createObject(PageSeeder::class)->seed(); gc_collect_cycles();
+        Yii::createObject(ReviewSeeder::class)->seed(20); gc_collect_cycles();
         Yii::createObject(ActionSeeder::class)->seed(14); gc_collect_cycles();
         Yii::createObject(SliderSeeder::class)->seed(5); gc_collect_cycles();
         Yii::createObject(CharacteristicSeeder::class)->seed(10, 3); gc_collect_cycles();

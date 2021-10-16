@@ -1,6 +1,7 @@
 <?php
 
 use app\modules\feedback\helpers\FeedbackHelper;
+use app\modules\review\helpers\ReviewHelper;
 use dmstr\widgets\Menu;
 
 ?>
@@ -25,7 +26,7 @@ use dmstr\widgets\Menu;
                     [
                         'label' => 'Страницы',
                         'icon' => 'files-o',
-                        'url' => ['/page/backend/default/index'],
+                        'url' => ['/page/review/default/index'],
                     ],
                     [
                         'label' => 'Каталог',
@@ -65,8 +66,14 @@ use dmstr\widgets\Menu;
                             [
                                 'label' => 'Акции',
                                 'icon' => 'star',
-                                'url' => ['/admin/action/backend/index'],
+                                'url' => ['/admin/action/review/index'],
                                 'active' => Yii::$app->controller->module->id == 'action',
+                            ],
+                            [
+                                'label' => 'Отзывы' . ReviewHelper::badge(ReviewHelper::countNewReviews()),
+                                'icon' => 'fas fa-edit',
+                                'url' => ['/admin/review/review/index'],
+                                'active' => Yii::$app->controller->module->id == 'review',
                             ],
                         ],
                     ],
