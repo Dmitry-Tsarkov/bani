@@ -2,17 +2,17 @@
 .product-slider
   .product-slider__container(ref='container')
     .product-slider__wrapper 
-      .product-slider__slide(v-for='item in data.images', :key='item.id')
-        img.product-slider__img(:src='item')
+      .product-slider__slide(v-for='item in data', :key='item.id')
+        img.product-slider__img(:src='item.image')
   .product-slider__container.is-thumb(ref='thumbs')
     button(type='button' title='Предыдущий слайд' ref="prev").product-slider__prev
       img.product-slider__icon.prev(src='/icons/chevron-brown.svg')
     .product-slider__thumbs
       .product-slider__thumbs-slide(
-        v-for='item in data.thumbs',
+        v-for='item in data',
         :key='item.id'
       )
-        img.product-slider__thumb-img(:src='item')
+        img.product-slider__thumb-img(:src='item.image')
     button(type='button' title='Следующий слайд' ref="next").product-slider__next
       img.product-slider__icon(src='/icons/chevron-brown.svg')
       

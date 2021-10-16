@@ -1,17 +1,17 @@
 <template lang="pug">
-nuxt-link.product-card(to='/catalog/slug')
+nuxt-link.product-card(:to='"/product/" + product.alias')
   .product-card__cover
-    img.product-card__image(:src='data.image')
+    img.product-card__image(:src='product.image')
   .product-card__container
-    p.product-card__title {{ data.title }}
-    p.product-card__text {{ data.text }}
-    p.product-card__title от 263 000 руб. 
+    p.product-card__title {{ product.title }}
+    p.product-card__text {{ product.description }}
+    p.product-card__title {{ product.minPrice }} руб. 
     button.product-card__button Рассчитать стоимость 
 </template>
 
 <script>
 export default {
-  props: ['data']
+  props: ['product']
 }
 </script>
 

@@ -1,0 +1,12 @@
+.price-page {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 56px;
+
+  &__prices {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 40px;
+  }
+}

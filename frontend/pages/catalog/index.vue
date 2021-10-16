@@ -8,7 +8,7 @@
 <script>
 export default {
   asyncData(context) {
-    return context.$api.load('categories')
+    return context.$api.load('catalog')
   },
 }
 </script>

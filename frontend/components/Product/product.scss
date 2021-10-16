@@ -1,7 +1,9 @@
 .product {
   &__container {
     display: flex;
-    justify-content: space-between;
+    gap: 16px;
+    // justify-content: space-between;
+
   }
 
   &__specifications {
@@ -48,6 +50,12 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 32px;
+  }
+
+  &__characteristic {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
   }
 
   &__button {

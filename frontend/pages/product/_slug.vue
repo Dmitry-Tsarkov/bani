@@ -3,7 +3,7 @@
   .container
     Breadcrumbs(:data='breadcrumbs')
     Headline(title='Баня 3*3 м с выносом')
-    Product     
+    Product(:data='data')     
 </template>
 
 <script>
@@ -31,6 +31,12 @@ export default {
 
       return breadcrumbs
     },
+  },
+  asyncData(context) {
+    return context.$api.load(
+      `products/${context.route.params.slug}`,
+      context.route.query
+    )
   },
 }
 </script>

@@ -10,6 +10,7 @@ export default {
 
   server: {
     port: process.env.PORT,
+    host: '0.0.0.0',
   },
   target: 'server',
   ssr: process.env.SSR !== 'false',

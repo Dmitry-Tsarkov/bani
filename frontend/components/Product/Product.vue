@@ -2,41 +2,21 @@
   .product
     .product__container
       .product__slider
-        ProductSlider(:data='slider')
+        ProductSlider(:data='data.products[index].images')
       .product__specifications
-        .product__specification
-          p.product__name Цена комплекта «Базовый»
-          p.product__value от 263 000 руб.
-        .product__specification
-          p.product__name Цена комплекта «Базовый»
-          p.product__value от 263 000 руб.
-        .product__specification
-          p.product__name Цена комплекта «Базовый»
-          p.product__value от 263 000 руб.
-        .product__specification
-          p.product__name Цена комплекта «Базовый»
-          p.product__value от 263 000 руб.
+        .product__specification(v-for="price in data.prices" :key="price.id")
+          p.product__name {{price.title}}
+          p.product__value {{price.price_type}} {{price.price}} руб.        
         p.product__value.big Характеристики объекта:
         .product__characteristics
-          .productt__characteristic
-            p.product__name.black Площадь 
-            p.product__value.black 9 м²
-          .productt__characteristic
-            p.product__name.black Площадь 
-            p.product__value.black 9 м²
-          .productt__characteristic
-            p.product__name.black Площадь 
-            p.product__value.black 9 м²
-          .productt__characteristic
-            p.product__name.black Площадь 
-            p.product__value.black 9 м²
+          .product__characteristic(v-for="characteristic in data.products[index].characteristics" :key="characteristic.id")
+            p.product__name.black {{characteristic.characteristic}}
+            p.product__value.black {{characteristic.value}} {{characteristic.unit}}        
         button.product__button Рассчитать стоимость
     .product__tabs
-      button(type='button' @click='toggleTab(1)', :class='{ "active": tab == 1 }').product__tab «Базовый»
-      button(type='button' @click='toggleTab(2)', :class='{ "active": tab == 2 }').product__tab «На пустой участок»
-      button(type='button' @click='toggleTab(3)', :class='{ "active": tab == 3 }').product__tab «Расширенный»
-      button(type='button' @click='toggleTab(3)', :class='{ "active": tab == 4 }').product__tab Дополнительные услуги
-    .product__content(v-if='tab == 1')
+      button(v-for="(tab, i) in data.products" :key="i" type='button' @click='toggleTab(i)', :class='{ "active": index == i }').product__tab {{tab.title}}      
+    .product__content(v-for="(city, j) in data.products" :key="j" v-if="index == j")
+      Wysiwyg(:data='data.products[index].description')
       .product__wysiwyg
         h2 Комплект «Базовый» без предоплаты
         p Ниже представлен тот недорогой минимальный комплект для бани, который можно заказать, понимая, что по технологии сруб должен до отделки дать усадку, а для этого потребуется не менее года. После того, как он высохнет, вы сможете насладиться творческим процессом выбора отделочных материалов и оборудования для вашей бани.
@@ -55,9 +35,10 @@
 
 <script>
 export default {
+  props: ['data'],
   data() {
     return {
-      tab: 1,
+      index: 0,
       slider: {        
         images: ['/img/product.jpg', '/img/product.jpg', '/img/product.jpg'],
         thumbs: ['/img/thumb-1.jpg', '/img/thumb-2.jpg', '/img/thumb-3.jpg']
@@ -66,7 +47,7 @@ export default {
   },
   methods: {
     toggleTab(id) {
-      this.tab = id;
+      this.index = id;      
     },
   },
 }

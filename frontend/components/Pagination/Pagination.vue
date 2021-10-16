@@ -21,26 +21,26 @@ export default {
   data() {
     return {
       page: +this.$route.query.page || 1,
-      pageCount: 4,
+      pageCount: 1,
     }
   },
-  // mounted() {
-  //   let pageSize = +this.$route.query['per-page'] || this.data.defaultPageSize
-  //   this.pageCount = Math.ceil(this.data.totalCount / pageSize)
-  // },
-  // watch: {
-  //   $route(to, from) {
-  //     this.page = +to.query.page || 1
-  //   },
-  // },
+  mounted() {
+    let pageSize = +this.$route.query['per-page'] || this.data.defaultPageSize
+    this.pageCount = Math.ceil(this.data.totalCount / pageSize)
+  },
+  watch: {
+    $route(to, from) {
+      this.page = +to.query.page || 1
+    },
+  },
   methods: {
     togglePage(page) {
-      // this.$router.push({
-      //   query: {
-      //     ...this.$route.query,
-      //     page,
-      //   },
-      // })
+      this.$router.push({
+        query: {
+          ...this.$route.query,
+          page,
+        },
+      })
     },
   },
 }
