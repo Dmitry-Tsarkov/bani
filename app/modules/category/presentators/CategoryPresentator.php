@@ -33,19 +33,20 @@ class CategoryPresentator
         ];
     }
 
-    public function getProjects($alias)
+    public function getSubcategories($alias)
     {
         $category = $this->categoryReader->getCategory($alias);
-        $dataProvider = $this->categoryReader->getProjects($category);
+        $dataProvider = $this->categoryReader->geSubcategories($category);
 
         return [
-            'projects' => array_map(function (Category $project) {
+            'subcategories' => array_map(function (Category $subcategory) {
                 return [
-                    'id' => $project->id,
-                    'alias' => $project->alias,
-                    'title' => $project->title,
-                    'description' => $project->description,
-                    'minPrice' => 'от ' . CategoryHelper::getProductMinPrice($project)
+                    'id' => $subcategory->id,
+                    'alias' => $subcategory->alias,
+                    'title' => $subcategory->title,
+                    'description' => $subcategory->description,
+                    'minPrice' => 'от ' . CategoryHelper::getProductMinPrice($subcategory),
+                    'image' => Url::to($subcategory->getImageFileUrl('image'), true),
                 ];
             }, $dataProvider->getModels()),
             'pagination' => $dataProvider->pagination

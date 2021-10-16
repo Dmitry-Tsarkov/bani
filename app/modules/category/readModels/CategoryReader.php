@@ -17,7 +17,7 @@ class CategoryReader
             ->all();
     }
 
-    public function getProjects(Category $category)
+    public function geSubcategories(Category $category)
     {
         $query = $category->children(1)
             ->andWhere(['>', 'depth', 1])
