@@ -17,7 +17,7 @@ class CategoryController extends ApiController
 
     /**
      * @OA\Get(
-     *     path="/api/categories",
+     *     path="/api/catalog",
      *     tags={"Pages"},
      *     @OA\Response(
      *      response="200",
@@ -33,7 +33,7 @@ class CategoryController extends ApiController
 
     /**
      * @OA\Get(
-     *     path="/api/projects/{alias}",
+     *     path="/api/categories/{alias}",
      *     @OA\Parameter(name="alias",
      *        in="path",
      *        required=true,
