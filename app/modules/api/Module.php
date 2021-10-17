@@ -24,14 +24,16 @@ class Module extends \yii\base\Module implements BootstrapInterface
         $app->urlManager->addRules([
             'api/index' => 'api/default/index',
             'api/catalog' => '/api/category/category/categories',
-            'api/reviews/send' => '/api/review/review/review-send',
-            'api/reviews' => '/api/review/review/reviews',
-            'api/categories/<alias>' => '/api/category/category/projects',
+            'api/catalog/<alias>' => '/api/category/category/projects',
             'api/products/<alias>' => '/api/product/product/products',
             'api/calculation/send' => '/api/feedback/feedback/calculation-send',
             'api/swagger' => '/api/default/swagger',
             'api/actions' => 'api/action/action/actions',
             'api/actions/<alias>' => 'api/action/action/action',
+            'api/reviews' => '/api/review/review/reviews',
+            'api/reviews/send' => '/api/review/review/review-send',
+            'api/portfolios' => 'api/portfolio/portfolio/portfolios',
+            'api/portfolios/<alias>' => 'api/portfolio/portfolio/portfolio',
         ]);
     }
 }

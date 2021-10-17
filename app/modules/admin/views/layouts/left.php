@@ -52,12 +52,12 @@ use dmstr\widgets\Menu;
                         'label' => 'Контент',
                         'icon' => 'newspaper-o',
                         'items' => [
-                            [
-                                'label' => 'Меню',
-                                'icon' => 'arrows-h',
-                                'url' => ['/admin/menu/category/index'],
-                                'active' => Yii::$app->controller->module->id == 'menu',
-                            ],
+//                            [
+//                                'label' => 'Меню',
+//                                'icon' => 'arrows-h',
+//                                'url' => ['/admin/menu/category/index'],
+//                                'active' => Yii::$app->controller->module->id == 'menu',
+//                            ],
                             [
                                 'label' => 'Слайдер',
                                 'url' => ['/admin/slider/slider/index'],
@@ -74,6 +74,12 @@ use dmstr\widgets\Menu;
                                 'icon' => 'fas fa-edit',
                                 'url' => ['/admin/review/review/index'],
                                 'active' => Yii::$app->controller->module->id == 'review',
+                            ],
+                            [
+                                'label' => 'Портфолио',
+                                'icon' => 'fas fa-edit',
+                                'url' => ['/admin/portfolio/portfolio/index'],
+                                'active' => Yii::$app->controller->module->id == 'portfolio',
                             ],
                         ],
                     ],

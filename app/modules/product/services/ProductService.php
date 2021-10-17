@@ -151,4 +151,5 @@ class ProductService
         $product->setValue($value);
         $this->products->save($product);
     }
+
 }

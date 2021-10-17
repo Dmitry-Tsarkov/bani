@@ -1,10 +1,8 @@
 <?php
 
-
 namespace app\modules\portfolio\UI\api;
 
-
-class Module
+class Module extends \yii\base\Module
 {
 
 }

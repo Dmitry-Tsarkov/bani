@@ -59,7 +59,8 @@ class Category extends ActiveRecord
             TimestampBehavior::class,
             NestedSetsBehavior::class,
             SlugBehavior::class,
-            SeoBehavior::class,[
+            SeoBehavior::class,
+            [
                 'class' => ImageBehavior::class,
                 'folder' => 'services',
                 'thumbs' => [

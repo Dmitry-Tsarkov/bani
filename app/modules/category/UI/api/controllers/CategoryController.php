@@ -30,10 +30,9 @@ class CategoryController extends ApiController
         return $this->categoryPresentator->getAllCategories();
     }
 
-
     /**
      * @OA\Get(
-     *     path="/api/categories/{alias}",
+     *     path="/api/catalog/{alias}",
      *     @OA\Parameter(name="alias",
      *        in="path",
      *        required=true,
