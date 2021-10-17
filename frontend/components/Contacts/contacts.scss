@@ -1,0 +1,45 @@
+.contacts {
+  display: flex;
+  flex-direction: column;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 48px;
+  }
+
+  &__name {
+    width: 210px;
+    flex-shrink: 0;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    color: $brown;
+  }
+
+  &__value {    
+    font-size: 16px;
+    line-height: 20px;
+    color: $brown;
+  }
+
+  &__map {
+    margin-top: 48px;
+    border-radius: 15px;
+    display: flex;    
+    width: 955px;
+    height: 522px;
+  }
+}

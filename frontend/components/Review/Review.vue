@@ -1,14 +1,14 @@
 <template lang="pug">
   .review
-    p.review__text Мы заказали баню 3*5. Вежливый менеджер Дмитрий согласовал для нас подарок от компании, нач.производства Сергей скомплектовал и отправил качественные стройматериалы и постоянно был на связи ,бригада строителей во главе с Дмитрием отлично справилась с работой по установке бани на участке. Однозначно рекомендуем компанию СрубимБаню ! Здесь имеют опыт работы, дорожат своей репутацией и готовы вести диалог с заказчиком ,что немаловажно.
-    p.review__name Марина
-    p.review__location Москва
-    p.review__date 10.10.2021 г. 
+    p.review__text {{review.description}}
+    p.review__name {{review.name}}
+    p.review__location {{review.city}}
+    p.review__date {{review.created_at}}
 </template>
 
 <script>
 export default {
-  props: ['data'],  
+  props: ['review'],  
 }
 </script>
 

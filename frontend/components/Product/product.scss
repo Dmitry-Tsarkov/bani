@@ -1,7 +1,8 @@
 .product {
   &__container {
     display: flex;
-    gap: 16px;
+    // gap: 16px;
+    gap: 48px;
     // justify-content: space-between;
 
   }
@@ -117,16 +118,13 @@
     display: flex;
     flex-direction: column;
     margin-top: 64px;
+    padding-left: 80px;
 
     &.brown {
-      padding: 42px 109px;
-      background-color: $brown;
+      // padding: 42px 109px;
+      padding: 32px 80px;
+      margin-top: 48px;
+      background-color: rgba(75, 38, 29, 0.85);
     }
-  }
-
-  h2 {
-    font-size: 32px;
-    line-height: 41px;
-    color: $brown;
-  }
+  }  
 }

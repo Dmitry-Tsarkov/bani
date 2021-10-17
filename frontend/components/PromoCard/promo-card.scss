@@ -1,10 +1,33 @@
 .promo-card {
+  $this: &;
   position: relative;
   border-radius: 15px;
-  background-color: white;
+  background-color: $gold-light;
+  height: 100%;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $brown;
+    #{$this}__date {
+      color: $gold-light;
+    }
+    #{$this}__title {
+      color: $gold-light;
+    }
+    #{$this}__button {
+      color: $brown;
+      background-color: $gold-light;
+    }
+  }
 
   &__image {
     border-radius: 15px 15px 0 0;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    // width: 414px;
+    // height: 414px;
+    object-fit: cover;
+    filter: brightness(0.5);
   }
 
   &__title {
@@ -12,11 +35,13 @@
     font-size: 24px;
     line-height: 31px;
     color: $brown;
+    transition: color 0.3s ease;
 
     &.absolute {
       position: absolute;
       top: 48px;
       left: 16px;
+      color: $gold-light;
     }
   }
 
@@ -30,10 +55,14 @@
     line-height: 20px;
     color: $brown;
     margin-bottom: 8px;
+    transition: color 0.3s ease;
   }
 
   &__container {
     padding-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   &__button {
@@ -41,18 +70,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: $brown;
-    background-color: $gold-light;
+
     border-radius: 15px;
-    margin-top: 24px;
+    // margin-top: 24px;
     font-weight: bold;
     font-size: 18px;
     line-height: 23px;
     padding: 18px 36px;
 
-    &:hover {
-      color: $gold-light;
-      background-color: $brown;
-    }
+    color: $gold-light;
+    background-color: $brown;
+    transition: color 0.3s ease, background-color 0.3s ease;
   }
+
+  
 }

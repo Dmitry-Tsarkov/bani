@@ -273,9 +273,7 @@ table {
     color: $brown;
     max-width: 1060px;
 
-    &+& {
-      margin-top: 64px;
-    }
+    padding-top: 56px;
   }
 }
 
