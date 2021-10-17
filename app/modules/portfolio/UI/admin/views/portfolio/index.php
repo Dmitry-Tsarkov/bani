@@ -43,7 +43,7 @@ $this->params['breadcrumbs'] = [
     'toolbar' => [
         [
             'content' =>
-                Html::a('Добавить в портфолио', ['/portfolio/backend/portfolio/create'], ['class' => 'btn btn-success', 'data-pjax' => '0']) .
+                Html::a('Добавить в портфолио', ['create'], ['class' => 'btn btn-success', 'data-pjax' => '0']) .
                 Html::a(
                     Icon::show('arrow-sync-outline'),
                     ['index'],

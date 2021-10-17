@@ -81,10 +81,11 @@ class PortfolioService
         $this->portfolios->save($portfolio);
     }
 
-    public function deleteImage($id, $photoId)
+    public function deleteImage($id)
     {
         $portfolio = $this->portfolios->getById($id);
-        $portfolio->deleteImage($photoId);
+        $portfolio->deleteImage();
         $this->portfolios->save($portfolio);
     }
+
 }

@@ -26,7 +26,7 @@ use dmstr\widgets\Menu;
                     [
                         'label' => 'Страницы',
                         'icon' => 'files-o',
-                        'url' => ['/page/review/default/index'],
+                        'url' => ['/page/backend/default/index'],
                     ],
                     [
                         'label' => 'Каталог',
@@ -65,19 +65,16 @@ use dmstr\widgets\Menu;
                             ],
                             [
                                 'label' => 'Акции',
-                                'icon' => 'star',
                                 'url' => ['/admin/action/action/index'],
                                 'active' => Yii::$app->controller->module->id == 'action',
                             ],
                             [
                                 'label' => 'Отзывы' . ReviewHelper::badge(ReviewHelper::countNewReviews()),
-                                'icon' => 'fas fa-edit',
                                 'url' => ['/admin/review/review/index'],
                                 'active' => Yii::$app->controller->module->id == 'review',
                             ],
                             [
                                 'label' => 'Портфолио',
-                                'icon' => 'fas fa-edit',
                                 'url' => ['/admin/portfolio/portfolio/index'],
                                 'active' => Yii::$app->controller->module->id == 'portfolio',
                             ],
@@ -90,13 +87,13 @@ use dmstr\widgets\Menu;
                             [
                                 'label' => 'Пользователи',
                                 'icon' => 'users',
-                                'url' => ['/user/category/index'],
+                                'url' => ['/user/backend/index'],
                                 'active' => Yii::$app->controller->module->id == 'user',
                             ],
                             [
                                 'label' => 'Настройки',
                                 'icon' => 'cog',
-                                'url' => ['/setting/category/default/index'],
+                                'url' => ['/setting/backend/default/index'],
                                 'active' => Yii::$app->controller->module->id == 'setting',
                             ],
                         ],

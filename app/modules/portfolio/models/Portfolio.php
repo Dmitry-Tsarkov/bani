@@ -116,10 +116,6 @@ class Portfolio extends ActiveRecord
             throw new \DomainException('Портфолио уже активировано');
         }
 
-        if (empty($this->category)) {
-            throw new \DomainException('Не установлена категория');
-        }
-
         $this->status = Portfolio::STATUS_ACTIVE;
     }
 
@@ -129,19 +125,6 @@ class Portfolio extends ActiveRecord
             throw new \DomainException('Портфолио уже заблокирвоано');
         }
         $this->status = Portfolio::STATUS_DRAFT;
-    }
-
-    public function deleteImage($photoId)
-    {
-        $images = $this->images;
-        foreach ($images as $i => $image) {
-            if ($image->id == $photoId) {
-                unset($images[$i]);
-                $this->updateImages($images);
-                return;
-            }
-        }
-        throw new \DomainException('Картинка не найдена');
     }
 
     public function getHref()
@@ -167,5 +150,15 @@ class Portfolio extends ActiveRecord
             $this->getAttribute('h1')
         );
         parent::afterFind();
+    }
+
+    public function getImageSrc()
+    {
+        return $this->hasImage() ? $this->getUploadedFileUrl('image') : '';
+    }
+
+    public function getThumbSrc()
+    {
+        return $this->hasImage() ? $this->getThumbFileUrl('image') : null;
     }
 }

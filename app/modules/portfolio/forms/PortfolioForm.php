@@ -3,9 +3,9 @@
 namespace app\modules\portfolio\forms;
 
 use app\modules\admin\forms\CompositeForm;
-use app\modules\admin\helpers\YoutubeHelper;
 use app\modules\portfolio\models\Portfolio;
 use app\modules\seo\forms\SeoForm;
+use yii\web\UploadedFile;
 
 /**
  * @property SeoForm $seo
@@ -16,7 +16,6 @@ class PortfolioForm extends CompositeForm
     public $alias;
     public $description;
     public $image;
-
 
     public function __construct(?Portfolio $portfolio = null)
     {
@@ -52,5 +51,11 @@ class PortfolioForm extends CompositeForm
     protected function internalForms(): array
     {
         return ['seo'];
+    }
+
+    public function beforeValidate(): bool
+    {
+        $this->image = UploadedFile::getInstance($this, 'image');
+        return parent::beforeValidate();
     }
 }
