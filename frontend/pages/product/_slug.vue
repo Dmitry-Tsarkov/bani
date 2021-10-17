@@ -32,6 +32,25 @@ export default {
       return breadcrumbs
     },
   },
+  // mounted() {
+  //   this.breadcrumbs = [
+  //     {
+  //       title: 'Каталог',
+  //       url: '/catalog',
+  //     },
+  //   ]
+
+  //   for (let item in this.data.breadcrumbs) {
+  //     this.breadcrumbs.push({
+  //       title: this.data.breadcrumbs[item].title,
+  //       url: '/catalog/' + this.data.breadcrumbs[item].alias,
+  //     })
+  //   }
+
+  //   this.breadcrumbs.push({
+  //     title: this.data.product.title,
+  //   })
+  // },
   asyncData(context) {
     return context.$api.load(
       `products/${context.route.params.slug}`,

@@ -48,6 +48,10 @@
 
   &__container {
     padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    // height: 100%;
   }
 
   &__title {
@@ -62,13 +66,11 @@
     line-height: 28px;
     color: $brown;
     transition: color 0.5s ease;
-    margin: 24px 0;
+    // margin: 24px 0;
   }
 
   &__list {
-    margin-top: 48px;
-    // TODO
-    margin-bottom: 56px;
+    margin-top: 48px;    
   }
 
   &__button {
@@ -78,7 +80,7 @@
     color: $gold-light;
     background-color: $brown;
     border-radius: 15px;
-    margin-top: 40px;
+    // margin-top: 40px;
     transition: color 0.5s ease, background-color 0.5s ease;
   }
 }

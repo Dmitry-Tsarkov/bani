@@ -4,7 +4,7 @@
     p.promo-card__title.absolute {{promo.title}}
     .promo-card__container
       .promo-card__content
-        p.promo-card__date {{promo.date}}
+        p.promo-card__date 01.10.2021 г. 
         p.promo-card__title {{promo.description}}
       nuxt-link.promo-card__button(:to='"promotions/" + promo.alias') Подробнее    
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <yandex-map style="width: 543px;" :coords="coords" :zoom="10" @click="onClick">
+  <yandex-map style="width: 100%;" :coords="coords" :zoom="10" @click="onClick">
     <ymap-marker
       :coords="coords"
       marker-id="123"      
@@ -18,7 +18,7 @@ export default {
       coords: [54.82896654088406, 39.831893822753904],
       markerIcon: {
         layout: 'default#image',
-        // imageHref: '/icons/oval.svg',
+        imageHref: '/icons/sauna.svg',
         imageSize: [64, 64],
         imageOffset: [-32, -64],        
         contentOffset: [0, 15],        

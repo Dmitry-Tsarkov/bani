@@ -7,6 +7,7 @@
     border-radius: 15px;
     object-fit: cover;
     aspect-ratio: 32 / 9;
+    filter: brightness(0.5);
   }
 
   &__content {
@@ -19,7 +20,7 @@
     font-weight: bold;
     font-size: 24px;
     line-height: 31px;
-    color: $brown;
+    color: $gold-light;
     max-width: 434px;
   }
   &__date {

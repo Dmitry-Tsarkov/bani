@@ -45,7 +45,7 @@ export default {
   watchQuery: true,
   asyncData(context) {
     return context.$api.load(
-      `categories/${context.route.params.slug}`,
+      `catalog/${context.route.params.slug}`,
       context.route.query
     )
   },

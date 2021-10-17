@@ -2,8 +2,9 @@
 .page__content 
   .container
     Breadcrumbs(:data='breadcrumbs')
-    Headline(title='Компенсаторы усадки В ПОДАРОК!')
-    PromoBig(:data='data.action.card')    
+    Headline(:title='data.action.title')
+    PromoBig(:data='data.action.card')
+    Wysiwyg(:data='data.action.description' style='margin-top: 56px;')    
 </template>
 
 <script>

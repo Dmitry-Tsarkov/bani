@@ -6,9 +6,7 @@
   FormFeedback
   .container
     .reviews__list
-      Review 
-      Review 
-      Review 
+      Review(v-for="review in data.reviews" :key="review.id" :review='review')
 </template>
 
 <script>
@@ -26,6 +24,9 @@ export default {
 
       return breadcrumbs
     },
+  },
+  asyncData(context) {
+    return context.$api.load('reviews')
   },
 }
 </script>
