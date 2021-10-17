@@ -43,6 +43,7 @@ class ProductService
             $form->price_type,
             $form->price,
             $form->description,
+            $form->bottom_description,
             new Seo(
                 $form->seo->title,
                 $form->seo->description,
@@ -70,6 +71,7 @@ class ProductService
             $form->price,
             $form->title,
             $form->description,
+            $form->bottom_description,
             new Seo(
                 $form->seo->title,
                 $form->seo->description,

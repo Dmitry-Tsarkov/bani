@@ -2,16 +2,13 @@
 
 namespace app\modules\action\UI\admin\controllers;
 
-use app\modules\action\forms\ActionForm;
 use app\modules\action\models\Action;
 use app\modules\action\searchModels\ActionSearch;
 use app\modules\action\services\ActionService;
 use app\modules\admin\components\BalletController;
-use DomainException;
-use Exception;
 use Yii;
 
-class BackendController extends BalletController
+class ActionController extends BalletController
 {
     private $service;
 

@@ -54,7 +54,7 @@ $this->title = $product->title;
     <?php endif ?>
 </div>
 <div class="row">
-    <div class="col-xs-6">
+    <div class="col-xs-8">
         <div class="box box-default box-solid">
             <div class="box-header with-border">
                 <h3 class="box-title">Общее</h3>
@@ -101,16 +101,6 @@ $this->title = $product->title;
                 ],
             ]);
             ?>
-        </div>
-    </div>
-    <div class="col-xs-6">
-        <div class="box box-default box-solid">
-            <div class="box-header with-border">
-                <h3 class="box-title">Описание</h3>
-            </div>
-            <div class="box-body">
-                <?= $product->description ?>
-            </div>
         </div>
     </div>
 </div>
@@ -248,5 +238,22 @@ $this->title = $product->title;
                 'multiple' => true,
             ],
         ]) ?>
+    </div>
+</div>
+
+<div class="box box-default box-solid">
+    <div class="box-header with-border">
+        <h3 class="box-title">Описание</h3>
+    </div>
+    <div class="box-body">
+        <?= $product->description ?>
+    </div>
+</div>
+<div class="box box-default box-solid">
+    <div class="box-header with-border">
+        <h3 class="box-title">Описание снизу</h3>
+    </div>
+    <div class="box-body">
+        <?= $product->bottom_description ?>
     </div>
 </div>

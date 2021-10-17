@@ -66,7 +66,7 @@ use dmstr\widgets\Menu;
                             [
                                 'label' => 'Акции',
                                 'icon' => 'star',
-                                'url' => ['/admin/action/review/index'],
+                                'url' => ['/admin/action/action/index'],
                                 'active' => Yii::$app->controller->module->id == 'action',
                             ],
                             [

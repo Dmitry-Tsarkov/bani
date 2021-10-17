@@ -7,7 +7,7 @@ use app\modules\seeder\components\BaseSeeder;
 use app\modules\seeder\components\CopyUploadedFile;
 use yii\helpers\Console;
 
-class ActionSeeder extends BaseSeeder
+class  ActionSeeder extends BaseSeeder
 {
     public function seed($amountOfActions)
     {

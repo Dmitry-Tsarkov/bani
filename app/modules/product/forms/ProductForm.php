@@ -19,6 +19,7 @@ class ProductForm extends CompositeForm
     public $title;
     public $alias;
     public $description;
+    public $bottom_description;
     public $image;
     public $price;
     public $price_type;
@@ -35,6 +36,7 @@ class ProductForm extends CompositeForm
             $this->title = $product->title;
             $this->alias = $product->alias;
             $this->description = $product->description;
+            $this->bottom_description = $product->bottom_description;
             $this->price = $product->price;
             $this->price_type = $product->price_type;
         }
@@ -53,7 +55,7 @@ class ProductForm extends CompositeForm
     {
         return[
             [['title', 'categoryId'], 'required'],
-            [['title', 'description', 'alias'], 'string'],
+            [['title', 'description', 'bottom_description', 'alias'], 'string'],
             [['id', 'categoryId', 'price_type'], 'integer'],
             [['price'], 'double'],
             ['image', 'image', 'extensions' => ['png', 'jpg', 'jpeg'], 'checkExtensionByMimeType' => false],
@@ -64,6 +66,7 @@ class ProductForm extends CompositeForm
     {
         return([
             'description' => 'Описание услуги',
+            'bottom_description' => 'Описание услуги снизу',
             'title' => 'Заголовок',
             'alias' => 'Алиас',
             'categoryId' => 'Подкатегория',

@@ -62,6 +62,9 @@ use yii\web\View;
                 <div class="col-xs-12">
                     <?= $form->field($productForm, 'description')->widget(CKEditor::class)->label(false) ?>
                 </div>
+                <div class="col-xs-12">
+                    <?= $form->field($productForm, 'bottom_description')->widget(CKEditor::class)->label(false) ?>
+                </div>
             </div>
         </div>
     </div>

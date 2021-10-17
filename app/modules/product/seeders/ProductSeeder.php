@@ -24,7 +24,8 @@ class ProductSeeder extends BaseSeeder
                     'Товар подкатегории ' . $categoryId . ' # ' . $j,
                     Product::TYPE_RANGE,
                     $this->faker->numberBetween(3000, 100000),
-                    $this->faker->realText(300)
+                    $this->faker->realText(900),
+                    $this->faker->realText(900)
                 );
 
                 $this->addImages($product, $amountOfImages);

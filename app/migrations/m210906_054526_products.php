@@ -25,6 +25,7 @@ class m210906_054526_products extends Migration
             'title' => $this->string()->notNull(),
             'alias' => $this->string()->notNull(),
             'description' => $this->text()->defaultValue(null),
+            'bottom_description' => $this->text()->defaultValue(null),
             'meta_t' => $this->string()->defaultValue(null),
             'meta_d' => $this->string()->defaultValue(null),
             'meta_k' => $this->string()->defaultValue(null),
