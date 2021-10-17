@@ -24,7 +24,7 @@ class PortfolioReadRepository
         return new ActiveDataProvider([
             'query' => $query,
             'pagination' => [
-                'pageSize' => 200,
+                'pageSize' => 20,
                 'pageSizeParam' => false
             ],
         ]);

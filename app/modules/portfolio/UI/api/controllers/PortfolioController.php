@@ -16,10 +16,37 @@ class PortfolioController extends ApiController
         $this->portfolioPcresentator = $portfolioPcresentator;
     }
 
+    /**
+     * @OA\Get(
+     *     path="/api/portfolios",
+     *     tags={"Pages"},
+     *     @OA\Response(
+     *      response="200",
+     *      description="An example resource",
+     *     )
+     * )
+     */
     public function actionPortfolios()
     {
         return $this->portfolioPcresentator->getPortfolios();
     }
+
+    /**
+     * @OA\Get(
+     *     path="/api/portfolios/{alias}",
+     *     @OA\Parameter(name="alias",
+     *        in="path",
+     *        required=true,
+     *        @OA\Schema(
+     *          type="string",
+     *          default="proekty-ban"
+     *      )
+     *     ),
+     *     tags={"Pages"},
+     *     @OA\Response(response="200", description="An example resource"),
+     *     @OA\Response(response="404", description="An example resource")
+     * )
+     */
 
     public function actionPortfolio($alias)
     {
