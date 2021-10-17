@@ -40,6 +40,7 @@ class ProductPresentator
                     'alias' => $product->alias,
                     'title' => $product->title,
                     'description' => $product->description,
+                    'bottom_description' => $product->bottom_description,
                     'images' => array_map(function (ProductImage $image) {
                         return [
                             'image' => Url::to($image->getImageFileUrl('image'), true),
