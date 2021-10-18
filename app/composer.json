@@ -43,7 +43,8 @@
         "ramsey/uuid": "^3.9",
         "solutosoft/yii-linkmany": "^1.0",
         "ralouphie/mimey": "^2.1",
-        "himiklab/yii2-recaptcha-widget": "*"
+        "himiklab/yii2-recaptcha-widget": "*",
+        "elasticsearch/elasticsearch": "^7.11"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
