@@ -24,7 +24,7 @@ class SeederController extends Controller
         Yii::createObject(PortfolioSeeder::class)->seed(25); gc_collect_cycles();
         Yii::createObject(ActionSeeder::class)->seed(14); gc_collect_cycles();
         Yii::createObject(SliderSeeder::class)->seed(5); gc_collect_cycles();
-        Yii::createObject(CharacteristicSeeder::class)->seed(10, 3); gc_collect_cycles();
+        Yii::createObject(CharacteristicSeeder::class)->seed(4, 3); gc_collect_cycles();
         Yii::createObject(CategorySeeder::class)->seed(); gc_collect_cycles();
         Yii::createObject(ProductSeeder::class)->seed(3, 2); gc_collect_cycles();
     }
