@@ -16,4 +16,4 @@ production_deploy:
     - gem install capistrano-composer
     - cap production deploy
   only:
-    - master
+    - main
