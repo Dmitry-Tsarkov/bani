@@ -2,4 +2,4 @@
 lock ['>3.10.0', '<4.0.0']
 
 # Git Settings / FirstVDS
-set :repo_url, 'git@gitlab.com:Dmitry_Tsarkov/bani.git'
+set :repo_url, 'https://gitlab.com/Dmitry_Tsarkov/bani.git'
