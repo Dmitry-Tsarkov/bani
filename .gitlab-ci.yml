@@ -1,0 +1,19 @@
+image: ruby:2.3
+
+stages:
+  - deploy
+
+production_deploy:
+  stage: deploy
+  script:
+    - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    # add ssh key stored in SSH_PRIVATE_KEY variable to the agent store
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - gem install capistrano
+    - gem install capistrano-composer
+    - cap production deploy
+  only:
+    - master
