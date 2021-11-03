@@ -1,6 +1,6 @@
 role :app, %w{www-root@188.120.253.163}
 
-set :application, 'test-bani.fvds.ru'
+set :application, 'bani-test.fvds.ru'
 set :deploy_to, -> { "/var/www/www-root/data/www/#{fetch(:application)}" }
 set :linked_dirs, %w{app/web/uploads app/runtime}
 set :linked_files, %w{app/composer.phar app/.env  frontend/static/sitemap.xml frontend/static/robots.txt frontend/.env}
