@@ -36,4 +36,11 @@ namespace :deploy do
             info "Apply migrations"
         end
     end
+
+    task :npm_build do
+        on roles(:app) do
+            execute "cd #{release_path}/frontend && npm i && npm run build"
+            info "nuxt built"
+        end
+    end
 end
