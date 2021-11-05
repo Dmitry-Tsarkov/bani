@@ -18,7 +18,7 @@ SSHKit.config.command_map[:composer] = "/opt/php71/bin/php #{shared_path.join("a
 
 namespace :deploy do
     after :starting, 'composer:install_executable'
-    #before 'deploy:symlink:release', 'deploy:npm_build'
+    before 'deploy:symlink:release', 'deploy:npm_build'
     after :deploy, 'deploy:apply_migrations'
     #after :deploy, 'deploy:seeder_refresh'
     #after :deploy, 'deploy:restart_nuxt'
