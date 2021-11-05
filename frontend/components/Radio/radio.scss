@@ -1,0 +1,82 @@
+.radio {
+  display: block;
+  position: relative;
+  padding-left: 32px;
+  align-items: center;
+  cursor: pointer;  
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;  
+
+  &:hover {
+    & .radio__checkmark {
+      &::after {
+        background-color: $brown-light;
+      }
+    }
+  }
+
+  &__text {
+    display: flex;
+    align-items: center;
+    color: $brown;
+    font-size: 16px;
+    line-height: 20px;
+    height: 24px;
+  }
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  &__checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: $gold-light;
+    border: 1px solid $brown;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+
+    &::after {
+      top: 2px;
+      left: 2px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: $gold-light;
+      transition: background-color 0.3s ease;
+    }
+  }
+}
+
+.radio:hover input ~ .radio__checkmark {
+  // background-color: $color-accent-light-blue;
+}
+
+/* When the radio button is checked, add a blue background */
+.radio input:checked ~ .radio__checkmark {
+  background-color: $gold-light;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.radio__checkmark:after {
+  content: '';
+  position: absolute;
+  // display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio input:checked ~ .radio__checkmark:after {
+  background-color: $brown !important;
+}
+
+input:disabled + .radio__checkmark {
+  filter: grayscale(1);
+  opacity: 0.2;
+}
