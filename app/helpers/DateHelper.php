@@ -11,6 +11,7 @@ class DateHelper
     public static function forHuman($timestamp, $format = 'd n Y')
     {
         $format = str_replace('n', self::getMonthName(date('n', $timestamp)), $format);
+
         return date($format, $timestamp);
     }
 
