@@ -13,11 +13,13 @@ class PortfolioSearch extends Model
     public $description;
     public $alias;
     public $status;
+    public $is_preview;
 
     public function rules()
     {
         return [
             [['id', 'title', 'description', 'alias', 'status'], 'string'],
+            [['is_preview'], 'boolean'],
         ];
     }
 
@@ -27,6 +29,7 @@ class PortfolioSearch extends Model
 
         if ($this->load($params) && $this->validate()) {
             $query->andFilterWhere(['id' => $this->id]);
+            $query->andFilterWhere(['is_preview' => $this->is_preview]);
             $query->andFilterWhere(['status' => $this->status]);
             $query->andFilterWhere(['like', 'title', $this->title]);
             $query->andFilterWhere(['like', 'description', $this->description]);
@@ -42,5 +45,11 @@ class PortfolioSearch extends Model
     {
         return [0 => 'Неактивный', 1 => 'Активный'];
     }
+
+    public function IsPreviewDropDown()
+    {
+        return [false => 'Нет', true => 'Да'];
+    }
+
 
 }

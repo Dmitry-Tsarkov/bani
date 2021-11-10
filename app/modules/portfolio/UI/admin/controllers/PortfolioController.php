@@ -139,6 +139,40 @@ class PortfolioController extends BalletController
         return $this->redirect(Yii::$app->request->referrer);
     }
 
+    public function actionShow($id)
+    {
+        $portfolio = Portfolio::getOrFail($id);
+
+        try {
+            $this->service->show($portfolio->id);
+            Yii::$app->session->setFlash('success', 'Показывается на главной странице');
+        } catch (DomainException $e) {
+            Yii::$app->session->setFlash('error', $e->getMessage());
+        } catch (RuntimeException $e) {
+            Yii::$app->errorHandler->logException($e);
+            Yii::$app->session->setFlash('error', 'Техническая ошибка');
+        }
+
+        return $this->redirect(Yii::$app->request->referrer);
+    }
+
+    public function actionHide($id)
+    {
+        $product = Portfolio::getOrFail($id);
+
+        try {
+            $this->service->hide($product->id);
+            Yii::$app->session->setFlash('success', 'Не показывается на главной странице');
+        } catch (DomainException $e) {
+            Yii::$app->session->setFlash('error', $e->getMessage());
+        } catch (RuntimeException $e) {
+            Yii::$app->errorHandler->logException($e);
+            Yii::$app->session->setFlash('error', 'Техническая ошибка');
+        }
+
+        return $this->redirect(Yii::$app->request->referrer);
+    }
+
     public function actionDelete($id)
     {
         $product = Portfolio::getOrFail($id);

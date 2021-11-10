@@ -51,4 +51,19 @@ class DefaultController extends ApiController
         echo $openapi->toJson();
         exit();
     }
+
+    /**
+     * @OA\Get(
+     *     path="/api/home",
+     *     tags={"Pages"},
+     *     @OA\Response(
+     *      response="200",
+     *      description="An example resource",
+     *     )
+     * )
+     */
+    public function actionHome()
+    {
+        return $this->presentator->getHome();
+    }
 }

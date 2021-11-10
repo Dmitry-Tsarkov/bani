@@ -23,6 +23,7 @@ class PortfolioService
             $form->title,
             $form->alias,
             $form->description,
+            $form->is_preview,
             $form->image,
             new Seo(
                 $form->seo->title,
@@ -44,6 +45,7 @@ class PortfolioService
             $form->title,
             $form->alias,
             $form->description,
+            $form->is_preview,
             $form->image,
             new Seo(
                 $form->seo->title,
@@ -87,5 +89,20 @@ class PortfolioService
         $portfolio->deleteImage();
         $this->portfolios->save($portfolio);
     }
+
+    public function show($id)
+    {
+        $portfolio = $this->portfolios->getById($id);
+        $portfolio->show();
+        $this->portfolios->save($portfolio);
+    }
+
+    public function hide($id)
+    {
+        $portfolio = $this->portfolios->getById($id);
+        $portfolio->hide();
+        $this->portfolios->save($portfolio);
+    }
+
 
 }

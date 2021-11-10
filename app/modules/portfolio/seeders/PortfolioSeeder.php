@@ -19,6 +19,7 @@ class PortfolioSeeder extends BaseSeeder
                 $this->faker->realText(40),
                 null,
                 $this->faker->realText(400),
+                $this->faker->boolean(30),
                 new CopyUploadedFile($this->getRandomImage('/portfolios')),
                 Seo::blank()
             );

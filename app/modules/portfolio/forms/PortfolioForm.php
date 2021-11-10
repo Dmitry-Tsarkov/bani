@@ -16,12 +16,14 @@ class PortfolioForm extends CompositeForm
     public $alias;
     public $description;
     public $image;
+    public $is_preview;
 
     public function __construct(?Portfolio $portfolio = null)
     {
         if  (!empty($portfolio)) {
             $this->title = $portfolio->title;
             $this->alias = $portfolio->alias;
+            $this->is_preview = $portfolio->is_preview;
             $this->description = $portfolio->description;
         }
 
@@ -34,6 +36,7 @@ class PortfolioForm extends CompositeForm
         return [
             [['title'], 'required'],
             [['title', 'alias', 'description'], 'string'],
+            [['is_preview'], 'boolean'],
             [['alias'], 'match', 'pattern' => '/^[0-9a-z-]+$/','message'=>'Только латинские буквы и знак "-"'],
         ];
     }
@@ -45,6 +48,7 @@ class PortfolioForm extends CompositeForm
             'alias' => 'Алиас',
             'description' => 'Описание',
             'image' => 'Картинка',
+            'is_preview' => 'Показывать на главной',
         ];
     }
 

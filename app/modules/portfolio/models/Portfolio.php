@@ -7,6 +7,7 @@ use app\modules\admin\behaviors\SlugBehavior;
 use app\modules\admin\traits\QueryExceptions;
 use app\modules\seo\behaviors\SeoBehavior;
 use app\modules\seo\valueObjects\Seo;
+use DomainException;
 use PHPThumb\GD;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
@@ -14,6 +15,9 @@ use yii\helpers\Url;
 use yii\web\UploadedFile;
 
 /**
+ * @mixin SeoBehavior
+ * @mixin ImageBehavior
+ *
  * @property int $id [int(11)]
  * @property string $title [varchar(255)]
  * @property string $alias [varchar(255)]
@@ -27,9 +31,7 @@ use yii\web\UploadedFile;
  * @property string $h1 [varchar(255)]
  * @property string $image [varchar(255)]
  * @property string $image_hash [varchar(255)]
- *
- * @mixin SeoBehavior
- * @mixin ImageBehavior
+ * @property bool $is_preview [tinyint(1)]
  */
 class Portfolio extends ActiveRecord
 {
@@ -78,16 +80,18 @@ class Portfolio extends ActiveRecord
             'status' => 'Статус',
             'created_at' => 'Создано',
             'updated_at' => 'Обновлено',
+            'is_preview' => 'Показывать на главной'
         ];
     }
 
-    public static function create($title, $alias, $description, ?UploadedFile $image, Seo $seo): Portfolio
+    public static function create($title, $alias, $description, $is_preview, ?UploadedFile $image, Seo $seo): Portfolio
     {
         $self = new self();
 
         $self = new Portfolio();
         $self->title = $title;
         $self->alias = $alias;
+        $self->is_preview = $is_preview;
         $self->image = $image;
         $self->description = $description;
         $self->status = self::STATUS_DRAFT;
@@ -96,10 +100,11 @@ class Portfolio extends ActiveRecord
         return $self;
     }
 
-    public function edit($title, $alias, $description, ?UploadedFile $image, Seo $seo): void
+    public function edit($title, $alias, $description, $is_preview, ?UploadedFile $image, Seo $seo): void
     {
         $this->title = $title;
         $this->alias = $alias;
+        $this->is_preview = $is_preview;
         $this->description = $description;
         $this->image = $image;
         $this->seo = $seo;
@@ -113,7 +118,7 @@ class Portfolio extends ActiveRecord
     public function activate()
     {
         if ($this->status == self::STATUS_ACTIVE) {
-            throw new \DomainException('Портфолио уже активировано');
+            throw new DomainException('Портфолио уже активировано');
         }
 
         $this->status = Portfolio::STATUS_ACTIVE;
@@ -122,7 +127,7 @@ class Portfolio extends ActiveRecord
     public function draft()
     {
         if ($this->status == self::STATUS_DRAFT) {
-            throw new \DomainException('Портфолио уже заблокирвоано');
+            throw new DomainException('Портфолио уже заблокирвоано');
         }
         $this->status = Portfolio::STATUS_DRAFT;
     }
@@ -160,5 +165,22 @@ class Portfolio extends ActiveRecord
     public function getThumbSrc()
     {
         return $this->hasImage() ? $this->getThumbFileUrl('image') : null;
+    }
+
+    public function show()
+    {
+        if ($this->is_preview == true) {
+            throw new DomainException('Портфолио уже покаызвается на главной странице');
+        }
+
+        $this->is_preview = true;
+    }
+
+    public function hide()
+    {
+        if ($this->is_preview == false) {
+            throw new DomainException('Портфолио уже не покаызвается на главной странице');
+        }
+        $this->is_preview = false;
     }
 }

@@ -29,6 +29,11 @@ $this->params['breadcrumbs'] = [
     <?php else: ?>
         <?= Html::a('Активность', ['activate', 'id' => $portfolio->id], ['class' => 'btn btn-default btn-xs']) ?>
     <?php endif ?>
+    <?php if ($portfolio->is_preview == 1): ?>
+        <?= Html::a('Показывать на главной', ['hide', 'id' => $portfolio->id], ['class' => 'btn btn-success btn-xs']) ?>
+    <?php else: ?>
+        <?= Html::a('Показывать на главной', ['show', 'id' => $portfolio->id], ['class' => 'btn btn-default btn-xs']) ?>
+    <?php endif ?>
 </p>
 
 <div class="row">
@@ -42,9 +47,18 @@ $this->params['breadcrumbs'] = [
                 'attributes' => [
                     'id',
                     [
+                        'label' => 'Показывать на главной',
+                        'format' => 'raw',
+                        'value' => $portfolio->is_preview
+                            ? '<span class="label label-success" data-test="123">Да</span>'
+                            : '<span class="label label-danger">Нет</span>',
+                    ],
+                    [
                         'label' => 'Статус',
                         'format' => 'raw',
-                        'value' => $portfolio->status ? '<span class="label label-success" data-test="123">Активен</span>' : '<span class="label label-danger">Черновик</span>',
+                        'value' => $portfolio->status
+                            ? '<span class="label label-success" data-test="123">Активен</span>'
+                            : '<span class="label label-danger">Черновик</span>',
                     ],
                     'title',
                     'alias',

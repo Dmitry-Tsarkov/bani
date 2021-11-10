@@ -85,6 +85,19 @@ $this->params['breadcrumbs'] = [
         [
             'class' => DataColumn::class,
             'hAlign' => GridView::ALIGN_CENTER,
+            'attribute' => 'is_preview',
+            'filter' => $searchModel->IsPreviewDropDown(),
+            'value' => function(Portfolio $portfolio) {
+                return $portfolio->is_preview
+                    ? '<span class="label label-success" data-test="123">Да</span>'
+                    : '<span class="label label-danger">Нет</span>';
+            },
+            'format' => 'raw',
+            'width' => '100px',
+        ],
+        [
+            'class' => DataColumn::class,
+            'hAlign' => GridView::ALIGN_CENTER,
             'attribute' => 'status',
             'filter' => $searchModel->StatusDropDown(),
             'value' => function(Portfolio $portfolio) {
@@ -95,7 +108,6 @@ $this->params['breadcrumbs'] = [
             'format' => 'raw',
             'width' => '100px',
         ],
-
         [
             'class' => ActionColumn::className(),
             'template' => '{view}',
