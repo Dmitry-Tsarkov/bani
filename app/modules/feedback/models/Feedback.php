@@ -16,12 +16,14 @@ use yii\db\ActiveRecord;
  * @property string $phone [varchar(255)]
  * @property string $referer [varchar(255)]
  * @property string $type [varchar(255)]
+ * @property string $description
  */
 class Feedback extends ActiveRecord
 {
     use QueryExceptions;
 
     const TYPE_CALCULATION = 'calculation';
+    const TYPE_QUESTION = 'question';
 
     public static function tableName()
     {
@@ -42,17 +44,19 @@ class Feedback extends ActiveRecord
             'phone' => 'Теленфон',
             'type' => 'Тип',
             'created_at' => 'Дата',
-            'referer' => 'Страница отправки'
+            'referer' => 'Страница отправки',
+            'description' => 'Комментарий'
         ];
     }
 
-    public static function create($name, $phone, $referer): self
+    public static function create($name, $phone, $referer, $description = null): self
     {
         $self = new self();
 
         $self->name = $name;
         $self->phone = $phone;
         $self->referer = $referer;
+        $self->description = $description;
         $self->type = self::TYPE_CALCULATION;
         $self->status = FeedbackStatus::new();
 
@@ -76,5 +80,4 @@ class Feedback extends ActiveRecord
         $this->status = new FeedbackStatus($this->getAttribute('status'));
         parent::afterFind();
     }
-
 }

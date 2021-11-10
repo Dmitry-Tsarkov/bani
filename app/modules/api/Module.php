@@ -27,6 +27,7 @@ class Module extends \yii\base\Module implements BootstrapInterface
             'api/catalog/<alias>' => '/api/category/category/projects',
             'api/products/<alias>' => '/api/product/product/products',
             'api/calculation/send' => '/api/feedback/feedback/calculation-send',
+            'api/question/send' => '/api/feedback/feedback/question-send',
             'api/swagger' => '/api/default/swagger',
             'api/actions' => 'api/action/action/actions',
             'api/actions/<alias>' => 'api/action/action/action',

@@ -22,6 +22,11 @@ $this->params['breadcrumbs'] = [
                             'label' => '<i class="fa fa-calculator"></i>Рассчитать' . FeedbackHelper::badge(FeedbackHelper::newCount(Feedback::TYPE_CALCULATION)),
                             'url' => ['/admin/feedback/calculation/index']
                         ],
+                        [
+                            'label' => '<i class="fa fa-phone-square"></i>Вопрос' . FeedbackHelper::badge(FeedbackHelper::newCount(Feedback::TYPE_QUESTION)),
+                            'encode' => false,
+                            'url' => ['/admin/feedback/question/index']
+                        ],
                     ],
                 ]); ?>
             </div>

@@ -41,6 +41,8 @@ use yii\widgets\DetailView;
             },
         ],
         'name',
+        'email',
+        'description',
         [
             'attribute' => 'referer',
             'value' => $feedback->referer ?? '-',
