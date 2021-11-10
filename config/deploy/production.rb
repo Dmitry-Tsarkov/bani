@@ -21,7 +21,7 @@ namespace :deploy do
     #before 'deploy:symlink:release', 'deploy:npm_build'
     after :deploy, 'deploy:apply_migrations'
     #after :deploy, 'deploy:seeder_refresh'
-    #after :deploy, 'deploy:restart_nuxt'
+    after :deploy, 'deploy:restart_nuxt'
 
      task :seeder_refresh do
         on roles(:app) do
@@ -34,6 +34,12 @@ namespace :deploy do
         on roles(:app) do
             execute "cd #{current_path}/app && /opt/php71/bin/php yii migrate --interactive=0"
             info "Apply migrations"
+        end
+    end
+
+    task :restart_nuxt do
+        on roles(:app) do
+           execute "supervisorctl restart bani_nuxt"
         end
     end
 
