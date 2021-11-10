@@ -1,16 +1,7 @@
-export default {
-  // server: {
-  //   port: 8004,
-  //   host: '0.0.0.0',
-  // },
-
-  // target: 'server',
-
-  // ssr: true,
+export default { 
 
   server: {
     port: process.env.PORT,
-    host: '0.0.0.0',
   },
   target: 'server',
   ssr: process.env.SSR !== 'false',
@@ -51,8 +42,7 @@ export default {
     proxy: true,
   },
 
-  proxy: {
-    
+  proxy: {    
     '/api/': process.env.API_URL,
   },
     
