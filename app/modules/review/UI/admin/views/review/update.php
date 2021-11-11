@@ -48,6 +48,12 @@ $this->params['breadcrumbs'] = [
                         ]
                     ) ?>
                 <?php endif ?>
+
+                <?php if ($review->is_preview == true): ?>
+                    <?= Html::a('Показывать на главной', ['hide', 'id' => $review->id], ['class' => 'btn btn-success btn-xs']) ?>
+                <?php else: ?>
+                    <?= Html::a('Показывать на главной', ['show', 'id' => $review->id], ['class' => 'btn btn-default btn-xs']) ?>
+                <?php endif ?>
             </p>
             <div class="row">
                 <div class="col-xs-4">

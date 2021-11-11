@@ -35,7 +35,7 @@ class PortfolioReadRepository
         return Portfolio::find()->andWhere(['alias' => $alias])->one();
     }
 
-    public function getPreviewPortfolio()
+    public function getPreviewPortfolios()
     {
         return Portfolio::find()
             ->andWhere(['status' => Portfolio::STATUS_ACTIVE])

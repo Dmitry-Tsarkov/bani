@@ -32,4 +32,14 @@ class ReviewPresentator
         ];
     }
 
+    public function getPreviewReviews()
+    {
+        return array_map(function (Review $review) {
+            return [
+                'name' => $review->name,
+                'description' => $review->description,
+            ];
+        }, $this->reviews->getPreviewReveiw());
+    }
+
 }

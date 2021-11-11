@@ -25,7 +25,7 @@ $this->params['breadcrumbs'] = [
                         [
                             'label' => '<i class="fa fa-phone-square"></i>Вопрос' . FeedbackHelper::badge(FeedbackHelper::newCount(Feedback::TYPE_QUESTION)),
                             'encode' => false,
-                            'url' => ['/admin/feedback/question/index']
+                            'url' => ['/admin/feedback/faq/index']
                         ],
                     ],
                 ]); ?>

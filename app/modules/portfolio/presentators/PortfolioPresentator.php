@@ -48,4 +48,14 @@ class PortfolioPresentator
             'image' => Url::to($portfolio->getImageFileUrl('image'), true),
         ];
     }
+
+    public function getPreviewPortfolio()
+    {
+        return array_map(function (Portfolio $portfolio) {
+            return [
+                'image' => Url::to($portfolio->getImageFileUrl('image'), true),
+                'alias' => $portfolio->alias,
+            ];
+        }, $this->portfolios->getPreviewPortfolios());
+    }
 }

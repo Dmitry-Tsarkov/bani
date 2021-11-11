@@ -29,7 +29,7 @@ class FeedbackQuestionSearch extends Model
 
     public function search(array $params): DataProviderInterface
     {
-        $query = Feedback::find()->andFilterWhere(['type'=>'question']);
+        $query = Feedback::find()->andFilterWhere(['type'=>'faq']);
 
         if ($this->load($params) && $this->validate()){
             $query->andFilterWhere([

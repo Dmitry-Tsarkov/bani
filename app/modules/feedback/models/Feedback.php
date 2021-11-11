@@ -23,7 +23,7 @@ class Feedback extends ActiveRecord
     use QueryExceptions;
 
     const TYPE_CALCULATION = 'calculation';
-    const TYPE_QUESTION = 'question';
+    const TYPE_QUESTION = 'faq';
 
     public static function tableName()
     {

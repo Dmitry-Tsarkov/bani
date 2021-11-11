@@ -78,6 +78,11 @@ use dmstr\widgets\Menu;
                                 'url' => ['/admin/portfolio/portfolio/index'],
                                 'active' => Yii::$app->controller->module->id == 'portfolio',
                             ],
+                            [
+                                'label' => 'FAQ',
+                                'url' => ['/admin/faq/faq/index'],
+                                'active' => Yii::$app->controller->module->id == 'faq',
+                            ],
                         ],
                     ],
                     [

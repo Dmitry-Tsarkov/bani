@@ -23,4 +23,11 @@ class ReviewReader
         ]);
     }
 
+    public function getPreviewReveiw()
+    {
+        return Review::find()
+            ->andWhere(['status' => Review::STATUS_ACTIVE])
+            ->andWhere(['is_preview' => true])
+            ->all();
+    }
 }

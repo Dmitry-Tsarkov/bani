@@ -39,7 +39,6 @@ class DefaultController extends ApiController
      */
     public function actionLayout()
     {
-        return 'not ready yet';
         return $this->presentator->getLayout();
     }
 

@@ -75,7 +75,7 @@ class FeedbackController extends ApiController
 
     /**
      * @OA\Post(
-     *     path="/api/question/send",
+     *     path="/api/faq/send",
      *     tags={"Feedbacks"},
      *      @OA\Parameter(
      *        name="name",

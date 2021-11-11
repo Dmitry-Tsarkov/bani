@@ -29,7 +29,7 @@ $this->params['breadcrumbs'] = [
     <?php else: ?>
         <?= Html::a('Активность', ['activate', 'id' => $portfolio->id], ['class' => 'btn btn-default btn-xs']) ?>
     <?php endif ?>
-    <?php if ($portfolio->is_preview == 1): ?>
+    <?php if ($portfolio->is_preview == true): ?>
         <?= Html::a('Показывать на главной', ['hide', 'id' => $portfolio->id], ['class' => 'btn btn-success btn-xs']) ?>
     <?php else: ?>
         <?= Html::a('Показывать на главной', ['show', 'id' => $portfolio->id], ['class' => 'btn btn-default btn-xs']) ?>

@@ -5,6 +5,7 @@ namespace app\modules\seeder\commands;
 use app\modules\action\seeders\ActionSeeder;
 use app\modules\category\seeders\CategorySeeder;
 use app\modules\characteristic\seeders\CharacteristicSeeder;
+use app\modules\faq\seeds\FaqSeeder;
 use app\modules\page\seeders\PageSeeder;
 use app\modules\portfolio\seeders\PortfolioSeeder;
 use app\modules\product\seeders\ProductSeeder;
@@ -21,6 +22,7 @@ class SeederController extends Controller
     {
         Yii::createObject(PageSeeder::class)->seed(); gc_collect_cycles();
         Yii::createObject(ReviewSeeder::class)->seed(20); gc_collect_cycles();
+        Yii::createObject(FaqSeeder::class)->seed(10); gc_collect_cycles();
         Yii::createObject(PortfolioSeeder::class)->seed(25); gc_collect_cycles();
         Yii::createObject(ActionSeeder::class)->seed(14); gc_collect_cycles();
         Yii::createObject(SliderSeeder::class)->seed(5); gc_collect_cycles();

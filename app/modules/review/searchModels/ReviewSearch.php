@@ -42,4 +42,9 @@ class ReviewSearch extends Model
             'pagination' => ['defaultPageSize' => 40],
         ]);
     }
+    public function IsPreviewDropDown()
+    {
+        return [false => 'Нет', true => 'Да'];
+    }
+
 }

@@ -89,7 +89,20 @@ $this->params['breadcrumbs'] = ['Отзывы']
             'width' => '200px',
             'attribute' => 'name'
         ],
-
+        [
+            'class' => DataColumn::class,
+            'hAlign' => GridView::ALIGN_CENTER,
+            'attribute' => 'is_preview',
+            'label' => 'Показывать на главной',
+            'filter' => $searchModel->IsPreviewDropDown(),
+            'value' => function(Review $portfolio) {
+                return $portfolio->is_preview
+                    ? '<span class="label label-success" data-test="123">Да</span>'
+                    : '<span class="label label-danger">Нет</span>';
+            },
+            'format' => 'raw',
+            'width' => '100px',
+        ],
         [
             'class' => DataColumn::class,
             'attribute' => 'status',

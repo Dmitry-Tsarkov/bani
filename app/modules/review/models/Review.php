@@ -17,6 +17,7 @@ use yii\helpers\Url;
  * @property string $description
  * @property string $email [varchar(255)]
  * @property string $city [varchar(255)]
+ * @property bool $is_preview [tinyint(1)]
  */
 class Review extends ActiveRecord
 {
@@ -90,5 +91,22 @@ class Review extends ActiveRecord
             throw new DomainException('Отзыв уже неактивная');
         }
         $this->status = self::STATUS_DRAFT;
+    }
+
+    public function show()
+    {
+        if ($this->is_preview == true) {
+            throw new DomainException('Портфолио уже покаызвается на главной странице');
+        }
+
+        $this->is_preview = true;
+    }
+
+    public function hide()
+    {
+        if ($this->is_preview == false) {
+            throw new DomainException('Портфолио уже не покаызвается на главной странице');
+        }
+        $this->is_preview = false;
     }
 }

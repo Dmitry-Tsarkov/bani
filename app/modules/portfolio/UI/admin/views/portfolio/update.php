@@ -23,7 +23,6 @@ $this->params['breadcrumbs'] = [
 ];
 ?>
 <?php $form = ActiveForm::begin() ?>
-
 <div class="box box-default box-solid">
     <div class="box-header with-border">
         <h3 class="box-title">Общее</h3>

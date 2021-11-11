@@ -22,6 +22,7 @@ class ReviewForm extends Model
             'email' => 'E-mail',
             'city' => 'Город',
             'description' => 'Описание',
+            'is_preview' => 'Показывть на главной',
         ]);
     }
 

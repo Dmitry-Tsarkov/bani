@@ -67,4 +67,18 @@ class ReviewManageService
         $review->deactivate();
         $this->reviews->save($review);
     }
+
+    public function show($id)
+    {
+        $review = $this->reviews->getById($id);
+        $review->show();
+        $this->reviews->save($review);
+    }
+
+    public function hide($id)
+    {
+        $review = $this->reviews->getById($id);
+        $review->hide();
+        $this->reviews->save($review);
+    }
 }
