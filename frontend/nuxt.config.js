@@ -1,6 +1,6 @@
 export default {
   server: {
-    port: process.env.PORT,
+    port: 3001,
   },
   target: 'server',
   ssr: process.env.SSR !== 'false',
@@ -51,6 +51,6 @@ export default {
   },
 
   proxy: {
-    '/api/': process.env.API_URL,
+    '/api/': 'http://app.bani-test.fvds.ru/',
   },
 }
