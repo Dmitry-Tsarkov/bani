@@ -14,7 +14,7 @@ use kartik\form\ActiveForm;
 
 ?>
 
-<?php $this->beginContent('@app/modules/page/views/category/layout.php', compact('page')) ?>
+<?php $this->beginContent('@app/modules/page/views/backend/layout.php', compact('page')) ?>
 
 <?php $form = ActiveForm::begin() ?>
     <div class="box-body">
