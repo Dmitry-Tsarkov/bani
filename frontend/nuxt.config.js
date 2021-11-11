@@ -1,38 +1,46 @@
-export default { 
-
+export default {
   server: {
     port: process.env.PORT,
   },
   target: 'server',
   ssr: process.env.SSR !== 'false',
-
   head: {
     title: 'default-nuxt',
     htmlAttrs: {
-      lang: 'ru-RU'
+      lang: 'ru-RU',
     },
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=1440, user-scalable=yes, initial-scale=1' },
+      {
+        name: 'viewport',
+        content: 'width=1440, user-scalable=yes, initial-scale=1',
+      },
       { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }, { rel: 'stylesheet',  href: 'https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap' }
-    ]
-    
-    
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap',
+      },
+    ],
   },
 
   buildModules: ['nuxt-compress'],
-  
+
   css: ['@/assets/scss/app.scss'],
 
   styleResources: {
     scss: ['@/assets/scss/variables.scss'],
   },
 
-  plugins: [{ src: '~/plugins/plugins.js', mode: 'client' }, { src: '~/plugins/ymapPlugin.js',  mode: 'client' }, '~plugins/api.js', { src: '~plugins/vuelidate.js', ssr: true },],
+  plugins: [
+    { src: '~/plugins/plugins.js', mode: 'client' },
+    { src: '~/plugins/ymapPlugin.js', mode: 'client' },     
+    { src: '~plugins/vuelidate.js', ssr: true },
+    '~plugins/api.js',
+  ],
 
   components: true,
 
@@ -42,8 +50,7 @@ export default {
     proxy: true,
   },
 
-  proxy: {    
+  proxy: {
     '/api/': process.env.API_URL,
   },
-    
 }
