@@ -48,6 +48,6 @@ export default {
       `catalog/${context.route.params.slug}`,
       context.route.query
     )
-  },
+  },  
 }
 </script>
