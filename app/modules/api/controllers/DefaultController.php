@@ -65,4 +65,19 @@ class DefaultController extends ApiController
     {
         return $this->presentator->getHome();
     }
+
+    /**
+     * @OA\Get(
+     *     path="/api/contacts",
+     *     tags={"Pages"},
+     *     @OA\Response(
+     *      response="200",
+     *      description="An example resource",
+     *     )
+     * )
+     */
+    public function actionContacts()
+    {
+        return $this->presentator->getContacts();
+    }
 }

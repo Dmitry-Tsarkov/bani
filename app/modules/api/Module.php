@@ -30,6 +30,7 @@ class Module extends \yii\base\Module implements BootstrapInterface
             'api/faq/send' => '/api/feedback/feedback/faq-send',
             'api/swagger' => '/api/default/swagger',
             'api/layout' => '/api/default/layout',
+            'api/contacts' => '/api/default/contacts',
             'api/actions' => 'api/action/action/actions',
             'api/actions/<alias>' => 'api/action/action/action',
             'api/reviews' => '/api/review/review/reviews',
