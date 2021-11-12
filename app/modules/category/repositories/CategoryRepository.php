@@ -3,6 +3,7 @@
 namespace app\modules\category\repositories;
 
 use app\modules\category\models\Category;
+use app\modules\product\models\Product;
 use DomainException;
 use RuntimeException;
 
@@ -13,13 +14,13 @@ class CategoryRepository
         $dirty = $category->getDirtyAttributes();
 
         if (!empty($dirty['parent_id'])) {
-            if(!$category->appendTo(Category::findOne($category->parent_id))) {
+            if (!$category->appendTo(Category::findOne($category->parent_id))) {
                 throw new RuntimeException('Category saving error');
             }
             return;
         }
 
-        if(!$category->save()) {
+        if (!$category->save()) {
             throw new RuntimeException('Category saving error');
         }
     }
@@ -47,5 +48,15 @@ class CategoryRepository
         return Category::find()
             ->andWhere(['alias' => $alias])
             ->one();
+    }
+
+    public function hasProducts(Category $category): bool
+    {
+        $categoryIds = $category->children()->select('id')->column();
+        $categoryIds[] = $category->id;
+
+        return (bool)Product::find()
+            ->andWhere(['category_id' => $categoryIds])
+            ->count('id');
     }
 }
