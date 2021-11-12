@@ -5,7 +5,7 @@ export default {
   target: 'server',
   ssr: process.env.SSR !== 'false',
   head: {
-    title: 'default-nuxt',
+    title: 'test-bani',
     htmlAttrs: {
       lang: 'ru-RU',
     },
@@ -37,7 +37,7 @@ export default {
 
   plugins: [
     { src: '~/plugins/plugins.js', mode: 'client' },
-    { src: '~/plugins/ymapPlugin.js', mode: 'client' },     
+    { src: '~/plugins/ymapPlugin.js', mode: 'client' },
     { src: '~plugins/vuelidate.js', ssr: true },
     '~plugins/api.js',
   ],
