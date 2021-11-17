@@ -2,22 +2,22 @@
 
 namespace app\modules\product\seeders;
 
-use app\modules\category\models\Category;
 use app\modules\characteristic\models\Characteristic;
 use app\modules\product\models\Product;
 use app\modules\product\models\ProductImage;
 use app\modules\seeder\components\BaseSeeder;
+use app\modules\category\models\Category;
 use yii\helpers\Console;
 
 class ProductSeeder extends BaseSeeder
 {
     public function seed($amountInOneCategory, $amountOfImages)
     {
-        $categoryIds = $this->getCategoryIds();
+        $productCategoryIds = $this->getProductCategoryIds();
 
         Console::stdout(PHP_EOL . 'Products');
 
-        foreach ($categoryIds as $i => $categoryId) {
+        foreach ($productCategoryIds as $i => $categoryId) {
             for ($j = 1; $j <= $amountInOneCategory; $j++) {
                 $product = Product::create(
                     $categoryId,
@@ -28,7 +28,7 @@ class ProductSeeder extends BaseSeeder
                     $this->faker->realText(900)
                 );
 
-                $this->addImages($product, $amountOfImages);
+                $this->addProductImages($product, $amountOfImages);
 
                 $characteristics = Characteristic::find()->all();
 
@@ -49,7 +49,7 @@ class ProductSeeder extends BaseSeeder
         }
     }
 
-    private function getCategoryIds()
+    private function getProductCategoryIds()
     {
         return Category::find()
             ->andWhere(['depth' => 2])
@@ -57,7 +57,7 @@ class ProductSeeder extends BaseSeeder
             ->column();
     }
 
-    public function addImages(Product $product, $amountOfImages)
+    public function addProductImages(Product $product, $amountOfImages)
     {
         for ($j = 1; $j <= $amountOfImages; $j++) {
             $product->addImage(
@@ -67,5 +67,4 @@ class ProductSeeder extends BaseSeeder
             );
         }
     }
-
 }

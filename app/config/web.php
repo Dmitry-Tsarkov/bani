@@ -59,6 +59,8 @@ $config = [
                 'review' => \app\modules\review\UI\admin\Module::class,
                 'portfolio' => \app\modules\portfolio\UI\admin\Module::class,
                 'faq' => \app\modules\faq\UI\admin\Module::class,
+                'service' => \app\modules\service\UI\admin\Module::class,
+                'service-category' => \app\modules\serviceCategory\UI\admin\Module::class,
             ],
         ],
         'api' => [
@@ -72,6 +74,8 @@ $config = [
                 'action' => \app\modules\action\UI\api\Module::class,
                 'review' => \app\modules\review\UI\api\Module::class,
                 'portfolio' => \app\modules\portfolio\UI\api\Module::class,
+                'service' => \app\modules\service\UI\api\Module::class,
+                'service-category' => \app\modules\serviceCategory\UI\api\Module::class,
             ],
         ],
         'user' => \app\modules\user\Module::class,
