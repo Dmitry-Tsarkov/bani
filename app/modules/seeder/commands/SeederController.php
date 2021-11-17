@@ -6,6 +6,7 @@ use app\modules\action\seeders\ActionSeeder;
 use app\modules\category\seeders\CategorySeeder;
 use app\modules\characteristic\seeders\CharacteristicSeeder;
 use app\modules\faq\seeds\FaqSeeder;
+use app\modules\kit\seeds\KitSeeder;
 use app\modules\page\seeders\PageSeeder;
 use app\modules\portfolio\seeders\PortfolioSeeder;
 use app\modules\product\seeders\ProductSeeder;
@@ -27,6 +28,7 @@ class SeederController extends Controller
         Yii::createObject(ActionSeeder::class)->seed(14); gc_collect_cycles();
         Yii::createObject(SliderSeeder::class)->seed(5); gc_collect_cycles();
         Yii::createObject(CharacteristicSeeder::class)->seed(4, 3); gc_collect_cycles();
+        Yii::createObject(KitSeeder::class)->seed(100); gc_collect_cycles();
         Yii::createObject(CategorySeeder::class)->seed(); gc_collect_cycles();
         Yii::createObject(ProductSeeder::class)->seed(3, 2); gc_collect_cycles();
     }

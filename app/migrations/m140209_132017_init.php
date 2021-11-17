@@ -53,8 +53,8 @@ class m140209_132017_init extends Migration
             'created_at' => time(),
             'updated_at' => time(),
             'blocked_at' => null,
-            'email' => 'mebius@assoc.ru',
-            'password_hash' => '$2y$10$6Ue/7lhqj77NSS3i91f4dO7y3.5i17SKXqh.Ws7W4skzDkpXKtkta',
+            'email' => 'dmtr@testmail.ru',
+            'password_hash' => '$2y$13$ALl/iw5/WHmQxBDceQkiC.c606RgdDdB8Em.WzxCR7wobfrYoFs6G',
             'confirmed_at' => time(),
         ]);
         

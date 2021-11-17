@@ -6,6 +6,7 @@ use app\modules\admin\behaviors\SlugBehavior;
 use app\modules\admin\traits\QueryExceptions;
 use app\modules\category\models\Category;
 use app\modules\characteristic\models\Value;
+use app\modules\kit\models\Kit;
 use app\modules\seo\behaviors\SeoBehavior;
 use app\modules\seo\valueObjects\Seo;
 use DomainException;
@@ -13,6 +14,7 @@ use lhs\Yii2SaveRelationsBehavior\SaveRelationsBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\helpers\VarDumper;
+use yii2tech\ar\linkmany\LinkManyBehavior;
 use yii2tech\ar\position\PositionBehavior;
 
 /**
@@ -24,6 +26,7 @@ use yii2tech\ar\position\PositionBehavior;
  * @property ProductImage[] $images
  * @property Category $category
  * @property Value[] $values
+ * @property Kit[] $kits
  *
  * @property int $id [int(11)]
  * @property int $category_id [int(11)]
@@ -72,6 +75,11 @@ class Product extends ActiveRecord
             [
                 'class' => SaveRelationsBehavior::class,
                 'relations' => ['images', 'values'],
+            ],
+            [
+                'class' => LinkManyBehavior::class,
+                'relation' => 'materials',
+                'relationReferenceAttribute' => 'kitIds',
             ],
         ];
     }
@@ -148,6 +156,12 @@ class Product extends ActiveRecord
     public function getImages()
     {
         return $this->hasMany(ProductImage::class, ['product_id' => 'id'])->orderBy('position');
+    }
+
+    public function getKits()
+    {
+        return $this->hasMany(Kit::class, ['id' => 'kit_id'])
+            ->viaTable('products_kits', ['product_id' => 'id']);
     }
 
     public function getValues()

@@ -6,7 +6,6 @@ use app\modules\admin\components\BalletController;
 use app\modules\faq\models\Faq;
 use app\modules\faq\searchModels\FaqSearch;
 use Yii;
-use yii\web\NotFoundHttpException;
 
 class FaqController extends BalletController
 {

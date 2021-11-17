@@ -59,6 +59,7 @@ $config = [
                 'review' => \app\modules\review\UI\admin\Module::class,
                 'portfolio' => \app\modules\portfolio\UI\admin\Module::class,
                 'faq' => \app\modules\faq\UI\admin\Module::class,
+                'kit' => \app\modules\kit\UI\admin\Module::class,
             ],
         ],
         'api' => [

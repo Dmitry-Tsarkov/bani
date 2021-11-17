@@ -1,25 +1,28 @@
 <?php
 
-use app\modules\faq\models\Faq;
-use app\modules\faq\searchModels\FaqSearch;
-use kartik\grid\DataColumn;
+use app\modules\kit\searchModels\KitSearch;
+use kartik\grid\ActionColumn;use kartik\grid\DataColumn;
 use kartik\grid\GridView;
 use kartik\icons\Icon;
 use yii\data\DataProviderInterface;
-use yii\grid\ActionColumn;
 use yii\helpers\Html;
 use yii\web\View;
 
 /**
+ * @var $this View
+ */
+
+/**
  * @var View $this
  * @var DataProviderInterface $dataProvider
- * @var FaqSearch $searchModel
+ * @var KitSearch $searchModel
  */
 
 $this->title = 'Вопрос-ответ';
 $this->params['breadcrumbs'] = [
     'Вопрос-ответ',
 ];
+
 ?>
 
 <?= GridView::widget([
@@ -41,7 +44,7 @@ $this->params['breadcrumbs'] = [
     'toolbar' => [
         [
             'content' =>
-                Html::a('Добавить вопрос', ['create'], ['class' => 'btn btn-success', 'data-pjax' => '0']) .
+                Html::a('Добавить отзыв', ['create'], ['class' => 'btn btn-success', 'data-pjax' => '0']) .
                 Html::a(
                     Icon::show('arrow-sync-outline'),
                     ['index'],
@@ -72,47 +75,34 @@ $this->params['breadcrumbs'] = [
     'columns' => [
         [
             'class' => DataColumn::class,
+            'vAlign' => GridView::ALIGN_MIDDLE,
+            'hAlign' => GridView::ALIGN_CENTER,
             'attribute' => 'id',
             'width' => '50px',
         ],
+        'text',
         [
-            'class' => DataColumn::class,
-            'vAlign' => GridView::ALIGN_MIDDLE,
-            'hAlign' => GridView::ALIGN_CENTER,
-            'value' => function (Faq $question) {
-                return
-                    Html::a('<span class="glyphicon glyphicon-arrow-up"></span>', ['move-up', 'id' => $question->id], [
-                        'class' => 'pjax-action'
-                    ]) .
-                    Html::a('<span class="glyphicon glyphicon-arrow-down"></span>', ['move-down', 'id' => $question->id], [
-                        'class' => 'pjax-action'
-                    ]);
-            },
-            'format' => 'raw',
-            'width' => '60px',
-        ],
-        'question',
-        [
-            'class' => DataColumn::class,
-            'vAlign' => GridView::ALIGN_MIDDLE,
-            'hAlign' => GridView::ALIGN_CENTER,
-            'attribute' => 'status',
-            'label' => 'Статус',
-            'filter' => $searchModel->StatusDropDown(),
-            'format' => 'html',
-            'value' => function(Faq $question) {
-                return $question->status ? '<span class="label label-success" data-test="123">Активный</span>' : '<span class="label label-danger">Неактивный</span>';
-            },
-            'width' => '150px',
-        ],
-        [
-            'class' => ActionColumn::className(),
-            'template' => '{update}',
+            'class' => ActionColumn::class,
+            'template' => '{update} {delete}',
+            'width' => '180px',
             'buttons' => [
-                'update' => function ($url) {
+                'update' => function ($url, $model, $key) {
                     return Html::a('Редактировать', $url, ['class' => 'btn btn-primary btn-xs', 'data-pjax' => '0']);
+                },
+                'delete' => function ($url, $model, $key) {
+                    return Html::a('<i class="fa fa-trash" aria-hidden="true"></i>', [
+                        'delete',
+                        'id' => $model->id,
+                    ],
+                        [
+                            'class' => 'btn btn-danger btn-xs',
+                            'data-pjax' => '0',
+                            'data-confirm' => 'Вы уверены?',
+                            'data-method' => 'post'
+                        ]);
                 },
             ],
         ],
     ]
-]); ?>
+])
+?>

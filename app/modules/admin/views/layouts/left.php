@@ -46,6 +46,11 @@ use dmstr\widgets\Menu;
                                 'url' => ['/admin/characteristic/characteristic/index'],
                                 'active' => Yii::$app->controller->module->id == 'characteristic',
                             ],
+                            [
+                                'label' => 'Комплекты',
+                                'url' => ['/admin/kit/kit/index'],
+                                'active' => Yii::$app->controller->module->id == 'kit',
+                            ],
                         ],
                     ],
                     [

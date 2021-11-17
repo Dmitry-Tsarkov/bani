@@ -4,6 +4,7 @@ use app\modules\product\forms\ProductForm;
 use app\modules\product\helpers\DropDownHelper;
 use app\modules\product\models\Product;
 use kartik\form\ActiveForm;
+use kartik\select2\Select2;
 use mihaildev\ckeditor\CKEditor;
 use yii\helpers\Html;
 use yii\web\View;
@@ -36,19 +37,26 @@ use yii\web\View;
 
                 </div>
             </div>
+            <?= $form->field($productForm->kits, 'kits')->widget(Select2::class, [
+                'theme' => Select2::THEME_DEFAULT,
+                'data' => $productForm->getKitsDropDown(),
+//                'options' => [
+//                    'options' => $requestForm->getDisabledOptions(),
+//                ]
+            ]) ?>
         </div>
         <div class="col-md-6">
-        <div class="box box-default box-solid">
-            <div class="box-header with-border">
-                <h3 class="box-title">SEO</h3>
+            <div class="box box-default box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title">SEO</h3>
+                </div>
+                <div class="box-body">
+                    <?= $form->field($productForm->seo, 'h1') ?>
+                    <?= $form->field($productForm->seo, 'title') ?>
+                    <?= $form->field($productForm->seo, 'description')->textarea(['rows' => 5]) ?>
+                    <?= $form->field($productForm->seo, 'keywords')->hint('Фразы через запятую') ?>
+                </div>
             </div>
-            <div class="box-body">
-                <?= $form->field($productForm->seo, 'h1') ?>
-                <?= $form->field($productForm->seo, 'title') ?>
-                <?= $form->field($productForm->seo, 'description')->textarea(['rows' => 5]) ?>
-                <?= $form->field($productForm->seo, 'keywords')->hint('Фразы через запятую') ?>
-            </div>
-        </div>
         </div>
 
     </div>

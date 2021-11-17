@@ -5,6 +5,7 @@ namespace app\modules\product\forms;
 use app\modules\admin\forms\CompositeForm;
 use app\modules\admin\helpers\NestedSetsHelper;
 use app\modules\category\models\Category;
+use app\modules\kit\models\Kit;
 use app\modules\product\models\Product;
 use app\modules\seo\forms\SeoForm;
 
@@ -23,6 +24,7 @@ class ProductForm extends CompositeForm
     public $image;
     public $price;
     public $price_type;
+    public $kits = [];
 
     /**
      * @var Product|null
@@ -39,6 +41,7 @@ class ProductForm extends CompositeForm
             $this->bottom_description = $product->bottom_description;
             $this->price = $product->price;
             $this->price_type = $product->price_type;
+            $this->kits =$product->kits;
         }
 
         $this->seo = new SeoForm($product ? $product->seo : null);
@@ -58,6 +61,7 @@ class ProductForm extends CompositeForm
             [['title', 'description', 'bottom_description', 'alias'], 'string'],
             [['id', 'categoryId', 'price_type'], 'integer'],
             [['price'], 'double'],
+            ['kits', 'each', 'rule' => ['integer']],
             ['image', 'image', 'extensions' => ['png', 'jpg', 'jpeg'], 'checkExtensionByMimeType' => false],
         ];
     }
@@ -104,5 +108,14 @@ class ProductForm extends CompositeForm
         return array_map(function($id) {
             return ['disabled' => true];
         }, $ids);
+    }
+
+    public function getKitsDropDown()
+    {
+        return Kit::find()
+            ->select('text')
+            ->indexBy('id')
+            ->orderBy('id')
+            ->column();
     }
 }
