@@ -1,22 +1,22 @@
 <?php
 
-namespace app\modules\category\readModels;
+namespace app\modules\serviceCategory\readModels;
 
-use app\modules\category\models\Category;
+use app\modules\serviceCategory\models\ServiceCategory;
 use yii\data\ActiveDataProvider;
 use yii\web\NotFoundHttpException;
 
-class CategoryReader
+class ServiceCategoryReader
 {
     public function getCategories(): array
     {
-        return Category::find()
+        return ServiceCategory::find()
             ->andWhere(['depth' => 1])
             ->orderBy(['lft' => SORT_ASC])
             ->all();
     }
 
-    public function geSubcategories(Category $category)
+    public function geSubcategories(ServiceCategory $category)
     {
         $query = $category->children(1)
             ->andWhere(['>', 'depth', 1])
@@ -30,27 +30,27 @@ class CategoryReader
 
     public function getCategory($alias)
     {
-        return Category::find()
+        return ServiceCategory::find()
             ->andWhere(['alias' => $alias])
             ->one();
     }
 
     public function getAllSubcategories()
     {
-        return Category::find()
+        return ServiceCategory::find()
             ->andWhere(['>', 'depth', 1])
             ->all();
     }
 
     public function getSubcategory($alias)
     {
-        return Category::find()
+        return ServiceCategory::find()
             ->andWhere(['alias' => $alias])
             ->andWhere(['>', 'depth', 1])
             ->one();
     }
 
-    public function getSubcategories(Category $parent): array
+    public function getSubcategories(ServiceCategory $parent): array
     {
         return $parent->children(1)
             ->andWhere(['>', 'depth', 1])
@@ -58,9 +58,9 @@ class CategoryReader
             ->all();
     }
 
-    public function getByAlias($alias): Category
+    public function getByAlias($alias): ServiceCategory
     {
-        $category = Category::find()
+        $category = ServiceCategory::find()
             ->andWhere(['alias' => $alias])
             ->one();
 
@@ -98,7 +98,7 @@ class CategoryReader
 //        return $result;
 //    }
 
-    public function getBreadcrumbsForCategory(Category $category)
+    public function getBreadcrumbsForCategory(ServiceCategory $category)
     {
         $result = [];
         $rows = $category->getParent()
@@ -118,7 +118,7 @@ class CategoryReader
 
         return $result;
     }
-//    public function getInCategory(Category $category)
+//    public function getInCategory(ServiceCategory $category)
 //    {
 //        return $category->getServices()
 //            ->andWhere(['status' => 1])

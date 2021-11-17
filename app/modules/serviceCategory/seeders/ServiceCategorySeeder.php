@@ -1,34 +1,34 @@
 <?php
 
-namespace app\modules\category\seeders;
+namespace app\modules\serviceCategory\seeders;
 
-use app\modules\category\models\Category;
+use app\modules\serviceCategory\models\ServiceCategory;
 use app\modules\seeder\components\BaseSeeder;
 use app\modules\seeder\components\CopyUploadedFile;
 use yii\helpers\Console;
 
-class CategorySeeder extends BaseSeeder
+class ServiceCategorySeeder extends BaseSeeder
 {
     private $categories = [
-        'Проекты бань',
-        'Проекты домов',
-        'Виды срубов',
-        'Беседки',
+        'Фундамент',
+        'Отделка сруба',
+        'Другие услуги',
+        'Срубы под ключ',
     ];
 
     public function seed()
     {
-        Console::stdout(PHP_EOL . 'Product_categories');
+        Console::stdout(PHP_EOL . 'Service_categories');
 
         $root = $this->getRoot();
 
         foreach ($this->categories as $categoryTitle) {
-            $category = Category::create(
+            $category = ServiceCategory::create(
                 $root->id,
                 $categoryTitle,
                 $this->faker->realText(200),
                 null,
-                new CopyUploadedFile($this->getRandomImage('/categories'))
+                new CopyUploadedFile($this->getRandomImage('/serviceCategories'))
             );
 
             $category->appendTo($root);
@@ -38,15 +38,15 @@ class CategorySeeder extends BaseSeeder
         }
     }
 
-    private function seedSubCategory(Category $parentCategory)
+    private function seedSubCategory(ServiceCategory $parentCategory)
     {
         for ($i = 0; $i <= 5; $i++) {
-            $category = Category::create(
+            $category = ServiceCategory::create(
                 $parentCategory->id,
                 'Подкатегория (' . $parentCategory->title . ') ' . $i,
                 $this->faker->realText(200),
                 null,
-                new CopyUploadedFile($this->getRandomImage('/categories'))
+                new CopyUploadedFile($this->getRandomImage('/serviceCategories'))
             );
 
             $category->appendTo($parentCategory);
@@ -58,6 +58,6 @@ class CategorySeeder extends BaseSeeder
 
     public function getRoot()
     {
-        return Category::find()->andWhere(['depth' => 0])->one();
+        return ServiceCategory::find()->andWhere(['depth' => 0])->one();
     }
 }

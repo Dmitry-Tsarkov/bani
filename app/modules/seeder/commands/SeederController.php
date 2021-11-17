@@ -11,6 +11,8 @@ use app\modules\page\seeders\PageSeeder;
 use app\modules\portfolio\seeders\PortfolioSeeder;
 use app\modules\product\seeders\ProductSeeder;
 use app\modules\review\seeders\ReviewSeeder;
+use app\modules\service\seeders\ServiceSeeder;
+use app\modules\serviceCategory\seeders\ServiceCategorySeeder;
 use app\modules\slider\seeds\SliderSeeder;
 use Yii;
 use yii\console\Controller;
@@ -31,6 +33,9 @@ class SeederController extends Controller
         Yii::createObject(KitSeeder::class)->seed(100); gc_collect_cycles();
         Yii::createObject(CategorySeeder::class)->seed(); gc_collect_cycles();
         Yii::createObject(ProductSeeder::class)->seed(3, 2); gc_collect_cycles();
+        Yii::createObject(ServiceCategorySeeder::class)->seed(); gc_collect_cycles();
+        Yii::createObject(ServiceSeeder::class)->seed(3, 2); gc_collect_cycles();
+
     }
 
     public function actionRefresh()

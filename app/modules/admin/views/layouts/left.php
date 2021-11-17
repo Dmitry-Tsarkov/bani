@@ -29,7 +29,7 @@ use dmstr\widgets\Menu;
                         'url' => ['/page/backend/default/index'],
                     ],
                     [
-                        'label' => 'Каталог',
+                        'label' => 'Товары',
                         'items' => [
                             [
                                 'label' => 'Категории',
@@ -54,15 +54,24 @@ use dmstr\widgets\Menu;
                         ],
                     ],
                     [
+                        'label' => 'Услуги',
+                        'items' => [
+                            [
+                                'label' => 'Категории',
+                                'url' => ['/admin/service-category/service-category/index'],
+                                'active' => Yii::$app->controller->module->id == 'service-category' ,
+                            ],
+                            [
+                                'label' => 'Услуги',
+                                'url' => ['/admin/service/service/index'],
+                                'active' => (Yii::$app->controller->module->id == 'service'),
+                            ],
+                        ],
+                    ],
+                    [
                         'label' => 'Контент',
                         'icon' => 'newspaper-o',
                         'items' => [
-//                            [
-//                                'label' => 'Меню',
-//                                'icon' => 'arrows-h',
-//                                'url' => ['/admin/menu/category/index'],
-//                                'active' => Yii::$app->controller->module->id == 'menu',
-//                            ],
                             [
                                 'label' => 'Слайдер',
                                 'url' => ['/admin/slider/slider/index'],

@@ -1,11 +1,11 @@
 <?php
 
-namespace app\modules\category\UI\api\controllers;
+namespace app\modules\serviceCategory\category\UI\api\controllers;
 
 use app\modules\api\controllers\ApiController;
-use app\modules\category\presentators\ServiceCategoryPresentator;
+use app\modules\serviceCategory\presentators\ServiceCategoryPresentator;
 
-class CategoryController extends ApiController
+class ServiceCategoryController extends ApiController
 {
     private $categoryPresentator;
 

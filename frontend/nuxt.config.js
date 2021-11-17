@@ -3,7 +3,7 @@ export default {
     port: 3001,
   },
   target: 'server',
-  ssr: process.env.SSR !== 'false',
+  ssr: true,
   head: {
     title: 'test-bani',
     htmlAttrs: {
