@@ -37,7 +37,7 @@ class ProductService
 
         $category = $this->categories->getById($form->categoryId);
 
-        $service = Product::create(
+        $product = Product::create(
             $category->id,
             $form->title,
             $form->price_type,
@@ -52,9 +52,11 @@ class ProductService
             )
         );
 
-        $this->products->save($service);
+        $this->products->save($product);
 
-        return $service;
+        $product->updateKits($form->kits->ids);
+
+        return $product;
     }
 
     public function edit(int $id, ProductForm $form)
@@ -79,6 +81,8 @@ class ProductService
                 $form->seo->h1
             )
         );
+
+        $product->updateKits($form->kits->ids);
 
         $this->products->save($product);
     }

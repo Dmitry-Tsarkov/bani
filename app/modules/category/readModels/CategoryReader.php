@@ -8,7 +8,7 @@ use yii\web\NotFoundHttpException;
 
 class CategoryReader
 {
-    public function getCategories(): array
+    public function getProductCategories(): array
     {
         return Category::find()
             ->andWhere(['depth' => 1])

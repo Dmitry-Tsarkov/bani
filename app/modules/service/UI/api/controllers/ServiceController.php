@@ -17,6 +17,21 @@ class ServiceController extends ApiController
 
     /**
      * @OA\Get(
+     *     path="/api/services-catalog/{alias}",
+     *     tags={"Pages"},
+     *     @OA\Response(
+     *      response="200",
+     *      description="An example resource",
+     *     )
+     * )
+     */
+    public function actionServicesCatalog()
+    {
+        return $this->servicePresentator->getServicesCatalog();
+    }
+
+    /**
+     * @OA\Get(
      *     path="/api/services/{alias}",
      *     tags={"Pages"},
      *     @OA\Response(
@@ -28,5 +43,20 @@ class ServiceController extends ApiController
     public function actionServices($alias)
     {
         return $this->servicePresentator->getServices($alias);
+    }
+
+    /**
+     * @OA\Get(
+     *     path="/api/service/{alias}",
+     *     tags={"Pages"},
+     *     @OA\Response(
+     *      response="200",
+     *      description="An example resource",
+     *     )
+     * )
+     */
+    public function actionService($alias)
+    {
+        return $this->servicePresentator->getService($alias);
     }
 }

@@ -5,23 +5,28 @@ namespace app\modules\category\presentators;
 use app\modules\category\helpers\CategoryHelper;
 use app\modules\category\models\Category;
 use app\modules\category\readModels\CategoryReader;
+use app\modules\serviceCategory\models\ServiceCategory;
+use app\modules\serviceCategory\readModels\ServiceCategoryReader;
 use yii\helpers\Url;
 use yii\helpers\VarDumper;
 
 class CategoryPresentator
 {
-    private $categoryReader;
+    private $productCategoryReader;
+    private $serviceCategoryReader;
 
-    public function __construct(CategoryReader $categoryReader)
+    public function __construct(CategoryReader $categoryReader, ServiceCategoryReader $serviceCategoryReader)
     {
-        $this->categoryReader = $categoryReader;
+        $this->productCategoryReader = $categoryReader;
+        $this->serviceCategoryReader = $serviceCategoryReader;
     }
 
-    public function getAllCategories()
+    public function getCatalog()
     {
-        $categories = $this->categoryReader->getCategories();
+        $productCategories = $this->productCategoryReader->getProductCategories();
+
         return [
-            'categories' => array_map(function (Category $category) {
+            'catalog' => array_map(function (Category $category) {
                 return [
                     'id' => $category->id,
                     'alias' => $category->alias,
@@ -29,14 +34,34 @@ class CategoryPresentator
                     'description' => $category->description,
                     'image' => Url::to($category->getImageFileUrl('image'), true),
                 ];
-            }, $categories)
+            }, $productCategories),
         ];
     }
 
-    public function getSubcategories($alias)
+    public function getProductCategories($alias)
     {
-        $category = $this->categoryReader->getCategory($alias);
-        $dataProvider = $this->categoryReader->geSubcategories($category);
+        $category = $this->productCategoryReader->getCategory($alias);
+        $dataProvider = $this->productCategoryReader->geSubcategories($category);
+
+        return [
+            'subcategories' => array_map(function (Category $subcategory) {
+                return [
+                    'id' => $subcategory->id,
+                    'alias' => $subcategory->alias,
+                    'title' => $subcategory->title,
+                    'description' => $subcategory->description,
+                    'minPrice' => 'от ' . CategoryHelper::getProductMinPrice($subcategory),
+                    'image' => Url::to($subcategory->getImageFileUrl('image'), true),
+                ];
+            }, $dataProvider->getModels()),
+            'pagination' => $dataProvider->pagination
+        ];
+    }
+
+    public function getServiceCategories($alias)
+    {
+        $category = $this->serviceCategoryReader->getCategory($alias);
+        $dataProvider = $this->productCategoryReader->geSubcategories($category);
 
         return [
             'subcategories' => array_map(function (Category $subcategory) {

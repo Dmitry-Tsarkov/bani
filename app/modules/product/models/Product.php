@@ -18,6 +18,8 @@ use yii2tech\ar\linkmany\LinkManyBehavior;
 use yii2tech\ar\position\PositionBehavior;
 
 /**
+ * @property array $kitIds
+ *
  * @mixin SeoBehavior
  * @mixin SlugBehavior
  * @mixin PositionBehavior
@@ -78,7 +80,7 @@ class Product extends ActiveRecord
             ],
             [
                 'class' => LinkManyBehavior::class,
-                'relation' => 'materials',
+                'relation' => 'kits',
                 'relationReferenceAttribute' => 'kitIds',
             ],
         ];
@@ -167,6 +169,11 @@ class Product extends ActiveRecord
     public function getValues()
     {
         return $this->hasMany(Value::class, ['product_id' => 'id']);
+    }
+
+    public function updateKits($kitIds)
+    {
+        $this->kitIds = $kitIds;
     }
 
     public function activate(): void

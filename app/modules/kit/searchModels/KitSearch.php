@@ -9,12 +9,13 @@ use yii\data\ActiveDataProvider;
 class KitSearch extends Model
 {
     public $id;
-    public $text;
+    public $title;
+    public $hint;
 
     public function rules()
     {
         return [
-            [['id', 'text'], 'string'],
+            [['id', 'title', 'hint'], 'string'],
         ];
     }
 
@@ -24,7 +25,8 @@ class KitSearch extends Model
 
         if ($this->load($params) && $this->validate()) {
             $query->andFilterWhere(['id' => $this->id]);
-            $query->andFilterWhere(['text' => $this->text]);
+            $query->andFilterWhere(['title' => $this->title]);
+            $query->andFilterWhere(['hint' => $this->hint]);
         }
 
         return new ActiveDataProvider([

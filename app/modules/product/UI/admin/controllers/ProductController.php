@@ -3,6 +3,7 @@
 namespace app\modules\product\UI\admin\controllers;
 
 use app\modules\admin\components\BalletController;
+use app\modules\product\forms\KitEditForm;
 use app\modules\product\forms\ImagesForm;
 use app\modules\product\forms\ProductForm;
 use app\modules\product\models\Product;
@@ -12,6 +13,7 @@ use DomainException;
 use Exception;
 use RuntimeException;
 use Yii;
+use yii\helpers\VarDumper;
 use yii\web\Response;
 
 class ProductController extends BalletController
@@ -179,5 +181,27 @@ class ProductController extends BalletController
         }
 
         return $this->redirect(Yii::$app->request->referrer);
+    }
+
+    public function actionAddKit($id)
+    {
+        $product = Product::getOrFail($id);
+        $editForm = new KitEditForm($product);
+
+        if ($editForm->load(Yii::$app->request->post()) && $editForm->validate()) {
+            try {
+                VarDumper::dump($editForm,10,true);die();
+                $this->service->setValue($product->id, $editForm);
+                Yii::$app->session->setFlash('success', 'Комплект добавлен');
+                return $this->redirect(['product/view', 'id' => $product->id]);
+            } catch (DomainException $e) {
+                Yii::$app->session->setFlash('success', $e->getMessage());
+            } catch (RuntimeException $e) {
+                Yii::$app->errorHandler->logException($e);
+                Yii::$app->session->setFlash('success', $e->getMessage());
+            }
+        }
+
+        return $this->render('add', compact('product', 'editForm'));
     }
 }

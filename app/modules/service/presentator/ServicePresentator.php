@@ -2,25 +2,29 @@
 
 namespace app\modules\service\presentator;
 
-use app\modules\category\repositories\ServiceCategoryRepository;
 use app\modules\service\models\Service;
+use app\modules\service\models\ServiceImage;
 use app\modules\service\repositories\ServiceRepository;
+use app\modules\serviceCategory\models\ServiceCategory;
+use app\modules\serviceCategory\readModels\ServiceCategoryReader;
+use yii\helpers\Url;
 
 class ServicePresentator
 {
-    private $categories;
     private $services;
+    private $serviceCategoryReader;
 
-    public function __construct(ServiceCategoryRepository $categories, ServiceRepository $services)
+    public function __construct(ServiceCategoryReader $serviceCategoryReader, ServiceRepository $services)
     {
-        $this->categories = $categories;
+
         $this->services = $services;
+        $this->serviceCategoryReader = $serviceCategoryReader;
     }
 
     public function getServices($alias)
     {
-        $category = $this->categories->getByAlias($alias);
-        $services = $category->services;
+        $serviceCategory = $this->serviceCategoryReader->getByAlias($alias);
+        $services = $serviceCategory->services;
 
         return [
             'services' => array_map(function (Service $service) {
@@ -32,6 +36,43 @@ class ServicePresentator
                     'description' => $service->description,
                 ];
             }, $services)
+        ];
+    }
+
+    public function getServicesCatalog()
+    {
+        $serviceCategories = $this->serviceCategoryReader->getServiceCategories();
+
+        return [
+            'services' => array_map(function (ServiceCategory $serviceCategory) {
+                return [
+                    'id' => $serviceCategory->id,
+                    'alias' => $serviceCategory->alias,
+                    'title' => $serviceCategory->title,
+                    'description' => $serviceCategory->description,
+                    'image' => Url::to($serviceCategory->getImageFileUrl('image'), true),
+                ];
+            }, $serviceCategories)
+        ];
+    }
+
+    public function getService($alias)
+    {
+        $service = $this->services->getByAlias($alias);
+
+        return [
+            'product' => [
+                'meta' => $service->getMetaTags(),
+                'id' => $service->id,
+                'alias' => $service->alias,
+                'title' => $service->title,
+                'description' => $service->description,
+                'images' => array_map(function (ServiceImage $image) {
+                    return [
+                        'image' => Url::to($image->getImageFileUrl('image'), true),
+                    ];
+                }, $service->images),
+            ],
         ];
     }
 }

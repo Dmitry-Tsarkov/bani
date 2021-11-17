@@ -8,6 +8,8 @@ use yii2tech\ar\position\PositionBehavior;
 
 /**
  * @property int $id [int(11)]
+ * @property string $title
+ * @property string $hint
  * @property string $text
  *
  * @mixin PositionBehavior
@@ -30,9 +32,11 @@ class Kit extends ActiveRecord
         return 'kit';
     }
 
-    public static function create($text): self
+    public static function create($title, $hint, $text): self
     {
         $self = new self;
+        $self->title = $title;
+        $self->hint = $hint;
         $self->text = $text;
         return $self;
     }
@@ -40,13 +44,17 @@ class Kit extends ActiveRecord
     public function rules()
     {
         return [
-            [['text'], 'required'],
+            [['text', 'title'], 'required'],
+            [['title', 'hint'], 'string'],
+            [['text'], 'string'],
         ];
     }
 
     public function attributeLabels()
     {
         return [
+            'title' => 'Заголовок',
+            'hint' => 'Подсказка',
             'text' => 'Текст',
         ];
     }

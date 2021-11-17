@@ -47,4 +47,13 @@ class ServiceRepository
             ->limit(1)
             ->count('id');
     }
+
+    public function getByAlias($alias)
+    {
+        return Service::find()
+            ->andWhere(['alias' => $alias])
+            ->one();
+    }
+
+
 }

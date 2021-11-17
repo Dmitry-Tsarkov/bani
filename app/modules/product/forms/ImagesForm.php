@@ -1,8 +1,6 @@
 <?php
 
-
 namespace app\modules\product\forms;
-
 
 use yii\base\Model;
 use yii\web\UploadedFile;

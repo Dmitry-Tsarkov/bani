@@ -1,6 +1,7 @@
 <?php
 
 use app\modules\characteristic\models\Value;
+use app\modules\kit\models\Kit;
 use app\modules\product\forms\ImagesForm;
 use app\modules\product\models\Product;
 use app\modules\product\models\ProductImage;
@@ -104,7 +105,6 @@ $this->title = $product->title;
         </div>
     </div>
 </div>
-
 
 <div class="box box-default box-solid" id="test-values">
     <div class="box-header with-border">

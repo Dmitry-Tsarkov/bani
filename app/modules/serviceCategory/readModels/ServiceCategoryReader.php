@@ -118,10 +118,12 @@ class ServiceCategoryReader
 
         return $result;
     }
-//    public function getInCategory(ServiceCategory $category)
-//    {
-//        return $category->getServices()
-//            ->andWhere(['status' => 1])
-//            ->all();
-//    }
+
+    public function getServiceCategories(): array
+    {
+        return ServiceCategory::find()
+            ->andWhere(['depth' => 1])
+            ->orderBy(['lft' => SORT_ASC])
+            ->all();
+    }
 }

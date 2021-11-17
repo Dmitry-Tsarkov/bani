@@ -47,4 +47,11 @@ class ProductRepository
             ->limit(1)
             ->count('id');
     }
+
+    public function getByAlias($alias)
+    {
+        return Product::find()
+            ->andWhere(['alias' => $alias])
+            ->one();
+    }
 }

@@ -12,6 +12,7 @@ use app\modules\seo\forms\SeoForm;
 /**
  * @property SeoForm $seo
  * @property ImagesForm $images
+ * @property KitEditForm $kits
  */
 class ProductForm extends CompositeForm
 {
@@ -24,7 +25,7 @@ class ProductForm extends CompositeForm
     public $image;
     public $price;
     public $price_type;
-    public $kits = [];
+//    public $kits = [];
 
     /**
      * @var Product|null
@@ -41,7 +42,8 @@ class ProductForm extends CompositeForm
             $this->bottom_description = $product->bottom_description;
             $this->price = $product->price;
             $this->price_type = $product->price_type;
-            $this->kits =$product->kits;
+            $this->kits = new KitEditForm($product);
+//            $this->kits = $product->kits;
         }
 
         $this->seo = new SeoForm($product ? $product->seo : null);
@@ -51,24 +53,24 @@ class ProductForm extends CompositeForm
 
     protected function internalForms(): array
     {
-        return ['seo', 'images'];
+        return ['seo', 'images', 'kits'];
     }
 
     public function rules()
     {
-        return[
+        return [
             [['title', 'categoryId'], 'required'],
             [['title', 'description', 'bottom_description', 'alias'], 'string'],
             [['id', 'categoryId', 'price_type'], 'integer'],
             [['price'], 'double'],
-            ['kits', 'each', 'rule' => ['integer']],
+//            ['kits', 'each', 'rule' => ['integer']],
             ['image', 'image', 'extensions' => ['png', 'jpg', 'jpeg'], 'checkExtensionByMimeType' => false],
         ];
     }
 
     public function attributeLabels()
     {
-        return([
+        return ([
             'description' => 'Описание услуги',
             'bottom_description' => 'Описание услуги снизу',
             'title' => 'Заголовок',
@@ -91,7 +93,7 @@ class ProductForm extends CompositeForm
             ->asArray()
             ->all();
 
-        return array_map(function($row) {
+        return array_map(function ($row) {
             return NestedSetsHelper::depthTitle($row['title'], $row['depth']);
         }, $rows);
     }
@@ -105,17 +107,8 @@ class ProductForm extends CompositeForm
             ->andWhere("NOT(`rgt` - `lft` = 1)")
             ->column();
 
-        return array_map(function($id) {
+        return array_map(function ($id) {
             return ['disabled' => true];
         }, $ids);
-    }
-
-    public function getKitsDropDown()
-    {
-        return Kit::find()
-            ->select('text')
-            ->indexBy('id')
-            ->orderBy('id')
-            ->column();
     }
 }

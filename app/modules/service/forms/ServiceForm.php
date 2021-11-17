@@ -4,9 +4,9 @@ namespace app\modules\service\forms;
 
 use app\modules\admin\forms\CompositeForm;
 use app\modules\admin\helpers\NestedSetsHelper;
-use app\modules\category\models\ServiceCategory;
 use app\modules\service\models\Service;
 use app\modules\seo\forms\SeoForm;
+use app\modules\serviceCategory\models\ServiceCategory;
 
 /**
  * @property SeoForm $seo

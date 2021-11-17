@@ -80,7 +80,8 @@ $this->params['breadcrumbs'] = [
             'attribute' => 'id',
             'width' => '50px',
         ],
-        'text',
+        'title',
+        'hint',
         [
             'class' => ActionColumn::class,
             'template' => '{update} {delete}',

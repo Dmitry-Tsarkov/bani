@@ -15,6 +15,8 @@ class m211112_092503_product_kits extends Migration
         $this->createTable('kit', [
             'id' => $this->primaryKey(),
             'position' => $this->integer()->notNull(),
+            'title' => $this->string()->notNull(),
+            'hint' => $this->string()->notNull(),
             'text' => $this->text()->notNull(),
         ]);
 

@@ -34,16 +34,12 @@ use yii\web\View;
                     <?= $form->field($productForm, 'alias') ?>
                     <?= $form->field($productForm, 'price_type')->dropDownList(DropDownHelper::priceTypeDropDown()) ?>
                     <?= $form->field($productForm, 'price') ?>
-
+                    <?= $form->field($productForm->kits, 'ids')->widget(Select2::class, [
+                        'options' => ['multiple' => true],
+                        'data' => $productForm->kits->getKitsDropDown(),
+                    ]) ?>
                 </div>
             </div>
-            <?= $form->field($productForm->kits, 'kits')->widget(Select2::class, [
-                'theme' => Select2::THEME_DEFAULT,
-                'data' => $productForm->getKitsDropDown(),
-//                'options' => [
-//                    'options' => $requestForm->getDisabledOptions(),
-//                ]
-            ]) ?>
         </div>
         <div class="col-md-6">
             <div class="box box-default box-solid">
@@ -76,7 +72,6 @@ use yii\web\View;
             </div>
         </div>
     </div>
-
     <?= Html::submitButton('Сохранить', ['class' => 'btn btn-primary']) ?>
     <?php ActiveForm::end() ?>
 </div>

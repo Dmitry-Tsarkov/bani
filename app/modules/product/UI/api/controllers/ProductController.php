@@ -35,4 +35,25 @@ class ProductController extends ApiController
     {
         return $this->productPresentator->getProducts($alias);
     }
+
+    /**
+     * @OA\Get(
+     *     path="/api/product/{alias}",
+     *     @OA\Parameter(name="alias",
+     *        in="path",
+     *        required=true,
+     *        @OA\Schema(
+     *          type="string",
+     *          default="podkategoriya-proekty-ban-tovar-0"
+     *      )
+     *     ),
+     *     tags={"Pages"},
+     *     @OA\Response(response="200", description="An example resource"),
+     *     @OA\Response(response="404", description="An example resource")
+     * )
+     */
+    public function actionProduct($alias)
+    {
+        return $this->productPresentator->getProduct($alias);
+    }
 }

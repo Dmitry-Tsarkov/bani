@@ -14,6 +14,8 @@ class KitSeeder extends BaseSeeder
 
         for ($i = 1; $i <= $amountOfKits; $i++) {
             $kits = Kit::create(
+                $this->faker->realText(20),
+                $this->faker->realText(10),
                 $this->faker->realText(100)
             );
 
