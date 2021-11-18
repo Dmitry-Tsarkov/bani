@@ -27,13 +27,13 @@ class ProductPresentator
         $products = $category->products;
 
         return [
-            'prices' => array_map(function (Product $product) {
+            'products' => array_map(function (Product $product) {
                 return [
+                    'alias' => $product->alias,
                     'title' => $product->title,
                     'price_type' => $product->getPriceType(),
                     'price' => $product->price,
-                    'image' => 'Здесь должна приходить картинка',
-                    'alias' => 'Здесь должен приходить алиас'
+                    'image' => $product->getFirstImage(),
                 ];
             }, $products)
         ];

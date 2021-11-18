@@ -11,6 +11,7 @@ use DomainException;
 use lhs\Yii2SaveRelationsBehavior\SaveRelationsBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\helpers\Url;
 use yii2tech\ar\position\PositionBehavior;
 
 /**
@@ -196,5 +197,12 @@ class Service extends ActiveRecord
             }
         }
         throw new DomainException('Картинка не найдена');
+    }
+
+    public function getFirstImage()
+    {
+        $images = $this->images;
+
+        return Url::to($images[0]->getImageFileUrl('image'), true);
     }
 }

@@ -13,6 +13,7 @@ use DomainException;
 use lhs\Yii2SaveRelationsBehavior\SaveRelationsBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\helpers\Url;
 use yii\helpers\VarDumper;
 use yii2tech\ar\linkmany\LinkManyBehavior;
 use yii2tech\ar\position\PositionBehavior;
@@ -271,6 +272,13 @@ class Product extends ActiveRecord
     public function getPriceType()
     {
         return $this->price_type == 1 ? 'от' : '';
+    }
+
+    public function getFirstImage()
+    {
+        $images = $this->images;
+
+        return Url::to($images[0]->getImageFileUrl('image'), true);
     }
 
 }

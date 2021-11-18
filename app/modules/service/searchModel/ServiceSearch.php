@@ -27,7 +27,7 @@ class ServiceSearch extends Model
         ];
     }
 
-    public function search($params) :ActiveDataProvider
+    public function search($params): ActiveDataProvider
     {
         $query = Service::find();
 
@@ -65,7 +65,7 @@ class ServiceSearch extends Model
             ->indexBy('id')
             ->all();
 
-        return array_map(function($row) {
+        return array_map(function ($row) {
             return NestedSetsHelper::depthTitle($row['title'], $row['depth']);
         }, $arr);
     }

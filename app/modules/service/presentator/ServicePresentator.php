@@ -29,11 +29,10 @@ class ServicePresentator
         return [
             'services' => array_map(function (Service $service) {
                 return [
-                    'meta' => $service->getMetaTags(),
                     'id' => $service->id,
                     'alias' => $service->alias,
                     'title' => $service->title,
-                    'description' => $service->description,
+                    'image' => $service->getFirstImage(),
                 ];
             }, $services)
         ];
