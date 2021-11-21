@@ -9,10 +9,10 @@ class CategoryController extends ApiController
 {
     private $categoryPresentator;
 
-    public function __construct($id, $module, CategoryPresentator $categoryPresentator, $config = [])
+    public function __construct($id, $module, CategoryPresentator $serviceCategoryPresentator, $config = [])
     {
         parent::__construct($id, $module, $config);
-        $this->categoryPresentator = $categoryPresentator;
+        $this->categoryPresentator = $serviceCategoryPresentator;
     }
 
     /**

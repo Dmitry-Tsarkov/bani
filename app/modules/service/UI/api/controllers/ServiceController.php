@@ -17,28 +17,13 @@ class ServiceController extends ApiController
 
     /**
      * @OA\Get(
-     *     path="/api/servicesssss-catalog/{alias}",
-     *     tags={"Pages"},
-     *     @OA\Response(
-     *      response="200",
-     *      description="An example resource",
-     *     )
-     * )
-     */
-    public function actionServicesCatalog()
-    {
-        return $this->servicePresentator->getServicesCatalog();
-    }
-
-    /**
-     * @OA\Get(
-     *     path="/api/servicessdf-catalog/{alias}",
+     *     path="/api/services/{alias}",
      *     @OA\Parameter(name="alias",
      *        in="path",
      *        required=true,
      *        @OA\Schema(
      *          type="string",
-     *          default="podkategoriya-proekty-ban-0"
+     *          default="podkategoriya-fundament-0"
      *      )
      *     ),
      *     tags={"Pages"},

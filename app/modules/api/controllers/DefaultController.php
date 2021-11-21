@@ -18,21 +18,6 @@ class DefaultController extends ApiController
 
     /**
      * @OA\Get(
-     *     path="/api/index",
-     *     tags={"Pages"},
-     *     @OA\Response(
-     *      response="200",
-     *      description="An example resource",
-     *     )
-     * )
-     */
-    public function actionIndex()
-    {
-        return $this->presentator->getIndex();
-    }
-
-    /**
-     * @OA\Get(
      *     path="/api/layout",
      *     tags={"Layouts"},
      *     @OA\Response(response="200", description="An example resource")

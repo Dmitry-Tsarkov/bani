@@ -1,11 +1,11 @@
 <?php
 
-use app\modules\kit\models\Kit;
+use app\modules\kit\forms\KitForm;
 use yii\web\View;
 
 /**
  * @var View $this
- * @var Kit $kit
+ * @var KitForm $kitForm
  */
 
 $this->title = 'Добавление комплекта';
@@ -16,4 +16,4 @@ $this->params['breadcrumbs'] = [
 
 ?>
 
-<?= $this->render('_form', compact('kit')) ?>
+<?= $this->render('_form', compact('kitForm')) ?>

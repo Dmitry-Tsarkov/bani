@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\serviceCategory\category\UI\api\controllers;
+namespace app\modules\serviceCategory\UI\api\controllers;
 
 use app\modules\api\controllers\ApiController;
 use app\modules\serviceCategory\presentators\ServiceCategoryPresentator;
@@ -9,10 +9,10 @@ class ServiceCategoryController extends ApiController
 {
     private $categoryPresentator;
 
-    public function __construct($id, $module, ServiceCategoryPresentator $categoryPresentator, $config = [])
+    public function __construct($id, $module, ServiceCategoryPresentator $serviceCategoryPresentator, $config = [])
     {
         parent::__construct($id, $module, $config);
-        $this->categoryPresentator = $categoryPresentator;
+        $this->categoryPresentator = $serviceCategoryPresentator;
     }
 
     /**
@@ -25,20 +25,20 @@ class ServiceCategoryController extends ApiController
      *     )
      * )
      */
-    public function actionCategories()
+    public function actionServicesCatalog()
     {
-        return $this->categoryPresentator->getAllCategories();
+        return $this->categoryPresentator->getServiceCategories();
     }
 
     /**
      * @OA\Get(
-     *     path="/api/services/{alias}",
+     *     path="/api/service-catalog/{alias}",
      *     @OA\Parameter(name="alias",
      *        in="path",
      *        required=true,
      *        @OA\Schema(
      *          type="string",
-     *          default="podkategoriya-fundament-0"
+     *          default="fundament"
      *      )
      *     ),
      *     tags={"Pages"},
@@ -46,8 +46,8 @@ class ServiceCategoryController extends ApiController
      *     @OA\Response(response="404", description="An example resource")
      * )
      */
-    public function actionServices($alias)
+    public function actionServiceCatalog($alias)
     {
-        return $this->categoryPresentator->getSubcategories($alias);
+        return $this->categoryPresentator->getServiceSubcategories($alias);
     }
 }

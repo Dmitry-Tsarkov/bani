@@ -57,24 +57,4 @@ class CategoryPresentator
             'pagination' => $dataProvider->pagination
         ];
     }
-
-    public function getServiceCategories($alias)
-    {
-        $category = $this->serviceCategoryReader->getCategory($alias);
-        $dataProvider = $this->productCategoryReader->geSubcategories($category);
-
-        return [
-            'subcategories' => array_map(function (Category $subcategory) {
-                return [
-                    'id' => $subcategory->id,
-                    'alias' => $subcategory->alias,
-                    'title' => $subcategory->title,
-                    'description' => $subcategory->description,
-                    'minPrice' => 'от ' . CategoryHelper::getProductMinPrice($subcategory),
-                    'image' => Url::to($subcategory->getImageFileUrl('image'), true),
-                ];
-            }, $dataProvider->getModels()),
-            'pagination' => $dataProvider->pagination
-        ];
-    }
 }

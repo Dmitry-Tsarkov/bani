@@ -33,17 +33,6 @@ class MainPresentator
         $this->faqPresentator = $faqPresentator;
     }
 
-
-    public function getIndex()
-    {
-        $page = Page::getOrCreate('index');
-
-        return [
-            'meta' => $page->getMetaTags(),
-            'slider' => $this->sliderPresentator->getSlides(),
-        ];
-    }
-
     public function getLayout()
     {
         return [
@@ -74,6 +63,7 @@ class MainPresentator
 
         return [
             'meta' => $page->getMetaTags(),
+            'slider' => $this->sliderPresentator->getSlides(),
             'about' => [
                 'image' => Settings::getValue('about_image'),
                 'text' => Settings::getValue('about'),

@@ -51,13 +51,11 @@ class ProductPresentator
                 'title' => $product->title,
                 'description' => $product->description,
                 'bottom_description' => $product->bottom_description,
-
                 'images' => array_map(function (ProductImage $image) {
                     return [
                         'image' => Url::to($image->getImageFileUrl('image'), true),
                     ];
                 }, $product->images),
-
                 'characteristics' => array_map(function (Value $value) {
                     return [
                         'id' => $value->characteristic->id,
@@ -66,12 +64,14 @@ class ProductPresentator
                         'unit' => $value->getUnit(),
                     ];
                 }, $product->values),
-
                 'kits' => array_map(function (Kit $kit) {
                     return [
                         'id' => $kit->id,
                         'title' => $kit->title,
                         'text' => $kit->text,
+                        'bottom_text' => $kit->bottom_text,
+                        'price_type' => $kit->getPriceType(),
+                        'price' => $kit->price
                     ];
                 }, $product->kits)
             ],

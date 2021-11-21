@@ -38,23 +38,6 @@ class ServicePresentator
         ];
     }
 
-    public function getServicesCatalog()
-    {
-        $serviceCategories = $this->serviceCategoryReader->getServiceCategories();
-
-        return [
-            'services' => array_map(function (ServiceCategory $serviceCategory) {
-                return [
-                    'id' => $serviceCategory->id,
-                    'alias' => $serviceCategory->alias,
-                    'title' => $serviceCategory->title,
-                    'description' => $serviceCategory->description,
-                    'image' => Url::to($serviceCategory->getImageFileUrl('image'), true),
-                ];
-            }, $serviceCategories)
-        ];
-    }
-
     public function getService($alias)
     {
         $service = $this->services->getByAlias($alias);

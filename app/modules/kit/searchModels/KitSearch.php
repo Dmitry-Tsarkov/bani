@@ -3,6 +3,7 @@
 namespace app\modules\kit\searchModels;
 
 use app\modules\kit\models\Kit;
+use app\modules\product\models\Product;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
@@ -11,11 +12,13 @@ class KitSearch extends Model
     public $id;
     public $title;
     public $hint;
+    public $product_id;
 
     public function rules()
     {
         return [
             [['id', 'title', 'hint'], 'string'],
+            ['product_id', 'integer']
         ];
     }
 

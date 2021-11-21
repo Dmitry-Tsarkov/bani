@@ -18,9 +18,9 @@ use yii\web\View;
  * @var KitSearch $searchModel
  */
 
-$this->title = 'Вопрос-ответ';
+$this->title = 'Комплекты';
 $this->params['breadcrumbs'] = [
-    'Вопрос-ответ',
+    'Комплекты',
 ];
 
 ?>
@@ -44,7 +44,7 @@ $this->params['breadcrumbs'] = [
     'toolbar' => [
         [
             'content' =>
-                Html::a('Добавить отзыв', ['create'], ['class' => 'btn btn-success', 'data-pjax' => '0']) .
+                Html::a('Добавить комплект', ['create'], ['class' => 'btn btn-success', 'data-pjax' => '0']) .
                 Html::a(
                     Icon::show('arrow-sync-outline'),
                     ['index'],
