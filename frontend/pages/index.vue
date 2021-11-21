@@ -1,6 +1,6 @@
 <template lang="pug">
   .page__content    
-    MainSlider
+    MainSlider(:data='data.slider')
     .container
       Section(title='О компании')
         AboutMain

@@ -2,20 +2,13 @@
 .main-slider
   .main-slider__container(ref='container')
     .main-slider__wrapper
-      .main-slider__slide
+      .main-slider__slide(v-for="slide in data" :key="slide.id")
         .container
           .main-slider__content
             .main-slider__box 
-              h2.main-slider__title Базовый вектор развития даёт нам право принимать самостоятельные решения
-              p.main-slider__subtitle Базовый вектор развития даёт нам право принимать самостоятельные решения
-        img.main-slider__image(src='/img/main-slider.jpg') 
-      .main-slider__slide
-        .container
-          .main-slider__content
-            .main-slider__box 
-              h2.main-slider__title Базовый вектор развития даёт нам право принимать самостоятельные решения
-              p.main-slider__subtitle Базовый вектор развития даёт нам право принимать самостоятельные решения
-        img.main-slider__image(src='/img/main-slider.jpg') 
+              h2.main-slider__title {{slide.title}}
+              p.main-slider__subtitle {{slide.description}}
+        img.main-slider__image(:src='slide.image')       
     .main-slider__paginations 
 </template>
 
@@ -28,6 +21,7 @@ import Swiper, {
 } from 'swiper'
 Swiper.use([Navigation, Pagination, Parallax, Autoplay])
 export default {
+  props: ['data'],
   methods: {
     initMainSlider() {
       new Swiper(this.$refs.container, {
