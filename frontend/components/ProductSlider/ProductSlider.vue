@@ -3,6 +3,7 @@
   .product-slider__container(ref='container')
     .product-slider__wrapper 
       .product-slider__slide(v-for='item in data', :key='item.id')
+        p {{item.image}}
         img.product-slider__img(:src='item.image')
   .product-slider__container.is-thumb(ref='thumbs')
     button(type='button' title='Предыдущий слайд' ref="prev").product-slider__prev

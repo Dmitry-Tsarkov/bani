@@ -1,8 +1,8 @@
 <template lang="pug">
   .product    
-    .product__container 
+    .product__container
       .product__slider
-        ProductSlider(:data='data.images')
+        ProductSlider(:data='data.products[index].images')
       .product__specifications
         .product__specification(v-for="price in data.prices" :key="price.id")
           p.product__name {{price.title}}
@@ -13,13 +13,13 @@
             p.product__name.black {{characteristic.characteristic}}
             p.product__value.black {{characteristic.value}} {{characteristic.unit}}        
         button.product__button Рассчитать стоимость
-    //- .product__tabs
-    //-   button(v-for="(tab, i) in data.products" :key="i" type='button' @click='toggleTab(i)', :class='{ "active": index == i }').product__tab {{tab.title}}      
-    //- .product__content(v-for="(city, j) in data.products" :key="j" v-if="index == j")
-    //-   .product__wysiwyg
-    //-     Wysiwyg(:data='data.products[index].description')
-    //-   .product__wysiwyg.brown
-    //-     Wysiwyg(:data='data.products[index].bottom_description' class='brown')
+    .product__tabs
+      button(v-for="(tab, i) in data.products" :key="i" type='button' @click='toggleTab(i)', :class='{ "active": index == i }').product__tab {{tab.title}}      
+    .product__content(v-for="(city, j) in data.products" :key="j" v-if="index == j")
+      .product__wysiwyg
+        Wysiwyg(:data='data.products[index].description')
+      .product__wysiwyg.brown
+        Wysiwyg(:data='data.products[index].bottom_description' class='brown')
 </template>
 
 <script>
@@ -42,5 +42,3 @@ export default {
 }
 </script>
 
-<style src='./product.scss' lang="scss">
-</style>

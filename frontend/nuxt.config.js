@@ -1,11 +1,11 @@
 export default {
   server: {
-    port: 3001,
+    port: process.env.PORT,
   },
   target: 'server',
-  ssr: true,
+  ssr: process.env.SSR !== 'false',
   head: {
-    title: 'test-bani',
+    title: 'default-nuxt',
     htmlAttrs: {
       lang: 'ru-RU',
     },
@@ -37,7 +37,7 @@ export default {
 
   plugins: [
     { src: '~/plugins/plugins.js', mode: 'client' },
-    { src: '~/plugins/ymapPlugin.js', mode: 'client' },
+    { src: '~/plugins/ymapPlugin.js', mode: 'client' },     
     { src: '~plugins/vuelidate.js', ssr: true },
     '~plugins/api.js',
   ],
@@ -51,6 +51,6 @@ export default {
   },
 
   proxy: {
-    '/api/': 'http://app.bani-test.fvds.ru/',
+    '/api/': process.env.API_URL,
   },
 }

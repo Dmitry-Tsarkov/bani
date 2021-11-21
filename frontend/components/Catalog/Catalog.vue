@@ -2,7 +2,7 @@
 .catalog
   Warning  
   .catalog__grid
-    CatalogCard(v-for="item in data.categories" :key="item.id" :data='item')
+    CatalogCard(v-for="item in data" :key="item.id" :data='item' page='catalog')
 </template>
 
 <script>
