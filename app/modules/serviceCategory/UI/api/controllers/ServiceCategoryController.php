@@ -17,7 +17,7 @@ class ServiceCategoryController extends ApiController
 
     /**
      * @OA\Get(
-     *     path="/api/catalog",
+     *     path="/api/services-catalog",
      *     tags={"Pages"},
      *     @OA\Response(
      *      response="200",
@@ -32,13 +32,13 @@ class ServiceCategoryController extends ApiController
 
     /**
      * @OA\Get(
-     *     path="/api/catalog/{alias}",
+     *     path="/api/services/{alias}",
      *     @OA\Parameter(name="alias",
      *        in="path",
      *        required=true,
      *        @OA\Schema(
      *          type="string",
-     *          default="proekty-ban"
+     *          default="podkategoriya-fundament-0"
      *      )
      *     ),
      *     tags={"Pages"},
@@ -46,7 +46,7 @@ class ServiceCategoryController extends ApiController
      *     @OA\Response(response="404", description="An example resource")
      * )
      */
-    public function actionProjects($alias)
+    public function actionServices($alias)
     {
         return $this->categoryPresentator->getSubcategories($alias);
     }

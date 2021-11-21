@@ -23,12 +23,12 @@ class Module extends \yii\base\Module implements BootstrapInterface
     {
         $app->urlManager->addRules([
             'api/index' => 'api/default/index',
-            'api/catalog' => '/api/category/category/catalog', //Готово
-            'api/catalog/<alias>' => '/api/category/category/categories', //Готово
-            'api/products/<alias>' => '/api/product/product/products', //Готово
-            'api/product/<alias>' => '/api/product/product/product', //Готово
+            'api/catalog' => '/api/category/category/catalog',
+            'api/catalog/<alias>' => '/api/category/category/categories',
+            'api/products/<alias>' => '/api/product/product/products',
+            'api/product/<alias>' => '/api/product/product/product',
 
-            'api/services-catalog' => '/api/service/service/services-catalog', //Готово
+            'api/services-catalog' => '/api/service/service/services-catalog',
             'api/services/<alias>' => '/api/service/service/services',
             'api/service/<alias>' => '/api/service/service/service',
 

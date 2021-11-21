@@ -38,7 +38,7 @@ class ActionController extends ApiController
      *        required=true,
      *        @OA\Schema(
      *          type="string",
-     *          default="ya-uzhe"
+     *          default="na-chto-zh-penka"
      *      )
      *     ),
      *     tags={"Actions"},
