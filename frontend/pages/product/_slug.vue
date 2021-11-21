@@ -1,9 +1,9 @@
 <template lang="pug">
 .page__content 
-  .container
+  .container    
     Breadcrumbs(:data='breadcrumbs')
-    Headline(title='Баня 3*3 м с выносом')
-    Product(:data='data')     
+    Headline(title='Баня 3*3 м с выносо7м')
+    Product(:data='data.product')        
 </template>
 
 <script>
@@ -51,11 +51,15 @@ export default {
   //     title: this.data.product.title,
   //   })
   // },
-  asyncData(context) {
-    return context.$api.load(
-      `products/${context.route.params.slug}`,
-      context.route.query
-    )
-  },
+  // asyncData(context) {
+  //   return context.$api.load(
+  //     `products/${context.route.params.slug}`,
+  //     context.route.query
+  //   )
+  // },
+  async asyncData({$axios, route}) {
+    const data = await $axios.$get(`http://app.bani-test.fvds.ru/api/product/${route.params.slug}`, route.query)
+    return { data }
+  }
 }
 </script>

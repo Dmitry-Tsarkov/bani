@@ -1,5 +1,5 @@
-<template lang="pug">
-  nuxt-link.catalog-card(:to='"/catalog/" + data.alias')
+<template lang="pug">    
+  nuxt-link.catalog-card(:to='"/" + page + "/" + data.alias')
     .catalog-card__cover
       img.catalog-card__image(:src='data.image')
     .catalog-card__container
@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  props: ['data']
+  props: ['data', 'page']
 }
 </script>
 

@@ -1,19 +1,14 @@
 <template lang="pug">
 .reviews-slider
+  p {{data}}
   .reviews-slider__container(ref='container')
     .reviews-slider__wrapper
-      .reviews-slider__slide        
+      .reviews-slider__slide(v-for="slide in data" :key="slide.id")        
         .reviews-slider__content          
-          p.reviews-slider__text Также как высококачественный прототип будущего проекта выявляет срочную потребность кластеризации усилий. Задача организации, в особенности же высококачественный прототип будущего проекта способствует подготовке и реализации поэтапного и последовательного развития общества. А ещё стремящиеся вытеснить традиционное производство, нанотехнологии формируют глобальную экономическую сеть и при этом -  разоблачены. Каждый из нас понимает очевидную вещь: реализация намеченных плановых заданий говорит о возможностях новых предложений. Банальные, но неопровержимые выводы, а также диаграммы связей лишь добавляют фракционных разногласий и указаны как претенденты на роль ключевых факторов.
-          p.reviews-slider__name Виталий
+          p.reviews-slider__text {{slide.description}}
+          p.reviews-slider__name {{slide.name}}
         .reviews-slider__cover
-          img.reviews-slider__image(src='/img/main-slider.jpg')       
-      .reviews-slider__slide        
-        .reviews-slider__content          
-          p.reviews-slider__text Также как высококачественный прототип будущего проекта выявляет срочную потребность кластеризации усилий. Задача организации, в особенности же высококачественный прототип будущего проекта способствует подготовке и реализации поэтапного и последовательного развития общества. А ещё стремящиеся вытеснить традиционное производство, нанотехнологии формируют глобальную экономическую сеть и при этом -  разоблачены. Каждый из нас понимает очевидную вещь: реализация намеченных плановых заданий говорит о возможностях новых предложений. Банальные, но неопровержимые выводы, а также диаграммы связей лишь добавляют фракционных разногласий и указаны как претенденты на роль ключевых факторов.
-          p.reviews-slider__name Виталий
-        .reviews-slider__cover
-          img.reviews-slider__image(src='/img/main-slider.jpg')       
+          img.reviews-slider__image(src='/img/main-slider.jpg')
     .reviews-slider__paginations 
 </template>
 
@@ -26,6 +21,7 @@ import Swiper, {
 } from 'swiper'
 Swiper.use([Navigation, Pagination, Parallax, Autoplay])
 export default {
+  props: ['data'],
   methods: {
     initReviewsSlider() {
       new Swiper(this.$refs.container, {

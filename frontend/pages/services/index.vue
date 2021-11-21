@@ -1,9 +1,10 @@
 <template lang="pug">
-.page__content.dark 
+.page__content
   .container
     Breadcrumbs(:data='breadcrumbs')
-    Headline(title='Акции')
-    Promotions(:data='data.actions')     
+    Headline(title='Услуги')
+    .catalog__grid.no-margin
+      CatalogCard(v-for="item in data.services" :key="item.id" :data='item' page='services')
 </template>
 
 <script>
@@ -17,7 +18,7 @@ export default {
     breadcrumbs() {
       let breadcrumbs = [
         {
-          title: 'Акции',
+          title: 'Услуги',
         },        
       ]
 
@@ -28,7 +29,7 @@ export default {
   //   return context.$api.load('actions')
   // },
   async asyncData({$axios}) {
-    const data = await $axios.$get(`http://app.bani-test.fvds.ru/api/actions`)
+    const data = await $axios.$get(`http://app.bani-test.fvds.ru/api/services-catalog`)
     return { data }
   }
 }

@@ -29,11 +29,15 @@ export default {
       return breadcrumbs
     },
   },
-  asyncData(context) {
+  // asyncData(context) {
     
-    return context.$api.load(
-      `actions/${context.route.params.slug}`
-    )
-  },
+  //   return context.$api.load(
+  //     `actions/${context.route.params.slug}`
+  //   )
+  // },
+  async asyncData({$axios, route}) {
+    const data = await $axios.$get(`http://app.bani-test.fvds.ru/api/actions/${route.params.slug}`, route.query)
+    return { data }
+  }
 }
 </script>

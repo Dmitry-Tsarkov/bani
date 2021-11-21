@@ -25,9 +25,13 @@ export default {
       return breadcrumbs
     },
   },
-  asyncData(context) {
-    return context.$api.load('reviews')
-  },
+  // asyncData(context) {
+  //   return context.$api.load('reviews')
+  // },
+  async asyncData({$axios}) {
+    const data = await $axios.$get(`http://app.bani-test.fvds.ru/api/reviews`)
+    return { data }
+  }
 }
 </script>
 
