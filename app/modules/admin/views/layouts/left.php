@@ -97,6 +97,11 @@ use dmstr\widgets\Menu;
                                 'url' => ['/admin/faq/faq/index'],
                                 'active' => Yii::$app->controller->module->id == 'faq',
                             ],
+                            [
+                                'label' => 'Регионы',
+                                'url' => ['/admin/region/region/index'],
+                                'active' => Yii::$app->controller->module->id == 'region',
+                            ],
                         ],
                     ],
                     [

@@ -23,7 +23,7 @@ class PortfolioSeeder extends BaseSeeder
                 new CopyUploadedFile($this->getRandomImage('/portfolios')),
                 Seo::blank()
             );
-//            $portfolio->status = $this->faker->numberBetween(Portfolio::STATUS_DRAFT, Portfolio::STATUS_ACTIVE);
+
             $portfolio->status = Portfolio::STATUS_ACTIVE;
             $this->dateHelper->addTime($portfolio);
             $portfolio->save();

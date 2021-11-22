@@ -10,6 +10,7 @@ use app\modules\kit\seeds\KitSeeder;
 use app\modules\page\seeders\PageSeeder;
 use app\modules\portfolio\seeders\PortfolioSeeder;
 use app\modules\product\seeders\ProductSeeder;
+use app\modules\region\seeds\RegionSeeder;
 use app\modules\review\seeders\ReviewSeeder;
 use app\modules\service\seeders\ServiceSeeder;
 use app\modules\serviceCategory\seeders\ServiceCategorySeeder;
@@ -24,6 +25,7 @@ class SeederController extends Controller
     public function actionSeed()
     {
         Yii::createObject(PageSeeder::class)->seed(); gc_collect_cycles();
+        Yii::createObject(RegionSeeder::class)->seed(100); gc_collect_cycles();
         Yii::createObject(ReviewSeeder::class)->seed(20); gc_collect_cycles();
         Yii::createObject(FaqSeeder::class)->seed(10); gc_collect_cycles();
         Yii::createObject(PortfolioSeeder::class)->seed(25); gc_collect_cycles();
