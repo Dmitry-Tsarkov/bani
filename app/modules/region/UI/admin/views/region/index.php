@@ -119,11 +119,11 @@ $this->params['breadcrumbs'] = ['Регионы']
 //        ],
         [
             'class' => ActionColumn::class,
-            'template' => '{view} {delete}',
+            'template' => '{update} {delete}',
             'width' => '180px',
             'buttons' => [
-                'view' => function ($url, $model, $key) {
-                    return Html::a('Просмотр', $url, ['class' => 'btn btn-primary btn-xs', 'data-pjax' => '0']);
+                'update' => function ($url) {
+                    return Html::a('Редактировать', $url, ['class' => 'btn btn-primary btn-xs', 'data-pjax' => '0']);
                 },
                 'delete' => function ($url, $model, $key) {
                     return Html::a('<i class="fa fa-trash" aria-hidden="true"></i>', [

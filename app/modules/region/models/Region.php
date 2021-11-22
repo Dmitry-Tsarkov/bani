@@ -3,6 +3,7 @@
 namespace app\modules\region\models;
 
 use app\modules\admin\behaviors\SlugBehavior;
+use app\modules\admin\traits\QueryExceptions;
 use app\modules\region\behaviors\RegionSlugBehavior;
 use app\modules\seo\behaviors\SeoBehavior;
 use app\modules\seo\valueObjects\Seo;
@@ -33,6 +34,13 @@ use yii2tech\ar\position\PositionBehavior;
 
 class Region extends ActiveRecord
 {
+    use QueryExceptions;
+
+    /**
+     * @var Seo
+     */
+    public $seo;
+
     public static function tableName()
     {
         return 'regions';
@@ -58,5 +66,26 @@ class Region extends ActiveRecord
         $self->seo = $seo ?? Seo::blank();
 
         return $self;
+    }
+
+    public function beforeSave($insert)
+    {
+        $this->setAttribute('meta_t', $this->seo->getTitle());
+        $this->setAttribute('meta_d', $this->seo->getDescription());
+        $this->setAttribute('meta_k', $this->seo->getKeywords());
+        $this->setAttribute('h1', $this->seo->getH1());
+
+        return parent::beforeSave($insert);
+    }
+
+    public function afterFind()
+    {
+        $this->seo = new Seo(
+            $this->getAttribute('meta_t'),
+            $this->getAttribute('meta_d'),
+            $this->getAttribute('meta_k'),
+            $this->getAttribute('h1')
+        );
+        parent::afterFind();
     }
 }
