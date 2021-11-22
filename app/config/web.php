@@ -12,11 +12,11 @@ $config = [
     'language' => 'ru',
     'basePath' => dirname(__DIR__),
     'bootstrap' => [
+        'api',
         \app\bootstrap\SetUp::class,
         \app\modules\user\Bootstrap::class,
         'log',
         'admin',
-        'api',
     ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',

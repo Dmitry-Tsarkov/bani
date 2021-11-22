@@ -67,7 +67,7 @@ export default {
       this.isLoading = true
 
       this.$api
-        .post('reviews/send', this.form)
+        .post('faq/send', this.form)
         .then((data) => {
           
         })

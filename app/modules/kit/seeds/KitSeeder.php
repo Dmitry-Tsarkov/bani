@@ -16,7 +16,10 @@ class KitSeeder extends BaseSeeder
             $kits = Kit::create(
                 $this->faker->realText(20),
                 $this->faker->realText(10),
-                $this->faker->realText(100)
+                $this->faker->numberBetween(500, 100000),
+                $this->faker->randomElement([Kit::TYPE_RANGE, Kit::TYPE_STATIC]),
+                $this->faker->realText(1000),
+                $this->faker->realText(500)
             );
 
             $kits->save();

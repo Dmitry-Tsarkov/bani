@@ -5,16 +5,11 @@
     h2.portfolio-slider__title Наши работы  
     .portfolio-slider__container(ref='container')
       .portfolio-slider__wrapper 
-        .portfolio-slider__slide
-          img.portfolio-slider__image(src='/img/portfolio-1.jpg')
-        .portfolio-slider__slide
-          img.portfolio-slider__image(src='/img/portfolio-2.jpg')
-        .portfolio-slider__slide
-          img.portfolio-slider__image(src='/img/portfolio-3.jpg')
-        .portfolio-slider__slide
-          img.portfolio-slider__image(src='/img/portfolio-1.jpg')
+        .portfolio-slider__slide(v-for="slide in data" :key="slide.id")
+          nuxt-link(:to='"/portfolio/" + slide.alias')
+            img.portfolio-slider__image(:src='slide.image') 
       .portfolio-slider__button
-        nuxt-link.portfolio-slider__link(to='/') Смотреть все
+        nuxt-link.portfolio-slider__link(to='/portfolio') Смотреть все
     .portfolio-slider__controls
       button(type='button' title='Предыдущий слайд' ref="prev").portfolio-slider__prev
         img.portfolio-slider__icon.prev(src='/icons/chevron.svg')
@@ -27,6 +22,7 @@
 import Swiper, { Navigation } from 'swiper'
 Swiper.use(Navigation)
 export default {
+  props: ['data'],
   methods: {
     initSolutionsSlider() {
       this.swiper = new Swiper(this.$refs.container, {

@@ -3,6 +3,7 @@
 namespace app\modules\api\controllers;
 
 use app\modules\api\presentators\MainPresentator;
+use yii\helpers\VarDumper;
 use function OpenApi\scan;
 
 class DefaultController extends ApiController
@@ -13,21 +14,6 @@ class DefaultController extends ApiController
     {
         parent::__construct($id, $module, $config);
         $this->presentator = $presentator;
-    }
-
-    /**
-     * @OA\Get(
-     *     path="/api/index",
-     *     tags={"Pages"},
-     *     @OA\Response(
-     *      response="200",
-     *      description="An example resource",
-     *     )
-     * )
-     */
-    public function actionIndex()
-    {
-        return $this->presentator->getIndex();
     }
 
     /**

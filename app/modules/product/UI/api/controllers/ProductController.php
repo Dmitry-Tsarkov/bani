@@ -23,7 +23,7 @@ class ProductController extends ApiController
      *        required=true,
      *        @OA\Schema(
      *          type="string",
-     *          default="podkategoriya-proekty-ban-tovar-0"
+     *          default="podkategoriya-proekty-ban-0"
      *      )
      *     ),
      *     tags={"Pages"},
@@ -44,7 +44,7 @@ class ProductController extends ApiController
      *        required=true,
      *        @OA\Schema(
      *          type="string",
-     *          default="podkategoriya-proekty-ban-tovar-0"
+     *          default="tovar-podkategorii-3-1"
      *      )
      *     ),
      *     tags={"Pages"},

@@ -9,18 +9,18 @@ use yii\helpers\Url;
 
 class ServiceCategoryPresentator
 {
-    private $categoryReader;
+    private $serviceCategoryReader;
 
     public function __construct(ServiceCategoryReader $categoryReader)
     {
-        $this->categoryReader = $categoryReader;
+        $this->serviceCategoryReader = $categoryReader;
     }
 
-    public function getAllCategories()
+    public function getServiceCategories()
     {
-        $categories = $this->categoryReader->getCategories();
+        $serviceCategories = $this->serviceCategoryReader->getServiceCategories();
         return [
-            'categories' => array_map(function (ServiceCategory $category) {
+            'serviceCategories' => array_map(function (ServiceCategory $category) {
                 return [
                     'id' => $category->id,
                     'alias' => $category->alias,
@@ -28,14 +28,14 @@ class ServiceCategoryPresentator
                     'description' => $category->description,
                     'image' => Url::to($category->getImageFileUrl('image'), true),
                 ];
-            }, $categories)
+            }, $serviceCategories)
         ];
     }
 
-    public function getSubcategories($alias)
+    public function getServiceSubcategories($alias)
     {
-        $category = $this->categoryReader->getCategory($alias);
-        $dataProvider = $this->categoryReader->geSubcategories($category);
+        $category = $this->serviceCategoryReader->getCategory($alias);
+        $dataProvider = $this->serviceCategoryReader->getSubcategories($category);
 
         return [
             'subcategories' => array_map(function (ServiceCategory $subcategory) {

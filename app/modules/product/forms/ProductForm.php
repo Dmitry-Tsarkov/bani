@@ -25,7 +25,6 @@ class ProductForm extends CompositeForm
     public $image;
     public $price;
     public $price_type;
-//    public $kits = [];
 
     /**
      * @var Product|null
@@ -43,7 +42,6 @@ class ProductForm extends CompositeForm
             $this->price = $product->price;
             $this->price_type = $product->price_type;
             $this->kits = new KitEditForm($product);
-//            $this->kits = $product->kits;
         }
 
         $this->seo = new SeoForm($product ? $product->seo : null);
@@ -63,7 +61,6 @@ class ProductForm extends CompositeForm
             [['title', 'description', 'bottom_description', 'alias'], 'string'],
             [['id', 'categoryId', 'price_type'], 'integer'],
             [['price'], 'double'],
-//            ['kits', 'each', 'rule' => ['integer']],
             ['image', 'image', 'extensions' => ['png', 'jpg', 'jpeg'], 'checkExtensionByMimeType' => false],
         ];
     }

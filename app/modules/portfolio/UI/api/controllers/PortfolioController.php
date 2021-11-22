@@ -39,7 +39,7 @@ class PortfolioController extends ApiController
      *        required=true,
      *        @OA\Schema(
      *          type="string",
-     *          default="proekty-ban"
+     *          default="manilovym-i-vovse-ne-pochital-sebya"
      *      )
      *     ),
      *     tags={"Pages"},

@@ -1,20 +1,20 @@
 <template lang="pug">
   .page__content    
-    MainSlider
+    MainSlider(:data='data.slider')
     .container
       Section(title='О компании')
         AboutMain
-    PortfolioSlider
+    PortfolioSlider(:data='data.portfolio')
     .container
       Section(title='Преимущества')
         Advantages
       Section(title='Отзывы')
-        ReviewsSlider
+        ReviewsSlider(:data='data.reviews')
     .container-brown
       img.container-brown__smoke(src='/img/smoke.png')
       .container
         Section(title='Вопросы и ответы')
-          Faq
+          Faq(:data='data.faq')
     .container
       Section(title='Остались вопросы?')
         ContactsMain
@@ -22,9 +22,9 @@
 
 <script>
 export default {
-  asyncData(context) {
-    // return context.$api.load('actions')
-    // return context.$api.load('actions')
-  },
+  async asyncData({$axios}) {
+    const data = await $axios.$get(`http://app.bani-test.fvds.ru/api/home`)
+    return { data }
+  }
 }
 </script>

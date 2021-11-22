@@ -1,6 +1,7 @@
 <?php
 
-use app\modules\kit\models\Kit;
+use app\modules\kit\forms\KitForm;
+use app\modules\kit\helpers\DropDownHelper;
 use kartik\form\ActiveForm;
 use mihaildev\ckeditor\CKEditor;
 use yii\helpers\Html;
@@ -8,7 +9,7 @@ use yii\web\View;
 
 /**
  * @var View $this
- * @var Kit $kit
+ * @var KitForm $kitForm
  */
 
 ?>
@@ -20,14 +21,21 @@ use yii\web\View;
         </div>
         <div class="box-body">
             <div class="col-md-6">
-                <?= $form->field($kit, 'title') ?>
+                <?= $form->field($kitForm, 'title') ?>
             </div>
             <div class="col-md-6">
-                <?= $form->field($kit, 'hint') ?>
+                <?= $form->field($kitForm, 'hint') ?>
             </div>
+            <div class="col-md-6">
+                <?= $form->field($kitForm, 'price_type')->dropDownList(DropDownHelper::priceTypeDropDown()) ?>
+            </div>
+            <div class="col-md-6">
+                <?= $form->field($kitForm, 'price') ?>
+            </div>
+            <?= $form->field($kitForm, 'text')->widget(CKEditor::class); ?>
+            <?= $form->field($kitForm, 'bottom_text')->widget(CKEditor::class); ?>
+            <?= Html::submitButton('Сохранить', ['class' => 'btn btn-primary']) ?>
+            <?php ActiveForm::end() ?>
         </div>
-        <?= $form->field($kit, 'text')->widget(CKEditor::class); ?>
-        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-primary']) ?>
-        <?php ActiveForm::end() ?>
     </div>
 </div>

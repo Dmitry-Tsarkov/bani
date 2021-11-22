@@ -5,7 +5,9 @@
     Headline(title='Наши работы')
     Warning
     .catalog__grid
-      PortfolioCard(v-for="item in portfolio" :key="item.id" :data='item')
+      PortfolioCard(v-for="item in data.reveiws" :key="item.id" :data='item')
+    .product-card__pagination(v-if='hasPagination')
+      Pagination(:data='data.pagination')
 </template>
 
 <script>
@@ -75,6 +77,15 @@ export default {
 
       return breadcrumbs
     },
+    hasPagination() {
+      return (
+        this.data.pagination.totalCount > this.data.pagination.defaultPageSize
+      )
+    },
   },
+  async asyncData({$axios}) {
+    const data = await $axios.$get(`http://app.bani-test.fvds.ru/api/portfolios`)
+    return { data }
+  }
 }
 </script>
