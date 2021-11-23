@@ -8,6 +8,7 @@ use app\modules\region\searchModels\RegionSearch;
 use DomainException;
 use app\modules\region\forms\RegionForm;
 use app\modules\region\services\RegionService;
+use Exception;
 use Yii;
 
 class RegionController extends BalletController
@@ -43,6 +44,27 @@ class RegionController extends BalletController
         }
 
         return $this->render('create', compact('regionForm'));
+    }
+
+    public function actionUpdate($id)
+    {
+        $region = Region::getOrFail($id);
+        $regionForm = new RegionForm($region);
+
+        if ($regionForm->load(Yii::$app->request->post()) && $regionForm->validate()) {
+            try {
+                $this->service->edit($region->id, $regionForm);
+                Yii::$app->session->setFlash('success', 'Регион обновлен');
+                return $this->redirect(['update', 'id' => $region->id]);
+            } catch (DomainException $e) {
+                Yii::$app->session->setFlash('error', $e->getMessage());
+            } catch (Exception $e) {
+                Yii::$app->errorHandler->logException($e);
+                Yii::$app->session->setFlash('error', $e->getMessage());
+            }
+        }
+
+        return $this->render('update', compact('regionForm', 'region'));
     }
 
     public function actionDelete($id)

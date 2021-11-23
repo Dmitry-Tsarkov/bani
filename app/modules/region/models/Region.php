@@ -68,6 +68,15 @@ class Region extends ActiveRecord
         return $self;
     }
 
+    public function edit($city, $district, $description, ?Seo $seo = null): void
+    {
+        $this->city = $city;
+        $this->district = $district;
+        $this->description = $description;
+
+        $this->seo = $seo ?? Seo::blank();
+    }
+
     public function beforeSave($insert)
     {
         $this->setAttribute('meta_t', $this->seo->getTitle());

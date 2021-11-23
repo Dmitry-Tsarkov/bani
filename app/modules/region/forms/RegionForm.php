@@ -25,7 +25,7 @@ class RegionForm extends CompositeForm
 
     public function __construct(?Region $region = null)
     {
-        if  (!empty($district)) {
+        if  (!empty($region)) {
             $this->city = $region->city;
             $this->city_alias = $region->city_alias;
             $this->district = $region->district;

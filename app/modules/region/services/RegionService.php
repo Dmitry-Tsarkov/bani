@@ -43,4 +43,23 @@ class RegionService
 
         return $region;
     }
+
+    public function edit(int $id, RegionForm $form): void
+    {
+        $review = $this->regions->getById($id);
+
+        $review->edit(
+            $form->city,
+            $form->district,
+            $form->description,
+            new Seo(
+                $form->seo->title,
+                $form->seo->description,
+                $form->seo->keywords,
+                $form->seo->h1
+            )
+        );
+
+        $this->regions->save($review);
+    }
 }

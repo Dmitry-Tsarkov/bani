@@ -28,7 +28,9 @@ use yii\web\View;
                 <?= $form->field($regionForm, 'district') ?>
                 <?= $form->field($regionForm, 'district_alias') ?>
             </div>
-            <?= $form->field($regionForm, 'description')->widget(CKEditor::class)->label('Контент') ?>
+            <div class="col-md-12">
+                <?= $form->field($regionForm, 'description')->widget(CKEditor::class)->label('Контент') ?>
+            </div>
         </div>
 
     </div>
