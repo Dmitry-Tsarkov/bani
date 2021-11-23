@@ -40,7 +40,7 @@ $this->params['breadcrumbs'] = ['Регионы']
     'toolbar' => [
         [
             'content' =>
-                Html::a('Добавить товар', ['create'], ['class' => 'btn btn-success', 'data-pjax' => '0']) .
+                Html::a('Добавить регион', ['create'], ['class' => 'btn btn-success', 'data-pjax' => '0']) .
                 Html::a(
                     Icon::show('arrow-sync-outline'),
                     ['index'],
@@ -103,7 +103,7 @@ $this->params['breadcrumbs'] = ['Регионы']
             'width' => '70px',
         ],
         'city',
-        'region',
+        'district',
 //        [
 //            'class' => DataColumn::class,
 //            'attribute' => 'status',

@@ -11,7 +11,6 @@ use DomainException;
 use Exception;
 use RuntimeException;
 use Yii;
-use yii\helpers\VarDumper;
 
 class KitController extends BalletController
 {

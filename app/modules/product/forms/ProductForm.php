@@ -5,7 +5,6 @@ namespace app\modules\product\forms;
 use app\modules\admin\forms\CompositeForm;
 use app\modules\admin\helpers\NestedSetsHelper;
 use app\modules\category\models\Category;
-use app\modules\kit\models\Kit;
 use app\modules\product\models\Product;
 use app\modules\seo\forms\SeoForm;
 
@@ -41,9 +40,9 @@ class ProductForm extends CompositeForm
             $this->bottom_description = $product->bottom_description;
             $this->price = $product->price;
             $this->price_type = $product->price_type;
-            $this->kits = new KitEditForm($product);
         }
 
+        $this->kits = new KitEditForm($product ? $product : null);
         $this->seo = new SeoForm($product ? $product->seo : null);
 
         parent::__construct();

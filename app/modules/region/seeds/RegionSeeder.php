@@ -2,7 +2,7 @@
 
 namespace app\modules\region\seeds;
 
-use app\modules\regions\models\Region;
+use app\modules\region\models\Region;
 use app\modules\seeder\components\BaseSeeder;
 use yii\helpers\Console;
 

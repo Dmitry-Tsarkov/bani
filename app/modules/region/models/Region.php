@@ -21,13 +21,13 @@ use yii2tech\ar\position\PositionBehavior;
  * @property int $status [int(11)]
  * @property int $created_at [int(11)]
  * @property int $updated_at [int(11)]
- * @property string $region [varchar(255)]
+ * @property string $district [varchar(255)]
  * @property string $description [varchar(255)]
  * @property string $meta_t [varchar(255)]
  * @property string $meta_d [varchar(255)]
  * @property string $meta_k [varchar(255)]
  * @property string $h1 [varchar(255)]
- * @property string $region_alias [varchar(255)]  Алиас региона
+ * @property string $district_alias [varchar(255)]  Алиас региона
  * @property string $city [varchar(255)]
  * @property string $city_alias [varchar(255)]  Алиас города
  */
@@ -56,11 +56,11 @@ class Region extends ActiveRecord
         ];
     }
 
-    public static function create($city, $region, $description, ?Seo $seo = null): self
+    public static function create($city, $district, $description, ?Seo $seo = null): self
     {
         $self = new self();
         $self->city = $city;
-        $self->region = $region;
+        $self->district = $district;
         $self->description = $description;
 
         $self->seo = $seo ?? Seo::blank();

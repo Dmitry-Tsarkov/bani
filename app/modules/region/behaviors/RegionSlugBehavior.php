@@ -9,8 +9,8 @@ use yii\helpers\Inflector;
 
 class RegionSlugBehavior extends SlugBehavior
 {
-    public $in_attribute_for_region = 'region';
-    public $out_attribute_for_region = 'region_alias';
+    public $in_attribute_for_region = 'district';
+    public $out_attribute_for_region = 'district_alias';
     public $in_attribute = 'city';
     public $out_attribute = 'city_alias';
     public $translit = true;
