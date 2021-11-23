@@ -62,6 +62,7 @@ $config = [
                 'service' => \app\modules\service\UI\admin\Module::class,
                 'service-category' => \app\modules\serviceCategory\UI\admin\Module::class,
                 'kit' => \app\modules\kit\UI\admin\Module::class,
+                'region' => \app\modules\region\UI\admin\Module::class,
             ],
         ],
         'api' => [

@@ -1,8 +1,6 @@
 <?php
 
-
-namespace app\modules\regions\UI\admin;
-
+namespace app\modules\region\UI\api;
 
 class Module extends \yii\base\Module
 {

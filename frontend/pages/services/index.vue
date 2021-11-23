@@ -4,7 +4,7 @@
     Breadcrumbs(:data='breadcrumbs')
     Headline(title='Услуги')
     .catalog__grid.no-margin
-      CatalogCard(v-for="item in data.services" :key="item.id" :data='item' page='services')
+      CatalogCard(v-for="item in data.serviceCategories" :key="item.id" :data='item' page='services')
 </template>
 
 <script>
