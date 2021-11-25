@@ -5,6 +5,7 @@ namespace app\modules\region\repositories;
 use app\modules\region\models\Region;
 use DomainException;
 use RuntimeException;
+use yii\web\NotFoundHttpException;
 
 class RegionRepository
 {
@@ -31,10 +32,10 @@ class RegionRepository
         }
     }
 
-    public function hasByCityAlias($city_alias): bool
+    public function hasByCityAlias($title_alias): bool
     {
         return (bool)Region::find()
-            ->andWhere(['city_alias' => $city_alias])
+            ->andWhere(['title_alias' => $title_alias])
             ->limit(1)
             ->count('id');
     }
@@ -46,5 +47,25 @@ class RegionRepository
             ->andWhere(['district_alias' => $district_alias])
             ->limit(1)
             ->count('id');
+    }
+
+    public function getRegions()
+    {
+        return Region::find()
+            ->select(['title', 'title_alias', 'district', 'district_alias' ])
+            ->all();
+    }
+
+    public function getRegionByAlias($alias)
+    {
+        $region = Region::find()
+            ->andWhere(['title_alias' => $alias])
+            ->one();
+
+        if (!$region) {
+            throw new NotFoundHttpException('Регион не найден');
+        }
+
+        return $region;
     }
 }

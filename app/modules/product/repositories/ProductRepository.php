@@ -5,6 +5,7 @@ namespace app\modules\product\repositories;
 use app\modules\product\models\Product;
 use DomainException;
 use RuntimeException;
+use yii\web\NotFoundHttpException;
 
 class ProductRepository
 {
@@ -50,8 +51,14 @@ class ProductRepository
 
     public function getByAlias($alias)
     {
-        return Product::find()
+        $product = Product::find()
             ->andWhere(['alias' => $alias])
             ->one();
+
+        if (!$product) {
+            throw new NotFoundHttpException('Продукт не найден');
+        }
+
+        return $product;
     }
 }

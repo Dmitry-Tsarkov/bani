@@ -28,8 +28,8 @@ use yii2tech\ar\position\PositionBehavior;
  * @property string $meta_k [varchar(255)]
  * @property string $h1 [varchar(255)]
  * @property string $district_alias [varchar(255)]  Алиас региона
- * @property string $city [varchar(255)]
- * @property string $city_alias [varchar(255)]  Алиас города
+ * @property string $title [varchar(255)]  Город
+ * @property string $title_alias [varchar(255)]  Алиас Города
  */
 
 class Region extends ActiveRecord
@@ -56,10 +56,10 @@ class Region extends ActiveRecord
         ];
     }
 
-    public static function create($city, $district, $description, ?Seo $seo = null): self
+    public static function create($title, $district, $description, ?Seo $seo = null): self
     {
         $self = new self();
-        $self->city = $city;
+        $self->title = $title;
         $self->district = $district;
         $self->description = $description;
 
@@ -68,9 +68,9 @@ class Region extends ActiveRecord
         return $self;
     }
 
-    public function edit($city, $district, $description, ?Seo $seo = null): void
+    public function edit($title, $district, $description, ?Seo $seo = null): void
     {
-        $this->city = $city;
+        $this->title = $title;
         $this->district = $district;
         $this->description = $description;
 
@@ -96,5 +96,13 @@ class Region extends ActiveRecord
             $this->getAttribute('h1')
         );
         parent::afterFind();
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'title' => 'Город',
+            'district' => 'Регион',
+        ];
     }
 }

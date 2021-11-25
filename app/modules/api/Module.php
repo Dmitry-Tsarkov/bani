@@ -43,6 +43,8 @@ class Module extends \yii\base\Module implements BootstrapInterface
             'api/portfolios' => 'api/portfolio/portfolio/portfolios',
             'api/portfolios/<alias>' => 'api/portfolio/portfolio/portfolio',
             'api/home' => 'api/default/home',
+            'api/regions' => 'api/regions/region/regions',
+            'api/regions/<alias>' => 'api/regions/region/region',
         ]);
     }
 }

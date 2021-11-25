@@ -11,8 +11,8 @@ class RegionSlugBehavior extends SlugBehavior
 {
     public $in_attribute_for_region = 'district';
     public $out_attribute_for_region = 'district_alias';
-    public $in_attribute = 'city';
-    public $out_attribute = 'city_alias';
+    public $in_attribute = 'title';
+    public $out_attribute = 'title_alias';
     public $translit = true;
 
     public function events()

@@ -78,6 +78,7 @@ $config = [
                 'portfolio' => \app\modules\portfolio\UI\api\Module::class,
                 'service' => \app\modules\service\UI\api\Module::class,
                 'service-category' => \app\modules\serviceCategory\UI\api\Module::class,
+                'regions' => \app\modules\region\UI\api\Module::class,
             ],
         ],
         'user' => \app\modules\user\Module::class,

@@ -11,8 +11,8 @@ use app\modules\seo\forms\SeoForm;
  */
 class RegionForm extends CompositeForm
 {
-    public $city;
-    public $city_alias;
+    public $title;
+    public $title_alias;
     public $district;
     public $district_alias;
     public $description;
@@ -26,8 +26,8 @@ class RegionForm extends CompositeForm
     public function __construct(?Region $region = null)
     {
         if  (!empty($region)) {
-            $this->city = $region->city;
-            $this->city_alias = $region->city_alias;
+            $this->title = $region->title;
+            $this->title_alias = $region->title_alias;
             $this->district = $region->district;
             $this->district_alias = $region->district_alias;
             $this->description = $region->description;
@@ -42,18 +42,18 @@ class RegionForm extends CompositeForm
     public function rules()
     {
         return [
-            [['city', 'district', 'description'], 'required'],
-            [['city_alias', 'district_alias', 'description'], 'string'],
+            [['title', 'description'], 'required'],
+            [['title_alias', 'district_alias', 'description'], 'string'],
             [['status'], 'integer'],
-            [['city_alias', 'district_alias'], 'match', 'pattern' => '/^[0-9a-z-]+$/','message'=>'Только латинские буквы и знак "-"'],
+            [['title_alias', 'district_alias'], 'match', 'pattern' => '/^[0-9a-z-]+$/','message'=>'Только латинские буквы и знак "-"'],
         ];
     }
 
     public function attributeLabels()
     {
         return [
-            'city' => 'Город',
-            'city_alias' => 'Алиас города',
+            'title' => 'Город',
+            'title_alias' => 'Алиас города',
             'district' => 'Регион',
             'district_alias' => 'Алиас региона',
             'description' => 'Контент',

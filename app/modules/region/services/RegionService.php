@@ -19,7 +19,7 @@ class RegionService
 
     public function create(RegionForm $form): Region
     {
-        if (!empty($form->city_alias) && $this->regions->hasByCityAlias($form->city_alias)) {
+        if (!empty($form->title_alias) && $this->regions->hasByCityAlias($form->title_alias)) {
             throw new DomainException('Такой алиас города уже есть');
         }
 
@@ -28,7 +28,7 @@ class RegionService
         }
 
         $region = Region::create(
-            $form->city,
+            $form->title,
             $form->district,
             $form->description,
             new Seo(
@@ -49,7 +49,7 @@ class RegionService
         $review = $this->regions->getById($id);
 
         $review->edit(
-            $form->city,
+            $form->title,
             $form->district,
             $form->description,
             new Seo(

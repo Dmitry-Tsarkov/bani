@@ -20,14 +20,14 @@ use yii\web\View;
         </div>
         <div class="box-body">
             <div class="col-md-6">
-                <?= $form->field($regionForm, 'city') ?>
-                <?= $form->field($regionForm, 'city_alias') ?>
+                <?= $form->field($regionForm, 'title') ?>
+                <?= $form->field($regionForm, 'title_alias') ?>
 
             </div>
-            <div class="col-md-6">
-                <?= $form->field($regionForm, 'district') ?>
-                <?= $form->field($regionForm, 'district_alias') ?>
-            </div>
+<!--            <div class="col-md-6">-->
+<!--                --><?//= $form->field($regionForm, 'district') ?>
+<!--                --><?//= $form->field($regionForm, 'district_alias') ?>
+<!--            </div>-->
             <div class="col-md-12">
                 <?= $form->field($regionForm, 'description')->widget(CKEditor::class)->label('Контент') ?>
             </div>
