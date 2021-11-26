@@ -1,0 +1,37 @@
+.calculator {
+  &__head {
+    padding-bottom: 48px;
+  }
+
+  &__text {
+    color: $brown;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    max-width: 842px;
+  }
+
+  &__body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 40px;
+  }
+
+  &__title {
+    color: $brown;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 23px;
+  }
+
+  &__options {
+    margin-top: 24px;
+    padding-left: 8px;
+  }
+
+  &__option {
+    & + & {
+      margin-top: 16px;
+    }
+  }
+}

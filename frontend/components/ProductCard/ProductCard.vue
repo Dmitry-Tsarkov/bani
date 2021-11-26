@@ -5,7 +5,7 @@ nuxt-link.product-card(:to='"/product/" + product.alias')
   .product-card__container
     p.product-card__title {{ product.title }}
     p.product-card__text {{ product.description }}
-    p.product-card__title {{ product.minPrice }} руб. 
+    p.product-card__title {{ product.price_type }} {{ product.price }} руб. 
     button.product-card__button Рассчитать стоимость 
 </template>
 

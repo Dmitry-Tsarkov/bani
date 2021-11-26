@@ -2,7 +2,7 @@
 .page__content 
   .container    
     Breadcrumbs(:data='breadcrumbs')
-    Headline(title='Баня 3*3 м с выносо7м')
+    Headline(:title='data.product.title')
     Product(:data='data.product')        
 </template>
 

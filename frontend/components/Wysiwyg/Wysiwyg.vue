@@ -1,5 +1,6 @@
 <template lang="pug">
 .wysiwyg(v-html="data")
+  p {{data}}
 </template>
 
 <script>
