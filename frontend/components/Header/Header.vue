@@ -4,11 +4,12 @@
     .header__content
       Logo
       Nav
-      a.header__phone(href="tel:+7(999)999-99-99") +7 (999) 999-99-99
+      a.header__phone(v-for="item in data.phone" :key="item.id" :href='"tel: "+ item') {{item}}      
 </template>
 
 <script>
 export default {
+  props: ['data'],
   data() {
     return {
       text: 'Header',

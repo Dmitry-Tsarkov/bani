@@ -1,0 +1,42 @@
+.regions {
+  padding: 56px 0;
+
+  &__title {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 23px;
+    color: $brown;
+    margin-bottom: 24px;
+  }
+
+  &__select {
+    width: 630px;
+    flex-shrink: 0;
+    margin-right: 40px;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__button {
+    width: 156px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 23px;
+    color: $gold-light;
+    background-color: $brown;
+    border-radius: 15px;
+
+    &:hover {
+      color: $gold-light !important;   
+      background-color: $brown-light;     
+    }    
+  }
+}

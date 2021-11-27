@@ -2,8 +2,8 @@
 .page__content 
   .container
     Breadcrumbs(:data='breadcrumbs')
-    Headline(title='Цены на срубы бань')
-    Wysiwyg(:data='data')     
+    Headline(:title='data.title')
+    Wysiwyg(:data='data.description')     
 </template>
 
 <script>

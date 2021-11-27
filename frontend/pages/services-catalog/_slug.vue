@@ -4,7 +4,7 @@
     Breadcrumbs(:data='breadcrumbs')
     Headline(title='Услуги')
     .catalog__grid.no-margin
-      CatalogCard(v-for="item in data.serviceCategories" :key="item.id" :data='item' page='services')
+      CatalogCard(v-for="item in data.subcategories" :key="item.id" :data='item' page='services')
 </template>
 
 <script>
@@ -28,8 +28,8 @@ export default {
   // asyncData(context) {
   //   return context.$api.load('actions')
   // },
-  async asyncData({$axios}) {
-    const data = await $axios.$get(`http://app.bani-test.fvds.ru/api/services-catalog`)
+  async asyncData({$axios, context, route}) {
+    const data = await $axios.$get(`http://app.bani-test.fvds.ru/api/service-catalog/${route.params.slug}`, route.query)
     return { data }
   }
 }

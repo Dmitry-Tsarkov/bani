@@ -12,7 +12,7 @@
           .product__characteristic(v-for="characteristic in data.characteristics" :key="characteristic.id")
             p.product__name.black {{characteristic.characteristic}}
             p.product__value.black {{characteristic.value}} {{characteristic.unit}}        
-        button.product__button Рассчитать стоимость
+        nuxt-link.product__button(to='/order/slug') Рассчитать стоимость
     .product__tabs
       button(v-for="(tab, i) in data.kits" :key="i" type='button' @click='toggleTab(i)', :class='{ "active": index == i }').product__tab {{tab.title}}      
     //- .product__content(v-for="(city, j) in data.products" :key="j" v-if="index == j")

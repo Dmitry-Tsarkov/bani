@@ -2,8 +2,8 @@
 .page__content 
   .container
     Breadcrumbs(:data='breadcrumbs')
-    Headline(title='Отделка сруба') 
-    Wysiwyg(:data='data')   
+    Headline(:title='data.product.title') 
+    Wysiwyg(:data='data.product.description')   
 </template>
 
 <script>
