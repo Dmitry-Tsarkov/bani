@@ -1,7 +1,7 @@
 export default {
   server: {
-    // port: process.env.PORT,
-    port: 5005,
+    port: process.env.PORT,
+    // port: 5005,
   },
   target: 'server',
   ssr: process.env.SSR !== 'false',
