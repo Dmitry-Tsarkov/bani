@@ -7,13 +7,13 @@ use yii\helpers\VarDumper;
 
 class CategoryHelper
 {
-    public static function getProductMinPrice(Category $project): int
+    public static function getProductMinPrice(Category $project):? int
     {
         $prices = [];
         foreach ($project->products as $product) {
             $prices[] = $product->price;
         }
 
-        return min($prices);
+        return !empty($prices) ? min($prices) : null;
     }
 }

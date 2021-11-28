@@ -9,6 +9,7 @@ use app\modules\product\models\Product;
 use app\modules\product\models\ProductImage;
 use app\modules\product\repositories\ProductRepository;
 use yii\helpers\Url;
+use yii\helpers\VarDumper;
 
 class ProductPresentator
 {

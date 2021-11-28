@@ -53,7 +53,7 @@ class ServiceCategoryForm extends CompositeForm
     {
         return [
             [['title', 'alias', 'parentId'], 'required'],
-            [['title', 'alias', 'description'], 'string', 'max' => 255],
+            [['title', 'alias'], 'string', 'max' => 255],
             [['description'], 'string'],
             [['parentId'], 'integer'],
             [['alias'], 'match', 'pattern' => '/^[0-9a-z-]+$/', 'message' => 'Только латинские буквы и знак "-"'],

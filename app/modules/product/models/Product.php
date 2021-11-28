@@ -277,6 +277,6 @@ class Product extends ActiveRecord
     {
         $images = $this->images;
 
-        return Url::to($images[0]->getImageFileUrl('image'), true);
+        return !empty($images) ? Url::to($images[0]->getImageFileUrl('image'), true) : null;
     }
 }
