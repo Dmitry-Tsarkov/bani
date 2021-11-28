@@ -37,7 +37,7 @@ class RegionController extends BalletController
             try {
                 $product = $this->service->create($regionForm);
                 Yii::$app->session->setFlash('success', 'Регион добавлен');
-                return $this->redirect(['view', 'id' => $product->id]);
+                return $this->redirect(['update', 'id' => $product->id]);
             } catch (DomainException $e) {
                 Yii::$app->session->setFlash('error', $e->getMessage());
             }
