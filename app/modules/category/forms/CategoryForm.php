@@ -52,8 +52,9 @@ class CategoryForm extends CompositeForm
     public function rules()
     {
         return [
-            [['title', 'alias', 'parentId'], 'required'],
-            [['title', 'alias', 'description'], 'string', 'max' => 255],
+            [['title', 'alias'], 'required'],
+            [['description'], 'string'],
+            [['title', 'alias'], 'string', 'max' => 255],
             [['parentId'], 'integer'],
             [['alias'], 'match', 'pattern' => '/^[0-9a-z-]+$/', 'message' => 'Только латинские буквы и знак "-"'],
         ];
