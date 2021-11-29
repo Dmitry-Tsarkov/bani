@@ -3,6 +3,7 @@
 namespace app\modules\seeder\commands;
 
 use app\modules\action\seeders\ActionSeeder;
+use app\modules\calculator\seeders\CalculatorSeeder;
 use app\modules\category\seeders\CategorySeeder;
 use app\modules\characteristic\seeders\CharacteristicSeeder;
 use app\modules\faq\seeds\FaqSeeder;
@@ -25,6 +26,7 @@ class SeederController extends Controller
     public function actionSeed()
     {
         Yii::createObject(PageSeeder::class)->seed(); gc_collect_cycles();
+        Yii::createObject(CalculatorSeeder::class)->seed(10, 5); gc_collect_cycles();
         Yii::createObject(RegionSeeder::class)->seed(100); gc_collect_cycles();
         Yii::createObject(ReviewSeeder::class)->seed(20); gc_collect_cycles();
         Yii::createObject(FaqSeeder::class)->seed(10); gc_collect_cycles();

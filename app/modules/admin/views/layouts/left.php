@@ -102,6 +102,11 @@ use dmstr\widgets\Menu;
                                 'url' => ['/admin/region/region/index'],
                                 'active' => Yii::$app->controller->module->id == 'region',
                             ],
+                            [
+                                'label' => 'Калькулятор',
+                                'url' => ['/admin/calculator/calculator/index'],
+                                'active' => Yii::$app->controller->module->id == 'calculator',
+                            ],
                         ],
                     ],
                     [
