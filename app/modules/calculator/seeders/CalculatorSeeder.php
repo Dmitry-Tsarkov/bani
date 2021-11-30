@@ -2,7 +2,7 @@
 
 namespace app\modules\calculator\seeders;
 
-use app\modules\calculator\models\CalculationCharacteristc;
+use app\modules\calculator\models\CalculatorCharacteristc;
 use app\modules\calculator\models\Calculator;
 use app\modules\calculator\models\CalculatorCharacteristicValue;
 use app\modules\characteristic\models\Characteristic;
@@ -11,30 +11,21 @@ use yii\helpers\Console;
 
 class CalculatorSeeder extends BaseSeeder
 {
-    private $calculators = [
-        1 => 'Цены на срубы бань',
-        2 => 'Цены на срубы домов'
-    ];
-
     public function seed($amountOfCharacteristics, $amountOfValues)
     {
         Console::stdout(PHP_EOL . 'Calculator');
 
-        foreach ($this->calculators as $calculator_id => $calculator) {
-            $calculator = Calculator::create(
-                $this->faker->realText(100),
-                $this->faker->realText(500)
-            );
+        $calculators = Calculator::find()->all();
 
-            $calculator->save();
+        foreach ($calculators as $calculator) {
 
             for ($i = 1; $i <= $amountOfCharacteristics; $i++) {
-                $characteristic = CalculationCharacteristc::create(
-                    $calculator_id,
+                $characteristic = CalculatorCharacteristc::create(
+                    $calculator->id,
                     $this->faker->realText(20),
                     $this->faker->randomElement([
-                        CalculationCharacteristc::TYPE_DROPDOWN,
-                        CalculationCharacteristc::TYPE_RADIO
+                        CalculatorCharacteristc::TYPE_DROPDOWN,
+                        CalculatorCharacteristc::TYPE_RADIO
                     ])
                 );
 

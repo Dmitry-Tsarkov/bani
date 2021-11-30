@@ -10,6 +10,8 @@ use yii\db\ActiveRecord;
  * @property string $title [varchar(255)]
  * @property string $description
  *
+ * @property CalculatorCharacteristc[] $characteristics
+ *
  */
 class Calculator extends ActiveRecord
 {
@@ -38,7 +40,7 @@ class Calculator extends ActiveRecord
 
     public function getCharacteristics()
     {
-        return $this->hasMany(CalculationCharacteristc::class, ['calculator_id' => 'id']);
+        return $this->hasMany(CalculatorCharacteristc::class, ['calculator_id' => 'id']);
     }
 
     public function attributeLabels()

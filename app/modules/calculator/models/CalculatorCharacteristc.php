@@ -2,10 +2,13 @@
 
 namespace app\modules\calculator\models;
 
+use app\modules\admin\traits\QueryExceptions;
 use yii\db\ActiveRecord;
 use yii2tech\ar\position\PositionBehavior;
 
 /**
+ * @mixin PositionBehavior
+ *
  * @property int $id [int(11)]
  * @property int $calculator_id [int(11)]
  * @property string $title [varchar(255)]
@@ -13,8 +16,10 @@ use yii2tech\ar\position\PositionBehavior;
  * @property int $position [int(11)]
  *
  */
-class CalculationCharacteristc extends ActiveRecord
+class CalculatorCharacteristc extends ActiveRecord
 {
+    use QueryExceptions;
+
     const TYPE_DROPDOWN = 1;
     const TYPE_RADIO = 2;
 
