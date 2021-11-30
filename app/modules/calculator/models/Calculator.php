@@ -2,6 +2,7 @@
 
 namespace app\modules\calculator\models;
 
+use app\modules\admin\traits\QueryExceptions;
 use yii\db\ActiveRecord;
 
 /**
@@ -12,6 +13,8 @@ use yii\db\ActiveRecord;
  */
 class Calculator extends ActiveRecord
 {
+    use QueryExceptions;
+
     public static function tableName()
     {
         return 'calculators';
@@ -27,9 +30,23 @@ class Calculator extends ActiveRecord
         return $self;
     }
 
+    public function edit($title, $description)
+    {
+        $this->title = $title;
+        $this->description = $description;
+    }
+
     public function getCharacteristics()
     {
         return $this->hasMany(CalculationCharacteristc::class, ['calculator_id' => 'id']);
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'title' => 'Заголовок',
+            'description' => 'Описание',
+        ];
     }
 
 }

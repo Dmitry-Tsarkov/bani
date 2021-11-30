@@ -10,7 +10,7 @@ use yii\web\View;
 
 $this->title = 'Добавление комплекта';
 $this->params['breadcrumbs'] = [
-    ['label' => 'Комплект', 'url' => ['/kit/backend/kit/index']],
+    ['label' => 'Комплект', 'url' => ['index']],
     $this->title,
 ];
 

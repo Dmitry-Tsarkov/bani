@@ -24,12 +24,11 @@ class CalculatorSearch extends Model
 
         if ($this->load($params) && $this->validate()) {
             $query->andFilterWhere(['id' => $this->id]);
-            $query->andFilterWhere(['title' => $this->title]);
+            $query->andFilterWhere(['like', 'title', $this->title]);
         }
 
         return new ActiveDataProvider([
             'query' => $query,
-            'sort' => ['defaultOrder' => ['position' => SORT_ASC]],
         ]);
     }
 }
