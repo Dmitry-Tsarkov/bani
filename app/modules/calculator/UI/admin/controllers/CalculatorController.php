@@ -92,5 +92,4 @@ class CalculatorController extends BalletController
 
         return $this->redirect(Yii::$app->request->referrer);
     }
-
 }

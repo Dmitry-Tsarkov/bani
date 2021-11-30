@@ -46,4 +46,21 @@ class CalculatorCharacteristc extends ActiveRecord
         $self->type = $type;
         return $self;
     }
+
+    public function edit(string $title, int $type)
+    {
+        $this->title = $title;
+        $this->type = $type;
+    }
+
+    public function getType()
+    {
+        if ($this->type == self::TYPE_DROPDOWN) {
+            return 'Выпадающий список';
+        } elseif ($this->type == self::TYPE_RADIO) {
+            return 'Радио-кнопка';
+        }
+    }
+
+
 }
