@@ -56,37 +56,26 @@ class CalculatorCharacteristicController extends BalletController
         return $this->render('update', compact('calculator', 'characteristic', 'editForm'));
     }
 
-    public function actionSet($id, $characteristicId)
+    public function actionCreate($id)
     {
-//        $calculator = Calculator::getOrFail($id);
-//        $characteristic = CalculatorCharacteristc::getOrFail($characteristicId);
-//        $valueForm = new CalculatorCharacteristicValueForm($characteristic, $calculator);
-//
-//        if ($valueForm->load(Yii::$app->request->post()) && $valueForm->validate()) {
-//            try {
-//                $this->service->setValue($calculator->id, $characteristic->id, $valueForm);
-//                Yii::$app->session->setFlash('success', 'Значение добавлено');
-//                return $this->redirect(['product/view', 'id' => $calculator->id]);
-//            } catch (DomainException $e) {
-//                Yii::$app->session->setFlash('success', $e->getMessage());
-//            } catch (RuntimeException $e) {
-//                Yii::$app->errorHandler->logException($e);
-//                Yii::$app->session->setFlash('success', $e->getMessage());
-//            }
-//        }
-//
-//        return $this->render('set', compact('calculator', 'valueForm'));
-    }
+        $calculator = Calculator::getOrFail($id);
+        $createForm = new CalculatorCharacteristicForm();
 
-//    public function actionMoveUp($id)
-//    {
-//        CalculatorCharacteristc::getOrFail($id)->movePrev();
-//    }
-//
-//    public function actionMoveDown($id)
-//    {
-//        CalculatorCharacteristc::getOrFail($id)->moveNext();
-//    }
+        if ($createForm->load(Yii::$app->request->post()) && $createForm->validate()) {
+            try {
+                $characteristic = $this->service->create($createForm, $calculator);
+                Yii::$app->session->setFlash('success', 'Характеристика добавлена');
+                return $this->redirect(['calculator/view', 'id' => $calculator->id]);
+            } catch (DomainException $e) {
+                Yii::$app->session->setFlash('error', $e->getMessage());
+            } catch (RuntimeException $e) {
+                Yii::$app->errorHandler->logException($e);
+                Yii::$app->session->setFlash('error', 'Техническая ошибка');
+            }
+        }
+
+        return $this->render('create', compact('createForm', 'calculator'));
+    }
 
     public function actionDelete($id)
     {
@@ -102,4 +91,14 @@ class CalculatorCharacteristicController extends BalletController
 
         return $this->redirect(Yii::$app->request->referrer);
     }
+
+//    public function actionMoveUp($id)
+//    {
+//        CalculatorCharacteristc::getOrFail($id)->movePrev();
+//    }
+//
+//    public function actionMoveDown($id)
+//    {
+//        CalculatorCharacteristc::getOrFail($id)->moveNext();
+//    }
 }

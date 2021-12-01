@@ -15,6 +15,8 @@ use yii2tech\ar\position\PositionBehavior;
  * @property int $type [int(11)]
  * @property int $position [int(11)]
  *
+ * @property CalculatorValue[] $values
+ * @property Calculator $calculator
  */
 class CalculatorCharacteristc extends ActiveRecord
 {
@@ -62,5 +64,14 @@ class CalculatorCharacteristc extends ActiveRecord
         }
     }
 
+    public function getValues()
+    {
+        return $this->hasMany(CalculatorValue::class, ['characteristic_id' => 'id']);
+    }
+
+    public function getCalculator()
+    {
+        return $this->hasOne(Calculator::class, ['id' => 'calculator_id']);
+    }
 
 }

@@ -4,7 +4,7 @@ namespace app\modules\calculator\seeders;
 
 use app\modules\calculator\models\CalculatorCharacteristc;
 use app\modules\calculator\models\Calculator;
-use app\modules\calculator\models\CalculatorCharacteristicValue;
+use app\modules\calculator\models\CalculatorValue;
 use app\modules\characteristic\models\Characteristic;
 use app\modules\seeder\components\BaseSeeder;
 use yii\helpers\Console;
@@ -32,7 +32,7 @@ class CalculatorSeeder extends BaseSeeder
                 $characteristic->save();
 
                 for ($j = 1; $j <= $amountOfValues; $j++) {
-                    $value = CalculatorCharacteristicValue::create(
+                    $value = CalculatorValue::create(
                         $i,
                         $this->faker->realText(30),
                         $this->faker->numberBetween(5000, 30000)
