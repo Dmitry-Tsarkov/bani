@@ -19,7 +19,8 @@ class CalculatorService
     {
         $calculator = Calculator::create(
             $form->title,
-            $form->description
+            $form->description,
+            $form->image
         );
 
         $this->calculators->save($calculator);
@@ -33,7 +34,8 @@ class CalculatorService
 
         $calculator->edit(
             $form->title,
-            $form->description
+            $form->description,
+            $form->image
         );
 
         $this->calculators->save($calculator);
@@ -43,5 +45,12 @@ class CalculatorService
     {
         $calculator = $this->calculators->getById($id);
         $calculator->delete();
+    }
+
+    public function deleteImage($id)
+    {
+        $calculator = $this->calculators->getById($id);
+        $calculator->deleteImage();
+        $this->calculators->save($calculator);
     }
 }

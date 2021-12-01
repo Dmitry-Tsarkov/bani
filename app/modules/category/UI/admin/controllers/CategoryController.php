@@ -12,7 +12,6 @@ use DomainException;
 use Exception;
 use RuntimeException;
 use Yii;
-use yii\helpers\VarDumper;
 use yii\web\Response;
 
 class CategoryController extends BalletController
@@ -30,7 +29,7 @@ class CategoryController extends BalletController
     public function actionIndex()
     {
         $searchModel = new CategorySearch();
-        $dataProvider = $searchModel->search(\Yii::$app->request->get());
+        $dataProvider = $searchModel->search(Yii::$app->request->get());
 
         return $this->render('index', compact('dataProvider', 'searchModel'));
     }
@@ -87,7 +86,7 @@ class CategoryController extends BalletController
             Yii::$app->session->setFlash('error', $e->getMessage());
         }
 
-        return $this->redirect(\Yii::$app->request->referrer);
+        return $this->redirect(Yii::$app->request->referrer);
     }
 
     public function actionDeleteImage($id)

@@ -15,6 +15,22 @@ class CalculatorController extends ApiController
         $this->presentator = $presentator;
     }
 
+    /**
+     * @OA\Get(
+     *     path="/api/calculator/{id}",
+     *     @OA\Parameter(name="id",
+     *        in="path",
+     *        required=true,
+     *        @OA\Schema(
+     *          type="integer",
+     *          default="1"
+     *      )
+     *     ),
+     *     tags={"Pages"},
+     *     @OA\Response(response="200", description="An example resource"),
+     *     @OA\Response(response="404", description="An example resource")
+     * )
+     */
     public function actionCalculator($id)
     {
         return $this->presentator->getCalculator($id);

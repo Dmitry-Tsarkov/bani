@@ -123,5 +123,4 @@ class CategoryForm extends CompositeForm
         $this->image = UploadedFile::getInstance($this, 'image');
         return parent::beforeValidate();
     }
-
 }

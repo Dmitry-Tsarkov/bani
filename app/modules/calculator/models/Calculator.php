@@ -2,16 +2,22 @@
 
 namespace app\modules\calculator\models;
 
+use app\modules\admin\behaviors\ImageBehavior;
 use app\modules\admin\traits\QueryExceptions;
+use PHPThumb\GD;
 use yii\db\ActiveRecord;
+use yii\web\UploadedFile;
 
 /**
- * @property int $id [int(11)]
- * @property string $title [varchar(255)]
- * @property string $description
+ * @mixin ImageBehavior
  *
  * @property CalculatorCharacteristc[] $characteristics
  *
+ * @property int $id [int(11)]
+ * @property string $title [varchar(255)]
+ * @property string $description
+ * @property string $image [varchar(255)]
+ * @property string $image_hash [varchar(255)]
  */
 class Calculator extends ActiveRecord
 {
@@ -22,20 +28,40 @@ class Calculator extends ActiveRecord
         return 'calculators';
     }
 
-    public static function create($title, $description): self
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => ImageBehavior::class,
+                'folder' => 'services',
+                'thumbs' => [
+                    'thumb' => ['processor' => function (GD $thumb) {
+                        $thumb->resize(357, 323)->pad(250, 250, [255, 255, 255]);
+                    }],
+                    'thumb_origin' => ['processor' => function (GD $thumb) {
+                        $thumb->resize(1132, 566)->pad(1132, 566, [255, 255, 255]);
+                    }]
+                ],
+            ],
+        ];
+    }
+
+    public static function create($title, $description, ?UploadedFile $image): self
     {
         $self = new self();
 
         $self->title = $title;
         $self->description = $description;
+        $self->image = $image;
 
         return $self;
     }
 
-    public function edit($title, $description)
+    public function edit($title, $description, ?UploadedFile $image)
     {
         $this->title = $title;
         $this->description = $description;
+        $this->image = $image;
     }
 
     public function getCharacteristics()

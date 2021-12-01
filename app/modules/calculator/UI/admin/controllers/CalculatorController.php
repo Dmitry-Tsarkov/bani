@@ -11,6 +11,7 @@ use app\modules\calculator\forms\CalculatorForm;
 use Exception;
 use RuntimeException;
 use Yii;
+use yii\web\Response;
 
 class CalculatorController extends BalletController
 {
@@ -91,5 +92,20 @@ class CalculatorController extends BalletController
         }
 
         return $this->redirect(Yii::$app->request->referrer);
+    }
+
+    public function actionDeleteImage($id)
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        try {
+            $this->service->deleteImage($id);
+            return [];
+        } catch (DomainException $e) {
+            return ['error' => $e->getMessage()];
+        } catch (RuntimeException $e) {
+            Yii::$app->errorHandler->logException($e);
+            return ['error' => 'Техническая ошибка'];
+        }
     }
 }

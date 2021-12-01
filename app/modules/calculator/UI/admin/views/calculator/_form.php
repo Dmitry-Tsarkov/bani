@@ -1,9 +1,11 @@
 <?php
 
 use app\modules\calculator\forms\CalculatorForm;
+use kartik\file\FileInput;
 use kartik\form\ActiveForm;
 use mihaildev\ckeditor\CKEditor;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\web\View;
 
 /**
@@ -21,6 +23,43 @@ use yii\web\View;
         </div>
         <div class="box-body">
             <?= $form->field($calculatorForm, 'title') ?>
+            <div class="col-xs-4">
+                <div class="single-kartik-image">
+                    <?= $form->field($calculatorForm, 'image')->widget(FileInput::class, [
+                        'pluginOptions' => [
+                            'fileActionSettings' => [
+                                'showDrag' => false,
+                                'showZoom' => true,
+                                'showUpload' => false,
+                                'showDelete' => false,
+                                'showDownload' => true,
+                            ],
+                            'initialPreviewDownloadUrl' => $slide->getUploadedFileUrl('image'),
+                            'deleteUrl' => Url::to(['delete-image', 'id' => $slide->id, 'key' => 'image']),
+                            'showCaption' => false,
+                            'showRemove' => false,
+                            'showUpload' => false,
+                            'showClose' => false,
+                            'showCancel' => false,
+                            'browseClass' => 'btn btn-primary btn-block',
+                            'browseIcon' => '<i class="glyphicon glyphicon-download-alt"></i>',
+                            'browseLabel' => 'Выберите файл',
+                            'initialPreview' => [
+                                $slide->hasImage() ? $slide->getImageFileUrl('image') : null,
+                            ],
+                            'initialPreviewConfig' => [
+                                $slide->hasImage() ? [
+                                    'caption' => $slide->image,
+                                    'size' => filesize($slide->getUploadedFilePath('image')),
+                                    'downloadUrl' => $slide->getImageFileUrl('image'),
+                                ] : [],
+                            ],
+                            'initialPreviewAsData' => true,
+                        ],
+                        'options' => ['accept' => 'image/*'],
+                    ]) ?>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-xs-12">
                     <?= $form->field($calculatorForm, 'description')->widget(CKEditor::class) ?>
