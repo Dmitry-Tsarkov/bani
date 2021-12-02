@@ -6,6 +6,7 @@ use app\modules\admin\behaviors\ImageBehavior;
 use app\modules\admin\traits\QueryExceptions;
 use PHPThumb\GD;
 use yii\db\ActiveRecord;
+use yii\helpers\Url;
 use yii\web\UploadedFile;
 
 /**
@@ -38,7 +39,7 @@ class Calculator extends ActiveRecord
                     'thumb' => ['processor' => function (GD $thumb) {
                         $thumb->resize(357, 323)->pad(250, 250, [255, 255, 255]);
                     }],
-                    'thumb_origin' => ['processor' => function (GD $thumb) {
+                    'view' => ['processor' => function (GD $thumb) {
                         $thumb->resize(1132, 566)->pad(1132, 566, [255, 255, 255]);
                     }]
                 ],
@@ -69,12 +70,36 @@ class Calculator extends ActiveRecord
         return $this->hasMany(CalculatorCharacteristc::class, ['calculator_id' => 'id']);
     }
 
+    public function rules()
+    {
+        return [
+            [['title'], 'required'],
+            [['title', 'description'], 'string'],
+        ];
+    }
+
     public function attributeLabels()
     {
         return [
             'title' => 'Заголовок',
-            'description' => 'Описание',
+            'description'  => 'Описание',
+            'image' => 'Картинка',
         ];
     }
 
+    public function beforeValidate(): bool
+    {
+        $this->image = UploadedFile::getInstance($this, 'image');
+        return parent::beforeValidate();
+    }
+
+    public function getThumbSrc()
+    {
+        return $this->hasImage() ? Url::to($this->getThumbFileUrl('image'), true) : '';
+    }
+
+    public function getViewImageSrc()
+    {
+        return $this->hasImage() ? Url::to($this->getThumbFileUrl('image', 'view'), true) : '';
+    }
 }

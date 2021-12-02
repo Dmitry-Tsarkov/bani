@@ -69,7 +69,7 @@ $this->title = $calculator->title;
     </div>
     <div class="box-body">
         <p>
-            <?= Html::a('Добавить значение', ['calculator-value/create', 'id' => $characteristic->id], ['class' => 'btn btn-success', 'data-pjax' => '0']) ?>
+            <?= Html::a('Добавить значение', ['calculator-value/create', 'id' => $characteristic->id], ['class' => 'btn btn-success btn-xs', 'data-pjax' => '0']) ?>
         </p>
         <?= GridView::widget([
             'dataProvider' => new ArrayDataProvider(['models' => $characteristic->values]),

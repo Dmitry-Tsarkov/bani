@@ -63,7 +63,7 @@ class CalculatorCharacteristicController extends BalletController
 
         if ($createForm->load(Yii::$app->request->post()) && $createForm->validate()) {
             try {
-                $characteristic = $this->service->create($createForm, $calculator);
+                $this->service->create($createForm, $calculator);
                 Yii::$app->session->setFlash('success', 'Характеристика добавлена');
                 return $this->redirect(['calculator/view', 'id' => $calculator->id]);
             } catch (DomainException $e) {
@@ -91,14 +91,4 @@ class CalculatorCharacteristicController extends BalletController
 
         return $this->redirect(Yii::$app->request->referrer);
     }
-
-//    public function actionMoveUp($id)
-//    {
-//        CalculatorCharacteristc::getOrFail($id)->movePrev();
-//    }
-//
-//    public function actionMoveDown($id)
-//    {
-//        CalculatorCharacteristc::getOrFail($id)->moveNext();
-//    }
 }

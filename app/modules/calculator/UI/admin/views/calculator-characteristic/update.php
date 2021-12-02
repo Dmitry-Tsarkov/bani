@@ -1,7 +1,6 @@
 <?php
 
 use app\modules\calculator\forms\CalculatorCharacteristicForm;
-use app\modules\calculator\models\CalculatorCharacteristc;
 use app\modules\calculator\models\Calculator;
 use yii\web\View;
 
@@ -9,7 +8,6 @@ use yii\web\View;
 /**
  * @var View $this
  * @var Calculator $calculator
- * @var CalculatorCharacteristc $characteristic
  * @var CalculatorCharacteristicForm $editForm
  */
 

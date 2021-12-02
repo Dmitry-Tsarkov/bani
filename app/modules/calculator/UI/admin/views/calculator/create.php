@@ -1,11 +1,11 @@
 <?php
 
-use app\modules\calculator\forms\CalculatorForm;
+use \app\modules\calculator\models\Calculator;
 use yii\web\View;
 
 /**
  * @var View $this
- * @var CalculatorForm $createForm
+ * @var Calculator $calculator
  */
 
 $this->title = 'Добавление калькулятора';
@@ -15,4 +15,4 @@ $this->params['breadcrumbs'] = [
 
 ?>
 
-<?= $this->render('_form', ['calculatorForm' => $createForm]) ?>
+<?= $this->render('_form', compact('calculator')) ?>

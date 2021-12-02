@@ -30,7 +30,7 @@ class CalculatorValueController extends BalletController
         if ($createForm->load(Yii::$app->request->post()) && $createForm->validate()) {
             try {
                 $value = $this->service->create($createForm, $characteristic);
-                Yii::$app->session->setFlash('success', 'Характеристика добавлена');
+                Yii::$app->session->setFlash('success', 'Значение добавлено');
                 return $this->redirect([
                     'calculator-characteristic/view',
                     'calculatorId' => $characteristic->calculator->id,

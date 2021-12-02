@@ -1,7 +1,6 @@
 <?php
 
 use app\modules\calculator\models\CalculatorCharacteristc;
-use app\modules\product\models\Product;
 use kartik\grid\ActionColumn;
 use kartik\grid\DataColumn;
 use kartik\grid\GridView;
@@ -40,6 +39,11 @@ $this->title = $calculator->title;
                 'attributes' => [
                     'id',
                     [
+                        'label' => 'Картинка',
+                        'format' => 'raw',
+                        'value' => $calculator->hasImage() ? Html::img($calculator->getThumbSrc()) : '',
+                    ],
+                    [
                         'label' => 'Название',
                         'attribute' => 'title',
                     ],
@@ -60,7 +64,7 @@ $this->title = $calculator->title;
     </div>
     <div class="box-body">
         <p>
-            <?= Html::a('Добавить характеристику', ['calculator-characteristic/create', 'id' => $calculator->id], ['class' => 'btn btn-success', 'data-pjax' => '0']) ?>
+            <?= Html::a('Добавить характеристику', ['calculator-characteristic/create', 'id' => $calculator->id], ['class' => 'btn btn-success btn-xs', 'data-pjax' => '0']) ?>
         </p>
         <?= GridView::widget([
             'dataProvider' => new ArrayDataProvider(['models' => $calculator->characteristics]),

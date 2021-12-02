@@ -1,6 +1,6 @@
 <?php
 
-use app\modules\calculator\forms\CalculatorForm;
+use app\modules\calculator\forms\CalculatorCharacteristicForm;
 use app\modules\calculator\models\CalculatorCharacteristc;
 use kartik\form\ActiveForm;
 use yii\helpers\Html;
@@ -8,7 +8,7 @@ use yii\web\View;
 
 /**
  * @var View $this
- * @var CalculatorForm $characteristicForm
+ * @var CalculatorCharacteristicForm $characteristicForm
  */
 
 ?>

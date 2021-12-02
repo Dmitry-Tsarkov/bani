@@ -24,6 +24,7 @@ class CalculatorPresentator
                 'id' => $calculator->id,
                 'title' => $calculator->title,
                 'description' => $calculator->description,
+                'image' => $calculator->getViewImageSrc(),
                 'characteristics' => array_map(function (CalculatorCharacteristc $characteristc) {
                     return [
                         'title' => $characteristc->title,
