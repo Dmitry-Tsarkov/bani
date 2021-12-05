@@ -9,6 +9,7 @@ use app\modules\portfolio\presentators\PortfolioPresentator;
 use app\modules\review\presentators\ReviewPresentator;
 use app\modules\setting\components\Settings;
 use app\modules\slider\presentator\SliderPresentator;
+use yii\helpers\Url;
 
 class MainPresentator
 {
@@ -65,7 +66,7 @@ class MainPresentator
             'meta' => $page->getMetaTags(),
             'slider' => $this->sliderPresentator->getSlides(),
             'about' => [
-                'image' => Settings::getValue('about_image'),
+                'image' => Url::to(Settings::getValue('about_image'), true),
                 'text' => Settings::getValue('about'),
             ],
             'portfolio' => $this->portfolioPresentator->getPreviewPortfolio(),
