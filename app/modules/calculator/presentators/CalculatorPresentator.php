@@ -6,6 +6,7 @@ use app\modules\calculator\models\Calculator;
 use app\modules\calculator\models\CalculatorCharacteristc;
 use app\modules\calculator\models\CalculatorValue;
 use app\modules\calculator\repositories\CalculatorRepository;
+use app\modules\setting\components\Settings;
 
 class CalculatorPresentator
 {
@@ -48,14 +49,16 @@ class CalculatorPresentator
         $calculators = Calculator::find()->all();
 
         return [
-            'calculators' => array_map(function (Calculator $calculator){
-                return [
-                    'id' => $calculator->id,
-                    'title' => $calculator->title,
-                    'description' => $calculator->description,
-                    'image' => $calculator->getViewImageSrc(),
-                ];
-            }, $calculators)
+            'calculators' => [
+                array_map(function (Calculator $calculator) {
+                    return [
+                        'id' => $calculator->id,
+                        'title' => $calculator->title,
+                        'image' => $calculator->getViewImageSrc(),
+                    ];
+                }, $calculators),
+            ],
+            'description' => Settings::getValue('calculator_description'),
         ];
     }
 }
