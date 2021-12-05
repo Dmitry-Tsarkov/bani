@@ -1,27 +1,32 @@
 <template lang="pug">
 .regions
-  .regions__title Для просмотра доступных для заказа товаров выберите город доставки. 
+  .regions__title Для просмотра доступных для заказа товаров выберите город доставки.
   .regions__row
     .regions__select
-      Select(:data='options')
-    nuxt-link.regions__button(to='/regions/slug') Перейти
+      Select(:data='regionsOptions' v-model="value" @change='log' regions='true')
+    //- nuxt-link.regions__button(:to='"/regions/" + value') Перейти
 </template>
 
 <script>
 export default {
+  props: ['data'],
   data() {
     return {
-      options: [
-        {
-          label: 'Тула',
-          value: 'slug'
-        },
-        {
-          label: 'Москва',
-          value: 'slug'
-        }
-      ]
+      value: null
+      // value: this.data[0].title_alias
     }
+  },    
+  computed: {
+    regionsOptions() {
+      let array = []
+      this.data.forEach(element => {        
+      array.push({'label': element.title, 'value': element.title_alias, 'sublabel': element.district})
+      });
+      return array
+    }
+  },
+  mounted() {
+    // this.$nuxt.$on('changeValue', this.value = value)
   },
 }
 </script>

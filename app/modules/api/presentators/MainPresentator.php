@@ -72,7 +72,7 @@ class MainPresentator
             'advantages' => [
                 'description' => Settings::getValue('advantages')
             ],
-            'reveiws' => $this->reviewPresentator->getPreviewReviews(),
+            'reviews' => $this->reviewPresentator->getPreviewReviews(),
             'faq' => $this->faqPresentator->getPreviewFaqs(),
             'contacts' => [
                 'phone' => Settings::getArray('phone'),

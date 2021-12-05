@@ -1,5 +1,7 @@
 .regions {
   padding: 56px 0;
+  position: relative;
+  z-index: 20;
 
   &__title {
     font-weight: 500;

@@ -4,7 +4,7 @@
     .contacts-main__content
       .contacts-main__conatcts
         .contacts-main__list
-          p.contacts-main__text.black +7 (999) 999-99-99
+          p.contacts-main__text.black(v-if="data.phone" v-for="item in data.phone" :key="item.id") {{item}}
           p.contacts-main__text.black E-mail:	info@srubimbanu.ru
           p.contacts-main__text.black Skype:	srubimbanu
           p.contacts-main__text.black Viber:	+7 (903) 173-173-5

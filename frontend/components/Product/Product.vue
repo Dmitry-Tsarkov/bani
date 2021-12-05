@@ -14,13 +14,12 @@
             p.product__value.black {{characteristic.value}} {{characteristic.unit}}        
         nuxt-link.product__button(to='/order/slug') Рассчитать стоимость
     .product__tabs
-      button(v-for="(tab, i) in data.kits" :key="i" type='button' @click='toggleTab(i)', :class='{ "active": index == i }').product__tab {{tab.title}}      
-    //- .product__content(v-for="(city, j) in data.products" :key="j" v-if="index == j")
+      button(v-for="(tab, i) in data.kits" :key="i" type='button' @click='toggleTab(i)', :class='{ "active": index == i }').product__tab {{tab.title}} 
     .product__content
-      .product__wysiwyg
-        Wysiwyg(:data='data.description')
-      .product__wysiwyg.brown
-        Wysiwyg(:data='data.bottom_description' class='brown')
+      .product__wysiwyg(v-if="data.kits[index].text")
+        Wysiwyg(:data='data.kits[index].text')
+      .product__wysiwyg.brown(v-if="data.kits[index].bottom_text")
+        Wysiwyg(:data='data.kits[index].bottom_text' class='brown')
 </template>
 
 <script>
