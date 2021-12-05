@@ -44,7 +44,9 @@
         "solutosoft/yii-linkmany": "^1.0",
         "ralouphie/mimey": "^2.1",
         "himiklab/yii2-recaptcha-widget": "*",
-        "elasticsearch/elasticsearch": "^7.11"
+        "elasticsearch/elasticsearch": "^7.11",
+        "yiisoft/yii2-httpclient": "^2.0",
+        "keltstr/yii2-simplehtmldom": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
