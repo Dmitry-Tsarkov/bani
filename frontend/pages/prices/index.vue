@@ -5,10 +5,10 @@
     Headline(title='Цены')
     .prices-page
       .prices-page__grid
-        nuxt-link.prices-page__item(to='/prices/slug')
+        nuxt-link.prices-page__item(to='/prices/1')
           img.prices-page__image(src='/img/prices.jpg')
           .prices-page__text Цены на срубы бань
-        nuxt-link.prices-page__item(to='/prices/slug')
+        nuxt-link.prices-page__item(to='/prices/2')
           img.prices-page__image(src='/img/prices.jpg')
           .prices-page__text Цены на срубы бань
       .prices-page__wysiwyg

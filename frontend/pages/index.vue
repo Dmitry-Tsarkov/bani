@@ -3,11 +3,11 @@
     MainSlider(:data='data.slider')
     .container
       Section(title='О компании')
-        AboutMain
+        AboutMain(:data='data.about')
     PortfolioSlider(:data='data.portfolio')
     .container
       Section(title='Преимущества')
-        Advantages
+        Advantages(:data='data.advantages')
       Section(title='Отзывы')
         ReviewsSlider(:data='data.reviews')
     .container-brown
@@ -17,7 +17,7 @@
           Faq(:data='data.faq')
     .container
       Section(title='Остались вопросы?')
-        ContactsMain
+        ContactsMain(:data='data.contacts')
 </template>
 
 <script>

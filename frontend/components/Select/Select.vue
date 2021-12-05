@@ -5,20 +5,22 @@
       svg-icon.select__icon(name='chevron-down')
     .select__body(:class='{"active": opened}')
       .select__list
-        .select__item(v-for="(item, index) in data" :key="index" :class='{"selected": activeIndex == index}' @click='selectItem(item.label, item.value, index)')
+        .select__item(v-for="(item, index) in data" :key="index" :class='{"selected": activeIndex == index}' @click='selectItem(item.label, item.value, index)' )
           p.select__text {{item.label}}
+          p.select__text.small {{item.sublabel}}
+    nuxt-link.select__button(v-if="regions" :to='"/regions/" + value') Перейти
 </template>
 
 <script>
 import ClickOutside from 'vue-click-outside'
 export default {
-  props: ['data'],
+  props: ['data', 'regions'],
   data() {
     return {
       opened: false,
       selected: this.data[0].label,
       activeIndex: 0,
-      value: null,
+      value: this.data[0].label,
     }
   },
   computed: {
@@ -34,7 +36,8 @@ export default {
       this.selected = label
       this.opened = false
       this.activeIndex = index
-      this.value = value      
+      this.value = value       
+      this.$emit('changeValue', value)    
     },
     close() {
       this.opened = false
