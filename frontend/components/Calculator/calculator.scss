@@ -34,4 +34,20 @@
       margin-top: 16px;
     }
   }
+
+  &__total {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 48px;
+  }
+
+  &__price {
+    color: $brown;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 41px;
+    padding-top: 24px;
+  }
 }

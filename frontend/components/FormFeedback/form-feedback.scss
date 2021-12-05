@@ -1,6 +1,8 @@
 .form-feedback {
   background-color: #d0d0cf;
   padding: 32px 0;
+  z-index: 0;
+  position: relative;
 
   &__grid {
     display: grid;

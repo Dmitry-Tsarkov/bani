@@ -5,14 +5,11 @@
     Headline(title='Цены')
     .prices-page
       .prices-page__grid
-        nuxt-link.prices-page__item(to='/prices/1')
-          img.prices-page__image(src='/img/prices.jpg')
-          .prices-page__text Цены на срубы бань
-        nuxt-link.prices-page__item(to='/prices/2')
-          img.prices-page__image(src='/img/prices.jpg')
-          .prices-page__text Цены на срубы бань
+        nuxt-link.prices-page__item(:to='"/prices/" + item.id' v-for="item in data.calculators[0]" :key="item.id")
+          img.prices-page__image(:src='item.image')
+          .prices-page__text {{item.title}}       
       .prices-page__wysiwyg
-        Wysiwyg(data='<p>Но диаграммы связей являются только методом политического участия и смешаны с не уникальными данными до степени совершенной неузнаваемости, из-за чего возрастает их статус бесполезности. Внезапно, независимые государства могут быть объявлены нарушающими общечеловеческие нормы этики и морали. Являясь всего лишь частью общей картины, некоторые особенности внутренней политики будут призваны к ответу.</p>')
+        Wysiwyg(:data='data.description')
 </template>
 
 <script>
@@ -33,12 +30,10 @@ export default {
     },    
   },
   watchQuery: true,
-  // asyncData(context) {
-  //   return context.$api.load(
-  //     `categories/${context.route.params.slug}`,
-  //     context.route.query
-  //   )
-  // },
+  async asyncData({$axios}) {
+    const data = await $axios.$get(`http://app.bani-test.fvds.ru/api/calculators`)
+    return { data }
+  }
 }
 </script>
 

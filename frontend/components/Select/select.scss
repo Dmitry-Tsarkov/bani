@@ -30,6 +30,12 @@
     }
   }
 
+  &__price {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+  }
+
   &__body {
     position: absolute;
     width: 100%;
@@ -46,7 +52,7 @@
     
     &.active {
       opacity: 1;
-      z-index: 4;
+      z-index: 40;
       transform: translateY(0);
       pointer-events: all;
     }
@@ -65,7 +71,7 @@
     cursor: pointer;
 
     &:hover {
-      background-color: $brown-light;
+      background-color: $gold;
     }
 
     &.selected {
@@ -76,7 +82,7 @@
         background-color: $brown;
         position: absolute;
         border-radius: 50%;
-        top: 24px;
+        top: calc(50% - 5px);
         right: 16px;
       }
       #{$this}__text {

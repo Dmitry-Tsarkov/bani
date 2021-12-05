@@ -1,9 +1,8 @@
 <template lang="pug">
   .page__content    
     .container
-      Section(title='Каталог Москва')
-        //- Catalog(:data='data.catalog')
-        p {{data}}
+      Section(:title='data.region.city')        
+        Wysiwyg(:data='data.region.content')
 </template>
 
 <script>

@@ -45,7 +45,7 @@ class Module extends \yii\base\Module implements BootstrapInterface
             'api/home' => 'api/default/home',
             'api/regions' => 'api/regions/region/regions',
             'api/regions/<alias>' => 'api/regions/region/region',
-            'api/calculator/<id>' => 'api/calculator/calculator/calculator',
+            'api/calculators/<id>' => 'api/calculator/calculator/calculator',
             'api/calculators' => 'api/calculator/calculator/calculators',
         ]);
     }

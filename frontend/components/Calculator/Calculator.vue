@@ -2,17 +2,16 @@
 .calculator
   .calculator__head
     Wysiwyg(:data='data.description')
-    //- p.calculator__text И нет сомнений, что некоторые особенности внутренней политики набирают популярность среди определенных слоев населения, а значит, должны быть преданы социально-демократической анафеме. Лишь акционеры крупнейших компаний, которые представляют собой яркий пример континентально-европейского типа политической культуры, будут призваны к ответу. Вот вам яркий пример современных тенденций - перспективное планирование представляет собой интересный эксперимент проверки экспериментов, поражающих по своей масштабности и грандиозности. Имеется спорная точка зрения, гласящая примерно следующее: независимые государства, вне зависимости от их уровня, должны быть заблокированы в рамках своих собственных рациональных ограничений. В своём стремлении улучшить пользовательский опыт мы упускаем, что интерактивные прототипы, которые представляют собой яркий пример континентально-европейского типа политической культуры, будут указаны как претенденты на роль ключевых факторов. Имеется спорная точка зрения, гласящая примерно следующее: стремящиеся вытеснить традиционное производство, нанотехнологии и по сей день остаются уделом либералов, которые жаждут быть заблокированы в рамках своих собственных рациональных ограничений.
-    p {{data}}
-    p 222222 {{selectedArray}}
-  .calculator__body    
-    .calculator__item(v-for="item in data.characteristics" :key="item.id")
-      p.calculator__title {{item.title}}
-      .calculator__options(v-if="item.type == 1")
-        .calculator__option(v-for="(radio, index) in item.values" :key="index")
-          Radio(:text='radio.value' :value='radio.price' :name='item.title' @change="setPrice(item.title, radio.price, index)")          
-      .calculator__options(v-if="item.type == 2")
-        Select(:data='item.options')    
+  .calculator__body 
+    .calculator__item(v-for='(item, i) in data.characteristics', :key='i')
+      p.calculator__title {{ item.title }}
+      .calculator__options(v-if='item.type == 2') 
+        RadioOptions(:data='item.values', :item='item') 
+      .calculator__options(v-if='item.type == 1') 
+        SelectPrice(:data='item.values') 
+  .calculator__total 
+    p.calculator__title Приблизительная стоимость бани, согласно выбранных вами параметров, составляет:
+    h2.calculator__price {{ price }} руб.
 </template>
 
 
@@ -32,19 +31,19 @@ export default {
             {
               title: 'Базовый',
               name: 'Комплект',
-              value: 500
+              value: 500,
             },
             {
               title: 'На пустой участок',
               name: 'Комплект',
-              value: 500
+              value: 500,
             },
             {
               title: 'Расширенный',
               name: 'Комплект',
-              value: 500
+              value: 500,
             },
-          ]
+          ],
         },
         {
           title: 'Количество этажей',
@@ -53,14 +52,14 @@ export default {
             {
               title: 'Одноэтажный',
               name: 'Количество этажей',
-              value: 1
+              value: 1,
             },
             {
               title: 'Двухэтажный',
               name: 'Количество этажей',
-              value: 2
+              value: 2,
             },
-          ]
+          ],
         },
         {
           title: 'Количество этажей',
@@ -68,21 +67,21 @@ export default {
           options: [
             {
               label: '3х3',
-              value: 1
+              value: 1,
             },
             {
               label: '3х4',
-              value: 2
+              value: 2,
             },
             {
               label: '3х3',
-              value: 1
+              value: 1,
             },
             {
               label: '3х4',
-              value: 2
+              value: 2,
             },
-          ]
+          ],
         },
         {
           title: 'Количество этажей',
@@ -91,14 +90,14 @@ export default {
             {
               title: 'Одноэтажный',
               name: 'Количество этажей',
-              value: 1
+              value: 1,
             },
             {
               title: 'Двухэтажный',
               name: 'Количество этажей',
-              value: 2
+              value: 2,
             },
-          ]
+          ],
         },
         {
           title: 'Количество этажей',
@@ -106,21 +105,21 @@ export default {
           options: [
             {
               label: '3х3',
-              value: 1
+              value: 1,
             },
             {
               label: '3х4',
-              value: 2
+              value: 2,
             },
             {
               label: '3х3',
-              value: 1
+              value: 1,
             },
             {
               label: '3х4',
-              value: 2
+              value: 2,
             },
-          ]
+          ],
         },
         {
           title: 'Количество этажей',
@@ -129,42 +128,97 @@ export default {
             {
               title: 'Одноэтажный',
               name: 'Количество этажей',
-              value: 1
+              value: 1,
             },
             {
               title: 'Двухэтажный',
               name: 'Количество этажей',
-              value: 2
+              value: 2,
             },
-          ]
+          ],
         },
-      ]
+      ],
     }
   },
+  computed: {
+    radioOptions() {
+      let array = []
+      this.data.characteristics.forEach((element) => {
+        if (element.type == 2) {
+          array.push({ label: element, value: element })
+        }
+      })
+      return array
+    },
+    selectOptions() {
+      let array = []
+      this.data.characteristics.forEach((element) => {
+        if (element.type == 1) {
+          array.push({ label: element.value, value: element.type })
+        }
+      })
+      return array
+    },
+    totalPrice() {
+      // let arrayRadio = document.querySelectorAll('.select__price')
+      // let arraySelect = document.querySelectorAll('.radio-options__price')
+      // for (let i = 0; i < arrayRadio.length; i++) {
+      //   const element = arrayRadio[i];
+      // }
+    },
+  },
   methods: {
+    update() {
+      let arrayRadio = document.querySelectorAll('.select__price')
+      let arraySelect = document.querySelectorAll('.radio-options__price')
+
+      let array = []
+      for (let j = 0; j < arrayRadio.length; j++) {
+        array.push(Number(arrayRadio[j].value))        
+      }      
+      for (let z = 0; z < arraySelect.length; z++) {
+        array.push(Number(arraySelect[z].value))        
+      }    
+      console.log(array);  
+      let s = 0
+      for (let i = 0; i < array.length; i++) {
+        s += array[i]
+      }
+
+      this.price = s
+      console.log(s);
+    },
     addFilter(e) {
       this.$emit('change', this.$refs.label)
       this.$emit('input', e.target.checked)
     },
     setPrice(option, value, index) {
       if (this.selectedArray.length) {
-        for (let i = 0; i < selectedArray.length; i++) {
-          if (this.selectedArray.includes(option)) {
-          this.selectedArray.splice(option, 1)
-          // items[index].classList.remove('selected')
-        } else {
-          // items[index].classList.add('selected')
-          this.selectedArray.push(value)  
-        }          
-        }
-        
+        // for (let i = 0; i < selectedArray.length; i++) {
+        //   if (this.selectedArray.includes(option)) {
+        //   this.selectedArray.splice(option, 1)
+        //   // items[index].classList.remove('selected')
+        // } else {
+        //   // items[index].classList.add('selected')
+        //   this.selectedArray.push(value)
+        // }
+        // }
       } else {
         // items[index].classList.add('selected')
-        // this.selectedArray.push({`${option}`: value})  
-      }      
+        this.selectedArray.push({ '`${option}`': value })
+      }
 
       this.price = value
-
+    },
+  },
+  mounted() {
+    this.$nuxt.$on('updatePrice', this.update)
+    this.update()
+    let arrayRadio = document.querySelectorAll('.select__price')
+    let arraySelect = document.querySelectorAll('.radio-options__price')
+    for (let i = 0; i < arrayRadio.length; i++) {
+      const element = arrayRadio[i]
+      console.log(element.innerHTML)
     }
   },
 }

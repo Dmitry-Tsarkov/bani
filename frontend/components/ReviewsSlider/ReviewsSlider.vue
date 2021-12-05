@@ -1,6 +1,5 @@
 <template lang="pug">
-.reviews-slider
-  p {{data}}
+.reviews-slider  
   .reviews-slider__container(ref='container')
     .reviews-slider__wrapper
       .reviews-slider__slide(v-for="slide in data" :key="slide.id")        

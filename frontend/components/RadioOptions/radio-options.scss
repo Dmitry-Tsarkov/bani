@@ -1,0 +1,7 @@
+.radio-options {
+  &__price {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+  }
+}
