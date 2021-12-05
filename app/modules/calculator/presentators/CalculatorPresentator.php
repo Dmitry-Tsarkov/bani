@@ -49,7 +49,7 @@ class CalculatorPresentator
         $calculators = Calculator::find()->all();
 
         return [
-            'calculators' => [
+            'calculators' =>
                 array_map(function (Calculator $calculator) {
                     return [
                         'id' => $calculator->id,
@@ -57,7 +57,6 @@ class CalculatorPresentator
                         'image' => $calculator->getViewImageSrc(),
                     ];
                 }, $calculators),
-            ],
             'description' => Settings::getValue('calculator_description'),
         ];
     }
