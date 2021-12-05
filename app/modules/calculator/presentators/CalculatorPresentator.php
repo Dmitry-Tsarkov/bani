@@ -2,6 +2,7 @@
 
 namespace app\modules\calculator\presentators;
 
+use app\modules\calculator\models\Calculator;
 use app\modules\calculator\models\CalculatorCharacteristc;
 use app\modules\calculator\models\CalculatorValue;
 use app\modules\calculator\repositories\CalculatorRepository;
@@ -39,6 +40,22 @@ class CalculatorPresentator
                     ];
                 }, $calculator->characteristics),
             ]
+        ];
+    }
+
+    public function getCalculators()
+    {
+        $calculators = Calculator::find()->all();
+
+        return [
+            'calculators' => array_map(function (Calculator $calculator){
+                return [
+                    'id' => $calculator->id,
+                    'title' => $calculator->title,
+                    'description' => $calculator->description,
+                    'image' => $calculator->getViewImageSrc(),
+                ];
+            }, $calculators)
         ];
     }
 }

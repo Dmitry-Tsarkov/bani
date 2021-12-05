@@ -15,6 +15,11 @@ class CalculatorController extends ApiController
         $this->presentator = $presentator;
     }
 
+    public function actionCalculators()
+    {
+        return $this->presentator->getCalculators();
+    }
+
     /**
      * @OA\Get(
      *     path="/api/calculator/{id}",
