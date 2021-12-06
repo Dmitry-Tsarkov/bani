@@ -5,7 +5,7 @@
     Headline(title='Цены')
     .prices-page
       .prices-page__grid
-        nuxt-link.prices-page__item(:to='"/prices/" + item.id' v-for="item in data.calculators[0]" :key="item.id")
+        nuxt-link.prices-page__item(:to='"/prices/" + item.id' v-for="item in data.calculators" :key="item.id")
           img.prices-page__image(:src='item.image')
           .prices-page__text {{item.title}}       
       .prices-page__wysiwyg
