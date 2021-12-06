@@ -29,7 +29,7 @@ export default {
     },
   },  
   async asyncData({$axios, route}) {
-    const data = await $axios.$get(`http://app.bani-test.fvds.ru/api/calculator/${route.params.slug}`, route.query)
+    const data = await $axios.$get(`http://app.bani-test.fvds.ru/api/calculators/${route.params.slug}`, route.query)
     return { data }
   }
 }
