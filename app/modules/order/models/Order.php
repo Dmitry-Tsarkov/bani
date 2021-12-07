@@ -1,35 +1,34 @@
 <?php
 
-namespace app\modules\feedback\models;
+namespace app\modules\order\models;
 
 use app\modules\admin\traits\QueryExceptions;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 
 /**
- * @property FeedbackStatus $status
+ * @property OrderStatus $status
  *
  * @property int $id [int(11)]
  * @property int $created_at [int(11)]
  * @property int $updated_at [int(11)]
  * @property string $name [varchar(255)]
+ * @property string $email [varchar(255)]
  * @property string $phone [varchar(255)]
- * @property string $referer [varchar(255)]
- * @property string $type [varchar(255)]
- * @property string $description
- * @property string $email
- * @property string $additional_params
+ * @property string $comment
+ * @property string $additional_options [varchar(255)]
+ * @property int $product_id [int(11)]
  */
-class Feedback extends ActiveRecord
+class Order extends ActiveRecord
 {
     use QueryExceptions;
 
-    const TYPE_CALCULATION = 'calculation';
-    const TYPE_QUESTION = 'faq';
+    const TYPE_PRODUCT = 'product';
+    const TYPE_SERVICE = 'service';
 
     public static function tableName()
     {
-        return 'feedbacks';
+        return 'orders';
     }
 
     public function behaviors()
@@ -42,35 +41,35 @@ class Feedback extends ActiveRecord
     public function attributeLabels()
     {
         return [
+            'product_id' => 'Товар',
             'name' => 'ФИО',
+            'email' => 'E-mail',
             'phone' => 'Теленфон',
-            'type' => 'Тип',
             'created_at' => 'Дата',
-            'referer' => 'Страница отправки',
-            'description' => 'Комментарий'
+            'comment' => 'Комментарий',
+            'additional_options' => 'Дополнительные параметры'
         ];
     }
 
-    public static function create($name, $phone, $referer, $description = null, $additionalParams = null): self
+    public static function create($product_id, $name, $phone, $email, $comment, $additionalOptions = null): self
     {
         $self = new self();
 
         $self->name = $name;
+        $self->product_id = $product_id;
         $self->phone = $phone;
-        $self->referer = $referer;
-        $self->description = $description;
-        $self->additional_params = $additionalParams;
-        $self->type = self::TYPE_CALCULATION;
-        $self->status = FeedbackStatus::new();
+        $self->email = $email;
+        $self->comment = $comment;
+        $self->additional_options = $additionalOptions;
+        $self->status = OrderStatus::new();
 
         return $self;
     }
 
-    public function changeStatus(FeedbackStatus $status)
+    public function changeStatus(OrderStatus $status)
     {
         $this->status = $status;
     }
-
 
     public function beforeSave($insert)
     {
@@ -80,7 +79,7 @@ class Feedback extends ActiveRecord
 
     public function afterFind()
     {
-        $this->status = new FeedbackStatus($this->getAttribute('status'));
+        $this->status = new OrderStatus($this->getAttribute('status'));
         parent::afterFind();
     }
 }

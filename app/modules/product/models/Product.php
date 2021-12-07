@@ -29,6 +29,7 @@ use yii2tech\ar\position\PositionBehavior;
  * @property Category $category
  * @property Value[] $values
  * @property Kit[] $kits
+ * @property Addition[] $additions
  *
  * @property int $id [int(11)]
  * @property int $category_id [int(11)]
@@ -153,6 +154,11 @@ class Product extends ActiveRecord
     public function getMainImage()
     {
         return $this->hasOne(ProductImage::class, ['id' => 'image_id']);
+    }
+
+    public function getAdditions()
+    {
+        return $this->hasMany(Addition::class, ['product_id' => 'id'])->orderBy('position');
     }
 
     public function getImages()

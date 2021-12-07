@@ -64,6 +64,7 @@ $config = [
                 'kit' => \app\modules\kit\UI\admin\Module::class,
                 'region' => \app\modules\region\UI\admin\Module::class,
                 'calculator' => \app\modules\calculator\UI\admin\Module::class,
+                'order' => \app\modules\order\UI\admin\Module::class,
             ],
         ],
         'api' => [
@@ -81,6 +82,7 @@ $config = [
                 'service-category' => \app\modules\serviceCategory\UI\api\Module::class,
                 'regions' => \app\modules\region\UI\api\Module::class,
                 'calculator' => \app\modules\calculator\UI\api\Module::class,
+                'order' => \app\modules\order\UI\api\Module::class,
             ],
         ],
         'user' => \app\modules\user\Module::class,

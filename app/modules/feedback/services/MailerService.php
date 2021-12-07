@@ -27,4 +27,15 @@ class MailerService
             Yii::$app->errorHandler->logException($e);
         }
     }
+
+    public function orderSend(Feedback $feedback)
+    {
+        try {
+            $this->mailer->compose('feedback/order', compact('feedback'))
+                ->setTo(Settings::getArray('mail_to'))
+                ->send();
+        } catch (Throwable $e) {
+            Yii::$app->errorHandler->logException($e);
+        }
+    }
 }

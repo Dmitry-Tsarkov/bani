@@ -3,6 +3,7 @@
 namespace app\modules\product\seeders;
 
 use app\modules\characteristic\models\Characteristic;
+use app\modules\product\models\Addition;
 use app\modules\product\models\Product;
 use app\modules\product\models\ProductImage;
 use app\modules\seeder\components\BaseSeeder;
@@ -11,7 +12,7 @@ use yii\helpers\Console;
 
 class ProductSeeder extends BaseSeeder
 {
-    public function seed($amountInOneCategory, $amountOfImages)
+    public function seed($amountInOneCategory, $amountOfImages, $amountOfAdditions)
     {
         $productCategoryIds = $this->getProductCategoryIds();
 
@@ -43,6 +44,16 @@ class ProductSeeder extends BaseSeeder
 
                 $product->save();
                 $this->addTime($product);
+
+                for ($k = 1; $k <= $amountOfAdditions; $k++) {
+                    $addition = Addition::create(
+                        $product->id,
+                        $this->faker->realText(40)
+                    );
+
+                    $addition->save();
+                    $this->addTime($addition);
+                }
 
                 Console::stdout('.');
             }

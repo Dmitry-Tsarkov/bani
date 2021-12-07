@@ -1,6 +1,7 @@
 <?php
 
 use app\modules\feedback\helpers\FeedbackHelper;
+use app\modules\order\helpers\OrderHelper;
 use app\modules\review\helpers\ReviewHelper;
 use dmstr\widgets\Menu;
 
@@ -22,6 +23,11 @@ use dmstr\widgets\Menu;
                         'label' => 'Заявки ' . FeedbackHelper::badge(FeedbackHelper::newCount()),
                         'icon' => 'bell-o',
                         'url' => ['/admin/feedback/calculation/index'],
+                    ],
+                    [
+                        'label' => 'Заказы ' . OrderHelper::badge(OrderHelper::newCount()),
+                        'icon' => 'bell-o',
+                        'url' => ['/admin/order/order/index'],
                     ],
                     [
                         'label' => 'Страницы',

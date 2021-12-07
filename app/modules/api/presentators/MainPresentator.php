@@ -110,7 +110,6 @@ class MainPresentator
             'psrn' => Settings::getValue('psrn'),
             'rcbo' => Settings::getValue('rcbo'),
             'legal_address' => Settings::getValue('legal_address'),
-
             'map' => Settings::getValue('map')
         ];
     }
