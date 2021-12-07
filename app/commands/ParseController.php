@@ -7,16 +7,16 @@ use yii\console\Controller;
 
 class ParseController extends Controller
 {
-    private $service;
+//    private $service;
+//
+//    public function __construct($id, $module, ParseService $service, $config = [])
+//    {
+//        parent::__construct($id, $module, $config);
+//        $this->service = $service;
+//    }
 
-    public function __construct($id, $module, ParseService $service, $config = [])
-    {
-        parent::__construct($id, $module, $config);
-        $this->service = $service;
-    }
-
-    public function actionParseProducts()
-    {
-        $this->service->parseProducts();
-    }
+//    public function actionParseProducts()
+//    {
+//        $this->service->parseProducts();
+//    }
 }
