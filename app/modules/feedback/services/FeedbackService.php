@@ -2,8 +2,6 @@
 
 namespace app\modules\feedback\services;
 
-use app\modules\feedback\forms\FeedbackForm;
-use app\modules\feedback\forms\OrderForm;
 use app\modules\feedback\forms\QuestionForm;
 use app\modules\feedback\models\Feedback;
 use app\modules\feedback\repositories\FeedbackRepository;
@@ -17,20 +15,6 @@ class FeedbackService
     {
         $this->feedbacks = $feedbacks;
         $this->mailer = $mailer;
-    }
-    
-    public function calculationSend(FeedbackForm $form): Feedback
-    {
-        $feedabck = Feedback::calculation(
-            $form->name,
-            $form->phone,
-            $form->referer
-        );
-
-        $this->feedbacks->save($feedabck);
-        $this->mailer->calculateSend($feedabck);
-
-        return $feedabck;
     }
 
     public function questionSend(QuestionForm $form): Feedback

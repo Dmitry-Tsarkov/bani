@@ -37,44 +37,6 @@ class FeedbackController extends ApiController
 
     /**
      * @OA\Post(
-     *     path="/api/calculation/send",
-     *     tags={"Feedbacks"},
-     *      @OA\Parameter(
-     *        name="name",
-     *        in="path",
-     *        required=true,
-     *        @OA\Schema(
-     *          type="string",
-     *          default="Имя"
-     *      )
-     *     ),
-     *     @OA\Parameter(
-     *        name="phone",
-     *        in="path",
-     *        required=true,
-     *        @OA\Schema(
-     *          type="string",
-     *          default="88005553535"
-     *      )
-     *     ),
-     *     @OA\Response(response="201", description="Создано"),
-     *     @OA\Response(response="422", description="Ошибка валидации"),
-     *     @OA\Response(response="409", description="Конфликт"),
-     * )
-     */
-    public function actionCalculationSend()
-    {
-        $form = new FeedbackForm();
-        $form->referer = Yii::$app->request->referrer;
-        $form->load(Json::decode(Yii::$app->request->getRawBody()), '');
-        $this->validator->validate($form);
-        $this->service->calculationSend($form);
-        Yii::$app->response->statusCode = 201;
-        return ['message' => 'Свяжемся с вами как можно скорее'];
-    }
-
-    /**
-     * @OA\Post(
      *     path="/api/faq/send",
      *     tags={"Feedbacks"},
      *      @OA\Parameter(

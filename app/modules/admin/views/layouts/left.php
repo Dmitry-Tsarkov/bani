@@ -20,9 +20,9 @@ use dmstr\widgets\Menu;
                         'url' => Yii::$app->getHomeUrl(),
                     ],
                     [
-                        'label' => 'Заявки ' . FeedbackHelper::badge(FeedbackHelper::newCount()),
+                        'label' => 'Вопросы ' . FeedbackHelper::badge(FeedbackHelper::newCount()),
                         'icon' => 'bell-o',
-                        'url' => ['/admin/feedback/calculation/index'],
+                        'url' => ['/admin/feedback/question/index'],
                     ],
                     [
                         'label' => 'Заказы ' . OrderHelper::badge(OrderHelper::newCount()),

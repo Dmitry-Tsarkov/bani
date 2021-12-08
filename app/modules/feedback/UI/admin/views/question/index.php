@@ -2,7 +2,7 @@
 
 use app\modules\feedback\models\Feedback;
 use app\modules\feedback\models\FeedbackStatus;
-use app\modules\feedback\searchModel\FeedbackCalculationSearch;
+use app\modules\feedback\searchModel\FeedbackQuestionSearch;
 use kartik\grid\CheckboxColumn;
 use kartik\grid\DataColumn;
 use kartik\grid\GridView;
@@ -13,11 +13,10 @@ use yii\web\View;
 /**
  * @var View $this
  * @var DataProviderInterface $dataProvider
- * @var FeedbackCalculationSearch $searchModel
+ * @var FeedbackQuestionSearch $searchModel
  */
 
 ?>
-<?php $this->beginContent('@app/modules/feedback/UI/admin/views/layout.php', compact('searchModel')) ?>
 
 <?= GridView::widget([
     'id' => 'grid',
@@ -82,7 +81,6 @@ use yii\web\View;
         'phone',
     ]
 ]) ?>
-<?php $this->endContent() ?>
 
 <style>
     #actions {
