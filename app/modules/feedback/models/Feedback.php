@@ -51,7 +51,7 @@ class Feedback extends ActiveRecord
         ];
     }
 
-    public static function create($name, $phone, $referer, $description = null, $additionalParams = null): self
+    public static function calculation($name, $phone, $referer, $description = null, $additionalParams = null): self
     {
         $self = new self();
 
@@ -61,6 +61,21 @@ class Feedback extends ActiveRecord
         $self->description = $description;
         $self->additional_params = $additionalParams;
         $self->type = self::TYPE_CALCULATION;
+        $self->status = FeedbackStatus::new();
+
+        return $self;
+    }
+
+    public static function question($name, $phone, $referer, $description = null, $additionalParams = null)
+    {
+        $self = new self();
+
+        $self->name = $name;
+        $self->phone = $phone;
+        $self->referer = $referer;
+        $self->description = $description;
+        $self->additional_params = $additionalParams;
+        $self->type = self::TYPE_QUESTION;
         $self->status = FeedbackStatus::new();
 
         return $self;

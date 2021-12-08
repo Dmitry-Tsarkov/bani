@@ -21,7 +21,7 @@ class FeedbackService
     
     public function calculationSend(FeedbackForm $form): Feedback
     {
-        $feedabck = Feedback::create(
+        $feedabck = Feedback::calculation(
             $form->name,
             $form->phone,
             $form->referer
@@ -35,24 +35,10 @@ class FeedbackService
 
     public function questionSend(QuestionForm $form): Feedback
     {
-        $feedback = Feedback::create(
+        $feedback = Feedback::question(
             $form->name,
             $form->phone,
             $form->referer,
-            $form->description
-        );
-
-        $this->feedbacks->save($feedback);
-        $this->mailer->calculateSend($feedback);
-
-        return $feedback;
-    }
-
-    public function orderSend(OrderForm $form)
-    {
-        $feedback = Feedback::create(
-            $form->name,
-            $form->phone,
             $form->description
         );
 

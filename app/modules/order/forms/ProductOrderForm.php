@@ -5,7 +5,7 @@ namespace app\modules\order\forms;
 use app\validators\PhoneValidator;
 use yii\base\Model;
 
-class OrderForm extends Model
+class ProductOrderForm extends Model
 {
     public $product_id;
     public $name;
@@ -13,6 +13,7 @@ class OrderForm extends Model
     public $phone;
     public $comment;
     public $additional_params;
+    public $type;
 
     public function rules()
     {
@@ -22,7 +23,8 @@ class OrderForm extends Model
             [['email'], 'required', 'message'=> 'Введите почту'],
             [['phone'], 'required', 'message'=> 'Введите телефон'],
             [['product_id'], 'integer'],
-            [['name', 'additional_params', 'comment', 'comment'], 'string'],
+            [['email'], 'email'],
+            [['name', 'additional_params', 'comment', 'comment', 'type'], 'string'],
             ['phone', PhoneValidator::class],
         ];
     }

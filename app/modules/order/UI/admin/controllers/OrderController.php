@@ -23,7 +23,7 @@ class OrderController extends BalletController
         $this->service = $service;
     }
 
-    public function actionIndex()
+    public function actionProduct()
     {
         $searchModel = new OrderSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->get());

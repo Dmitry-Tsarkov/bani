@@ -1,5 +1,6 @@
 <?php
 
+use app\modules\order\helpers\OrderHelper;
 use app\modules\Order\models\Order;
 use app\modules\Order\models\OrderStatus;
 use app\modules\order\searchModels\OrderSearch;
@@ -17,7 +18,6 @@ use yii\web\View;
  */
 
 ?>
-<?php $this->beginContent('@app/modules/order/UI/admin/views/layout.php', compact('searchModel')) ?>
 
 <?= GridView::widget([
     'id' => 'grid',
@@ -59,8 +59,8 @@ use yii\web\View;
         [
             'class' => DataColumn::class,
             'attribute' => 'created_at',
-            'value' => function(Order  $feedback){
-                return date('d.m.Y H:i',$feedback->created_at);
+            'value' => function (Order $order) {
+                return date('d.m.Y H:i', $order->created_at);
             }
         ],
         [
@@ -69,9 +69,9 @@ use yii\web\View;
             'label' => 'Статус',
             'filter' => OrderStatus::list(),
             'format' => 'raw',
-            'value' => function(Order $feedback) {
-                return Html::a($feedback->status->getLabel(), ['view', 'id' => $feedback->id], [
-                    'class' => 'btn btn-' . $feedback->status->getClass() . ' btn-xs',
+            'value' => function (Order $order) {
+                return Html::a($order->status->getLabel(), ['view', 'id' => $order->id], [
+                    'class' => 'btn btn-' . $order->status->getClass() . ' btn-xs',
                     'data-pjax' => '0',
                     'data-toggle' => 'modal',
                     'data-target' => '#modal-lg'
@@ -80,9 +80,17 @@ use yii\web\View;
         ],
         'name',
         'phone',
+        [
+            'class' => DataColumn::class,
+            'attribute' => 'type',
+            'format' => 'raw',
+            'filter' => OrderHelper::getList(),
+            'value' => function (Order $order) {
+                return OrderHelper::getType($order);
+            }
+        ],
     ]
 ]) ?>
-<?php $this->endContent() ?>
 
 <style>
     #actions {

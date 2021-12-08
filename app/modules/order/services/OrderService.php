@@ -4,9 +4,10 @@
 namespace app\modules\order\services;
 
 
-use app\modules\order\forms\OrderForm;
+use app\modules\order\forms\ProductOrderForm;
 use app\modules\order\models\Order;
 use app\modules\order\repositories\OrderRepository;
+use app\modules\order\forms\ServiceOrderForm;
 
 class OrderService
 {
@@ -19,9 +20,9 @@ class OrderService
         $this->mailer = $mailer;
     }
 
-    public function orderSend(OrderForm $form)
+    public function orderProductSend(ProductOrderForm $form)
     {
-        $order = Order::create(
+        $order = Order::product(
             $form->product_id,
             $form->name,
             $form->phone,
@@ -31,7 +32,23 @@ class OrderService
         );
 
         $this->orders->save($order);
-        $this->mailer->orderSend($order);
+        $this->mailer->productOrderSend($order);
+
+        return $order;
+    }
+
+    public function orderServiceSend(ServiceOrderForm $form)
+    {
+        $order = Order::service(
+            $form->service_id,
+            $form->name,
+            $form->phone,
+            $form->email,
+            $form->comment
+        );
+
+        $this->orders->save($order);
+        $this->mailer->serviceOrderSend($order);
 
         return $order;
     }

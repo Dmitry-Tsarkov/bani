@@ -22,7 +22,7 @@ class OrderSearch extends Model
     public function rules()
     {
         return [
-            [['name', 'email', 'phone', 'comment'], 'string'],
+            [['name', 'email', 'phone', 'comment', 'type'], 'string'],
             [['status'], 'integer'],
         ];
     }

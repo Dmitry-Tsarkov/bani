@@ -14,7 +14,9 @@ class m211207_195217_orders extends Migration
     {
         $this->createTable('orders', [
             'id' => $this->primaryKey(),
-            'product_id' => $this->integer()->notNull(),
+            'product_id' => $this->integer()->defaultValue(null),
+            'service_id' => $this->integer()->defaultValue(null),
+            'type' => $this->string()->notNull(),
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),
             'status' => $this->integer()->notNull(),
@@ -24,6 +26,34 @@ class m211207_195217_orders extends Migration
             'comment' => $this->text()->defaultValue(null),
             'additional_options' => $this->string()->defaultValue(null),
         ]);
+
+        $this->createIndex(
+            'idx-orders-product_id',
+            'orders',
+            'product_id'
+        );
+        $this->addForeignKey(
+            'fk-orders-product_id',
+            'orders',
+            'product_id',
+            'products',
+            'id',
+            'CASCADE'
+        );
+
+        $this->createIndex(
+            'idx-orders-service_id',
+            'orders',
+            'service_id'
+        );
+        $this->addForeignKey(
+            'fk-orders-service_id',
+            'orders',
+            'service_id',
+            'services',
+            'id',
+            'CASCADE'
+        );
     }
 
     /**

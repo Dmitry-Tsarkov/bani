@@ -27,7 +27,7 @@ use dmstr\widgets\Menu;
                     [
                         'label' => 'Заказы ' . OrderHelper::badge(OrderHelper::newCount()),
                         'icon' => 'bell-o',
-                        'url' => ['/admin/order/order/index'],
+                        'url' => ['/admin/order/order/product'],
                     ],
                     [
                         'label' => 'Страницы',

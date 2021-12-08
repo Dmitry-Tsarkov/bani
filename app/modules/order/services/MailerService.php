@@ -17,10 +17,21 @@ class MailerService
         $this->mailer = $mailer;
     }
 
-    public function orderSend(Order $order)
+    public function productOrderSend(Order $order)
     {
         try {
             $this->mailer->compose('order/productOrder', compact('order'))
+                ->setTo(Settings::getArray('mail_to'))
+                ->send();
+        } catch (Throwable $e) {
+            Yii::$app->errorHandler->logException($e);
+        }
+    }
+
+    public function serviceOrderSend(Order $order)
+    {
+        try {
+            $this->mailer->compose('order/serviceOrder', compact('order'))
                 ->setTo(Settings::getArray('mail_to'))
                 ->send();
         } catch (Throwable $e) {
