@@ -37,7 +37,7 @@ class OrderController extends ApiController
     /**
      * @OA\Post(
      *     path="/api/order/send",
-     *     tags={"Feedbacks"},
+     *     tags={"Orders"},
      *      @OA\Parameter(
      *        name="name",
      *        in="path",
@@ -74,7 +74,7 @@ class OrderController extends ApiController
     /**
      * @OA\Post(
      *     path="/api/order-service/send",
-     *     tags={"Feedbacks"},
+     *     tags={"Orders"},
      *      @OA\Parameter(
      *        name="name",
      *        in="path",

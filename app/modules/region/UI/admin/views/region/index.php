@@ -102,8 +102,8 @@ $this->params['breadcrumbs'] = ['Регионы']
             'attribute' => 'id',
             'width' => '70px',
         ],
-        'city',
-        'district',
+        'title',
+        'title_alias',
 //        [
 //            'class' => DataColumn::class,
 //            'attribute' => 'status',
