@@ -60,7 +60,7 @@ class CalculatorValueController extends BalletController
                 Yii::$app->session->setFlash('success', 'Значение изменено');
                 return $this->redirect([
                     'calculator-characteristic/view',
-                    'calculatorId' => $characteristic->id,
+                    'calculatorId' => $characteristic->calculator_id,
                     'characteristicId' => $characteristic->id
                 ]);
             } catch (DomainException $e) {

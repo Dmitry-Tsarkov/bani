@@ -39,7 +39,7 @@ class CalculatorCharacteristicController extends BalletController
 
         if ($editForm->load(Yii::$app->request->post()) && $editForm->validate()) {
             try {
-                $this->service->edit($calculator->id, $editForm);
+                $this->service->edit($characteristic->id, $editForm);
                 Yii::$app->session->setFlash('success', 'Характеристика изменена');
                 return $this->redirect([
                     'calculator-characteristic/view',
