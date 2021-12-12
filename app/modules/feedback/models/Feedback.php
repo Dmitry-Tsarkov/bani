@@ -64,11 +64,12 @@ class Feedback extends ActiveRecord
 //        return $self;
 //    }
 
-    public static function question($name, $phone, $referer, $description = null)
+    public static function question($name, $email, $phone, $referer, $description = null)
     {
         $self = new self();
 
         $self->name = $name;
+        $self->email = $email;
         $self->phone = $phone;
         $self->referer = $referer;
         $self->description = $description;

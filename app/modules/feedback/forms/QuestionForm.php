@@ -8,6 +8,7 @@ use yii\base\Model;
 class QuestionForm extends Model
 {
     public $name;
+    public $email;
     public $phone;
     public $description;
     public $referer;

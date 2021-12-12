@@ -21,6 +21,7 @@ class FeedbackService
     {
         $feedback = Feedback::question(
             $form->name,
+            $form->email,
             $form->phone,
             $form->referer,
             $form->description
