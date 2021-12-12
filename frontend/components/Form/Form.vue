@@ -6,11 +6,11 @@
       span.error(v-if='errors.name') {{ errors.name }}
     .form__item
       p.form__title E-mail
-      input.form__input(type='text' placeholder='example@mail.ru' v-model='form.email' :class='{ error: errors.email }')
+      input.form__input(type='mail' placeholder='example@mail.ru' v-model='form.email' :class='{ error: errors.email }')
       span.error(v-if='errors.email') {{ errors.email }}
     .form__item
       p.form__title Номер телефона
-      input.form__input(type='text' placeholder='+7-999-999-99-99' v-model='form.phone' :class='{ error: errors.phone }')
+      input.form__input(type='number' placeholder='+7-999-999-99-99' v-model='form.phone' :class='{ error: errors.phone }')
       span.error(v-if='errors.phone') {{ errors.phone }}
     .form__item
       p.form__title Комментарий
@@ -105,7 +105,7 @@ export default {
       this.isLoading = true
 
       this.$api
-        .post('faq/send', this.form)
+        .post('question/send', this.form)
         .then((data) => {
           
         })
