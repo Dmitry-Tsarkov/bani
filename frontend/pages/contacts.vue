@@ -3,7 +3,7 @@
   .container
     Breadcrumbs(:data='breadcrumbs')
     Headline(title='Контакты')
-    Contacts        
+    Contacts(:data='data')
 </template>
 
 <script>
@@ -24,11 +24,9 @@ export default {
       return breadcrumbs
     },
   },
-  // asyncData(context) {
-    
-  //   return context.$api.load(
-  //     `actions/${context.route.params.slug}`
-  //   )
-  // },
+  async asyncData({$axios}) {
+    const data = await $axios.$get(`http://app.bani-test.fvds.ru/api/contacts`)
+    return { data }
+  }
 }
 </script>

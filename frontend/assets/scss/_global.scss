@@ -229,21 +229,21 @@ table {
 }
 
 .page {
-  // $this: &;
-  // overflow: hidden;
-  // display: flex;
-  // flex-direction: column;
+  $this: &;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   // max-width: 1920px;
   // min-width: $minwidth;
-  // min-height: 100vh;
-  // margin: auto;
-  // position: relative;
+  min-height: 100vh;
+  margin: auto;
+  position: relative;
   // z-index: $layer-1;
   // background-color: $white;
 
-  // &__header {
-  //   flex-shrink: 0;
-  // }
+  &__header {
+    flex-shrink: 0;
+  }
 
   &__content {
     position: relative;
@@ -262,10 +262,11 @@ table {
   //   flex-grow: 1;
   // }
 
-  // &__footer {
-  //   flex-grow: 0;
-  //   flex-shrink: 0;
-  // }
+  &__footer {
+    flex-grow: 0;
+    flex-shrink: 0;
+    z-index: 1;
+  }
 
   &__seo-text {
     font-size: 26px;

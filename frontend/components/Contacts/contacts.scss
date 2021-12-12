@@ -35,6 +35,11 @@
     color: $brown;
   }
 
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__map {
     margin-top: 48px;
     border-radius: 15px;
