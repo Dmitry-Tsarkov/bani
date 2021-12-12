@@ -7,6 +7,7 @@ use app\modules\calculator\forms\CalculatorCharacteristicForm;
 use app\modules\calculator\models\CalculatorCharacteristc;
 use app\modules\calculator\models\Calculator;
 use app\modules\calculator\services\CalculatorCharacteristicService;
+use app\modules\characteristic\models\Characteristic;
 use DomainException;
 use Exception;
 use RuntimeException;
@@ -38,7 +39,7 @@ class CalculatorCharacteristicController extends BalletController
 
         if ($editForm->load(Yii::$app->request->post()) && $editForm->validate()) {
             try {
-                $this->service->edit($calculator->id, $editForm);
+                $this->service->edit($characteristic->id, $editForm);
                 Yii::$app->session->setFlash('success', 'Характеристика изменена');
                 return $this->redirect([
                     'calculator-characteristic/view',
@@ -77,13 +78,13 @@ class CalculatorCharacteristicController extends BalletController
         return $this->render('create', compact('createForm', 'calculator'));
     }
 
-    public function actionDelete($id)
+    public function actionDelete($valueId)
     {
-        $calculator = Calculator::getOrFail($id);
+        $characteristic = CalculatorCharacteristc::getOrFail($valueId);
 
         try {
-            $this->service->delete($calculator->id);
-            Yii::$app->session->setFlash('success', 'Калькулятор успешно удален');
+            $this->service->delete($characteristic->id);
+            Yii::$app->session->setFlash('success', 'Характеристика успешно удалена');
         } catch (DomainException|RuntimeException $e) {
             Yii::$app->session->setFlash('error', $e->getMessage());
             return $this->redirect(['index']);

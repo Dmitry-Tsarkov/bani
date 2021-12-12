@@ -102,6 +102,7 @@ class Region extends ActiveRecord
     {
         return [
             'title' => 'Город',
+            'title_alias' => 'Алиас',
             'district' => 'Регион',
         ];
     }

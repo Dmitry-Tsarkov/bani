@@ -1,6 +1,6 @@
 <template lang="pug">
 .radio-options
-  input.radio-options__price(type='number' :value="price")
+  input.radio-options__price(type='number', :value='price')
   .calculator__option(v-for='(radio, index) in data', :key='index')
     Radio(
       :text='radio.value',
@@ -16,10 +16,10 @@ export default {
   data() {
     return {
       selectedArray: [],
-      price: this.data[0].price,
+      price: '',
     }
   },
-   methods: {
+  methods: {
     addFilter(e) {
       this.$emit('change', this.$refs.label)
       this.$emit('input', e.target.checked)
@@ -27,14 +27,19 @@ export default {
     setPrice(option, value, index) {
       setTimeout(() => {
         this.$nuxt.$emit('updatePrice')
-      }, 100);
+      }, 100)
 
       this.price = value
     },
+  },
+  mounted() {
+    setTimeout(() => {
+      this.price = this.data[0].price
+      this.$nuxt.$emit('updatePrice')
+    }, 100)
   },
 }
 </script>
 
 <style lang="scss" src='./radio-options.scss'>
-  
 </style>

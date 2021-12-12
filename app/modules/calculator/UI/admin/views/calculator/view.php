@@ -156,7 +156,6 @@ $this->title = $calculator->title;
                         'delete' => function ($url, $model, $key) {
                             return Html::a('<i class="fa fa-trash" aria-hidden="true"></i>', [
                                 'calculator-characteristic/delete',
-                                'calculatorId' => $model->calculator_id,
                                 'valueId' => $model->id,
 
                             ], [

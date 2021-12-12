@@ -6,7 +6,9 @@
       :icon="markerIcon"
       :balloon-template="balloonTemplate"
     />
+    <div>{{map}}</div>
   </yandex-map>
+  
 </template>
 
 <script>
@@ -37,9 +39,6 @@ export default {
     onClick(e) {
       this.coords = e.get('coords')
     },
-  },
-  mounted() {
-    console.log(1231)
   },
 }
 </script>

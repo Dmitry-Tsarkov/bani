@@ -18,9 +18,9 @@ export default {
   data() {
     return {
       opened: false,
-      selected: this.data[0].value,
+      selected: '',
       activeIndex: 0,
-      price: this.data[0].price,
+      price: '',
     }
   },
   computed: {
@@ -48,6 +48,13 @@ export default {
   },
   directives: {
     ClickOutside,
+  },
+  mounted() {
+    setTimeout(() => {
+      this.selected = this.data[0].value,
+      this.price = this.data[0].price
+      this.$nuxt.$emit('updatePrice')
+    }, 100)
   },
 }
 </script>
