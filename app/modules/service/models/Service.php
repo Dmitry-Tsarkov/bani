@@ -201,8 +201,10 @@ class Service extends ActiveRecord
 
     public function getFirstImage()
     {
+        if (!$this->images) {
+            return '';
+        }
         $images = $this->images;
-
         return Url::to($images[0]->getImageFileUrl('image'), true);
     }
 }

@@ -281,6 +281,9 @@ class Product extends ActiveRecord
 
     public function getFirstImage()
     {
+        if (!$this->images) {
+            return '';
+        }
         $images = $this->images;
 
         return !empty($images) ? Url::to($images[0]->getImageFileUrl('image'), true) : null;
