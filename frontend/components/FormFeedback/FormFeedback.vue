@@ -20,7 +20,7 @@
           textarea.form-feedback__input.textarea(type='text' v-model='form.description' :class='{ error: errors.description }')
           span.error(v-if='errors.description') {{ errors.description }}
         .form-feedback__checkbox
-          Checkbox(v-model='form.checkbox')
+          Checkbox(v-model='form.checkbox' label='Я даю свое согласите на обработку персональных данных')
           span.error(v-if='errors.checkbox') {{ errors.checkbox }}
         button.form-feedback__button Отправить
   .form-feedback(v-else)

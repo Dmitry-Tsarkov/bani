@@ -3,7 +3,7 @@
   .container
     Breadcrumbs(:data='breadcrumbs')
     Headline(title='Форма заказа')
-    FormOrder
+    FormOrder(:data='data')    
 </template>
 
 <script>
@@ -24,11 +24,15 @@ export default {
       return breadcrumbs
     },
   },
+  async asyncData({$axios, context, route}) {
+    const data = await $axios.$get(`http://app.bani-test.fvds.ru/api/product-order/${route.params.slug}`, route.query)
+    return { data }
+  }
   // asyncData(context) {
     
   //   return context.$api.load(
   //     `actions/${context.route.params.slug}`
   //   )
-  // },
+  // },product-order/<alias>
 }
 </script>

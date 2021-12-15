@@ -53,6 +53,14 @@
     &.textarea {
       min-height: 116px;
     }
+
+    &.error {
+      border: 1px solid #f23c43;
+
+      &::placeholder {
+        color: #f23c43;
+      }
+    }
   }
 
   &__button {

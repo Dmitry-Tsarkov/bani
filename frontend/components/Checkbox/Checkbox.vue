@@ -1,8 +1,7 @@
 <template lang='pug'>
 label.checkbox(ref='label')
   input.checkbox__input(
-    type='checkbox',  
-    
+    type='checkbox',      
     @change='addFilter'
   )
   //- input.checkbox__input(
@@ -12,14 +11,14 @@ label.checkbox(ref='label')
   //-   :disabled='disabled',
   //-   @change='addFilter'
   //- )
-  span.checkbox__label Я даю свое согласите на обработку персональных данных
+  span.checkbox__label {{label}}
 </template>
 
 
 
 <script>
 export default {
-  // props: ['data', 'disabled'],
+  props: ['data', 'disabled', 'label'],
   methods: {
     addFilter(e) {
       this.$emit('change', this.$refs.label)
