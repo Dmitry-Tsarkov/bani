@@ -9,6 +9,7 @@ use app\modules\portfolio\presentators\PortfolioPresentator;
 use app\modules\review\presentators\ReviewPresentator;
 use app\modules\setting\components\Settings;
 use app\modules\slider\presentator\SliderPresentator;
+use yii\helpers\Json;
 use yii\helpers\Url;
 
 class MainPresentator
@@ -82,7 +83,7 @@ class MainPresentator
                 'viber' => Settings::getArray('viber'),
                 'whatsapp' => Settings::getArray('whatsapp'),
             ],
-            'map' => Settings::getValue('map')
+            'map' => Json::decode(Settings::getValue('map'))
         ];
     }
 
