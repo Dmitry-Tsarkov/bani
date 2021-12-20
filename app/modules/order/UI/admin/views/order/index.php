@@ -67,7 +67,7 @@ use yii\web\View;
             'class' => DataColumn::class,
             'attribute' => 'status',
             'label' => 'Статус',
-            'filter' => OrderStatus::list(),
+//            'filter' => OrderStatus::list(),
             'format' => 'raw',
             'value' => function (Order $order) {
                 return Html::a($order->status->getLabel(), ['view', 'id' => $order->id], [

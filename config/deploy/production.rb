@@ -39,7 +39,7 @@ namespace :deploy do
 
     task :restart_nuxt do
         on roles(:app) do
-           execute "supervisorctl restart bani_nuxt"
+           execute "supervisorctl restart dom-sruba"
         end
     end
 
