@@ -35,7 +35,7 @@ export default {
   watchQuery: true,
   async asyncData({ $axios }) {
     const data = await $axios.$get(
-      `https://app.bani-test.fvds.ru/api/calculators`
+      `http://app.bani-test.fvds.ru/api/calculators`
     )
     return { data }
   },

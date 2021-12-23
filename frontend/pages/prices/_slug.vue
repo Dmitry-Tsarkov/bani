@@ -28,7 +28,7 @@ export default {
   },
   async asyncData({ $axios, route }) {
     const data = await $axios.$get(
-      `https://app.bani-test.fvds.ru/api/calculators/${route.params.slug}`,
+      `http://app.bani-test.fvds.ru/api/calculators/${route.params.slug}`,
       route.query
     )
     return { data }

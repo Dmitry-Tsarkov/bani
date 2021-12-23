@@ -54,7 +54,7 @@ export default {
   // },
   async asyncData({ $axios, context, route }) {
     const data = await $axios.$get(
-      `https://app.bani-test.fvds.ru/api/products/${route.params.slug}`,
+      `http://app.bani-test.fvds.ru/api/products/${route.params.slug}`,
       route.query
     )
     return { data }

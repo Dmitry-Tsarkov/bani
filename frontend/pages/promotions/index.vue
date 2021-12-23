@@ -26,7 +26,7 @@ export default {
   //   return context.$api.load('actions')
   // },
   async asyncData({ $axios }) {
-    const data = await $axios.$get(`https://app.bani-test.fvds.ru/api/actions`)
+    const data = await $axios.$get(`http://app.bani-test.fvds.ru/api/actions`)
     return { data }
   },
 }

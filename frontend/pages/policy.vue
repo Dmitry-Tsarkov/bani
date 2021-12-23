@@ -26,7 +26,7 @@ export default {
   },
 
   // async asyncData({$axios, context, route}) {
-  //   const data = await $axios.$get(`https://app.bani-test.fvds.ru/api/service/${route.params.slug}`, route.query)
+  //   const data = await $axios.$get(`http://app.bani-test.fvds.ru/api/service/${route.params.slug}`, route.query)
   //   return { data }
   // }
 }

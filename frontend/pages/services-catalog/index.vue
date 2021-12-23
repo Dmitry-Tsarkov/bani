@@ -33,7 +33,7 @@ export default {
   // },
   async asyncData({ $axios }) {
     const data = await $axios.$get(
-      `https://app.bani-test.fvds.ru/api/services-catalog`
+      `http://app.bani-test.fvds.ru/api/services-catalog`
     )
     return { data }
   },

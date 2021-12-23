@@ -85,7 +85,7 @@ export default {
   },
   async asyncData({ $axios }) {
     const data = await $axios.$get(
-      `https://app.bani-test.fvds.ru/api/portfolios`
+      `http://app.bani-test.fvds.ru/api/portfolios`
     )
     return { data }
   },

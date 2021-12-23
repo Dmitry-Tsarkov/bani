@@ -16,7 +16,7 @@ export default {
     }
   },
   async fetch() {
-    this.data = await fetch('https://app.bani-test.fvds.ru/api/layout').then(
+    this.data = await fetch('http://app.bani-test.fvds.ru/api/layout').then(
       (res) => res.json()
     )
   },

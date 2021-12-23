@@ -34,7 +34,7 @@ export default {
   watchQuery: true,
   async asyncData({ $axios, context, route }) {
     const data = await $axios.$get(
-      `https://app.bani-test.fvds.ru/api/service/${route.params.slug}`,
+      `http://app.bani-test.fvds.ru/api/service/${route.params.slug}`,
       route.query
     )
     return { data }
