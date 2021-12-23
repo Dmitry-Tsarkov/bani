@@ -9,24 +9,22 @@
 <script>
 export default {
   data() {
-    return {
-      
-    }
+    return {}
   },
   computed: {
     breadcrumbs() {
       let breadcrumbs = [
         {
-          title: 'Контакты',         
-        },               
+          title: 'Контакты',
+        },
       ]
 
       return breadcrumbs
     },
   },
-  async asyncData({$axios}) {
-    const data = await $axios.$get(`http://app.bani-test.fvds.ru/api/contacts`)
+  async asyncData({ $axios }) {
+    const data = await $axios.$get(`https://app.bani-test.fvds.ru/api/contacts`)
     return { data }
-  }
+  },
 }
 </script>

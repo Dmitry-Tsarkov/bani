@@ -1,5 +1,5 @@
 <template lang='pug'>
-.page    
+.page 
   header.page__header
     Header(:data='data.header')
   main.page__body
@@ -9,19 +9,16 @@
 </template>
 
 <script>
-
-export default {  
+export default {
   data() {
     return {
-      data: []
+      data: [],
     }
   },
   async fetch() {
-    this.data = await fetch(
-        'http://app.bani-test.fvds.ru/api/layout'
-      ).then(res => res.json())
+    this.data = await fetch('https://app.bani-test.fvds.ru/api/layout').then(
+      (res) => res.json()
+    )
   },
-
-  
 }
 </script>

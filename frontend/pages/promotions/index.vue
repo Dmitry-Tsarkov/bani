@@ -3,22 +3,20 @@
   .container
     Breadcrumbs(:data='breadcrumbs')
     Headline(title='Акции')
-    Promotions(:data='data.actions')     
+    Promotions(:data='data.actions') 
 </template>
 
 <script>
 export default {
   data() {
-    return {
-      
-    }
+    return {}
   },
   computed: {
     breadcrumbs() {
       let breadcrumbs = [
         {
           title: 'Акции',
-        },        
+        },
       ]
 
       return breadcrumbs
@@ -27,9 +25,9 @@ export default {
   // asyncData(context) {
   //   return context.$api.load('actions')
   // },
-  async asyncData({$axios}) {
-    const data = await $axios.$get(`http://app.bani-test.fvds.ru/api/actions`)
+  async asyncData({ $axios }) {
+    const data = await $axios.$get(`https://app.bani-test.fvds.ru/api/actions`)
     return { data }
-  }
+  },
 }
 </script>

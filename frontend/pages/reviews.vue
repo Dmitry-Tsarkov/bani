@@ -6,7 +6,11 @@
   FormFeedback
   .container
     .reviews__list
-      Review(v-for="review in data.reviews" :key="review.id" :review='review')
+      Review(
+        v-for='review in data.reviews',
+        :key='review.id',
+        :review='review'
+      )
 </template>
 
 <script>
@@ -28,10 +32,10 @@ export default {
   // asyncData(context) {
   //   return context.$api.load('reviews')
   // },
-  async asyncData({$axios}) {
-    const data = await $axios.$get(`http://app.bani-test.fvds.ru/api/reviews`)
+  async asyncData({ $axios }) {
+    const data = await $axios.$get(`https://app.bani-test.fvds.ru/api/reviews`)
     return { data }
-  }
+  },
 }
 </script>
 

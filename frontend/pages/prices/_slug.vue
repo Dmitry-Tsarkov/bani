@@ -1,6 +1,6 @@
 <template lang="pug">
 .page__content 
-  .container    
+  .container 
     Breadcrumbs(:data='breadcrumbs')
     Headline(title='Цены на срубы бань')
     Calculator(:data='data.calculator')
@@ -9,9 +9,7 @@
 <script>
 export default {
   data() {
-    return {
-      
-    }
+    return {}
   },
   computed: {
     breadcrumbs() {
@@ -22,15 +20,18 @@ export default {
         },
         {
           title: 'Цены на срубы бань',
-        }
+        },
       ]
 
       return breadcrumbs
     },
-  },  
-  async asyncData({$axios, route}) {
-    const data = await $axios.$get(`http://app.bani-test.fvds.ru/api/calculators/${route.params.slug}`, route.query)
+  },
+  async asyncData({ $axios, route }) {
+    const data = await $axios.$get(
+      `https://app.bani-test.fvds.ru/api/calculators/${route.params.slug}`,
+      route.query
+    )
     return { data }
-  }
+  },
 }
 </script>

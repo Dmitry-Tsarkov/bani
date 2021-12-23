@@ -3,14 +3,13 @@
   .container
     Breadcrumbs(:data='breadcrumbs')
     Headline(:title='data.product.title') 
-    Wysiwyg(:data='data.product.description')   
+    Wysiwyg(:data='data.product.description') 
 </template>
 
 <script>
 export default {
   data() {
-    return {      
-    }
+    return {}
   },
   computed: {
     breadcrumbs() {
@@ -32,11 +31,13 @@ export default {
     //   )
     // },
   },
-  watchQuery: true,  
-  async asyncData({$axios, context, route}) {
-    const data = await $axios.$get(`http://app.bani-test.fvds.ru/api/service/${route.params.slug}`, route.query)
+  watchQuery: true,
+  async asyncData({ $axios, context, route }) {
+    const data = await $axios.$get(
+      `https://app.bani-test.fvds.ru/api/service/${route.params.slug}`,
+      route.query
+    )
     return { data }
-  }
-  
+  },
 }
 </script>

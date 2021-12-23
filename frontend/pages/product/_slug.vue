@@ -1,17 +1,15 @@
 <template lang="pug">
 .page__content 
-  .container    
+  .container 
     Breadcrumbs(:data='breadcrumbs')
     Headline(:title='data.product.title')
-    Product(:data='data.product')        
+    Product(:data='data.product') 
 </template>
 
 <script>
 export default {
   data() {
-    return {
-      
-    }
+    return {}
   },
   computed: {
     breadcrumbs() {
@@ -25,7 +23,7 @@ export default {
           url: '/catalog/slug',
         },
         {
-          title: 'Баня 3*3 м с выносом'
+          title: 'Баня 3*3 м с выносом',
         },
       ]
 
@@ -57,9 +55,12 @@ export default {
   //     context.route.query
   //   )
   // },
-  async asyncData({$axios, route}) {
-    const data = await $axios.$get(`http://app.bani-test.fvds.ru/api/product/${route.params.slug}`, route.query)
+  async asyncData({ $axios, route }) {
+    const data = await $axios.$get(
+      `https://app.bani-test.fvds.ru/api/product/${route.params.slug}`,
+      route.query
+    )
     return { data }
-  }
+  },
 }
 </script>
