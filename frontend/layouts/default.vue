@@ -16,8 +16,8 @@ export default {
     }
   },
   async fetch() {
-    this.data = await fetch('http://app.bani-test.fvds.ru/api/layout').then(
-      (res) => res.json()
+    this.data = await fetch('https://app.dom-sruba.ru/api/layout').then((res) =>
+      res.json()
     )
   },
 }

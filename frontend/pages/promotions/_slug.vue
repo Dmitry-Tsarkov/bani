@@ -35,7 +35,7 @@ export default {
   // },
   async asyncData({ $axios, route }) {
     const data = await $axios.$get(
-      `http://app.bani-test.fvds.ru/api/actions/${route.params.slug}`,
+      `https://app.dom-sruba.ru/api/actions/${route.params.slug}`,
       route.query
     )
     return { data }

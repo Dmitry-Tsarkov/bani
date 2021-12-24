@@ -33,7 +33,7 @@ export default {
   //   return context.$api.load('reviews')
   // },
   async asyncData({ $axios }) {
-    const data = await $axios.$get(`http://app.bani-test.fvds.ru/api/reviews`)
+    const data = await $axios.$get(`https://app.dom-sruba.ru/api/reviews`)
     return { data }
   },
 }

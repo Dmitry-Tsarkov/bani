@@ -84,9 +84,7 @@ export default {
     },
   },
   async asyncData({ $axios }) {
-    const data = await $axios.$get(
-      `http://app.bani-test.fvds.ru/api/portfolios`
-    )
+    const data = await $axios.$get(`https://app.dom-sruba.ru/api/portfolios`)
     return { data }
   },
 }

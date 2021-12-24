@@ -23,7 +23,7 @@ export default {
     },
   },
   async asyncData({ $axios }) {
-    const data = await $axios.$get(`http://app.bani-test.fvds.ru/api/contacts`)
+    const data = await $axios.$get(`https://app.dom-sruba.ru/api/contacts`)
     return { data }
   },
 }
