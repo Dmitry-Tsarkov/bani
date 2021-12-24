@@ -6,7 +6,7 @@ export default {
   target: 'server',
   ssr: process.env.SSR !== 'false',
   head: {
-    title: 'default-nuxt',
+    title: 'Дом сруба',
     htmlAttrs: {
       lang: 'ru-RU',
     },
