@@ -104,8 +104,8 @@ export default {
 
       this.isLoading = true
 
-      this.$api
-        .post('question/send', this.form)
+      this.$axios
+        .post('https://app.dom-sruba.ru/api/question/send', this.form)
         .then((data) => {
           
         })
