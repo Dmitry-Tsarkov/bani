@@ -5,7 +5,6 @@ namespace app\modules\product\UI\admin\controllers;
 use app\modules\admin\components\BalletController;
 use app\modules\product\models\Addition;
 use app\modules\product\models\Product;
-use RuntimeException;
 use Yii;
 
 class AdditionController extends BalletController
@@ -17,7 +16,7 @@ class AdditionController extends BalletController
 
         if ($addition->load(Yii::$app->request->post()) && $addition->save()) {
             Yii::$app->session->setFlash('success', 'Параметр добавлен');
-            return $this->redirect(['addition/update', 'id' => $addition->id]);
+            return $this->redirect(['addition/update', 'productId' => $product->id, 'additionId' => $addition->id,]);
         }
 
         return $this->render('create', compact('addition', 'product'));

@@ -59,6 +59,8 @@ class Module extends \yii\base\Module implements BootstrapInterface
 
             'api/calculators/<id>' => 'api/calculator/calculator/calculator',
             'api/calculators' => 'api/calculator/calculator/calculators',
+
+            '/api/pages/<alias>' => '/api/page/pages/view',
         ]);
     }
 }
