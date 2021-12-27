@@ -5,20 +5,15 @@ namespace app\modules\category\presentators;
 use app\modules\category\helpers\CategoryHelper;
 use app\modules\category\models\Category;
 use app\modules\category\readModels\CategoryReader;
-use app\modules\serviceCategory\models\ServiceCategory;
-use app\modules\serviceCategory\readModels\ServiceCategoryReader;
 use yii\helpers\Url;
-use yii\helpers\VarDumper;
 
 class CategoryPresentator
 {
     private $productCategoryReader;
-    private $serviceCategoryReader;
 
-    public function __construct(CategoryReader $categoryReader, ServiceCategoryReader $serviceCategoryReader)
+    public function __construct(CategoryReader $categoryReader)
     {
         $this->productCategoryReader = $categoryReader;
-        $this->serviceCategoryReader = $serviceCategoryReader;
     }
 
     public function getCatalog()

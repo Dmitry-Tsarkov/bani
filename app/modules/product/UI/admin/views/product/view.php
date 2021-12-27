@@ -1,7 +1,6 @@
 <?php
 
 use app\modules\characteristic\models\Value;
-use app\modules\kit\models\Kit;
 use app\modules\product\forms\ImagesForm;
 use app\modules\product\models\Addition;
 use app\modules\product\models\Product;
@@ -308,7 +307,7 @@ $this->title = $product->title;
                     return [
                         'key' => $image->id,
                         'caption' => $image->image,
-                        'size' => filesize($image->getUploadedFilePath('image')),
+//                        'size' => filesize($image->getUploadedFilePath('image')),
                         'downloadUrl' => $image->getImageFileUrl('image'),
                         'url' => Url::to(['delete-image', 'id' => $image->product_id, 'photoId' => $image->id]),
                     ];

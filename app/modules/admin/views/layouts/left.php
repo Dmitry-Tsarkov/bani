@@ -61,18 +61,8 @@ use dmstr\widgets\Menu;
                     ],
                     [
                         'label' => 'Услуги',
-                        'items' => [
-                            [
-                                'label' => 'Категории',
-                                'url' => ['/admin/service-category/service-category/index'],
-                                'active' => Yii::$app->controller->module->id == 'service-category' ,
-                            ],
-                            [
-                                'label' => 'Услуги',
-                                'url' => ['/admin/service/service/index'],
-                                'active' => (Yii::$app->controller->module->id == 'service'),
-                            ],
-                        ],
+                        'url' => ['/admin/service/service/index'],
+                        'active' => (Yii::$app->controller->module->id == 'service'),
                     ],
                     [
                         'label' => 'Контент',

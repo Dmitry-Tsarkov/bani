@@ -48,6 +48,7 @@ class ProductPresentator
             'product' => [
                 'meta' => $product->getMetaTags(),
                 'id' => $product->id,
+                'category_alias' => $product->category->alias,
                 'alias' => $product->alias,
                 'title' => $product->title,
                 'description' => $product->description,

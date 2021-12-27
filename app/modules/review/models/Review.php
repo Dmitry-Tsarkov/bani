@@ -6,7 +6,6 @@ use app\modules\admin\traits\QueryExceptions;
 use DomainException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
-use yii\helpers\Url;
 
 /**
  * @property int $id [int(11)]

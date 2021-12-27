@@ -40,9 +40,9 @@ class ServiceController extends ApiController
      *     @OA\Response(response="404", description="An example resource")
      * )
      */
-    public function actionServices($alias)
+    public function actionServices()
     {
-        return $this->servicePresentator->getServices($alias);
+        return $this->servicePresentator->getAllServices();
     }
 
     /**
