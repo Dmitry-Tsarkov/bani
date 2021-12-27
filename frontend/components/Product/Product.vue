@@ -1,6 +1,5 @@
 <template lang="pug">
-  .product    
-    p asddasd {{cost}}
+  .product
     .product__container 
       .product__slider
         ProductSlider(:data='data.images')
@@ -8,12 +7,12 @@
         .product__specification(v-for="(price, index) in data.kits" :key="index")
           p.product__name {{price.title}}
           p.product__value {{price.price_type}} {{cost[index]}} руб.        
-        p.product__value.big Характеристики объекта:
-        .product__characteristics
+        p.product__value.big(v-if="data.kits.length") Характеристики объекта:
+        .product__characteristics(v-if="data.kits.length")
           .product__characteristic(v-for="characteristic in data.characteristics" :key="characteristic.id")
             p.product__name.black {{characteristic.characteristic}}
             p.product__value.black {{characteristic.value}} {{characteristic.unit}}        
-        nuxt-link.product__button(:to='"/order/" + data.alias') Рассчитать стоимость
+        nuxt-link.product__button(:to='"/order/" + data.alias') Заказать
     .product__tabs
       button(v-for="(tab, i) in data.kits" :key="i" type='button' @click='toggleTab(i)', :class='{ "active": index == i }').product__tab {{tab.title}} 
     .product__content(v-if="data.kits.length")

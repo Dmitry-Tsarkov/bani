@@ -1,6 +1,7 @@
 <template lang="pug">
 .page__content 
   .container
+    Breadcrumbs(:data='breadcrumbs')
     Section(title='Каталог')
       .catalog
         Warning 
@@ -14,7 +15,24 @@
 </template>
 
 <script>
+import pageMixin from '@/helpers/pageMixin'
 export default {
+  mixins: [pageMixin],
+  computed: {
+    breadcrumbs() {
+      let breadcrumbs = [
+        {
+          title: 'Каталог',
+          url: '/catalog',
+        },
+        {
+          title: 'Цены на срубы бань',
+        },
+      ]
+
+      return breadcrumbs
+    },
+  },
   async asyncData({ $axios, route }) {
     const data = await $axios.$get(
       `https://app.dom-sruba.ru/api/catalog/${route.params.slug}`,

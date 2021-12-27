@@ -8,10 +8,10 @@
 </template>
 
 <script>
+import pageMixin from '@/helpers/pageMixin'
 export default {
-  data() {
-    return {}
-  },
+  mixins: [pageMixin],
+  
   computed: {
     breadcrumbs() {
       let breadcrumbs = [
@@ -26,13 +26,7 @@ export default {
 
       return breadcrumbs
     },
-  },
-  // asyncData(context) {
-
-  //   return context.$api.load(
-  //     `actions/${context.route.params.slug}`
-  //   )
-  // },
+  },  
   async asyncData({ $axios, route }) {
     const data = await $axios.$get(
       `https://app.dom-sruba.ru/api/actions/${route.params.slug}`,

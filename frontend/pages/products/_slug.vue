@@ -21,10 +21,9 @@
 </template>
 
 <script>
+import pageMixin from '@/helpers/pageMixin'
 export default {
-  data() {
-    return {}
-  },
+  mixins: [pageMixin],  
   computed: {
     breadcrumbs() {
       let breadcrumbs = [
@@ -45,13 +44,7 @@ export default {
     //   )
     // },
   },
-  watchQuery: true,
-  // asyncData(context) {
-  //   return context.$api.load(
-  //     `catalog/${context.route.params.slug}`,
-  //     context.route.query
-  //   )
-  // },
+  watchQuery: true,  
   async asyncData({ $axios, context, route }) {
     const data = await $axios.$get(
       `https://app.dom-sruba.ru/api/products/${route.params.slug}`,

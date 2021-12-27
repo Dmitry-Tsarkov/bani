@@ -6,10 +6,9 @@
 </template>
 
 <script>
+import pageMixin from '@/helpers/pageMixin'
 export default {
-  // asyncData(context) {
-  //   return context.$api.load('catalog')
-  // },
+  mixins: [pageMixin],  
   async asyncData({ $axios, route }) {
     const data = await $axios.$get(
       `https://app.dom-sruba.ru/api/regions/${route.params.slug}`,

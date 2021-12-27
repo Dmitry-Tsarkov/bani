@@ -17,10 +17,9 @@
 </template>
 
 <script>
+import pageMixin from '@/helpers/pageMixin'
 export default {
-  data() {
-    return {}
-  },
+  mixins: [pageMixin],  
   computed: {
     breadcrumbs() {
       let breadcrumbs = [

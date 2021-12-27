@@ -7,7 +7,9 @@
 </template>
 
 <script>
+import pageMixin from '@/helpers/pageMixin'
 export default {
+  mixins: [pageMixin],
   data() {
     return {}
   },
@@ -28,12 +30,6 @@ export default {
       route.query
     )
     return { data }
-  },
-  // asyncData(context) {
-
-  //   return context.$api.load(
-  //     `actions/${context.route.params.slug}`
-  //   )
-  // },product-order/<alias>
+  }, 
 }
 </script>

@@ -21,7 +21,9 @@
 </template>
 
 <script>
+import pageMixin from '@/helpers/pageMixin'
 export default {
+  mixins: [pageMixin],
   async asyncData({ $axios }) {
     const data = await $axios.$get(`https://app.dom-sruba.ru/api/home`)
     return { data }

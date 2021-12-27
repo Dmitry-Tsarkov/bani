@@ -9,7 +9,9 @@
 </template>
 
 <script>
+import pageMixin from '@/helpers/pageMixin'
 export default {
+  mixins: [pageMixin],
   data() {
     return {
       wysiwyg:
