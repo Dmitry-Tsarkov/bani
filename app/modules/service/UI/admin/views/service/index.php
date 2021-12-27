@@ -110,14 +110,6 @@ $this->params['breadcrumbs'] = ['Услуги']
             'label' => 'Название',
         ],
         [
-            'attribute' => 'category_id',
-            'label' => 'Категория',
-            'filter' => $searchModel->categoriesDropDown(),
-            'value' => function (Service $service) {
-                return $service->category->title ?? '-';
-            },
-        ],
-        [
             'class' => DataColumn::class,
             'attribute' => 'status',
             'label' => 'Статус',

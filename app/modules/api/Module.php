@@ -34,9 +34,12 @@ class Module extends \yii\base\Module implements BootstrapInterface
             'api/product-order/<alias>' => '/api/product/product/product-order',
             'api/order/send-product' => '/api/order/order/order-product-send',
 
-            'api/services-catalog' => '/api/service-category/service-category/services-catalog',
-            'api/service-catalog/<alias>' => '/api/service-category/service-category/service-catalog',
-            'api/services/<alias>' => '/api/service/service/services',
+//            'api/services-catalog' => '/api/service-category/service-category/services-catalog',
+//            'api/service-catalog/<alias>' => '/api/service-category/service-category/service-catalog',
+//            'api/services/<alias>' => '/api/service/service/services',
+//            'api/service/<alias>' => '/api/service/service/service',
+
+            'api/services' => '/api/service/service/services',
             'api/service/<alias>' => '/api/service/service/service',
             'api/service-order/<alias>' => '/api/service/service/service-order',
             'api/order/send-service' => '/api/order/order/order-service-send',

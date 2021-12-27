@@ -68,10 +68,6 @@ $this->title = $service->title;
                     'title',
                     'alias',
                     [
-                        'label' => 'Категория',
-                        'value' => $service->category->title ?? '-',
-                    ],
-                    [
                         'label' => 'Дата создания',
                         'value' => date('d.m.Y H:i', $service->created_at)
                     ],

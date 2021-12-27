@@ -6,7 +6,6 @@ use app\modules\admin\behaviors\SlugBehavior;
 use app\modules\admin\traits\QueryExceptions;
 use app\modules\seo\behaviors\SeoBehavior;
 use app\modules\seo\valueObjects\Seo;
-use app\modules\serviceCategory\models\ServiceCategory;
 use DomainException;
 use lhs\Yii2SaveRelationsBehavior\SaveRelationsBehavior;
 use yii\behaviors\TimestampBehavior;
@@ -21,10 +20,8 @@ use yii2tech\ar\position\PositionBehavior;
  *
  * @property ServiceImage $mainImage
  * @property ServiceImage[] $images
- * @property ServiceCategory $category
  *
  * @property int $id [int(11)]
- * @property int $category_id [int(11)]
  * @property int $image_id [int(11)]
  * @property int $position [int(11)]
  * @property int $status [int(11)]
@@ -63,10 +60,6 @@ class Service extends ActiveRecord
             SlugBehavior::class,
             SeoBehavior::class,
             [
-                'class' => PositionBehavior::class,
-                'groupAttributes' => ['category_id']
-            ],
-            [
                 'class' => SaveRelationsBehavior::class,
                 'relations' => ['images'],
             ],
@@ -78,11 +71,10 @@ class Service extends ActiveRecord
         return 'services';
     }
 
-    public static function create($category_id, $title, $price_type, $price, $description, ?Seo $seo = null): self
+    public static function create($title, $price_type, $price, $description, ?Seo $seo = null): self
     {
         $self = new self();
 
-        $self->category_id = $category_id;
         $self->price_type = $price_type;
         $self->price = $price;
         $self->status = self::STATUS_ACTIVE;
@@ -94,9 +86,8 @@ class Service extends ActiveRecord
         return $self;
     }
 
-    public function edit($category_id, $price_type, $price, $title, $description, ?Seo $seo = null): void
+    public function edit($price_type, $price, $title, $description, ?Seo $seo = null): void
     {
-        $this->category_id = $category_id;
         $this->price_type = $price_type;
         $this->price = $price;
         $this->title = $title;
@@ -128,11 +119,6 @@ class Service extends ActiveRecord
     public function isActive(): bool
     {
         return $this->status == self::STATUS_ACTIVE;
-    }
-
-    public function getCategory()
-    {
-        return $this->hasOne(ServiceCategory::class, ['id' => 'category_id']);
     }
 
     public function getMainImage()

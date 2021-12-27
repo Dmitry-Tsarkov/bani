@@ -83,7 +83,7 @@ class ServiceController extends BalletController
         if ($createForm->load(Yii::$app->request->post()) && $createForm->validate()) {
             try {
                 $service = $this->service->create($createForm);
-                Yii::$app->session->setFlash('success', 'Товар добавлен');
+                Yii::$app->session->setFlash('success', 'Услуга добавлена');
                 return $this->redirect(['update', 'id' => $service->id]);
             } catch (DomainException $e) {
                 Yii::$app->session->setFlash('error', $e->getMessage());

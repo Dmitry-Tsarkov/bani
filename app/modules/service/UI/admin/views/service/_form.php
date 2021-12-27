@@ -25,15 +25,10 @@ use yii\web\View;
                     <h3 class="box-title">Общее</h3>
                 </div>
                 <div class="box-body">
-                    <?= $form->field($serviceForm, 'categoryId')->dropDownList($serviceForm->getCategoriesDropDown(), [
-                        'prompt' => '',
-                        'options' => $serviceForm->getCategoriesDropDownOptions()
-                    ]) ?>
                     <?= $form->field($serviceForm, 'title') ?>
                     <?= $form->field($serviceForm, 'alias') ?>
                     <?= $form->field($serviceForm, 'price_type')->dropDownList(DropDownHelper::priceTypeDropDown()) ?>
                     <?= $form->field($serviceForm, 'price') ?>
-
                 </div>
             </div>
         </div>
@@ -51,7 +46,6 @@ use yii\web\View;
             </div>
         </div>
     </div>
-
     <div class="box box-default box-solid">
         <div class="box-header with-border">
             <h3 class="box-title">Описание</h3>
@@ -64,8 +58,6 @@ use yii\web\View;
             </div>
         </div>
     </div>
-
-
     <?= Html::submitButton('Сохранить', ['class' => 'btn btn-primary']) ?>
     <?php ActiveForm::end() ?>
 </div>

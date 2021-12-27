@@ -9,22 +9,19 @@ use app\modules\service\models\Service;
 use app\modules\service\models\ServiceImage;
 use app\modules\service\repositories\ServiceRepository;
 use app\modules\seo\valueObjects\Seo;
-use app\modules\serviceCategory\repositories\ServiceCategoryRepository;
 use DomainException;
 
 class ServiceService
 {
     private $services;
-    private $categories;
     private $characteristics;
 
     public function __construct(
         ServiceRepository $services,
-        ServiceCategoryRepository $categories,
-        CharacteristicRepository $characteristics)
+        CharacteristicRepository $characteristics
+    )
     {
         $this->services = $services;
-        $this->categories = $categories;
         $this->characteristics = $characteristics;
     }
 
@@ -34,10 +31,7 @@ class ServiceService
             throw new DomainException('Такой алиас уже есть');
         }
 
-        $category = $this->categories->getById($form->categoryId);
-
         $service = Service::create(
-            $category->id,
             $form->title,
             $form->price_type,
             $form->price,
@@ -64,7 +58,6 @@ class ServiceService
         }
 
         $service->edit(
-            $form->categoryId,
             $form->price_type,
             $form->price,
             $form->title,

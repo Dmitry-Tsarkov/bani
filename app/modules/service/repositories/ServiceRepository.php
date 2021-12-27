@@ -55,5 +55,10 @@ class ServiceRepository
             ->one();
     }
 
-
+    public function getAllServices()
+    {
+        return Service::find()
+            ->andWhere(['status' => Service::STATUS_ACTIVE])
+            ->all();
+    }
 }
