@@ -1,12 +1,13 @@
 <template lang="pug">
   .product    
+    p asddasd {{cost}}
     .product__container 
       .product__slider
         ProductSlider(:data='data.images')
       .product__specifications
-        .product__specification(v-for="price in data.kits" :key="price.id")
+        .product__specification(v-for="(price, index) in data.kits" :key="index")
           p.product__name {{price.title}}
-          p.product__value {{price.price_type}} {{price.price}} руб.        
+          p.product__value {{price.price_type}} {{cost[index]}} руб.        
         p.product__value.big Характеристики объекта:
         .product__characteristics
           .product__characteristic(v-for="characteristic in data.characteristics" :key="characteristic.id")
@@ -15,7 +16,7 @@
         nuxt-link.product__button(:to='"/order/" + data.alias') Рассчитать стоимость
     .product__tabs
       button(v-for="(tab, i) in data.kits" :key="i" type='button' @click='toggleTab(i)', :class='{ "active": index == i }').product__tab {{tab.title}} 
-    .product__content
+    .product__content(v-if="data.kits.length")
       .product__wysiwyg(v-if="data.kits[index].text")
         Wysiwyg(:data='data.kits[index].text')
       .product__wysiwyg.brown(v-if="data.kits[index].bottom_text")
@@ -23,6 +24,7 @@
 </template>
 
 <script>
+import { priceFormat } from '@/helpers/formatter'
 export default {
   props: ['data'],
   data() {
@@ -39,6 +41,16 @@ export default {
       this.index = id;      
     },
   },
+  computed: {
+    cost() {
+      let array = []
+      for (let i = 0; i < this.data.kits.length; i++) {
+        array.push(priceFormat(this.data.kits[i].price))
+        
+      }
+      return array
+    },
+  }
 }
 </script>
 

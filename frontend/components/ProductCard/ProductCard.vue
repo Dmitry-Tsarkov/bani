@@ -5,13 +5,19 @@ nuxt-link.product-card(:to='"/product/" + product.alias')
   .product-card__container
     p.product-card__title {{ product.title }}
     p.product-card__text {{ product.description }}
-    p.product-card__title {{ product.price_type }} {{ product.price }} руб. 
+    p.product-card__title {{ product.price_type }} {{ cost }} руб. 
     button.product-card__button Рассчитать стоимость 
 </template>
 
 <script>
+import { priceFormat } from '@/helpers/formatter'
 export default {
-  props: ['product']
+  props: ['product'],
+  computed: {
+    cost() {
+      return priceFormat(this.product.price)
+    },
+  }
 }
 </script>
 

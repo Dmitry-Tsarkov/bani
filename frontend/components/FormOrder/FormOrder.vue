@@ -128,8 +128,8 @@ export default {
         }
         
       });
-      this.$api
-        .post('order/send-product', this.form)
+      this.$axios
+        .post('https://app.dom-sruba.ru/api/order/send-product', this.form)
         .then((data) => {
           
         })
