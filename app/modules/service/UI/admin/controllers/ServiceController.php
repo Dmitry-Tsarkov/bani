@@ -75,7 +75,6 @@ class ServiceController extends BalletController
         return $this->redirect(Yii::$app->request->referrer);
     }
 
-
     public function actionCreate()
     {
         $createForm = new ServiceForm();

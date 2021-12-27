@@ -59,6 +59,7 @@ class Service extends ActiveRecord
             TimestampBehavior::class,
             SlugBehavior::class,
             SeoBehavior::class,
+            PositionBehavior::class,
             [
                 'class' => SaveRelationsBehavior::class,
                 'relations' => ['images'],

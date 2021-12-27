@@ -2,7 +2,6 @@
 
 namespace app\modules\service\searchModel;
 
-use app\modules\admin\helpers\NestedSetsHelper;
 use app\modules\service\models\Service;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
@@ -37,7 +36,7 @@ class ServiceSearch extends Model
         return new ActiveDataProvider([
             'query' => $query,
             'sort' => ['defaultOrder' => [
-                'position' => SORT_ASC
+                'position' => SORT_DESC
             ]],
             'pagination' => ['defaultPageSize' => 40],
         ]);

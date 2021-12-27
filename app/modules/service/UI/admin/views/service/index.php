@@ -80,7 +80,7 @@ $this->params['breadcrumbs'] = ['Услуги']
                 return
                     Html::a('<span class="glyphicon glyphicon-arrow-up"></span>',
                         [
-                            'move-up',
+                            'move-down',
                             'id' => $service->id
                         ],
                         [
@@ -88,7 +88,7 @@ $this->params['breadcrumbs'] = ['Услуги']
                         ]) .
                     Html::a('<span class="glyphicon glyphicon-arrow-down"></span>',
                         [
-                            'move-down',
+                            'move-up',
                             'id' => $service->id
                         ],
                         [
