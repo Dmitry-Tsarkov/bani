@@ -5,7 +5,7 @@
         .form-order__top-input
           .form-order__item
             p.form-order__title Наименование товара
-            input.form-order__input(type='text' :value='data.product.title' disabled)        
+            input.form-order__input(type='text' :value='data.service.title' disabled)        
         .form-order__grid
           .form-order__item
             p.form-order__title ФИО
@@ -18,11 +18,8 @@
           .form-order__item
             p.form-order__title Телефон
             input.form-order__input(type='phone' placeholder='+7 (999) 999 -99-99' v-model="form.phone" :class='{ error: errors.phone }')   
-            span.error(v-if='errors.phone') {{ errors.phone }}     
-        .form-order__advanced
-          p.form-order__title Дополнительные параметры
-          .form-order__list
-            Checkbox(v-for="item in data.additional_params" :key="item.id" :label='item.title' class='js-order-checkbox')           
+            span.error(v-if='errors.phone') {{ errors.phone }}    
+                  
         .form-order__advanced
           p.form-order__title Комментарий
           textarea.form-order__input.textarea(type='text' v-model="form.comment")
@@ -30,8 +27,7 @@
           Checkbox(label='Я даю свое согласите на обработку персональных данных' v-model='form.checkbox')
           span.error(v-if='errors.checkbox') {{ errors.checkbox }}
         button.form-order__button(@click='send') Отправить
-    .form-order__content(v-if="success")
-      p sdasdas {{additional_params}}
+    .form-order__content(v-if="success")      
       p.form-order__text Наш менеджер свяжется с вами в ближайшее время для согласования заказа.
       nuxt-link.form-order__button.return(to='/catalog') Вернуться в каталог 
 </template>
@@ -44,13 +40,12 @@ export default {
   data() {
     return {
       form: {
-        product_id: this.data.product.id,
+        service_id: this.data.service.id,
         name: '',
         email: '',
         phone: '',
         comment: '',
-        checkbox: '',
-        additional_params: ''
+        checkbox: '',        
       },
       success: false,
       serverErrors: {},
@@ -129,7 +124,7 @@ export default {
         
       });
       this.$axios
-        .post('https://app.dom-sruba.ru/api/order/send-product', this.form)
+        .post('https://app.dom-sruba.ru/api/order/send-service', this.form)
         .then((data) => {
           
         })
@@ -146,6 +141,6 @@ export default {
 }
 </script>
 
-<style src='./form-order.scss' lang="scss">
+<style src='../FormOrder/form-order.scss' lang="scss">
 
 </style>

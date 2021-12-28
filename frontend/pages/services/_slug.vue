@@ -1,15 +1,11 @@
 <template lang="pug">
-.page__content
+.page__content 
   .container
     Breadcrumbs(:data='breadcrumbs')
-    Headline(title='Услуги')
-    .catalog__grid.no-margin
-      CatalogCard(
-        v-for='item in data.services',
-        :key='item.id',
-        :data='item',
-        page='service'
-      )
+    Headline(:title='data.product.title') 
+    Wysiwyg(:data='data.product.description')
+    .page__service-page
+      nuxt-link.product-card__button(:to='"/order-service/" + data.product.alias') Рассчитать стоимость  
 </template>
 
 <script>
@@ -21,18 +17,25 @@ export default {
       let breadcrumbs = [
         {
           title: 'Услуги',
+          url: '/services',
+        },
+        {
+          title: 'Отделка сруба',
         },
       ]
 
       return breadcrumbs
     },
+    // hasPagination() {
+    //   return (
+    //     this.data.pagination.totalCount > this.data.pagination.defaultPageSize
+    //   )
+    // },
   },
-  // asyncData(context) {
-  //   return context.$api.load('actions')
-  // },
+  watchQuery: true,
   async asyncData({ $axios, context, route }) {
     const data = await $axios.$get(
-      `https://app.dom-sruba.ru/api/services/${route.params.slug}`,
+      `https://app.dom-sruba.ru/api/service/${route.params.slug}`,
       route.query
     )
     return { data }

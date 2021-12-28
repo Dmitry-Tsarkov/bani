@@ -234,7 +234,7 @@ table {
   display: flex;
   flex-direction: column;
   // max-width: 1920px;
-  // min-width: $minwidth;
+  min-width: 1440px;
   min-height: 100vh;
   margin: auto;
   position: relative;
@@ -254,6 +254,26 @@ table {
     }
 
     
+  }
+
+  &__service-page {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__button {
+    padding: 20px 40px;
+    font-size: 20px;
+    line-height: 26px;
+    color: $gold-light;
+    background-color: $brown;
+    border-radius: 15px;
+    // margin-top: 40px;
+    transition: color 0.5s ease, background-color 0.5s ease;
+
+    &:hover {
+      background-color: $brown-light;
+    }
   }
 
   // &__content,
