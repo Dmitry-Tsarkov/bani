@@ -45,8 +45,8 @@ class ProductPresentator
         $product = $this->products->getByAlias($alias);
 
         return [
+            'meta' => $product->getMetaTags(),
             'product' => [
-                'meta' => $product->getMetaTags(),
                 'id' => $product->id,
                 'category_alias' => $product->category->alias,
                 'alias' => $product->alias,

@@ -39,6 +39,8 @@ class CategoryPresentator
         $dataProvider = $this->productCategoryReader->geSubcategories($category);
 
         return [
+            'meta' => $category->getMetaTags(),
+            'description' => $category->description,
             'subcategories' => array_map(function (Category $subcategory) {
                 return [
                     'id' => $subcategory->id,
