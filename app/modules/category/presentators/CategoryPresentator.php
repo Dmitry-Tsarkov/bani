@@ -44,6 +44,7 @@ class CategoryPresentator
             'meta' => $category->getMetaTags(),
             'title' => $category->title,
             'description' => $category->description,
+            'bottom_description' => $category->bottom_description,
             'subcategories' => array_map(function (Category $subcategory) {
                 return [
                     'id' => $subcategory->id,
