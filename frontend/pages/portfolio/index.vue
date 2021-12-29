@@ -13,7 +13,7 @@
 <script>
 import pageMixin from '@/helpers/pageMixin'
 export default {
-  mixins: [pageMixin],  
+  mixins: [pageMixin],
   computed: {
     breadcrumbs() {
       let breadcrumbs = [
@@ -31,6 +31,7 @@ export default {
       )
     },
   },
+  watchQuery: true,
   async asyncData({ $axios }) {
     const data = await $axios.$get(`https://app.dom-sruba.ru/api/portfolios`)
     return { data }

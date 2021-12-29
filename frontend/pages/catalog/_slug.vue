@@ -2,9 +2,9 @@
 .page__content 
   .container
     Breadcrumbs(:data='breadcrumbs')
-    Section(title='Каталог')
+    Section(:title='data.title')
       .catalog
-        Warning 
+        Warning(:text='data.description' v-if="data.description")
         .catalog__grid
           CatalogCard(
             v-for='item in data.subcategories',
@@ -26,7 +26,7 @@ export default {
           url: '/catalog',
         },
         {
-          title: 'Цены на срубы бань',
+          title: this.data.title,
         },
       ]
 
