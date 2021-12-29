@@ -27,6 +27,7 @@ class CategorySeeder extends BaseSeeder
                 $root->id,
                 $categoryTitle,
                 $this->faker->realText(200),
+                $this->faker->realText(400),
                 null,
                 new CopyUploadedFile($this->getRandomImage('/categories'))
             );
@@ -45,6 +46,7 @@ class CategorySeeder extends BaseSeeder
                 $parentCategory->id,
                 'Подкатегория (' . $parentCategory->title . ') ' . $i,
                 $this->faker->realText(200),
+                $this->faker->realText(400),
                 null,
                 new CopyUploadedFile($this->getRandomImage('/categories'))
             );

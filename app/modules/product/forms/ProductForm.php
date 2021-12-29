@@ -24,6 +24,7 @@ class ProductForm extends CompositeForm
     public $image;
     public $price;
     public $price_type;
+    public $preview_description;
 
     /**
      * @var Product|null
@@ -40,6 +41,7 @@ class ProductForm extends CompositeForm
             $this->bottom_description = $product->bottom_description;
             $this->price = $product->price;
             $this->price_type = $product->price_type;
+            $this->preview_description = $product->preview_description;
         }
 
         $this->kits = new KitEditForm($product ? $product : null);
@@ -57,7 +59,7 @@ class ProductForm extends CompositeForm
     {
         return [
             [['title', 'categoryId'], 'required'],
-            [['title', 'description', 'bottom_description', 'alias'], 'string'],
+            [['title', 'description', 'bottom_description', 'alias', 'preview_description'], 'string'],
             [['id', 'categoryId', 'price_type'], 'integer'],
             [['price'], 'double'],
             ['image', 'image', 'extensions' => ['png', 'jpg', 'jpeg'], 'checkExtensionByMimeType' => false],
@@ -76,6 +78,7 @@ class ProductForm extends CompositeForm
             'updated_at' => 'Дата обновления',
             'price' => 'Цена',
             'price_type' => 'Тип цены',
+            'preview_description' => 'Превью описание',
         ]);
     }
 

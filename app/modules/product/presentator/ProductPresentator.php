@@ -9,7 +9,6 @@ use app\modules\product\models\Product;
 use app\modules\product\models\ProductImage;
 use app\modules\product\repositories\ProductRepository;
 use yii\helpers\Url;
-use yii\helpers\VarDumper;
 
 class ProductPresentator
 {
@@ -28,10 +27,14 @@ class ProductPresentator
         $products = $category->products;
 
         return [
+            'meta' => $category->getMetaTags(),
+            'title' => $category->title,
+            'description' => $category->description,
             'products' => array_map(function (Product $product) {
                 return [
                     'alias' => $product->alias,
                     'title' => $product->title,
+                    'preview_description' => $product->preview_description,
                     'price_type' => $product->getPriceType(),
                     'price' => $product->price,
                     'image' => $product->getFirstImage(),

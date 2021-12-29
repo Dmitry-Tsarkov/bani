@@ -64,6 +64,9 @@ use yii\web\View;
         <div class="box-body">
             <div class="row">
                 <div class="col-xs-12">
+                    <?= $form->field($productForm, 'preview_text')->textarea(['rows' => 5]) ?>
+                </div>
+                <div class="col-xs-12">
                     <?= $form->field($productForm, 'description')->widget(CKEditor::class)->label(false) ?>
                 </div>
                 <div class="col-xs-12">

@@ -49,6 +49,7 @@ class CategoryService
             $parent->id,
             $editForm->title,
             $editForm->description,
+            $editForm->bottom_description,
             $editForm->alias,
             $editForm->image,
             new Seo(

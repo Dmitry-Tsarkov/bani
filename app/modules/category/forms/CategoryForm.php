@@ -14,6 +14,7 @@ class CategoryForm extends CompositeForm
 {
     public $title;
     public $description;
+    public $bottom_description;
     public $alias;
     public $parentId;
     public $image;
@@ -24,6 +25,7 @@ class CategoryForm extends CompositeForm
         if (!empty($category)) {
             $this->title = $category->title;
             $this->description = $category->description;
+            $this->bottom_description = $category->bottom_description;
             $this->alias = $category->alias;
             $this->parentId = $category->parent_id;
 
@@ -40,6 +42,7 @@ class CategoryForm extends CompositeForm
         return [
             'title' => 'Заголовок',
             'description' => 'Описание',
+            'bottom_description' => 'Описание снизу',
             'image' => 'Картинка',
             'parentId' => 'Подкатегория',
             'alias' => 'Алиас',
@@ -53,7 +56,7 @@ class CategoryForm extends CompositeForm
     {
         return [
             [['title', 'alias'], 'required'],
-            [['description'], 'string'],
+            [['description', 'bottom_description'], 'string'],
             [['title', 'alias'], 'string', 'max' => 255],
             [['parentId'], 'integer'],
             [['alias'], 'match', 'pattern' => '/^[0-9a-z-]+$/', 'message' => 'Только латинские буквы и знак "-"'],
