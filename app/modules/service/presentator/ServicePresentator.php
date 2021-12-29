@@ -37,8 +37,8 @@ class ServicePresentator
         $service = $this->services->getByAlias($alias);
 
         return [
+            'meta' => $service->getMetaTags(),
             'product' => [
-                'meta' => $service->getMetaTags(),
                 'id' => $service->id,
                 'alias' => $service->alias,
                 'title' => $service->title,
