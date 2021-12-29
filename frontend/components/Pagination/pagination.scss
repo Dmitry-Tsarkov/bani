@@ -2,6 +2,7 @@
   $this: &;
   display: flex;
   align-items: center;
+  margin-top: 32px;
 
   &__item {
     flex-shrink: 0;
@@ -36,12 +37,11 @@
 
     &.button {
       width: 74px;
-    }
-
-    
+    }  
   }
 
-  &__link {   
+  &__link {       
+    flex-shrink: 0;
     color: $brown;
     text-decoration: none;
     outline: none;
@@ -55,17 +55,19 @@
   }  
 
   &__button {
+    flex-shrink: 0;
     color: $brown !important;
     width: 113px;
     height: 22px;
     transition: width 0.3s ease;
     a {
-      color: $brown !important;     
+      color: $brown !important;       
     }
 
     &.disabled {
       opacity: 0;
       width: 0;
+      display: none;
     }
   }
 }

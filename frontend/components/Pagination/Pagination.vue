@@ -34,7 +34,7 @@ export default {
     },
   },
   methods: {
-    togglePage(page) {
+    togglePage(page) {      
       this.$router.push({
         query: {
           ...this.$route.query,

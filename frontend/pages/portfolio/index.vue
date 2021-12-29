@@ -1,5 +1,5 @@
 <template lang="pug">
-.page__content 
+.page__content   
   .container
     Breadcrumbs(:data='breadcrumbs')
     Headline(title='Наши работы')
@@ -32,8 +32,8 @@ export default {
     },
   },
   watchQuery: true,
-  async asyncData({ $axios }) {
-    const data = await $axios.$get(`https://app.dom-sruba.ru/api/portfolios`)
+  async asyncData({ $axios, route }) {
+    const data = await $axios.$get(`https://app.dom-sruba.ru/api/portfolios`, route.query)
     return { data }
   },
 }
