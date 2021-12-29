@@ -16,13 +16,9 @@ export default {
         {
           title: 'Каталог',
           url: '/catalog',
-        },
+        },        
         {
-          title: 'Проекты бань',
-          url: '/catalog/slug',
-        },
-        {
-          title: 'Баня 3*3 м с выносом',
+          title: this.data.product.title,
         },
       ]
 

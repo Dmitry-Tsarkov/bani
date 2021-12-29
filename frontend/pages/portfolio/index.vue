@@ -3,7 +3,7 @@
   .container
     Breadcrumbs(:data='breadcrumbs')
     Headline(title='Наши работы')
-    Warning
+    Warning(:text='data.description' v-if="data.description")
     .catalog__grid
       PortfolioCard(v-for='item in data.reveiws', :key='item.id', :data='item')
     .product-card__pagination(v-if='hasPagination')
