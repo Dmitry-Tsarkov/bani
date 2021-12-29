@@ -48,6 +48,7 @@ use yii2tech\ar\position\PositionBehavior;
  * @property string $meta_d [varchar(255)]
  * @property string $meta_k [varchar(255)]
  * @property string $h1 [varchar(255)]
+ * @property string $preview_description [varchar(255)]
  */
 
 class Product extends ActiveRecord
@@ -92,7 +93,7 @@ class Product extends ActiveRecord
         return 'products';
     }
 
-    public static function create($category_id, $title, $price_type, $price, $description, $bottom_description, ?Seo $seo = null): self
+    public static function create($category_id, $title, $price_type, $price, $description, $preview_description, $bottom_description, ?Seo $seo = null): self
     {
         $self = new self();
 
@@ -102,6 +103,7 @@ class Product extends ActiveRecord
         $self->status = self::STATUS_ACTIVE;
         $self->title = $title;
         $self->description = $description;
+        $self->preview_description = $preview_description;
         $self->bottom_description = $bottom_description;
 
         $self->seo = $seo ?? Seo::blank();
@@ -109,13 +111,14 @@ class Product extends ActiveRecord
         return $self;
     }
 
-    public function edit($category_id, $price_type, $price, $title, $description, $bottom_description, ?Seo $seo = null): void
+    public function edit($category_id, $price_type, $price, $title, $description, $preview_description, $bottom_description, ?Seo $seo = null): void
     {
         $this->category_id = $category_id;
         $this->price_type = $price_type;
         $this->price = $price;
         $this->title = $title;
         $this->description = $description;
+        $this->preview_description = $preview_description;
         $this->bottom_description = $bottom_description;
         $this->seo = $seo ?? Seo::blank();
     }

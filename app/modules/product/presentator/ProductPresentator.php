@@ -27,12 +27,14 @@ class ProductPresentator
         $products = $category->products;
 
         return [
+            'seo' => $category->getMetaTags(),
             'title' => $category->title,
             'description' => $category->description,
             'products' => array_map(function (Product $product) {
                 return [
                     'alias' => $product->alias,
                     'title' => $product->title,
+                    'preview_description' => $product->preview_description,
                     'price_type' => $product->getPriceType(),
                     'price' => $product->price,
                     'image' => $product->getFirstImage(),
