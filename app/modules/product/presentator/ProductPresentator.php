@@ -54,6 +54,7 @@ class ProductPresentator
                 'category_alias' => $product->category->alias,
                 'alias' => $product->alias,
                 'title' => $product->title,
+                'price' => $product->price,
                 'description' => $product->description,
                 'bottom_description' => $product->bottom_description,
                 'images' => array_map(function (ProductImage $image) {
@@ -69,16 +70,16 @@ class ProductPresentator
                         'unit' => $value->getUnit(),
                     ];
                 }, $product->values),
-                'kits' => array_map(function (Kit $kit) {
-                    return [
-                        'id' => $kit->id,
-                        'title' => $kit->title,
-                        'text' => $kit->text,
-                        'bottom_text' => $kit->bottom_text,
-                        'price_type' => $kit->getPriceType(),
-                        'price' => $kit->price
-                    ];
-                }, $product->kits)
+//                'kits' => array_map(function (Kit $kit) {
+//                    return [
+//                        'id' => $kit->id,
+//                        'title' => $kit->title,
+//                        'text' => $kit->text,
+//                        'bottom_text' => $kit->bottom_text,
+//                        'price_type' => $kit->getPriceType(),
+//                        'price' => $kit->price
+//                    ];
+//                }, $product->kits)
             ],
         ];
     }
