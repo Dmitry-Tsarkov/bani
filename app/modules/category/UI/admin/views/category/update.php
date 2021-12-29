@@ -5,6 +5,7 @@ use app\modules\category\forms\CategoryForm;
 use app\modules\category\models\Category;
 use kartik\file\FileInput;
 use kartik\form\ActiveForm;
+use mihaildev\ckeditor\CKEditor;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
@@ -92,5 +93,16 @@ $this->params['breadcrumbs'] = [
                 </div>
             </div>
         </div>
+        <div class="col-md-6">
+            <div class="box box-default box-solid">
+                <div class="box-header with-border">Описание снизу</div>
+                <div class="box-body">
+                    <div class="col-xs-12">
+                        <?= $form->field($editForm, 'bottom_description')->widget(CKEditor::class)->label(false) ?>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
 <?php ActiveForm::end() ?>

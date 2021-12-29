@@ -8,6 +8,7 @@
 use app\modules\category\forms\CategoryForm;
 use kartik\file\FileInput;
 use kartik\form\ActiveForm;
+use mihaildev\ckeditor\CKEditor;
 use yii\helpers\Html;
 use yii\web\View;
 
@@ -72,6 +73,16 @@ $this->params['breadcrumbs'] = [
                     <?= $form->field($createForm->seo, 'title') ?>
                     <?= $form->field($createForm->seo, 'description')->textarea(['rows' => 5]) ?>
                     <?= $form->field($createForm->seo, 'keywords')->hint('Фразы через запятую') ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="box box-default box-solid">
+            <div class="box-header with-border">Описание снизу</div>
+            <div class="box-body">
+                <div class="col-xs-12">
+                    <?= $form->field($createForm, 'bottom_description')->widget(CKEditor::class)->label(false) ?>
                 </div>
             </div>
         </div>

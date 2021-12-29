@@ -27,7 +27,7 @@ class ProductPresentator
         $products = $category->products;
 
         return [
-            'seo' => $category->getMetaTags(),
+            'meta' => $category->getMetaTags(),
             'title' => $category->title,
             'description' => $category->description,
             'products' => array_map(function (Product $product) {
