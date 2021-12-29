@@ -5,6 +5,7 @@ namespace app\modules\category\presentators;
 use app\modules\category\helpers\CategoryHelper;
 use app\modules\category\models\Category;
 use app\modules\category\readModels\CategoryReader;
+use app\modules\setting\components\Settings;
 use yii\helpers\Url;
 
 class CategoryPresentator
@@ -21,6 +22,7 @@ class CategoryPresentator
         $productCategories = $this->productCategoryReader->getProductCategories();
 
         return [
+            'description' => Settings::getValue('catalog_text'),
             'catalog' => array_map(function (Category $category) {
                 return [
                     'id' => $category->id,
@@ -40,6 +42,7 @@ class CategoryPresentator
 
         return [
             'meta' => $category->getMetaTags(),
+            'title' => $category->title,
             'description' => $category->description,
             'subcategories' => array_map(function (Category $subcategory) {
                 return [
