@@ -12,7 +12,7 @@
       )
     //- .product-card__pagination(v-if='hasPagination')
     //-   Pagination(:data='data.pagination')
-    p.page__seo-text(v-if="data.bottom_description") {{data.bottom_description}}
+    .page__seo-text(v-if="data.bottom_description" v-html='data.bottom_description')
 </template>
 
 <script>
