@@ -30,6 +30,7 @@ class ProductPresentator
             'meta' => $category->getMetaTags(),
             'title' => $category->title,
             'description' => $category->description,
+            'bottom_description' => $category->bottom_description,
             'products' => array_map(function (Product $product) {
                 return [
                     'alias' => $product->alias,
