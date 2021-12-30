@@ -1,9 +1,9 @@
 <template lang="pug">
-.page__content 
+.page__content   
   .container
     Breadcrumbs(:data='breadcrumbs')
     Headline(title='Наши работы')
-    Warning
+    Warning(:text='data.description' v-if="data.description")
     .catalog__grid
       PortfolioCard(v-for='item in data.reveiws', :key='item.id', :data='item')
     .product-card__pagination(v-if='hasPagination')
@@ -13,7 +13,7 @@
 <script>
 import pageMixin from '@/helpers/pageMixin'
 export default {
-  mixins: [pageMixin],  
+  mixins: [pageMixin],
   computed: {
     breadcrumbs() {
       let breadcrumbs = [
@@ -31,8 +31,9 @@ export default {
       )
     },
   },
-  async asyncData({ $axios }) {
-    const data = await $axios.$get(`https://app.dom-sruba.ru/api/portfolios`)
+  watchQuery: true,
+  async asyncData({ $axios, route }) {
+    const data = await $axios.$get(`https://app.dom-sruba.ru/api/portfolios`, route.query)
     return { data }
   },
 }

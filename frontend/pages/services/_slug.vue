@@ -5,7 +5,7 @@
     Headline(:title='data.product.title') 
     Wysiwyg(:data='data.product.description')
     .page__service-page
-      nuxt-link.product-card__button(:to='"/order-service/" + data.product.alias') Заказать  
+      nuxt-link.page__button(:to='"/order-service/" + data.product.alias') Заказать  
 </template>
 
 <script>

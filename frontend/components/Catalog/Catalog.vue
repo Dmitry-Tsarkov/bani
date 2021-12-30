@@ -1,6 +1,6 @@
 <template lang="pug">
 .catalog
-  Warning  
+  Warning(:text='data.description' v-if="data.description")
   .catalog__grid
     CatalogCard(v-for="item in data" :key="item.id" :data='item' page='catalog')
 </template>

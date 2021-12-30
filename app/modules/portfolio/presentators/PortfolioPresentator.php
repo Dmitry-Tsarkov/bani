@@ -4,6 +4,7 @@ namespace app\modules\portfolio\presentators;
 
 use app\modules\portfolio\models\Portfolio;
 use app\modules\portfolio\readModels\PortfolioReadRepository;
+use app\modules\setting\components\Settings;
 use yii\helpers\Url;
 use yii\helpers\VarDumper;
 
@@ -21,6 +22,7 @@ class PortfolioPresentator
         $dataProvider = $this->portfolios->getList();
 
         return [
+            'description' => Settings::getValue('portfolio_description'),
             'reveiws' => array_map(function (Portfolio $portfolio) {
                 return [
                     'id' => $portfolio->id,
