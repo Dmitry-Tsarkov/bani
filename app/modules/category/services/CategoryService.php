@@ -25,6 +25,7 @@ class CategoryService
             $parent->id,
             $createForm->title,
             $createForm->description,
+            $createForm->bottom_description,
             $createForm->alias,
             $createForm->image,
             new Seo(
