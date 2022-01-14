@@ -73,6 +73,7 @@ class ProductService
             $form->price_type,
             $form->price,
             $form->title,
+            $form->alias,
             $form->description,
             $form->preview_description,
             $form->bottom_description,
