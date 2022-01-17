@@ -17,12 +17,12 @@
             span.error(v-if='errors.email') {{ errors.email }}
           .form-order__item
             p.form-order__title Телефон
-            input.form-order__input(type='phone' placeholder='+7 (999) 999 -99-99' v-model="form.phone" :class='{ error: errors.phone }')   
+            input.form-order__input(type='number' placeholder='+7 (999) 999 -99-99' v-model="form.phone" :class='{ error: errors.phone }')   
             span.error(v-if='errors.phone') {{ errors.phone }}     
-        .form-order__advanced
-          p.form-order__title Дополнительные параметры
-          .form-order__list
-            Checkbox(v-for="item in data.additional_params" :key="item.id" :label='item.title' class='js-order-checkbox')           
+        //- .form-order__advanced
+        //-   p.form-order__title Дополнительные параметры
+        //-   .form-order__list
+        //-     Checkbox(v-for="item in data.additional_params" :key="item.id" :label='item.title' class='js-order-checkbox')           
         .form-order__advanced
           p.form-order__title Комментарий
           textarea.form-order__input.textarea(type='text' v-model="form.comment")
@@ -31,7 +31,7 @@
           span.error(v-if='errors.checkbox') {{ errors.checkbox }}
         button.form-order__button(@click='send') Отправить
     .form-order__content(v-if="success")
-      p sdasdas {{additional_params}}
+      p {{additional_params}}
       p.form-order__text Наш менеджер свяжется с вами в ближайшее время для согласования заказа.
       nuxt-link.form-order__button.return(to='/catalog') Вернуться в каталог 
 </template>
@@ -50,7 +50,7 @@ export default {
         phone: '',
         comment: '',
         checkbox: '',
-        additional_params: ''
+        // additional_params: ''
       },
       success: false,
       serverErrors: {},
@@ -120,14 +120,14 @@ export default {
       if (this.$v.$invalid) {
         return
       }
-      let array = document.querySelectorAll('.js-order-checkbox')
-      array.forEach(element => {
-        if (element.childNodes[0].checked) {
-          this.form.additional_params.push(element.childNodes[1].innerHTML)
-          console.log(this.form.additional_params);
-        }
+      // let array = document.querySelectorAll('.js-order-checkbox')
+      // array.forEach(element => {
+      //   if (element.childNodes[0].checked) {
+      //     this.form.additional_params.push(element.childNodes[1].innerHTML)
+      //     console.log(this.form.additional_params);
+      //   }
         
-      });
+      // });
       this.$axios
         .post('https://app.dom-sruba.ru/api/order/send-product', this.form)
         .then((data) => {

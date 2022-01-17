@@ -16,8 +16,8 @@ ul.nav
     nuxt-link.nav__link(to='/reviews') Отзывы
   li.nav__item
     nuxt-link.nav__link(to='/contacts') Контакты
-  li.nav__item
-    nuxt-link.nav__link(to='/regions') Регион
+  //- li.nav__item
+  //-   nuxt-link.nav__link(to='/regions') Регион
 </template>
 
 <script>

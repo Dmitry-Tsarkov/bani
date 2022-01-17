@@ -7,7 +7,7 @@
   .product-slider__container.is-thumb(ref='thumbs')
     button(type='button' title='Предыдущий слайд' ref="prev").product-slider__prev
       img.product-slider__icon.prev(src='/icons/chevron-brown.svg')
-    .product-slider__thumbs
+    .product-slider__thumbs(v-if="data.length > 1")
       .product-slider__thumbs-slide(
         v-for='item in data',
         :key='item.id'
