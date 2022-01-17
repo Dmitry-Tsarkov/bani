@@ -16,4 +16,12 @@ class CategoryHelper
 
         return !empty($prices) ? min($prices) : null;
     }
+    public static function statusDropDown()
+    {
+        return [
+            Category::STATUS_DRAFT => 'Неактивный',
+            Category::STATUS_ACTIVE => 'Активный',
+        ];
+    }
+
 }

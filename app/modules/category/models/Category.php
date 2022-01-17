@@ -168,4 +168,9 @@ class Category extends ActiveRecord
     {
         return $this->hasImage() ? $this->getUploadedFileUrl('image') : '';
     }
+
+    public function isActive(): bool
+    {
+        return $this->status == self::STATUS_ACTIVE;
+    }
 }

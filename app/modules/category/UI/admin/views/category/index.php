@@ -1,6 +1,8 @@
 <?php
 
+use app\helpers\LabelHelpers;
 use app\modules\admin\helpers\NestedSetsHelper;
+use app\modules\category\helpers\CategoryHelper;
 use app\modules\category\models\Category;
 use app\modules\category\searchModels\CategorySearch;
 use kartik\grid\ActionColumn;
@@ -8,6 +10,7 @@ use kartik\grid\DataColumn;
 use kartik\grid\GridView;
 use kartik\icons\Icon;
 use yii\data\DataProviderInterface;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\web\View;
 
@@ -117,6 +120,19 @@ $this->params['breadcrumbs'] = [
             'class' => DataColumn::class,
             'attribute' => 'alias',
             'label' => 'Алиас',
+        ],
+        [
+            'class' => DataColumn::class,
+            'attribute' => 'status',
+            'label' => 'Статус',
+            'filter' => [0 => 'Неактивный', 1 => 'Активный'],
+            'format' => 'raw',
+            'value' => function (Category $category) {
+                return LabelHelpers::label(
+                    ArrayHelper::getValue(CategoryHelper::statusDropDown(), $category->isActive(), '-'),
+                    $category->isActive()
+                );
+            },
         ],
         [
             'class' => ActionColumn::class,
