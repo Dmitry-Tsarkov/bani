@@ -46,7 +46,7 @@ class ProductForm extends CompositeForm
             $this->preview_description = $product->preview_description;
         }
 
-        $this->kits = new KitEditForm($product ? $product : null);
+//        $this->kits = new KitEditForm($product ? $product : null);
         $this->seo = new SeoForm($product ? $product->seo : null);
 
         parent::__construct();
@@ -54,13 +54,13 @@ class ProductForm extends CompositeForm
 
     protected function internalForms(): array
     {
-        return ['seo', 'images', 'kits'];
+        return ['seo', 'images'];
     }
 
     public function rules()
     {
         return [
-            [['title', 'categoryId'], 'required'],
+            [['title', 'categoryId', 'unit', 'price'], 'required'],
             [['title', 'description', 'bottom_description', 'alias', 'preview_description', 'unit'], 'string'],
             [['id', 'categoryId', 'price_type'], 'integer'],
             [['price'], 'double'],

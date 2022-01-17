@@ -12,6 +12,7 @@ use app\modules\product\models\ProductImage;
 use app\modules\product\repositories\ProductRepository;
 use app\modules\seo\valueObjects\Seo;
 use DomainException;
+use yii\helpers\VarDumper;
 
 class ProductService
 {
@@ -42,6 +43,7 @@ class ProductService
             $form->title,
             $form->price_type,
             $form->price,
+            $form->unit,
             $form->description,
             $form->preview_description,
             $form->bottom_description,
@@ -55,7 +57,7 @@ class ProductService
 
         $this->products->save($product);
 
-        $product->updateKits($form->kits->ids);
+//        $product->updateKits($form->kits->ids);
 
         return $product;
     }
@@ -86,7 +88,7 @@ class ProductService
             )
         );
 
-        $product->updateKits($form->kits->ids);
+//        $product->updateKits($form->kits->ids);
 
         $this->products->save($product);
     }
