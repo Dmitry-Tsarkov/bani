@@ -24,6 +24,7 @@ class ProductForm extends CompositeForm
     public $image;
     public $price;
     public $price_type;
+    public $unit;
     public $preview_description;
 
     /**
@@ -41,10 +42,11 @@ class ProductForm extends CompositeForm
             $this->bottom_description = $product->bottom_description;
             $this->price = $product->price;
             $this->price_type = $product->price_type;
+            $this->unit = $product->unit;
             $this->preview_description = $product->preview_description;
         }
 
-        $this->kits = new KitEditForm($product ? $product : null);
+//        $this->kits = new KitEditForm($product ? $product : null);
         $this->seo = new SeoForm($product ? $product->seo : null);
 
         parent::__construct();
@@ -52,14 +54,14 @@ class ProductForm extends CompositeForm
 
     protected function internalForms(): array
     {
-        return ['seo', 'images', 'kits'];
+        return ['seo', 'images'];
     }
 
     public function rules()
     {
         return [
-            [['title', 'categoryId'], 'required'],
-            [['title', 'description', 'bottom_description', 'alias', 'preview_description'], 'string'],
+            [['title', 'categoryId', 'unit', 'price'], 'required'],
+            [['title', 'description', 'bottom_description', 'alias', 'preview_description', 'unit'], 'string'],
             [['id', 'categoryId', 'price_type'], 'integer'],
             [['price'], 'double'],
             ['image', 'image', 'extensions' => ['png', 'jpg', 'jpeg'], 'checkExtensionByMimeType' => false],
@@ -79,6 +81,7 @@ class ProductForm extends CompositeForm
             'price' => 'Цена',
             'price_type' => 'Тип цены',
             'preview_description' => 'Превью описание',
+            'unit' => 'Единица измерения',
         ]);
     }
 

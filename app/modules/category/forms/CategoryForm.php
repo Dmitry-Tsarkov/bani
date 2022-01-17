@@ -12,6 +12,7 @@ use yii\web\UploadedFile;
  */
 class CategoryForm extends CompositeForm
 {
+    public $status;
     public $title;
     public $description;
     public $bottom_description;
@@ -23,6 +24,7 @@ class CategoryForm extends CompositeForm
     public function __construct(?Category $category = null)
     {
         if (!empty($category)) {
+            $this->status = $category->status;
             $this->title = $category->title;
             $this->description = $category->description;
             $this->bottom_description = $category->bottom_description;
@@ -40,6 +42,7 @@ class CategoryForm extends CompositeForm
     public function attributeLabels()
     {
         return [
+            'status' => 'Статус',
             'title' => 'Заголовок',
             'description' => 'Описание',
             'bottom_description' => 'Описание снизу',
@@ -59,6 +62,7 @@ class CategoryForm extends CompositeForm
             [['description', 'bottom_description'], 'string'],
             [['title', 'alias'], 'string', 'max' => 255],
             [['parentId'], 'integer'],
+            [['status'], 'boolean'],
             [['alias'], 'match', 'pattern' => '/^[0-9a-z-]+$/', 'message' => 'Только латинские буквы и знак "-"'],
         ];
     }

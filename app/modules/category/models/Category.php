@@ -38,12 +38,17 @@ use yii\web\UploadedFile;
  * @property string $image [varchar(255)]
  * @property string $image_hash [varchar(255)]
  * @property string $bottom_description [varchar(255)]
+ * @property bool $status [tinyint(1)]
  *
  */
 
 class Category extends ActiveRecord
 {
     use QueryExceptions;
+
+    const STATUS_DRAFT = 0;
+    const STATUS_ACTIVE = 1;
+
     /**
      * @var Seo
      */
@@ -76,10 +81,19 @@ class Category extends ActiveRecord
         ];
     }
 
-    public static function create($parentId, $title, $description, $bottom_description, $alias, ?UploadedFile $image, ?Seo $seo = null): self
+    public static function create(
+        $parentId,
+        $title,
+        $description,
+        $bottom_description,
+        $alias,
+        ?UploadedFile $image,
+        ?Seo $seo = null
+    ): self
     {
         $self = new self();
         $self->title = $title;
+        $self->status = self::STATUS_ACTIVE;
         $self->image = $image;
         $self->alias = $alias;
         $self->description = $description;
@@ -90,10 +104,20 @@ class Category extends ActiveRecord
         return $self;
     }
 
-    public function edit($parentId, $title, $description, $bottom_description, $alias, ?UploadedFile $image, ?Seo $seo = null): void
+    public function edit(
+        $parentId,
+        $title,
+        $status,
+        $description,
+        $bottom_description,
+        $alias,
+        ?UploadedFile $image,
+        ?Seo $seo = null
+    ): void
     {
         $this->parent_id = $parentId;
         $this->title = $title;
+        $this->status = $status;
         $this->description = $description;
         $this->bottom_description = $bottom_description;
         $this->alias = $alias;

@@ -72,6 +72,10 @@ $this->params['breadcrumbs'] = [
                                 $editForm->getCategoriesDropDown()
                             ) ?>
                         <?php endif ?>
+                        <?= $form->field($editForm, 'status')->dropDownList([
+                                Category::STATUS_ACTIVE => 'Активный',
+                                Category::STATUS_DRAFT => 'Неактивный'
+                        ]) ?>
                     </div>
                     <div class="col-md-12">
                         <?= $form->field($editForm, 'description')->textarea(['rows' => 8]) ?>
