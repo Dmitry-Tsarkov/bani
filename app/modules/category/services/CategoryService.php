@@ -49,6 +49,7 @@ class CategoryService
         $category->edit(
             $parent->id,
             $editForm->title,
+            $editForm->status,
             $editForm->description,
             $editForm->bottom_description,
             $editForm->alias,

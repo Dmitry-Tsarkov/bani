@@ -12,6 +12,7 @@ class CategoryReader
     {
         return Category::find()
             ->andWhere(['depth' => 1])
+            ->andWhere(['status' => Category::STATUS_ACTIVE])
             ->orderBy(['lft' => SORT_ASC])
             ->all();
     }
@@ -20,6 +21,7 @@ class CategoryReader
     {
         $query = $category->children(1)
             ->andWhere(['>', 'depth', 1])
+            ->andWhere(['status' => Category::STATUS_ACTIVE])
             ->orderBy(['lft' => SORT_ASC]);
 
         return new ActiveDataProvider([
@@ -30,9 +32,16 @@ class CategoryReader
 
     public function getCategory($alias)
     {
-        return Category::find()
+        $category = Category::find()
             ->andWhere(['alias' => $alias])
+            ->andWhere(['status' => Category::STATUS_ACTIVE])
             ->one();
+
+        if (!$category) {
+            throw new NotFoundHttpException('Категория не найдена');
+        }
+
+        return $category;
     }
 
     public function getAllSubcategories()

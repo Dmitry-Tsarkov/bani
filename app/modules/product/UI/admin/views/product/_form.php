@@ -34,10 +34,11 @@ use yii\web\View;
                     <?= $form->field($productForm, 'alias') ?>
                     <?= $form->field($productForm, 'price_type')->dropDownList(DropDownHelper::priceTypeDropDown()) ?>
                     <?= $form->field($productForm, 'price') ?>
-                    <?= $form->field($productForm->kits, 'ids')->widget(Select2::class, [
-                        'options' => ['multiple' => true],
-                        'data' => $productForm->kits->getKitsDropDown(),
-                    ]) ?>
+                    <?= $form->field($productForm, 'unit') ?>
+<!--                    --><?//= $form->field($productForm->kits, 'ids')->widget(Select2::class, [
+//                        'options' => ['multiple' => true],
+//                        'data' => $productForm->kits->getKitsDropDown(),
+//                    ]) ?>
                 </div>
             </div>
         </div>

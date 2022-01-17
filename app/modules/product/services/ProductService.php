@@ -72,6 +72,7 @@ class ProductService
             $form->categoryId,
             $form->price_type,
             $form->price,
+            $form->unit,
             $form->title,
             $form->alias,
             $form->description,

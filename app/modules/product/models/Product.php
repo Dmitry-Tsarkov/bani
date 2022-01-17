@@ -49,6 +49,7 @@ use yii2tech\ar\position\PositionBehavior;
  * @property string $meta_k [varchar(255)]
  * @property string $h1 [varchar(255)]
  * @property string $preview_description [varchar(255)]
+ * @property string $unit [varchar(255)]
  */
 
 class Product extends ActiveRecord
@@ -93,13 +94,24 @@ class Product extends ActiveRecord
         return 'products';
     }
 
-    public static function create($category_id, $title, $price_type, $price, $description, $preview_description, $bottom_description, ?Seo $seo = null): self
+    public static function create(
+        $category_id,
+        $title,
+        $price_type,
+        $price,
+        $unit,
+        $description,
+        $preview_description,
+        $bottom_description,
+        ?Seo $seo = null
+    ): self
     {
         $self = new self();
 
         $self->category_id = $category_id;
         $self->price_type = $price_type;
         $self->price = $price;
+        $self->unit = $unit;
         $self->status = self::STATUS_ACTIVE;
         $self->title = $title;
         $self->description = $description;
@@ -111,11 +123,23 @@ class Product extends ActiveRecord
         return $self;
     }
 
-    public function edit($category_id, $price_type, $price, $title, $alias, $description, $preview_description, $bottom_description, ?Seo $seo = null): void
+    public function edit(
+        $category_id,
+        $price_type,
+        $price,
+        $unit,
+        $title,
+        $alias,
+        $description,
+        $preview_description,
+        $bottom_description,
+        ?Seo $seo = null
+    ): void
     {
         $this->category_id = $category_id;
         $this->price_type = $price_type;
         $this->price = $price;
+        $this->unit = $unit;
         $this->title = $title;
         $this->alias = $alias;
         $this->description = $description;

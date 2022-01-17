@@ -56,6 +56,7 @@ class ProductPresentator
                 'alias' => $product->alias,
                 'title' => $product->title,
                 'price' => $product->price,
+                'unit' => $product->unit,
                 'description' => $product->description,
                 'bottom_description' => $product->bottom_description,
                 'images' => array_map(function (ProductImage $image) {
