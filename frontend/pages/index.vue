@@ -4,13 +4,13 @@
   .container
     Section(title='О компании')
       AboutMain(:data='data.about')
-  PortfolioSlider(:data='data.portfolio')
+  PortfolioSlider(:data='data.portfolio' v-if="data.portfolio.length")
   .container
     Section(title='Преимущества')
       Advantages(:data='data.advantages')
-    Section(title='Отзывы')
+    Section(title='Отзывы' v-if="data.reviews.length")
       ReviewsSlider(:data='data.reviews')
-  .container-brown
+  .container-brown(v-if="data.faq.length")
     img.container-brown__smoke(src='/img/smoke.png')
     .container
       Section(title='Вопросы и ответы')

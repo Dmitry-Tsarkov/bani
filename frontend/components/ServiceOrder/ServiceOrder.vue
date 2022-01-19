@@ -17,7 +17,7 @@
             span.error(v-if='errors.email') {{ errors.email }}
           .form-order__item
             p.form-order__title Телефон
-            input.form-order__input(type='phone' placeholder='+7 (999) 999 -99-99' v-model="form.phone" :class='{ error: errors.phone }')   
+            input.form-order__input(type='number' placeholder='+7 (999) 999 -99-99' v-model="form.phone" :class='{ error: errors.phone }')   
             span.error(v-if='errors.phone') {{ errors.phone }}    
                   
         .form-order__advanced
