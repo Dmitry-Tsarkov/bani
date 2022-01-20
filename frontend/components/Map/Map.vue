@@ -1,12 +1,11 @@
 <template>
-  <yandex-map style="width: 100%;" :coords="coords" :zoom="10" @click="onClick">
+  <yandex-map style="width: 100%;" :coords="coords" :zoom="map.zoom" @click="onClick">
     <ymap-marker
       :coords="coords"
       marker-id="123"      
       :icon="markerIcon"
-      :balloon-template="balloonTemplate"
-    />
-    <div>{{map}}</div>
+      
+    />    
   </yandex-map>
   
 </template>
@@ -16,14 +15,13 @@ export default {
   props: ['map'],
   data() {
     return {
-      // coords: this.map.coords,
-      coords: [54.82896654088406, 39.831893822753904],
+      coords: this.map.coords,      
       markerIcon: {
         layout: 'default#image',
-        imageHref: '/icons/sauna.svg',
-        imageSize: [64, 64],
-        imageOffset: [-32, -64],        
-        contentOffset: [0, 15],        
+        // imageHref: '/icons/sauna.svg',
+        // imageSize: [64, 64],
+        // imageOffset: [-32, -64],        
+        // contentOffset: [0, 15],        
       },
     }
   },
@@ -39,6 +37,9 @@ export default {
     onClick(e) {
       this.coords = e.get('coords')
     },
+  },
+  mounted() {
+    console.log(this.map);
   },
 }
 </script>

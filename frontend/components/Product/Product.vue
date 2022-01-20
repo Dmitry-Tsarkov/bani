@@ -6,7 +6,7 @@
       .product__specifications
         .product__specification
           p.product__value.big Цена:
-          p.product__value {{data.price}} руб.        
+          p.product__value {{price}} руб.        
         p.product__value.big(v-if="data.characteristics.length") Характеристики объекта:
         .product__characteristics(v-if="data.characteristics.length")
           .product__characteristic(v-for="characteristic in data.characteristics" :key="characteristic.id")
@@ -26,6 +26,11 @@
 import { priceFormat } from '@/helpers/formatter'
 export default {
   props: ['data'],
+  computed: {
+    price() {
+      return priceFormat(this.data.price)
+    }
+  }
   // data() {
   //   return {
   //     index: 0,

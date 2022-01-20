@@ -17,7 +17,7 @@
         Faq(:data='data.faq')
   .container
     Section(title='Остались вопросы?')
-      ContactsMain(:data='data.contacts')
+      ContactsMain(:data='data.contacts' :map='data.map')
 </template>
 
 <script>
