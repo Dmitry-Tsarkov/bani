@@ -8,14 +8,14 @@
         .footer__container
           a.footer__text(v-for="phone in data.contacts.phone" :key="phone.id" :href='"tel:" + phone') {{phone}}
           a.footer__text(href='mailto:poznanie@mail.ru') poznanie@mail.ru
-          p.footer__text.unlinked Мы в социальных сетях
-          .footer__socials
-            a.footer__social(href='/')
-              img(src='/icons/facebook.svg')
-            a.footer__social(href='/')
-              img(src='/icons/telegram.svg')
-            a.footer__social(href='/')
-              img(src='/icons/instagram.svg')
+          //- p.footer__text.unlinked Мы в социальных сетях
+          //- .footer__socials
+          //-   a.footer__social(href='/')
+          //-     img(src='/icons/facebook.svg')
+          //-   a.footer__social(href='/')
+          //-     img(src='/icons/telegram.svg')
+          //-   a.footer__social(href='/')
+          //-     img(src='/icons/instagram.svg')
 </template>
 
 <script>
