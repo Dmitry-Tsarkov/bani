@@ -4,6 +4,7 @@
 namespace app\modules\action\transformers;
 
 
+use app\helpers\DateHelper;
 use app\modules\action\models\Action;
 
 class ActionTransformer
@@ -12,6 +13,7 @@ class ActionTransformer
     {
         return [
             'title' => $action->preview_title,
+            'date' => DateHelper::forHuman($action->created_at, 'd n Y'),
             'description' => $action->preview_description,
             'image' => $action->getImageSrc(),
             'alias' => $action->alias,
