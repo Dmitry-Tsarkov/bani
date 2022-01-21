@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { required, minLength, email } from 'vuelidate/lib/validators'
+import { required, minLength, maxLength, email } from 'vuelidate/lib/validators'
 import { getError, getErrors } from '@/helpers/errors'
 export default {
   props: ['data'],
@@ -50,7 +50,6 @@ export default {
         phone: '',
         comment: '',
         checkbox: '',
-        // additional_params: ''
       },
       success: false,
       serverErrors: {},
@@ -70,6 +69,7 @@ export default {
       phone: {
         required,
         minLength: minLength(11),
+        maxLength: maxLength(12),
       },     
       checkbox: {
         required,
@@ -109,6 +109,9 @@ export default {
         }        
         if (!this.$v.form.phone.minLength) {
           errors.phone = 'Укажите телефон (минимум 11 символов)'
+        }        
+        if (!this.$v.form.phone.maxLength) {
+          errors.phone = 'Максимум 12 символов'
         }        
       } 
 
