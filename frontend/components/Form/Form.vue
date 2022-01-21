@@ -1,26 +1,45 @@
 <template lang="pug">
-  form.form(@submit.prevent='send' v-if="!success")
-    .form__item
-      p.form__title ФИО
-      input.form__input(type='text' placeholder='Иванов Иван Иванович' v-model='form.name' :class='{ error: errors.name }')
-      span.error(v-if='errors.name') {{ errors.name }}
-    .form__item
-      p.form__title E-mail
-      input.form__input(type='mail' placeholder='example@mail.ru' v-model='form.email' :class='{ error: errors.email }')
-      span.error(v-if='errors.email') {{ errors.email }}
-    .form__item
-      p.form__title Номер телефона
-      input.form__input(type='number' placeholder='+7-999-999-99-99' v-model='form.phone' :class='{ error: errors.phone }')
-      span.error(v-if='errors.phone') {{ errors.phone }}
-    .form__item
-      p.form__title Комментарий
-      textarea.form__input.textarea(type='text' v-model='form.description' :class='{ error: errors.description }')
-      span.error(v-if='errors.description') {{ errors.description }}
-    button.form__button Отправить
+form.form(@submit.prevent='send', v-if='!success')
+  .form__item
+    p.form__title ФИО
+    input.form__input(
+      type='text',
+      placeholder='Иванов Иван Иванович',
+      v-model='form.name',
+      :class='{ error: errors.name }'
+    )
+    span.error(v-if='errors.name') {{ errors.name }}
+  .form__item
+    p.form__title E-mail
+    input.form__input(
+      type='mail',
+      placeholder='example@mail.ru',
+      v-model='form.email',
+      :class='{ error: errors.email }'
+    )
+    span.error(v-if='errors.email') {{ errors.email }}
+  .form__item
+    p.form__title Номер телефона
+    input.form__input(
+      type='number',
+      placeholder='+7-999-999-99-99',
+      v-model='form.phone',
+      :class='{ error: errors.phone }'
+    )
+    span.error(v-if='errors.phone') {{ errors.phone }}
+  .form__item
+    p.form__title Комментарий
+    textarea.form__input.textarea(
+      type='text',
+      v-model='form.description',
+      :class='{ error: errors.description }'
+    )
+    span.error(v-if='errors.description') {{ errors.description }}
+  button.form__button Отправить
 </template>
 
 <script>
-import { required, minLength, maxLength,  email } from 'vuelidate/lib/validators'
+import { required, minLength, maxLength, email } from 'vuelidate/lib/validators'
 import { getError, getErrors } from '@/helpers/errors'
 export default {
   data() {
@@ -29,7 +48,7 @@ export default {
         name: '',
         email: '',
         phone: '',
-        description: ''
+        description: '',
       },
       success: false,
       serverErrors: {},
@@ -44,13 +63,13 @@ export default {
       },
       email: {
         required,
-        email
+        email,
       },
       phone: {
         required,
         minLength: minLength(11),
-        maxLength: maxLength(12),
-      },      
+        maxLength: maxLength(11),
+      },
       description: {
         required,
       },
@@ -62,7 +81,7 @@ export default {
         name: this.serverErrors['name'],
         email: this.serverErrors['email'],
         phone: this.serverErrors['phone'],
-        description: this.serverErrors['description']
+        description: this.serverErrors['description'],
       }
 
       if (this.$v.form.name.$dirty) {
@@ -80,7 +99,7 @@ export default {
         }
         if (!this.$v.form.email.email) {
           errors.email = 'Укажите корректный email'
-        }  
+        }
       }
 
       if (this.$v.form.phone.$dirty) {
@@ -91,15 +110,15 @@ export default {
           errors.phone = 'Укажите телефон (минимум 11 символов)'
         }
         if (!this.$v.form.phone.maxLength) {
-          errors.phone = 'Максимум 12 символов'
+          errors.phone = 'Максимум 11 символов'
         }
-      }      
+      }
 
       if (this.$v.form.description.$dirty) {
         if (!this.$v.form.description.required) {
           errors.description = 'Оставтье ваш вопрос'
-        }        
-      } 
+        }
+      }
       return errors
     },
   },
@@ -118,9 +137,7 @@ export default {
 
       this.$axios
         .post('https://app.dom-sruba.ru/api/question/send', this.form)
-        .then((data) => {
-          
-        })
+        .then((data) => {})
         .catch((data) => {
           this.serverErrors = getErrors(data)
           this.error = getError(data)
@@ -135,5 +152,4 @@ export default {
 </script>
 
 <style src='./form.scss' lang="scss">
-
 </style>
