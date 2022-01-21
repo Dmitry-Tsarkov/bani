@@ -13,7 +13,7 @@
   .container-brown(v-if="data.faq.length")
     img.container-brown__smoke(src='/img/smoke.png')
     .container
-      Section(title='Вопросы и ответы')
+      Section(title='Вопросы и ответы' class='brown')
         Faq(:data='data.faq')
   .container
     Section(title='Остались вопросы?')

@@ -3,6 +3,12 @@
   flex-direction: column;
   margin-top: 100px;
 
+  &.brown {
+    & .section__title {
+      color: $gold;
+    }
+  }
+
   &__title {
     font-weight: bold;
     font-size: 36px;

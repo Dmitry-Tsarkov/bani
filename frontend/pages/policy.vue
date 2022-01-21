@@ -3,21 +3,18 @@
   .container
     Breadcrumbs(:data='breadcrumbs')
     Headline(title='Политика конфиденциальности') 
-    Wysiwyg(:data='policy') 
+    Wysiwyg(:data='data.page.content') 
 </template>
 
 <script>
+import pageMixin from '@/helpers/pageMixin'
 export default {
-  data() {
-    return {
-      policy: '<h2>Политика конфиденциальности</h2>',
-    }
-  },
+  mixins: [pageMixin],  
   computed: {
     breadcrumbs() {
       let breadcrumbs = [
         {
-          title: 'Политика конфиденциальности',
+          title: this.data.page.title,
         },
       ]
 
@@ -25,9 +22,9 @@ export default {
     },
   },
 
-  // async asyncData({$axios, context, route}) {
-  //   const data = await $axios.$get(`https://app.dom-sruba.ru/api/service/${route.params.slug}`, route.query)
-  //   return { data }
-  // }
+  async asyncData({ $axios }) {
+    const data = await $axios.$get(`https://app.dom-sruba.ru/api/pages/policy`)
+    return { data }
+  },  
 }
 </script>
