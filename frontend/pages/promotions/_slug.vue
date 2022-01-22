@@ -20,7 +20,7 @@ export default {
           url: '/promotions',
         },
         {
-          title: 'Компенсаторы усадки В ПОДАРОК!',
+          title: this.data.action.title,
         },
       ]
 
