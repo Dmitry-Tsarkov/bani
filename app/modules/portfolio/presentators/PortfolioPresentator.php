@@ -28,7 +28,7 @@ class PortfolioPresentator
                     'id' => $portfolio->id,
                     'meta' => $portfolio->getMetaTags(),
                     'alias' => $portfolio->alias,
-                    'description' => $portfolio->description,
+                    'preview_text' => $portfolio->preview_text,
                     'title' => $portfolio->title,
                     'image' => Url::to($portfolio->getImageFileUrl('image'), true),
                 ];

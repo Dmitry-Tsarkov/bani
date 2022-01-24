@@ -28,6 +28,7 @@ $this->params['breadcrumbs'] = [
             <div class="col-md-8">
                 <?= $form->field($createForm, 'title') ?>
                 <?= $form->field($createForm, 'alias') ?>
+                <?= $form->field($createForm, 'preview_text')->textarea(['rows' => 5]); ?>
                 <?= $form->field($createForm, 'description')->textarea(['rows' => 7, 'cols' => 5]); ?>
             </div>
             <div class="col-md-4">

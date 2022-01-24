@@ -23,6 +23,7 @@ class PortfolioService
             $form->title,
             $form->alias,
             $form->description,
+            $form->preview_text,
             $form->is_preview,
             $form->image,
             new Seo(
@@ -45,6 +46,7 @@ class PortfolioService
             $form->title,
             $form->alias,
             $form->description,
+            $form->preview_text,
             $form->is_preview,
             $form->image,
             new Seo(

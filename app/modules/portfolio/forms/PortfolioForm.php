@@ -17,6 +17,7 @@ class PortfolioForm extends CompositeForm
     public $description;
     public $image;
     public $is_preview;
+    public $preview_text;
 
     public function __construct(?Portfolio $portfolio = null)
     {
@@ -25,6 +26,7 @@ class PortfolioForm extends CompositeForm
             $this->alias = $portfolio->alias;
             $this->is_preview = $portfolio->is_preview;
             $this->description = $portfolio->description;
+            $this->preview_text = $portfolio->preview_text;
         }
 
         $this->seo = new SeoForm();
@@ -35,7 +37,7 @@ class PortfolioForm extends CompositeForm
     {
         return [
             [['title'], 'required'],
-            [['title', 'alias', 'description'], 'string'],
+            [['title', 'alias', 'description', 'preview_text'], 'string'],
             [['is_preview'], 'boolean'],
             [['alias'], 'match', 'pattern' => '/^[0-9a-z-]+$/','message'=>'Только латинские буквы и знак "-"'],
         ];
@@ -49,6 +51,7 @@ class PortfolioForm extends CompositeForm
             'description' => 'Описание',
             'image' => 'Картинка',
             'is_preview' => 'Показывать на главной',
+            'preview_text' => 'Превью текст',
         ];
     }
 

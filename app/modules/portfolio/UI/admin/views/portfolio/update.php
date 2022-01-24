@@ -31,6 +31,7 @@ $this->params['breadcrumbs'] = [
         <div class="col-md-8">
             <?= $form->field($updateForm, 'title') ?>
             <?= $form->field($updateForm, 'alias') ?>
+            <?= $form->field($updateForm, 'preview_text')->textarea(['rows' => 5]); ?>
             <?= $form->field($updateForm, 'description')->widget(CKEditor::class); ?>
         </div>
         <div class="col-md-4">

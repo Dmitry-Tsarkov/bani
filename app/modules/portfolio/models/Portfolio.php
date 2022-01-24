@@ -32,6 +32,7 @@ use yii\web\UploadedFile;
  * @property string $image [varchar(255)]
  * @property string $image_hash [varchar(255)]
  * @property bool $is_preview [tinyint(1)]
+ * @property string $preview_text [varchar(255)]
  */
 class Portfolio extends ActiveRecord
 {
@@ -80,11 +81,12 @@ class Portfolio extends ActiveRecord
             'status' => 'Статус',
             'created_at' => 'Создано',
             'updated_at' => 'Обновлено',
-            'is_preview' => 'Показывать на главной'
+            'is_preview' => 'Показывать на главной',
+            'preview_text' => 'Превью текст'
         ];
     }
 
-    public static function create($title, $alias, $description, $is_preview, ?UploadedFile $image, Seo $seo): Portfolio
+    public static function create($title, $alias, $description, $preview_text, $is_preview, ?UploadedFile $image, Seo $seo): Portfolio
     {
         $self = new self();
 
@@ -94,18 +96,20 @@ class Portfolio extends ActiveRecord
         $self->is_preview = $is_preview;
         $self->image = $image;
         $self->description = $description;
+        $self->preview_text = $preview_text;
         $self->status = self::STATUS_DRAFT;
         $self->seo = $seo;
 
         return $self;
     }
 
-    public function edit($title, $alias, $description, $is_preview, ?UploadedFile $image, Seo $seo): void
+    public function edit($title, $alias, $description, $preview_text, $is_preview, ?UploadedFile $image, Seo $seo): void
     {
         $this->title = $title;
         $this->alias = $alias;
         $this->is_preview = $is_preview;
         $this->description = $description;
+        $this->preview_text = $preview_text;
         $this->image = $image;
         $this->seo = $seo;
     }
