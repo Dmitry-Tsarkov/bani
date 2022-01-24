@@ -3,6 +3,7 @@
   .container
     Breadcrumbs(:data='breadcrumbs')
     Headline(:title='data.title')
+    img.portfolio-card__image-big(:src='data.image')
     Wysiwyg(:data='data.description') 
 </template>
 
@@ -35,3 +36,10 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+  .portfolio-card__image-big {
+    border-radius: 15px;
+    margin-bottom: 32px;
+  }
+</style>
