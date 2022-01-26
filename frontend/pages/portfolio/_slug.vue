@@ -39,7 +39,11 @@ export default {
 
 <style lang="scss">
   .portfolio-card__image-big {
+    width: 100%;
     border-radius: 15px;
+    object-fit: cover;
+    aspect-ratio: 32 / 9;
+    filter: brightness(0.5);
     margin-bottom: 32px;
   }
 </style>

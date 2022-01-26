@@ -4,7 +4,7 @@
     .header__content
       Logo
       Nav
-      a.header__phone(v-for="item in data.phone" :key="item.id" :href='"tel: "+ item') {{item}}      
+      a.header__phone(v-if="data.phone" :href='"tel: "+ data.phone[0]') {{data.phone[0]}}      
 </template>
 
 <script>

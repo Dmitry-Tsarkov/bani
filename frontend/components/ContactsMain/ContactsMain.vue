@@ -5,6 +5,7 @@
       .contacts-main__conatcts
         .contacts-main__list
           .contacts-main__list-item
+            p.contacts-main__text.black Телефон:	
             p.contacts-main__text.black(v-if="data.phone" v-for="item in data.phone" :key="item.id") {{item}}            
           .contacts-main__list-item(v-if="data.email.length")
             p.contacts-main__text.black E-mail:	

@@ -29,7 +29,7 @@ export default {
         wrapperClass: 'portfolio-slider__wrapper',
         slideClass: 'portfolio-slider__slide',
         loop: true,
-        spaceBetween: 38,
+        spaceBetween: 40,
         slidesPerView: 3,
         navigation: {
           nextEl: this.$refs.next,

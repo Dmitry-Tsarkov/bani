@@ -82,4 +82,10 @@
 
     color: rgba(75, 38, 29, 0.9);
   }
+
+  &__image {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+  }
 }

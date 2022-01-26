@@ -11,16 +11,16 @@
         .contacts__item(v-if="data.contacts.phone")
           p.contacts__name Телефон:
           .contacts__value(v-for="item in data.contacts.phone" :key="item.id") {{item}} <br>       
-        .contacts__item(v-if="data.contacts.email")
+        .contacts__item(v-if="data.contacts.email.length")
           p.contacts__name E-mail:	
           p.contacts__value(v-for="item in data.contacts.email" :key="item.id") {{item}} <br>       
-        .contacts__item(v-if="data.contacts.skype")
+        .contacts__item(v-if="data.contacts.skype.length")
           p.contacts__name Skype:
           p.contacts__value(v-for="item in data.contacts.skype" :key="item.id") {{item}} <br> 
-        .contacts__item(v-if="data.contacts.viber")
+        .contacts__item(v-if="data.contacts.viber.length")
           p.contacts__name Viber:
           p.contacts__value(v-for="item in data.contacts.viber" :key="item.id") {{item}} <br> 
-        .contacts__item(v-if="data.contacts.whatsapp")
+        .contacts__item(v-if="data.contacts.whatsapp.length")
           p.contacts__name WhatsApp:	
           p.contacts__value(v-for="item in data.contacts.whatsapp" :key="item.id") {{item}} <br> 
       .contacts__list
