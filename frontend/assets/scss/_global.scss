@@ -14,7 +14,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
-  font-feature-settings: 'salt' on;
+  font-feature-settings: 'salt' on;  
 }
 
 body {
@@ -239,7 +239,9 @@ table {
   margin: auto;
   position: relative;
   // z-index: $layer-1;
-  // background-color: $white;
+  // background-color: $white; 
+  
+  
 
   &__header {
     flex-shrink: 0;
@@ -247,7 +249,8 @@ table {
 
   &__content {
     position: relative;
-    z-index: 2;
+    z-index: 2;  
+    zoom: 0.8; 
 
     &.dark {
       background-color: #E5E5E5;

@@ -1,5 +1,5 @@
 <template lang='pug'>
-.page 
+.page
   header.page__header
     Header(:data='data.header')
   main.page__body
