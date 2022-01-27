@@ -1,10 +1,9 @@
 <template>
-  <yandex-map style="width: 100%;" :coords="coords" :zoom="map.zoom" @click="onClick">
+  <yandex-map style="width: 100%; min-width: 543px" :coords="coords" :zoom="map.zoom" @click="onClick">
     <ymap-marker
       :coords="coords"
       marker-id="123"      
-      :icon="markerIcon"
-      
+      :icon="markerIcon"      
     />    
   </yandex-map>
   
@@ -37,9 +36,6 @@ export default {
     onClick(e) {
       this.coords = e.get('coords')
     },
-  },
-  mounted() {
-    console.log(this.map);
-  },
+  },  
 }
 </script>
